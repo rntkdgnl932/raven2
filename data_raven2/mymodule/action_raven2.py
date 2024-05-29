@@ -199,8 +199,87 @@ def confirm_all(cla):
                 print("confirm : skip_confirm", imgs_)
                 click_pos_reg(imgs_.x, imgs_.y, cla)
                 confirm_ = True
+            else:
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\confirm\\all_y.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(350, 500, 700, 700, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("confirm : all_y", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    confirm_ = True
 
         return confirm_
+    except Exception as e:
+        print(e)
+        return 0
+
+def menu_open(cla):
+    import numpy as np
+    import cv2
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from clean_screen_raven2 import clean_screen
+    from massenger import line_to_me
+
+    try:
+        print("menu_open")
+
+        for i in range(10):
+
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\menu_character_select.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(800, 930, 920, 1030, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("menu : menu_character_select...end", imgs_)
+                break
+            else:
+                clean_screen(cla)
+                result_out = out_check(cla)
+                if result_out == True:
+                    click_pos_2(925, 60, cla)
+
+                    for m in range(10):
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\menu_character_select.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(800, 930, 920, 1030, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("menu : menu_character_select", imgs_)
+                            break
+                        time.sleep(0.5)
+
+
+            time.sleep(0.5)
+
+
+
+    except Exception as e:
+        print(e)
+        return 0
+
+
+def jangsigan_check(cla):
+    import numpy as np
+    import cv2
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from massenger import line_to_me
+
+    try:
+        print("jangsigan_check")
+
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\monitor\\jangsigan.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(300, 400, 700, 700, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("jangsigan", imgs_)
+            confirm_all(cla)
+
+            # 추후 재접속
+            why = "장시간"
+            line_to_me(cla, why)
+
     except Exception as e:
         print(e)
         return 0

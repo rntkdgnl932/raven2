@@ -15,9 +15,10 @@ def go_test():
     import pyautogui
     import random
 
-    from function_game import imgs_set_, drag_pos
+    from function_game import imgs_set_, drag_pos, text_check_get
     from tuto_raven2 import way_point_click, tuto_start
-    from action_raven2 import move_check
+    from action_raven2 import move_check, menu_open
+    from clean_screen_raven2 import clean_screen
 
 
     print("test")
@@ -41,7 +42,12 @@ def go_test():
 
     # tuto_start(cla)
 
-    tuto_start(cla)
+    # tuto_start(cla)
+
+    menu_open(cla)
+
+    # result = text_check_get(440, 520, 550, 540, cla)
+    # print("result", result)
 
     # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tuto\\way\\drag_down_1.PNG"
     # img_array = np.fromfile(full_path, np.uint8)
