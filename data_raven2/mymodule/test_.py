@@ -15,6 +15,10 @@ def go_test():
     import pyautogui
     import random
 
+    from function_game import imgs_set_, drag_pos
+    from tuto_raven2 import way_point_click, tuto_start
+    from action_raven2 import move_check
+
 
     print("test")
     cla = "one"
@@ -35,3 +39,14 @@ def go_test():
     elif cla == "six":
         plus = 960 * 5
 
+    # tuto_start(cla)
+
+    tuto_start(cla)
+
+    # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tuto\\way\\drag_down_1.PNG"
+    # img_array = np.fromfile(full_path, np.uint8)
+    # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    # imgs_ = imgs_set_(10, 30, 945, 1025, cla, img, 0.8)
+    # if imgs_ is not None and imgs_ != False:
+    #     print("drag_down_1", imgs_)
+    #     drag_pos(imgs_.x, imgs_.y + 30, imgs_.x, imgs_.y + 100, cla)
