@@ -13,13 +13,15 @@ def clean_screen(cla):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_raven2 import out_check
+    from action_raven2 import out_check, skip_click
 
     try:
         print("clean_screen")
 
         for i in range(10):
             clean = True
+
+            skip_click(cla)
 
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\clean_screen\\close_btn_1.PNG"
             img_array = np.fromfile(full_path, np.uint8)

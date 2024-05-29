@@ -13,42 +13,75 @@ sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder)
 def tuto_start(cla):
     import numpy as np
     import cv2
+    import os
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from action_raven2 import out_check, skip_click, move_check, confirm_all
+    from dead_raven2 import dead_check, dead_recover
+
+    from massenger import line_to_me
 
     try:
         print("tuto_start")
 
-        result_move_check = move_check(cla)
+        result_dead = dead_check(cla)
 
-        if result_move_check == True:
-            print("피통 및 dead 관리하자")
+        if result_dead == True:
+
+            dead_recover(cla)
+
+            # 초반에는 잠시 끝내기
+
+            why = "튜토 정비해주자자"
+            line_to_me(cla, why)
+
+            # 끝내기
+            dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
+            file_path = dir_path + "\\start.txt"
+            # cla.txt
+            cla_data = str(v_.now_cla) + "cla"
+            file_path2 = dir_path + "\\" + cla_data + ".txt"
+            with open(file_path, "w", encoding='utf-8-sig') as file:
+                data = 'no'
+                file.write(str(data))
+                time.sleep(0.2)
+            with open(file_path2, "w", encoding='utf-8-sig') as file:
+                data = v_.now_cla
+                file.write(str(data))
+                time.sleep(0.2)
+            os.execl(sys.executable, sys.executable, *sys.argv)
 
         else:
 
-            result_out = out_check(cla)
+            result_move_check = move_check(cla)
 
-            if result_out == True:
-                click_pos_2(880, 105, cla)
-
-                for i in range(3):
-                    result_confirm = confirm_all(cla)
-                    if result_confirm == True:
-                        break
-                    time.sleep(0.5)
-
-                skip_click(cla)
-
-                way_point_click(cla)
+            if result_move_check == True:
+                print("피통 및 dead 관리하자")
 
             else:
-                click_pos_2(480, 600, cla)
 
-                for i in range(5):
+                result_out = out_check(cla)
+
+                if result_out == True:
+                    click_pos_2(880, 105, cla)
+
+                    for i in range(3):
+                        result_confirm = confirm_all(cla)
+                        if result_confirm == True:
+                            break
+                        time.sleep(0.5)
+
                     skip_click(cla)
-                    time.sleep(0.2)
 
-                way_point_click(cla)
+                    way_point_click(cla)
+
+                else:
+                    click_pos_2(480, 600, cla)
+
+                    for i in range(5):
+                        skip_click(cla)
+                        time.sleep(0.2)
+
+                    way_point_click(cla)
 
 
 
