@@ -15,7 +15,7 @@ def tuto_start(cla):
     import cv2
     import os
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_raven2 import out_check, skip_click, move_check, confirm_all
+    from action_raven2 import out_check, skip_click, move_check, confirm_all, juljun_check, juljun_off
     from dead_raven2 import dead_check, dead_recover
     from schedule import myQuest_play_add
 
@@ -23,6 +23,10 @@ def tuto_start(cla):
 
     try:
         print("tuto_start")
+
+        result_juljun = juljun_check(cla)
+        if result_juljun[0] == True:
+            juljun_off(cla)
 
         result_dead = dead_check(cla)
 
