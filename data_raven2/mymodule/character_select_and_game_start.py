@@ -249,6 +249,8 @@ def game_ready(cla):
 
     try:
 
+        ready_ = False
+
         # 완전 바깥일 경우 일딴 들어가기
         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\gameout\\my_character_seach.PNG"
         img_array = np.fromfile(full_path, np.uint8)
@@ -257,7 +259,7 @@ def game_ready(cla):
         if imgs_ is not None and imgs_ != False:
             click_pos_2(500, 600, cla)
 
-            ready_ = False
+
 
             for i in range(10):
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\game_start_btn.PNG"

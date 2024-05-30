@@ -355,7 +355,7 @@ def go_maul(cla):
                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\maul_move_juljun.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(875, 955, 950, 1030, cla, img, 0.8)
+                    imgs_ = imgs_set_(850, 900, 950, 1040, cla, img, 0.7)
                     if imgs_ is not None and imgs_ != False:
                         print("maul_move_juljun", imgs_)
                         click_pos_reg(imgs_.x, imgs_.y, cla)
