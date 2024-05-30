@@ -1,0 +1,261 @@
+import time
+# import os
+import sys
+
+
+import variable as v_
+
+sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder) + '/mymodule')
+
+
+def potion_check(cla):
+    import numpy as np
+    import cv2
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from action_raven2 import juljun_check, out_check
+    from clean_screen_raven2 import clean_screen
+    from chango_raven2 import chango_in
+
+    try:
+        print("potion_check")
+
+        is_potion = False
+
+        result_juljun = juljun_check(cla)
+        if result_juljun[0] == True:
+            print("절전모드")
+            for i in range(10):
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\juljun_potion\\" + str(i) + ".PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(455, 1000, 477, 1020, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    many = i * 100
+                    print_say = str(many) + "개 이상"
+                    print("num", print_say)
+                    is_potion = True
+                    break
+        else:
+            print("절전모드 아님")
+
+            result_out = out_check(cla)
+            if result_out == True:
+
+                for i in range(10):
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\out_potion\\" + str(i) + ".PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(280, 982, 288, 1000, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        many = i * 100
+                        print_say = str(many) + "개 이상"
+                        print("num", print_say)
+                        is_potion = True
+                        break
+            else:
+                print("바깥화면 아니다.")
+                is_potion = True
+
+        if is_potion == False:
+            v_.potion_count += 1
+
+            if v_.potion_count > 4:
+                potion_buy(cla)
+            else:
+                if v_.potion_count > 0:
+                    v_.potion_count -= 1
+
+    except Exception as e:
+        print(e)
+        return 0
+
+
+def potion_buy(cla):
+    import numpy as np
+    import cv2
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from action_raven2 import go_maul, move_check
+    from clean_screen_raven2 import clean_screen
+    from chango_raven2 import chango_in
+
+    try:
+        print("potion_buy")
+
+        # 먼저 마을로 가기
+
+        go_maul(cla)
+
+        # 창고 한번 가주기
+
+        chango_in(cla)
+
+        # 마을인지 확인되면 정해진 포션 사기
+
+        buy_ = False
+        buy_count = 0
+
+        while buy_ is False:
+            buy_count += 1
+            if buy_count > 7:
+                buy_ = True
+
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\auto_buy_btn.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(400, 980, 600, 1020, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("auto_buy_btn", imgs_)
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                for i in range(10):
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\money_point.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(600, 980, 650, 1020, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("money_point", imgs_)
+                        break
+                    else:
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\auto_buy_btn.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(400, 980, 600, 1020, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("auto_buy_btn", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                    time.sleep(0.5)
+
+                for i in range(10):
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\money_point.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(600, 980, 650, 1020, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("money_point", imgs_)
+                        click_pos_2(815, 1000, cla)
+                    else:
+                        v_.potion_count = 0
+                        clean_screen(cla)
+                        buy_ = True
+                        break
+                    time.sleep(0.5)
+            else:
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\jabhwa_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(50, 100, 200, 260, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("jabhwa_btn", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                    move_count = 0
+                    for i in range(50):
+                        result_move = move_check(cla)
+                        if result_move == False:
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\auto_buy_btn.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(400, 980, 600, 1020, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("auto_buy_btn", imgs_)
+                                break
+                            else:
+                                move_count += 1
+                                if move_count > 3:
+                                    break
+                        else:
+                            move_count = 0
+                        time.sleep(1)
+            time.sleep(0.5)
+
+
+    except Exception as e:
+        print(e)
+        return 0
+
+
+def dead_recover(cla):
+    import numpy as np
+    import cv2
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from action_raven2 import out_check, confirm_all
+    from clean_screen_raven2 import clean_screen
+
+    try:
+        print("dead_recover")
+
+        recover = False
+
+        clean_screen(cla)
+
+        for i in range(10):
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\exp_recover_title.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(260, 260, 400, 400, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                recover = True
+                break
+            else:
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\boohwal_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(530, 30, 650, 100, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("boohwal_btn", imgs_)
+            time.sleep(0.5)
+
+        if recover == True:
+
+            for i in range(15):
+
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\exp_recover_last.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(360, 440, 530, 500, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("exp_recover_last", imgs_)
+
+                    confirm_all(cla)
+
+                    break
+
+                else:
+
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\exp_recover_title.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(260, 260, 400, 400, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("exp_recover_title", imgs_)
+
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\exp_click.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(280, 380, 380, 680, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("exp_click", imgs_)
+                            # 클릭 후 590, 735
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            time.sleep(0.5)
+                            click_pos_2(590, 735, cla)
+
+                    else:
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\boohwal_btn.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(530, 30, 650, 100, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("boohwal_btn", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                time.sleep(0.5)
+
+        clean_screen(cla)
+
+
+    except Exception as e:
+        print(e)
+        return 0
+
+
+

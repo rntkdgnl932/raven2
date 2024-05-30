@@ -15,10 +15,15 @@ def go_test():
     import pyautogui
     import random
 
-    from function_game import imgs_set_, drag_pos, text_check_get
+    from function_game import imgs_set_, drag_pos, text_check_get, imgs_set_for
     from tuto_raven2 import way_point_click, tuto_start
-    from action_raven2 import move_check, menu_open
+    from action_raven2 import move_check, menu_open, go_maul, juljun_check, juljun_on, juljun_off
     from clean_screen_raven2 import clean_screen
+    from potion_raven2 import potion_buy, potion_check
+    from chango_raven2 import chango_in
+    from dungeon_raven2 import dungeon_in, dungeon_check
+    from jadong_raven2 import jadong_in
+
 
 
     print("test")
@@ -40,9 +45,28 @@ def go_test():
     elif cla == "six":
         plus = 960 * 5
 
-    clean_screen(cla)
+    potion_check(cla)
 
-    # tuto_start(cla)
+    # text_check_get(280, 982, 288, 1000, cla)
+    #
+    # for i in range(10):
+    #     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\out_potion\\" + str(i) + ".PNG"
+    #     img_array = np.fromfile(full_path, np.uint8)
+    #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    #     imgs_ = imgs_set_(280, 982, 288, 1000, cla, img, 0.8)
+    #     if imgs_ is not None and imgs_ != False:
+    #         print("num", i)
+    #         break
+
+    # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\jadong\\jadong_click_btn_2.PNG"
+    # img_array = np.fromfile(full_path, np.uint8)
+    # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    # imgs_ = imgs_set_(20, 70, 80, 570, cla, img, 0.8)
+    # if imgs_ is not None and imgs_ != False:
+    #     print("jadong_click_btn_2", imgs_)
+
+    # data = "일반_발바르_4"
+    # dungeon_in(cla, data)
 
     # menu_open(cla)
 

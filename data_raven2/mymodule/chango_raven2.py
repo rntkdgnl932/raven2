@@ -1,0 +1,89 @@
+import time
+# import os
+import sys
+
+
+import variable as v_
+
+sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder) + '/mymodule')
+
+
+
+def chango_in(cla):
+    import numpy as np
+    import cv2
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from action_raven2 import go_maul, move_check
+    from clean_screen_raven2 import clean_screen
+
+    try:
+        print("chango_in")
+
+        # 먼저 마을로 가기
+
+        go_maul(cla)
+
+        # 마을인지 확인되면 정해진 포션 사기
+
+        chango_ = False
+        chango_count = 0
+
+        while chango_ is False:
+            chango_count += 1
+            if chango_count > 7:
+                chango_ = True
+
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\chango\\chango_title.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(50, 30, 150, 100, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("chango_title", imgs_)
+
+                chango_ = True
+
+                for i in range(2):
+                    click_pos_2(700, 1000, cla)
+                    time.sleep(0.5)
+                    click_pos_2(800, 1000, cla)
+                    time.sleep(0.5)
+
+                clean_screen(cla)
+
+            else:
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\chango\\chango_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(50, 100, 200, 260, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("chango_btn", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                    move_count = 0
+                    for i in range(50):
+                        result_move = move_check(cla)
+                        if result_move == False:
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\chango\\chango_title.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(50, 30, 150, 100, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("chango_title", imgs_)
+                                break
+                            else:
+                                move_count += 1
+                                if move_count > 3:
+                                    break
+                        else:
+                            move_count = 0
+                        time.sleep(1)
+            time.sleep(0.5)
+
+
+    except Exception as e:
+        print(e)
+        return 0
+
+
+
+

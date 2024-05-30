@@ -60,7 +60,7 @@ def dead_recover(cla):
         clean_screen(cla)
 
         for i in range(10):
-            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\exp_recorver_title.PNG"
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\exp_recover_title.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(260, 260, 400, 400, cla, img, 0.8)
@@ -98,7 +98,7 @@ def dead_recover(cla):
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                     imgs_ = imgs_set_(260, 260, 400, 400, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
-                        print("exp_recorver_title", imgs_)
+                        print("exp_recover_title", imgs_)
 
                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\exp_click.PNG"
                         img_array = np.fromfile(full_path, np.uint8)

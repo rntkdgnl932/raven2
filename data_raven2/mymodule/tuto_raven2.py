@@ -17,6 +17,7 @@ def tuto_start(cla):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from action_raven2 import out_check, skip_click, move_check, confirm_all
     from dead_raven2 import dead_check, dead_recover
+    from schedule import myQuest_play_add
 
     from massenger import line_to_me
 
@@ -29,26 +30,29 @@ def tuto_start(cla):
 
             dead_recover(cla)
 
+            myQuest_play_add(cla, "튜토육성")
+
             # 초반에는 잠시 끝내기
 
-            why = "튜토 정비해주자자"
-            line_to_me(cla, why)
+            # why = "튜토 정비해주자자"
+            # line_to_me(cla, why)
+            #
 
-            # 끝내기
-            dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
-            file_path = dir_path + "\\start.txt"
-            # cla.txt
-            cla_data = str(v_.now_cla) + "cla"
-            file_path2 = dir_path + "\\" + cla_data + ".txt"
-            with open(file_path, "w", encoding='utf-8-sig') as file:
-                data = 'no'
-                file.write(str(data))
-                time.sleep(0.2)
-            with open(file_path2, "w", encoding='utf-8-sig') as file:
-                data = v_.now_cla
-                file.write(str(data))
-                time.sleep(0.2)
-            os.execl(sys.executable, sys.executable, *sys.argv)
+            # # 끝내기
+            # dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
+            # file_path = dir_path + "\\start.txt"
+            # # cla.txt
+            # cla_data = str(v_.now_cla) + "cla"
+            # file_path2 = dir_path + "\\" + cla_data + ".txt"
+            # with open(file_path, "w", encoding='utf-8-sig') as file:
+            #     data = 'no'
+            #     file.write(str(data))
+            #     time.sleep(0.2)
+            # with open(file_path2, "w", encoding='utf-8-sig') as file:
+            #     data = v_.now_cla
+            #     file.write(str(data))
+            #     time.sleep(0.2)
+            # os.execl(sys.executable, sys.executable, *sys.argv)
 
         else:
 
