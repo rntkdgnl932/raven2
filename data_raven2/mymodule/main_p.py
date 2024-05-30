@@ -45,6 +45,7 @@ from function_game import imgs_set, imgs_set_, click_pos_2, random_int, text_che
 
 from massenger import line_monitor, line_to_me
 from schedule import myQuest_play_check, myQuest_play_add
+from potion_raven2 import potion_buy
 
 
 
@@ -3384,6 +3385,9 @@ class game_Playing(QThread):
                                 elif result_schedule_ == "자동사냥":
                                     jadong_start(v_.now_cla)
                                     time.sleep(5)
+                                elif result_schedule_ == "버프와물약사기":
+                                    potion_buy(v_.now_cla)
+                                    myQuest_play_add(v_.now_cla, result_schedule_)
 
 
 
