@@ -13,6 +13,7 @@ def out_check(cla):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from dead_raven2 import dead_check, dead_recover
 
     try:
         print("out_check")
@@ -26,6 +27,12 @@ def out_check(cla):
         if imgs_ is not None and imgs_ != False:
             print("out : talk", imgs_)
             out_ = True
+
+            confirm_all(cla)
+
+            result_dead = dead_check(cla)
+            if result_dead == True:
+                dead_recover(cla)
 
 
 
