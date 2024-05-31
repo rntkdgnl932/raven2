@@ -61,23 +61,49 @@ def out_check(cla):
         print(e)
         return 0
 
-def attck_check(cla):
+def attack_on(cla):
     import numpy as np
     import cv2
+    import os
     from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from massenger import line_to_me
 
     try:
-        print("attck_check")
+        print("attack_check")
 
-        attack_ = False
+        click_pos_2(920, 860, cla)
 
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\out\\talk.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(5, 900, 50, 960, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("out : talk", imgs_)
-            attack_ = True
+        attack_ = True
+
+        for c in range(7):
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\attack\\attack_cannot.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(320, 160, 560, 230, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("attack_cannot..", imgs_)
+                attack_ = False
+                break
+            time.sleep(0.1)
+
+        if attack_ == False:
+            why = "공격 하려고 했는데...가방 꽉 찼다 확인해주라"
+            line_to_me(cla, why)
+
+            dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
+            file_path = dir_path + "\\start.txt"
+            # cla.txt
+            cla_data = str(v_.now_cla) + "cla"
+            file_path2 = dir_path + "\\" + cla_data + ".txt"
+            with open(file_path, "w", encoding='utf-8-sig') as file:
+                data = 'no'
+                file.write(str(data))
+                time.sleep(0.2)
+            with open(file_path2, "w", encoding='utf-8-sig') as file:
+                data = v_.now_cla
+                file.write(str(data))
+                time.sleep(0.2)
+            os.execl(sys.executable, sys.executable, *sys.argv)
 
 
 
@@ -589,8 +615,10 @@ def juljun_check(cla):
 def juljun_on(cla):
     import numpy as np
     import cv2
+    import os
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from clean_screen_raven2 import clean_screen
+    from massenger import line_to_me
 
     try:
         print("juljun_on")
@@ -625,7 +653,37 @@ def juljun_on(cla):
                 else:
                     clean_screen(cla)
                     click_pos_2(30, 880, cla)
-                    time.sleep(0.5)
+                    juljun_ = True
+                    for c in range(7):
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_cannot.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(350, 100, 520, 160, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("juljun_cannot..", imgs_)
+                            juljun_ = False
+                            break
+                        time.sleep(0.1)
+                    if juljun_ == False:
+                        why = "절전모드 하려는데 가방 꽉 찼다. 확인해주라."
+                        line_to_me(cla, why)
+
+                        dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
+                        file_path = dir_path + "\\start.txt"
+                        # cla.txt
+                        cla_data = str(v_.now_cla) + "cla"
+                        file_path2 = dir_path + "\\" + cla_data + ".txt"
+                        with open(file_path, "w", encoding='utf-8-sig') as file:
+                            data = 'no'
+                            file.write(str(data))
+                            time.sleep(0.2)
+                        with open(file_path2, "w", encoding='utf-8-sig') as file:
+                            data = v_.now_cla
+                            file.write(str(data))
+                            time.sleep(0.2)
+                        os.execl(sys.executable, sys.executable, *sys.argv)
+
+
             time.sleep(0.5)
 
     except Exception as e:

@@ -15,7 +15,7 @@ def go_test():
     import pyautogui
     import random
 
-    from function_game import imgs_set_, drag_pos, text_check_get, imgs_set_for, drag_pos_click
+    from function_game import imgs_set_, drag_pos, text_check_get, imgs_set_for, drag_pos_click, click_pos_2
     from tuto_raven2 import way_point_click, tuto_start
     from action_raven2 import move_check, menu_open, go_maul, juljun_check, juljun_on, juljun_off, bag_open
     from clean_screen_raven2 import clean_screen
@@ -34,7 +34,7 @@ def go_test():
 
     print("test")
 
-    cla = "four"
+    cla = "one"
 
     plus = 0
 
@@ -52,29 +52,29 @@ def go_test():
     elif cla == "six":
         plus = 960 * 5
 
-    get_item_start(cla)
+    # click_pos_2(30, 880, cla)
+    #
+    # for c in range(7):
+    #     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_cannot.PNG"
+    #     img_array = np.fromfile(full_path, np.uint8)
+    #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    #     imgs_ = imgs_set_(350, 100, 520, 160, cla, img, 0.8)
+    #     if imgs_ is not None and imgs_ != False:
+    #         print("juljun_cannot..", imgs_)
+    #         break
+    #     time.sleep(0.1)
 
-    result_gyobum = gyobum_check(cla)
-    if result_gyobum == True:
-        gyobum_start(cla)
-        time.sleep(1)
-        clean_screen(cla)
+    click_pos_2(925, 865, cla)
 
-    result_event_allget = event_allget_check(cla)
-    if result_event_allget == True:
-        event_allget_start(cla)
-        time.sleep(1)
-        clean_screen(cla)
-
-    result_event_get = event_get_check(cla)
-    if result_event_get == True:
-        event_get_start(cla)
-        time.sleep(1)
-        clean_screen(cla)
-
-    steegma_start(cla)
-
-    bag_open(cla)
+    for c in range(7):
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\attack\\attack_cannot.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(320, 160, 560, 230, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("attack_cannot..", imgs_)
+            break
+        time.sleep(0.1)
     #
     # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag\\bag_jabhwa.PNG"
     # img_array = np.fromfile(full_path, np.uint8)

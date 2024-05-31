@@ -13,7 +13,7 @@ def jadong_start(cla):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_raven2 import go_maul, move_check, juljun_check, juljun_off, juljun_on
+    from action_raven2 import go_maul, move_check, juljun_check, juljun_off, juljun_on, attack_on
     from clean_screen_raven2 import clean_screen
     from potion_raven2 import potion_check, potion_buy
     from dead_raven2 import dead_check, dead_recover
@@ -43,7 +43,7 @@ def jadong_start(cla):
             print("절전 풀고 공격버튼 클릭 후 다시 절전하기")
             juljun_off(cla)
             clean_screen(cla)
-            click_pos_2(920, 860, cla)
+            attack_on(cla)
             juljun_on(cla)
 
 

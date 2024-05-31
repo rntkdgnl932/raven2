@@ -13,7 +13,7 @@ def dungeon_start(cla, data):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_raven2 import go_maul, move_check, juljun_check, juljun_off, juljun_on
+    from action_raven2 import go_maul, move_check, juljun_check, juljun_off, juljun_on, attack_on
     from clean_screen_raven2 import clean_screen
     from potion_raven2 import potion_check, potion_buy
     from dead_raven2 import dead_check, dead_recover
@@ -49,7 +49,8 @@ def dungeon_start(cla, data):
             if result_juljun[0] == True:
                 juljun_off(cla)
             clean_screen(cla)
-            click_pos_2(920, 860, cla)
+            attack_on(cla)
+
             juljun_on(cla)
 
 
@@ -67,7 +68,7 @@ def dungeon_in(cla, data):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_raven2 import go_maul, move_check, menu_open, out_check, juljun_on
+    from action_raven2 import go_maul, move_check, menu_open, out_check, juljun_on, attack_on
     from clean_screen_raven2 import clean_screen
 
     from schedule import myQuest_play_add
@@ -240,7 +241,7 @@ def dungeon_in(cla, data):
                                     dun_in = True
 
                                     # 공격
-                                    click_pos_2(920, 860, cla)
+                                    attack_on(cla)
                                     juljun_on(cla)
 
                                     break
