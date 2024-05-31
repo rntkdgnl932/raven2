@@ -713,11 +713,18 @@ def juljun_off(cla):
                     break
             time.sleep(0.5)
 
-        # for i in range(10):
-        #     result_confirm = confirm_all(cla)
-        #     if result_confirm == True:
-        #         break
-        #     time.sleep(0.5)
+
+
+        for i in range(10):
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_off_result_title.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(330, 310, 500, 4000, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                result_confirm = confirm_all(cla)
+                if result_confirm == True:
+                    break
+            time.sleep(0.4)
 
     except Exception as e:
         print(e)

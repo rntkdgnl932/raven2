@@ -13,7 +13,7 @@ def clean_screen(cla):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_raven2 import skip_click, juljun_check, juljun_off
+    from action_raven2 import skip_click, juljun_check, juljun_off, confirm_all
 
     try:
         print("clean_screen")
@@ -26,6 +26,13 @@ def clean_screen(cla):
                 juljun_off(cla)
 
             skip_click(cla)
+
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_off_result_title.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(330, 310, 500, 4000, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                confirm_all(cla)
 
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\clean_screen\\close_btn_1.PNG"
             img_array = np.fromfile(full_path, np.uint8)
