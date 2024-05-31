@@ -57,6 +57,15 @@ from tuto_raven2 import tuto_start
 from character_select_and_game_start import game_start_screen
 from dungeon_raven2 import dungeon_start
 from jadong_raven2 import jadong_start
+# 겟 아이템에 스티그마까지 넣기
+from get_item import get_item_start
+from steegma import steegma_start
+# 아래 세개는 수시로 체크하기
+from event_get import event_get_check
+from event_allget import event_allget_check
+from gyobum_raven2 import gyobum_check
+
+from action_raven2 import bag_open
 
 
 from server import game_start
@@ -3388,9 +3397,11 @@ class game_Playing(QThread):
                                 elif result_schedule_ == "버프와물약사기":
                                     potion_buy(v_.now_cla)
                                     myQuest_play_add(v_.now_cla, result_schedule_)
-
-
-
+                                elif result_schedule_ == "각종템받기":
+                                    get_item_start(v_.now_cla)
+                                    bag_open(v_.now_cla)
+                                    steegma_start(v_.now_cla)
+                                    myQuest_play_add(v_.now_cla, result_schedule_)
 
                                 time.sleep(0.5)
 

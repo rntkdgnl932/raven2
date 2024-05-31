@@ -18,6 +18,15 @@ def out_check(cla):
     try:
         print("out_check")
 
+        # 화면 닫기
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\close_window.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(400, 900, 600, 1000, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("close_window", imgs_)
+            click_pos_reg(imgs_.x, imgs_.y, cla)
+
         out_ = False
 
         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\out\\talk.PNG"
@@ -28,12 +37,23 @@ def out_check(cla):
             print("out : talk", imgs_)
             out_ = True
 
-            confirm_all(cla)
+            for i in range(5):
+                result_confirm = confirm_all(cla)
+                if result_confirm == True:
+                    break
+                time.sleep(0.5)
 
             result_dead = dead_check(cla)
             if result_dead == True:
                 dead_recover(cla)
-
+        else:
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\post\\get.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(400, 370, 560, 450, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("get", imgs_)
+                click_pos_reg(imgs_.x, imgs_.y, cla)
 
 
         return out_
@@ -114,6 +134,33 @@ def skip_click(cla):
 
     try:
         print("skip_click")
+
+        # 아이템 획득
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\post\\get.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(400, 370, 560, 450, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("get", imgs_)
+            click_pos_reg(imgs_.x, imgs_.y, cla)
+
+        # 화면 닫기
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\close_window.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(400, 900, 600, 1000, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("close_window", imgs_)
+            click_pos_reg(imgs_.x, imgs_.y, cla)
+
+        # 소환 나가기
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\clean_screen\\middle_exit_btn.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(250, 960, 750, 1040, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("middle_exit_btn", imgs_)
+            click_pos_reg(imgs_.x, imgs_.y, cla)
 
         # 레벨업
         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\level_up.PNG"
@@ -228,6 +275,10 @@ def menu_open(cla):
     from clean_screen_raven2 import clean_screen
     from massenger import line_to_me
 
+    from event_get import event_get_check, event_get_start
+    from event_allget import event_allget_check, event_allget_start
+    from gyobum_raven2 import gyobum_check, gyobum_start
+
     try:
         print("menu_open")
 
@@ -244,6 +295,25 @@ def menu_open(cla):
                 clean_screen(cla)
                 result_out = out_check(cla)
                 if result_out == True:
+
+                    result_gyobum = gyobum_check(cla)
+                    if result_gyobum == True:
+                        gyobum_start(cla)
+                        time.sleep(1)
+                        clean_screen(cla)
+
+                    result_event_allget = event_allget_check(cla)
+                    if result_event_allget == True:
+                        event_allget_start(cla)
+                        time.sleep(1)
+                        clean_screen(cla)
+
+                    result_event_get = event_get_check(cla)
+                    if result_event_get == True:
+                        event_get_start(cla)
+                        time.sleep(1)
+                        clean_screen(cla)
+
                     click_pos_2(925, 60, cla)
 
                     for m in range(10):
@@ -565,7 +635,7 @@ def juljun_on(cla):
 def juljun_off(cla):
     import numpy as np
     import cv2
-    from function_game import imgs_set_, drag_pos, click_pos_2
+    from function_game import imgs_set_, drag_pos, click_pos_2, drag_pos_click
     from clean_screen_raven2 import clean_screen
 
     try:
@@ -578,17 +648,187 @@ def juljun_off(cla):
             imgs_ = imgs_set_(350, 50, 600, 120, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 print("juljun_mode_check", imgs_)
-                drag_pos(250, 520, 750, 520, cla)
+                drag_pos_click(250, 520, 750, 520, cla)
             else:
-                break
+                result_out = out_check(cla)
+                if result_out == True:
+                    break
             time.sleep(0.5)
 
-        for i in range(10):
-            result_confirm = confirm_all(cla)
-            if result_confirm == True:
-                break
-            time.sleep(0.5)
+        # for i in range(10):
+        #     result_confirm = confirm_all(cla)
+        #     if result_confirm == True:
+        #         break
+        #     time.sleep(0.5)
 
     except Exception as e:
         print(e)
         return 0
+
+
+
+def bag_open(cla):
+    import numpy as np
+    import cv2
+    from function_game import imgs_set_, drag_pos, click_pos_2, drag_pos_click, click_pos_reg
+    from clean_screen_raven2 import clean_screen
+
+    try:
+        print("bag_open")
+
+        clean_screen(cla)
+
+
+
+        for i in range(10):
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag\\bag_jabhwa.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(880, 230, 960, 330, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("bag_jabhwa", imgs_)
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+                break
+            else:
+                click_pos_2(865, 65, cla)
+            time.sleep(0.5)
+
+        sohwan_ = True
+        sohwan_count = 0
+        while sohwan_ is True:
+            sohwan_count += 1
+            if sohwan_count > 30:
+                sohwan_ = False
+
+            is_sohwan = False
+
+
+
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag\\bag_jabhwa.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(880, 230, 960, 330, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag\\devil_1.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(600, 75, 900, 850, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("devil_1", imgs_)
+                    is_sohwan = True
+                else:
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag\\devil_2.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(600, 75, 900, 850, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("devil_2", imgs_)
+                        is_sohwan = True
+                    else:
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag\\devil_3.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(600, 75, 900, 850, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("devil_3", imgs_)
+                            is_sohwan = True
+                        else:
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag\\sung_1.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(600, 75, 900, 850, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("sung_1", imgs_)
+                                is_sohwan = True
+                            else:
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag\\sung_2.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(600, 75, 900, 850, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("sung_2", imgs_)
+                                    is_sohwan = True
+                if is_sohwan == True:
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    time.sleep(0.2)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    time.sleep(0.2)
+
+                    for i in range(3):
+                        confirm_all(cla)
+                        time.sleep(0.5)
+
+                    for i in range(10):
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\clean_screen\\middle_exit_btn.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(250, 960, 750, 1040, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("middle_exit_btn", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            sohwan_count = 0
+
+                            for c in range(10):
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag\\bag_jabhwa.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(880, 230, 960, 330, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("bag_jabhwa", imgs_)
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    break
+                                else:
+                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\clean_screen\\middle_exit_btn.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(250, 960, 750, 1040, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("middle_exit_btn", imgs_)
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                time.sleep(0.5)
+                            break
+                        time.sleep(0.5)
+                else:
+                    sohwan_ = False
+            else:
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\clean_screen\\middle_exit_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(250, 960, 750, 1040, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("middle_exit_btn", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    sohwan_count = 0
+
+                    for i in range(10):
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag\\bag_jabhwa.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(880, 230, 960, 330, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("bag_jabhwa", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            break
+                        else:
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\clean_screen\\middle_exit_btn.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(250, 960, 750, 1040, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("middle_exit_btn", imgs_)
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.5)
+
+            time.sleep(1)
+
+    except Exception as e:
+        print(e)
+        return 0
+
+
+
+
+
+
+

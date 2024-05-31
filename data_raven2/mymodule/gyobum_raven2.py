@@ -1,0 +1,459 @@
+import time
+# import os
+import sys
+
+
+import variable as v_
+
+sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder) + '/mymodule')
+
+
+
+def gyobum_check(cla):
+    import numpy as np
+    import cv2
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from action_raven2 import out_check
+
+    try:
+        print("gyobum_check")
+
+        is_point = False
+
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\out_point_1.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(240, 30, 275, 55, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("out_point_1", imgs_)
+            is_point = True
+            click_pos_reg(imgs_.x - 10, imgs_.y + 10, cla)
+
+
+
+
+        return is_point
+    except Exception as e:
+        print(e)
+        return 0
+
+
+def gyobum_start(cla):
+    import numpy as np
+    import cv2
+    from function_game import imgs_set_, click_pos_reg
+    from clean_screen_raven2 import clean_screen
+
+    try:
+        print("gyobum_start")
+
+        gyobum_in = False
+        gyobum_in_count = 0
+
+        while gyobum_in is False:
+            gyobum_in_count += 1
+            if gyobum_in_count > 5:
+                gyobum_in = True
+
+
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\gyobum_title.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(30, 30, 200, 100, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("gyobum_title", imgs_)
+
+                gyobum_in = True
+
+                for i in range(10):
+
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\out_point_1.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(50, 250, 120, 900, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("out_point_1", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                        for t in range(10):
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\title_monster.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(30, 30, 200, 100, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                gyobum_get(cla)
+                                break
+                            else:
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\title_region.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(30, 30, 200, 100, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    gyobum_get(cla)
+                                    break
+                                else:
+                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\title_knowledge.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(30, 30, 200, 100, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        gyobum_get(cla)
+                                        break
+                            time.sleep(0.5)
+
+                    else:
+                        # 끝
+                        break
+
+                    time.sleep(0.5)
+            else:
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\out_point_1.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(240, 30, 275, 55, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("out_point_1", imgs_)
+                    click_pos_reg(imgs_.x - 10, imgs_.y + 10, cla)
+            time.sleep(0.5)
+
+    except Exception as e:
+        print(e)
+        return 0
+
+
+def gyobum_get(cla):
+    import numpy as np
+    import cv2
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
+    from action_raven2 import confirm_all
+
+    try:
+        print("gyobum_get")
+
+        ######################################
+        ###########지식은 아직 보완 필요#########
+        ######################################
+
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\title_monster.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(30, 30, 200, 100, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("title_monster", imgs_)
+
+            time.sleep(0.5)
+
+            for i in range(10):
+
+                # 몬스터 도감 소제목 클릭
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\gyobum_point_1.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(50, 70, 600, 105, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+
+                    # 먼저 확인 한번 눌러주기
+                    confirm_all(cla)
+
+                    print("gyobum_point_1", imgs_)
+                    # 클릭
+                    click_pos_reg(imgs_.x - 10, imgs_.y + 10, cla)
+                    time.sleep(0.3)
+
+                    # 몬스터 도감 자세한 부분 클릭
+
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\gyobum_point_2.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(50, 130, 210, 700, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\gyobum_point_2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_for(50, 130, 210, 700, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            # print("gyobum_point_2", imgs_)
+                            last = len(imgs_)
+                            # print("gyobum_point_2[last - 1]", imgs_[last - 1])
+                            click_pos_reg(imgs_[last - 1][0] - 10, imgs_[last - 1][1] + 10, cla)
+                            time.sleep(0.3)
+
+
+                            for a in range(10):
+                                # 몬스터 도감 분석 클릭
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\monster_boonsuk.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(500, 500, 800, 900, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("monster_boonsuk", imgs_)
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    time.sleep(0.3)
+
+                                    for b in range(5):
+                                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\monster_boonsuk.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(500, 500, 800, 900, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("monster_boonsuk", imgs_)
+                                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        else:
+                                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\title_monster.PNG"
+                                            img_array = np.fromfile(full_path, np.uint8)
+                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                            imgs_ = imgs_set_(30, 30, 200, 100, cla, img, 0.8)
+                                            if imgs_ is not None and imgs_ != False:
+                                                break
+                                            else:
+                                                click_pos_2(100, 60, cla)
+                                        time.sleep(0.1)
+
+                                    break
+                                else:
+                                    # 몬스터 도감 마지막 포인트 클릭
+                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\gyobum_point_3.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(220, 180, 900, 1000, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("gyobum_point_3", imgs_)
+                                        click_pos_reg(imgs_.x - 10, imgs_.y + 10, cla)
+                                        time.sleep(0.3)
+                                time.sleep(0.3)
+
+                            for a in range(10):
+                                result_confirm = confirm_all(cla)
+                                if result_confirm == True:
+                                    break
+                                time.sleep(0.2)
+
+                else:
+                    print("몬스터 도감 끝")
+                    break
+            # 특무대 교범으로 돌아가기
+            for i in range(10):
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\gyobum_title.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(30, 30, 200, 100, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("gyobum_title", imgs_)
+                    break
+                else:
+                    click_pos_2(25, 60, cla)
+                    for c in range(10):
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\gyobum_title.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(30, 30, 200, 100, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                        time.sleep(0.2)
+                time.sleep(0.3)
+
+        else:
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\title_region.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(30, 30, 200, 100, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("title_region", imgs_)
+
+                time.sleep(0.5)
+
+                for i in range(10):
+
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\gyobum_point_2.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(50, 130, 210, 700, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+
+                        # 지역 도감 자세한 부분 클릭
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\gyobum_point_2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_for(50, 130, 210, 700, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            # print("gyobum_point_2", imgs_)
+                            last = len(imgs_)
+                            # print("gyobum_point_2[last - 1]", imgs_[last - 1])
+                            click_pos_reg(imgs_[last - 1][0] - 10, imgs_[last - 1][1] + 10, cla)
+                            time.sleep(0.5)
+
+                            # 지역 도감 체크 부분 파악
+                            # x + 90 클릭
+
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\region_checked_1.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(300, 940, 750, 1020, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\region_checked_1.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_for(300, 940, 750, 1020, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    # print("region_checked", imgs_)
+                                    last = len(imgs_)
+                                    # print("region_checked[last - 1]", imgs_[last - 1])
+                                    click_pos_reg(imgs_[last - 1][0] + 90, imgs_[last - 1][1], cla)
+                                    time.sleep(0.5)
+                            else:
+                                click_pos_2(355, 980, cla)
+                                time.sleep(0.5)
+                            time.sleep(0.5)
+                            for c in range(10):
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\title_region.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(30, 30, 200, 100, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    break
+                                else:
+                                    click_pos_2(100, 60, cla)
+                                time.sleep(0.5)
+                    else:
+                        # 끝
+                        break
+                    time.sleep(0.5)
+
+                # 특무대 교범으로 돌아가기
+                for i in range(10):
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\gyobum_title.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(30, 30, 200, 100, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("gyobum_title", imgs_)
+                        break
+                    else:
+                        click_pos_2(25, 60, cla)
+                        for c in range(10):
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\gyobum_title.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(30, 30, 200, 100, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                break
+                            time.sleep(0.2)
+                    time.sleep(0.3)
+
+            else:
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\title_knowledge.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(30, 30, 200, 100, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("title_knowledge", imgs_)
+
+                    time.sleep(0.5)
+
+                    for i in range(10):
+
+                        # 몬스터 도감 소제목 클릭
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\gyobum_point_2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(50, 130, 210, 700, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+
+                            confirm_all(cla)
+
+                            print("gyobum_point_2", imgs_)
+                            # 클릭
+                            click_pos_reg(imgs_.x - 10, imgs_.y + 10, cla)
+                            time.sleep(0.3)
+
+                            # 몬스터 도감 자세한 부분 클릭
+
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\gyobum_point_2.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_for(50, 130, 210, 700, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                # print("gyobum_point_2", imgs_)
+                                last = len(imgs_)
+                                # print("gyobum_point_2[last - 1]", imgs_[last - 1])
+                                click_pos_reg(imgs_[last - 1][0] - 10, imgs_[last - 1][1] + 10, cla)
+                                time.sleep(0.3)
+
+                                for a in range(10):
+                                    # 몬스터 도감 분석 클릭
+                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\knowledge_complete_btn.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(500, 500, 800, 900, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("knowledge_complete_btn", imgs_)
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        time.sleep(0.3)
+
+                                        for b in range(5):
+                                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\knowledge_complete_btn.PNG"
+                                            img_array = np.fromfile(full_path, np.uint8)
+                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                            imgs_ = imgs_set_(500, 500, 800, 900, cla, img, 0.8)
+                                            if imgs_ is not None and imgs_ != False:
+                                                print("knowledge_complete_btn", imgs_)
+                                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                            else:
+                                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\title_knowledge.PNG"
+                                                img_array = np.fromfile(full_path, np.uint8)
+                                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                imgs_ = imgs_set_(30, 30, 200, 100, cla, img, 0.8)
+                                                if imgs_ is not None and imgs_ != False:
+                                                    break
+                                                else:
+                                                    click_pos_2(100, 60, cla)
+                                            time.sleep(0.1)
+
+                                        break
+                                    else:
+                                        # 몬스터 도감 마지막 포인트 클릭
+                                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\gyobum_point_3.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(220, 180, 900, 1000, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("gyobum_point_3", imgs_)
+                                            click_pos_reg(imgs_.x - 10, imgs_.y + 10, cla)
+                                            time.sleep(0.3)
+                                    time.sleep(0.3)
+
+                                for a in range(10):
+                                    result_confirm = confirm_all(cla)
+                                    if result_confirm == True:
+                                        break
+                                    time.sleep(0.2)
+
+                        else:
+                            print("지식식 도감 끝")
+                            break
+                    # 특무대 교범으로 돌아가기
+                    for i in range(10):
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\gyobum_title.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(30, 30, 200, 100, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("gyobum_title", imgs_)
+                            break
+                        else:
+                            click_pos_2(25, 60, cla)
+                            for c in range(10):
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\gyobum_title.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(30, 30, 200, 100, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    break
+                                time.sleep(0.2)
+                        time.sleep(0.3)
+
+    except Exception as e:
+        print(e)
+        return 0

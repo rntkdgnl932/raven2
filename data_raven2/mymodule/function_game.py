@@ -236,6 +236,35 @@ def imgs_set_(a, b, c, d, cla, img, data):
     except ValueError:
         return False
 
+def imgs_set_reg(a, b, c, d, cla, img, data):
+    try:
+        from PIL import ImageGrab
+        from functools import partial
+        import pyautogui
+
+        ImageGrab.grab = partial(ImageGrab.grab, all_screens=True)
+
+        if cla == 'one':
+            plus = 0
+        if cla == 'two':
+            plus = 0
+        if cla == 'three':
+            plus = 0
+        if cla == 'four':
+            plus = 0
+        if cla == 'five':
+            plus = 0
+        if cla == 'six':
+            plus = 0
+
+        # pos = (a + plus, b, c - a, d - b)
+        # pyautogui.screenshot("asd.png", region=pos)
+
+        result = pyautogui.locateCenterOnScreen(img, region=(a + plus, b, c - a, d - b),
+                                               confidence=data)
+        return result
+    except ValueError:
+        return False
 
 def imgs_set_for(a, b, c, d, cla, img, data):
     try:
@@ -874,6 +903,54 @@ def drag_pos(pos_1, pos_2, pos_3, pos_4, cla):
     except Exception as e:
         print("error:", e)
 
+def drag_pos_click(pos_1, pos_2, pos_3, pos_4, cla):
+    try:
+        import pyautogui
+
+        if cla == 'one':
+            coordinate = 0
+        if cla == 'two':
+            coordinate = 960
+        if cla == 'three':
+            coordinate = 960 * 2
+        if cla == 'four':
+            coordinate = 960 * 3
+        if cla == 'five':
+            coordinate = 960 * 4
+        if cla == 'six':
+            coordinate = 960 * 5
+
+        click_pos_2(pos_1, pos_2, cla)
+
+        if v_.now_arduino == "on":
+
+            # 마우스 이동
+            mouse_move_cpp(pos_1, pos_2, cla)
+
+            # 0.1초
+            time.sleep(0.1)
+            # 마우스 누르기
+            drag_pos_Press()
+            # # 0.2초
+            time.sleep(0.2)
+            # 마우스 이동
+            mouse_move_cpp(pos_3, pos_4, cla)
+            # # 0.2초
+            time.sleep(0.2)
+            # 마우스 떼기
+            drag_pos_Release()
+            # 0.2초
+            time.sleep(0.5)
+
+        else:
+            mouse_move_cpp(pos_1, pos_2, cla)
+            pyautogui.dragTo(pos_3 + random_int() + coordinate, pos_4 + random_int(), 0.5, button='left')
+            time.sleep(0.3)
+
+
+    except Exception as e:
+        print("error:", e)
+
 def drag_pos_reg(pos_1, pos_2, pos_3, pos_4, cla):
     try:
         import pyautogui
@@ -923,6 +1000,52 @@ def drag_pos_reg(pos_1, pos_2, pos_3, pos_4, cla):
     except Exception as e:
         print("error:", e)
 
+def drag_pos_reg_click(pos_1, pos_2, pos_3, pos_4, cla):
+    try:
+        import pyautogui
+
+        coordinate = 0
+        if cla == 'one':
+            coordinate = 0
+        if cla == 'two':
+            coordinate = 0
+        if cla == 'three':
+            coordinate = 0
+        if cla == 'four':
+            coordinate = 0
+        if cla == 'five':
+            coordinate = 0
+        if cla == 'six':
+            coordinate = 0
+
+        click_pos_reg(pos_1, pos_2, cla)
+
+        if v_.now_arduino == "on":
+            cla = "one"
+            # 마우스 이동
+            mouse_move_cpp(pos_1, pos_2, cla)
+
+            # 0.1초
+            time.sleep(0.1)
+            # 마우스 누르기
+            drag_pos_Press()
+            # 0.2초
+            time.sleep(0.2)
+            # 마우스 이동
+            mouse_move_cpp(pos_3, pos_4, cla)
+            # 0.2초
+            time.sleep(0.2)
+            # 마우스 떼기
+            drag_pos_Release()
+            # 0.5초
+            time.sleep(0.5)
+        else:
+            pyautogui.moveTo(pos_1 + random_int() + coordinate, pos_2 + random_int(), 0.5)
+            pyautogui.dragTo(pos_3 + random_int() + coordinate, pos_4 + random_int(), 0.5)
+            time.sleep(0.3)
+
+    except Exception as e:
+        print("error:", e)
 
 # def text_check(posX1, posY1, posX2, posY2, text, method, method_pos):
 #     try:

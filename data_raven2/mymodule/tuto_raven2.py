@@ -124,7 +124,7 @@ def quest_complete(cla):
 def way_point_click(cla):
     import numpy as np
     import cv2
-    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos_reg
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos_reg, drag_pos_reg_click
     from action_raven2 import out_check
 
     try:
@@ -187,7 +187,7 @@ def way_point_click(cla):
                     imgs_ = imgs_set_(10, 30, 945, 1025, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         print("down_1", imgs_)
-                        click_pos_reg(imgs_.x + x_cal, imgs_.y + y_cal, cla)
+                        drag_pos_reg_click(imgs_.x + x_cal, imgs_.y + y_cal, cla)
                         click_loop = True
                     else:
                         # down_left
@@ -211,7 +211,7 @@ def way_point_click(cla):
             imgs_ = imgs_set_(10, 30, 945, 1025, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 print("drag_down_1", imgs_)
-                drag_pos_reg(imgs_.x, imgs_.y + 30, imgs_.x, imgs_.y + 100, cla)
+                drag_pos_reg_click(imgs_.x, imgs_.y + 30, imgs_.x, imgs_.y + 100, cla)
                 click_loop = True
 
             time.sleep(1)
