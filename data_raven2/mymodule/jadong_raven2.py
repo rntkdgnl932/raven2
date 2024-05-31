@@ -73,7 +73,7 @@ def jadong_in(cla):
         print("jadong_in")
 
 
-
+        clean_screen(cla)
 
         spot_in = False
         spot_in_count = 0
