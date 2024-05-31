@@ -461,7 +461,8 @@ def go_maul(cla):
                 file.write(str(data))
                 time.sleep(0.2)
             os.execl(sys.executable, sys.executable, *sys.argv)
-
+        else:
+            clean_screen(cla)
     except Exception as e:
         print(e)
         return 0
