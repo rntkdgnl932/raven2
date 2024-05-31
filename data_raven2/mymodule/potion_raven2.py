@@ -74,7 +74,7 @@ def potion_buy(cla):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_raven2 import go_maul, move_check
+    from action_raven2 import go_maul, move_check, confirm_all
     from clean_screen_raven2 import clean_screen
     from chango_raven2 import chango_in
 
@@ -84,6 +84,8 @@ def potion_buy(cla):
         # 먼저 마을로 가기
 
         go_maul(cla)
+
+        confirm_all(cla)
 
         # 창고 한번 가주기
 
