@@ -194,7 +194,7 @@ def dead_recover(cla):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_raven2 import out_check, confirm_all
+    from action_raven2 import confirm_all
     from clean_screen_raven2 import clean_screen
 
     try:

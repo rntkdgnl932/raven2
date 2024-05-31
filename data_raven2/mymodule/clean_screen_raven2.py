@@ -13,7 +13,7 @@ def clean_screen(cla):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_raven2 import out_check, skip_click, juljun_check, juljun_off
+    from action_raven2 import skip_click, juljun_check, juljun_off
 
     try:
         print("clean_screen")

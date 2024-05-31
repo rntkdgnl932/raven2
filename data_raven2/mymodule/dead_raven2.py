@@ -45,7 +45,6 @@ def dead_check(cla):
         if imgs_ is not None and imgs_ != False:
             print("boohwal_btn", imgs_)
             dead_ = True
-            click_pos_reg(imgs_.x, imgs_.y, cla)
 
 
         return dead_
@@ -88,7 +87,7 @@ def dead_recover(cla):
 
         if recover == True:
 
-            for i in range(15):
+            for i in range(7):
 
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\exp_recover_last.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
@@ -116,6 +115,8 @@ def dead_recover(cla):
                         imgs_ = imgs_set_(280, 380, 380, 680, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             print("exp_click", imgs_)
+                            click_pos_2(600, 360, cla)
+                            time.sleep(0.5)
                             # 클릭 후 590, 735
                             click_pos_reg(imgs_.x, imgs_.y, cla)
                             time.sleep(0.5)
