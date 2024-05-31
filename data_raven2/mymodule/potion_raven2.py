@@ -109,23 +109,7 @@ def potion_buy(cla):
                 print("auto_buy_btn", imgs_)
                 click_pos_reg(imgs_.x, imgs_.y, cla)
 
-                for i in range(10):
-                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\money_point.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(600, 980, 650, 1020, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        print("money_point", imgs_)
-                        break
-                    else:
-                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\auto_buy_btn.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(400, 980, 600, 1020, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            print("auto_buy_btn", imgs_)
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
-                    time.sleep(0.5)
+                anymore_buy = False
 
                 for i in range(10):
                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\money_point.PNG"
@@ -134,13 +118,43 @@ def potion_buy(cla):
                     imgs_ = imgs_set_(600, 980, 650, 1020, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         print("money_point", imgs_)
-                        click_pos_2(815, 1000, cla)
-                    else:
-                        v_.potion_count = 0
-                        clean_screen(cla)
-                        buy_ = True
                         break
+                    else:
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\anymore_buy.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(460, 110, 650, 160, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("anymore_buy", imgs_)
+                            anymore_buy = True
+                        else:
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\auto_buy_btn.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(400, 980, 600, 1020, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("auto_buy_btn", imgs_)
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
                     time.sleep(0.5)
+                if anymore_buy == True:
+                    v_.potion_count = 0
+                    clean_screen(cla)
+                    buy_ = True
+                else:
+                    for i in range(10):
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\money_point.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(600, 980, 650, 1020, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("money_point", imgs_)
+                            click_pos_2(815, 1000, cla)
+                        else:
+                            v_.potion_count = 0
+                            clean_screen(cla)
+                            buy_ = True
+                            break
+                        time.sleep(0.5)
             else:
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\jabhwa_btn.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
