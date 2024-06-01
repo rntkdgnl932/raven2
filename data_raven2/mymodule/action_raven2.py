@@ -472,7 +472,7 @@ def go_maul(cla):
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\jabhwa_btn.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(50, 100, 200, 260, cla, img, 0.8)
+                imgs_ = imgs_set_(50, 100, 200, 260, cla, img, 0.75)
                 if imgs_ is not None and imgs_ != False:
                     maul_in = True
                 else:
@@ -487,7 +487,7 @@ def go_maul(cla):
                             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\jabhwa_btn.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(50, 100, 200, 260, cla, img, 0.8)
+                            imgs_ = imgs_set_(50, 100, 200, 260, cla, img, 0.75)
                             if imgs_ is not None and imgs_ != False:
                                 break
                             time.sleep(0.5)
@@ -505,7 +505,7 @@ def go_maul(cla):
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\jabhwa_btn.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(50, 100, 200, 260, cla, img, 0.8)
+                imgs_ = imgs_set_(50, 100, 200, 260, cla, img, 0.75)
                 if imgs_ is not None and imgs_ != False:
                     print("jabhwa_btn", imgs_)
                     maul_in = True
@@ -514,7 +514,7 @@ def go_maul(cla):
                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\map_btn.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(190, 100, 280, 160, cla, img, 0.8)
+                    imgs_ = imgs_set_(190, 100, 280, 160, cla, img, 0.75)
                     if imgs_ is not None and imgs_ != False:
                         print("map_btn", imgs_)
                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\change_btn_1.PNG"
@@ -544,7 +544,7 @@ def go_maul(cla):
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\jabhwa_btn.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(50, 100, 200, 260, cla, img, 0.8)
+                imgs_ = imgs_set_(50, 100, 200, 260, cla, img, 0.75)
                 if imgs_ is not None and imgs_ != False:
                     maul_in = True
                 else:
@@ -560,10 +560,10 @@ def go_maul(cla):
                             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\jabhwa_btn.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(50, 100, 200, 260, cla, img, 0.8)
+                            imgs_ = imgs_set_(50, 100, 200, 260, cla, img, 0.75)
                             if imgs_ is not None and imgs_ != False:
                                 break
-                            time.sleep(0.5)
+                            time.sleep(1)
                     else:
                         print("마을 이동서 없다")
                         why = "마을이동서 없다. 정비해라"
