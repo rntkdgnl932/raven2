@@ -127,8 +127,23 @@ def dead_recover(cla):
                             time.sleep(0.5)
                             # 클릭 후 590, 735
                             click_pos_reg(imgs_.x, imgs_.y, cla)
-                            time.sleep(0.5)
-                            click_pos_2(590, 735, cla)
+
+                            not_free_recover = False
+                            for f in range(5):
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\not_free_recover.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(100, 100, 900, 680, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("not_free_recover", cla)
+                                    not_free_recover = True
+                                    break
+                                time.sleep(0.1)
+
+                            if not_free_recover == True:
+                                break
+                            else:
+                                click_pos_2(590, 735, cla)
 
                     else:
                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\boohwal_btn.PNG"
