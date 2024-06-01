@@ -28,13 +28,14 @@ def go_test():
     from event_get import event_get_check, event_get_start
     from get_item import get_post, get_upjuk, get_item_start
     from steegma import steegma_start
+    from boonhae_collection import collection_start, boonhae_start
 
 
 
 
     print("test")
 
-    cla = "one"
+    cla = "four"
 
     plus = 0
 
@@ -64,17 +65,18 @@ def go_test():
     #         break
     #     time.sleep(0.1)
 
-    click_pos_2(925, 865, cla)
+    collection_start(cla)
+    boonhae_start(cla)
 
-    for c in range(7):
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\attack\\attack_cannot.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(320, 160, 560, 230, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("attack_cannot..", imgs_)
-            break
-        time.sleep(0.1)
+    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\boonhae\\boonhae_ready.PNG"
+    img_array = np.fromfile(full_path, np.uint8)
+    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    imgs_ = imgs_set_(430, 920, 470, 970, "four", img, 0.8)
+    if imgs_ is not None and imgs_ != False:
+        print("boonhae_ready", imgs_)
+    else:
+        print("아노ㄴㅇ")
+
     #
     # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag\\bag_jabhwa.PNG"
     # img_array = np.fromfile(full_path, np.uint8)

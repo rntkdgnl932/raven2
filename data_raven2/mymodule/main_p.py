@@ -65,7 +65,7 @@ from event_get import event_get_check
 from event_allget import event_allget_check
 from gyobum_raven2 import gyobum_check
 
-from action_raven2 import bag_open
+from action_raven2 import bag_open, organize_start
 
 
 from server import game_start
@@ -3398,6 +3398,7 @@ class game_Playing(QThread):
                                     potion_buy(v_.now_cla)
                                     myQuest_play_add(v_.now_cla, result_schedule_)
                                 elif result_schedule_ == "각종템받기":
+                                    organize_start(v_.now_cla)
                                     get_item_start(v_.now_cla)
                                     bag_open(v_.now_cla)
                                     steegma_start(v_.now_cla)

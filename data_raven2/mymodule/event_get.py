@@ -23,7 +23,7 @@ def event_get_check(cla):
         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\e_out_point_1.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(690, 30, 960, 65, cla, img, 0.8)
+        imgs_ = imgs_set_(690, 30, 750, 65, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
             print("e_out_point_1", imgs_)
             is_point = True
@@ -133,7 +133,7 @@ def event_get_click(cla, is_picture):
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\fourteen\\checked_2.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(240, 460, 870, 700, cla, img, 0.8)
+            imgs_ = imgs_set_(240, 460, 870, 700, cla, img, 0.75)
             if imgs_ is not None and imgs_ != False:
                 print("checked_2", imgs_)
                 click_pos_reg(imgs_.x - 20, imgs_.y + 50, cla)

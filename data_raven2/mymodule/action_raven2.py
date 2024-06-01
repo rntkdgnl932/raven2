@@ -61,11 +61,13 @@ def out_check(cla):
         print(e)
         return 0
 
+
 def attack_on(cla):
     import numpy as np
     import cv2
     import os
     from function_game import imgs_set_, click_pos_reg, click_pos_2
+
     from massenger import line_to_me
 
     try:
@@ -87,27 +89,25 @@ def attack_on(cla):
             time.sleep(0.1)
 
         if attack_ == False:
-            why = "공격 하려고 했는데...가방 꽉 찼다 확인해주라"
-            line_to_me(cla, why)
-
-            dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
-            file_path = dir_path + "\\start.txt"
-            # cla.txt
-            cla_data = str(v_.now_cla) + "cla"
-            file_path2 = dir_path + "\\" + cla_data + ".txt"
-            with open(file_path, "w", encoding='utf-8-sig') as file:
-                data = 'no'
-                file.write(str(data))
-                time.sleep(0.2)
-            with open(file_path2, "w", encoding='utf-8-sig') as file:
-                data = v_.now_cla
-                file.write(str(data))
-                time.sleep(0.2)
-            os.execl(sys.executable, sys.executable, *sys.argv)
-
-
-
+            organize_start(cla)
         return attack_
+    except Exception as e:
+        print(e)
+        return 0
+
+
+def organize_start(cla):
+
+    from boonhae_collection import collection_start, boonhae_start
+    from chango_raven2 import chango_in
+
+    try:
+        print("organize_start")
+
+        chango_in(cla)
+        collection_start(cla)
+        boonhae_start(cla)
+
     except Exception as e:
         print(e)
         return 0
@@ -214,6 +214,14 @@ def skip_click(cla):
         if imgs_ is not None and imgs_ != False:
             print("screen_click", imgs_)
             click_pos_reg(imgs_.x, imgs_.y, cla)
+        else:
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\screen_click2.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(300, 900, 600, 1000, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("screen_click2", imgs_)
+                click_pos_reg(imgs_.x, imgs_.y, cla)
 
         # 퀘스트 완료
 
@@ -262,6 +270,7 @@ def confirm_all(cla):
 
         confirm_ = False
 
+        # 이동
         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\confirm\\move_confirm.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -271,6 +280,7 @@ def confirm_all(cla):
             click_pos_reg(imgs_.x, imgs_.y, cla)
             confirm_ = True
         else:
+            # 확인
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\confirm\\skip_confirm.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -280,6 +290,7 @@ def confirm_all(cla):
                 click_pos_reg(imgs_.x, imgs_.y, cla)
                 confirm_ = True
             else:
+                # y
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\confirm\\all_y.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -288,6 +299,16 @@ def confirm_all(cla):
                     print("confirm : all_y", imgs_)
                     click_pos_reg(imgs_.x, imgs_.y, cla)
                     confirm_ = True
+                else:
+                    # 분해
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\boonhae\\boonhae_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(480, 580, 610, 630, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("confirm : boonhae_btn", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        confirm_ = True
 
         return confirm_
     except Exception as e:
@@ -665,23 +686,7 @@ def juljun_on(cla):
                             break
                         time.sleep(0.1)
                     if juljun_ == False:
-                        why = "절전모드 하려는데 가방 꽉 찼다. 확인해주라."
-                        line_to_me(cla, why)
-
-                        dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
-                        file_path = dir_path + "\\start.txt"
-                        # cla.txt
-                        cla_data = str(v_.now_cla) + "cla"
-                        file_path2 = dir_path + "\\" + cla_data + ".txt"
-                        with open(file_path, "w", encoding='utf-8-sig') as file:
-                            data = 'no'
-                            file.write(str(data))
-                            time.sleep(0.2)
-                        with open(file_path2, "w", encoding='utf-8-sig') as file:
-                            data = v_.now_cla
-                            file.write(str(data))
-                            time.sleep(0.2)
-                        os.execl(sys.executable, sys.executable, *sys.argv)
+                        organize_start(cla)
 
 
             time.sleep(0.5)
