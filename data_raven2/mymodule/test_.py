@@ -65,15 +65,12 @@ def go_test():
     #         break
     #     time.sleep(0.1)
 
-    collection_start(cla)
-    boonhae_start(cla)
-
-    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\boonhae\\boonhae_ready.PNG"
+    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag\\box_jangsingoo.PNG"
     img_array = np.fromfile(full_path, np.uint8)
     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(430, 920, 470, 970, "four", img, 0.8)
+    imgs_ = imgs_set_(600, 75, 900, 850, "two", img, 0.8)
     if imgs_ is not None and imgs_ != False:
-        print("boonhae_ready", imgs_)
+        print("box_ganhwasuk", imgs_)
     else:
         print("아노ㄴㅇ")
 
