@@ -75,7 +75,7 @@ def dungeon_in(cla, data):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_raven2 import go_maul, move_check, menu_open, out_check, juljun_on, attack_on
+    from action_raven2 import go_maul, move_check, menu_open, out_check, juljun_on, attack_on, go_random
     from clean_screen_raven2 import clean_screen
 
     from schedule import myQuest_play_add
@@ -248,14 +248,7 @@ def dungeon_in(cla, data):
                                     dun_in = True
                                     # 고대의 신전은 랜덤이동하기
                                     if dun_name == "temple":
-                                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\random_move.PNG"
-                                        img_array = np.fromfile(full_path, np.uint8)
-                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                        imgs_ = imgs_set_(360, 940, 470, 1010, cla, img, 0.8)
-                                        if imgs_ is not None and imgs_ != False:
-                                            print("random_move", imgs_)
-                                            click_pos_reg(imgs_.x, imgs_.y, cla)
-                                            time.sleep(1)
+                                        go_random(cla)
 
                                     # 공격
                                     attack_on(cla)

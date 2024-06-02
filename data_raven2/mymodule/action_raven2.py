@@ -626,6 +626,7 @@ def go_random(cla):
                     if result_out == True:
                         break
                     time.sleep(0.5)
+                break
             else:
                 clean_screen(cla)
             time.sleep(0.5)
