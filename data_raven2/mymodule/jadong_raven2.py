@@ -89,7 +89,7 @@ def jadong_in(cla):
             imgs_ = imgs_set_(800, 950, 960, 1030, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 print("map_open", imgs_)
-                spot_in = True
+
 
                 for i in range(10):
                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\jadong\\jadong_click_btn_1.PNG"
@@ -167,6 +167,9 @@ def jadong_in(cla):
                     for i in range(10):
                         result_out = out_check(cla)
                         if result_out == True:
+
+                            spot_in = True
+
                             juljun_on(cla)
                             break
                         else:

@@ -149,6 +149,7 @@ def get_post(cla):
         return 0
 
 
+
 def get_upjuk(cla):
     import numpy as np
     import cv2

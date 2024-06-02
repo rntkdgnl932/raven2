@@ -52,6 +52,41 @@ def dead_check(cla):
         print(e)
         return 0
 
+def dead_check_2(cla):
+    import numpy as np
+    import cv2
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from action_raven2 import out_check
+
+    try:
+        print("dead_check_2")
+
+        dead_ = False
+
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\dead_1.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(350, 400, 500, 500, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("dead_1", imgs_)
+            dead_ = True
+            click_pos_reg(imgs_.x, imgs_.y, cla)
+
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\dead_2.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(450, 690, 560, 760, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("dead_2", imgs_)
+            dead_ = True
+            click_pos_reg(imgs_.x, imgs_.y, cla)
+
+
+        return dead_
+    except Exception as e:
+        print(e)
+        return 0
+
 
 def dead_recover(cla):
     import numpy as np

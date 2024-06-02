@@ -13,7 +13,7 @@ def chango_in(cla):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_raven2 import go_maul, move_check
+    from action_raven2 import go_maul, move_check, confirm_all
     from clean_screen_raven2 import clean_screen
 
     try:
@@ -42,11 +42,43 @@ def chango_in(cla):
 
                 chango_ = True
 
+                # 자동선택
                 for i in range(2):
                     click_pos_2(700, 1000, cla)
                     time.sleep(0.5)
                     click_pos_2(800, 1000, cla)
                     time.sleep(0.5)
+
+                # 기타 클릭하기
+                for i in range(5):
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\chango\\clicked.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(870, 290, 910, 420, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("clicked", imgs_)
+                        break
+                    else:
+                        click_pos_2(920, 360, cla)
+                    time.sleep(0.5)
+
+                # 기타에 있는거 전부 넣기
+                print("으랏차차")
+                for y in range(4):
+                    y_reg = 270 - (y * 50)
+                    for x in range(5):
+                        x_reg = 858 - (x * 52)
+
+                        click_pos_2(x_reg, y_reg, cla)
+                        time.sleep(0.2)
+                        result_confirm = confirm_all(cla)
+                        if result_confirm == True:
+                            time.sleep(0.2)
+
+                click_pos_2(800, 1000, cla)
+                time.sleep(0.1)
+                click_pos_2(800, 1000, cla)
+                time.sleep(0.1)
 
                 clean_screen(cla)
 

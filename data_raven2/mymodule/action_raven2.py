@@ -279,6 +279,16 @@ def confirm_all(cla):
             print("confirm : move_confirm", imgs_)
             click_pos_reg(imgs_.x, imgs_.y, cla)
             confirm_ = True
+        # else:
+        #     # 즉시이동
+        #     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\confirm\\immediately_move_confirm.PNG"
+        #     img_array = np.fromfile(full_path, np.uint8)
+        #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #     imgs_ = imgs_set_(350, 500, 960, 1030, cla, img, 0.8)
+        #     if imgs_ is not None and imgs_ != False:
+        #         print("confirm : immediately_move_confirm", imgs_)
+        #         click_pos_reg(imgs_.x, imgs_.y, cla)
+        #         confirm_ = True
         else:
             # 확인
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\confirm\\skip_confirm.PNG"
@@ -328,9 +338,10 @@ def confirm_all(cla):
 def menu_open(cla):
     import numpy as np
     import cv2
-    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_reg
     from clean_screen_raven2 import clean_screen
     from massenger import line_to_me
+    from get_item import get_post
 
     from event_get import event_get_check, event_get_start
     from event_allget import event_allget_check, event_allget_start
@@ -380,6 +391,29 @@ def menu_open(cla):
                         imgs_ = imgs_set_(800, 930, 920, 1030, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             print("menu : menu_character_select", imgs_)
+
+                            #우편 확인 후 받도록 하기...
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\post\\menu_post.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(620, 940, 800, 1030, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("menu_post", imgs_)
+
+                                x_reg = imgs_.x
+                                y_reg = imgs_.y
+
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\post\\menu_point.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_reg(x_reg, y_reg - 60, x_reg + 35, y_reg, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("post : menu_point", imgs_)
+                                    click_pos_reg(x_reg, y_reg, cla)
+                                    time.sleep(0.5)
+                                    get_post(cla)
+
+
                             break
                         time.sleep(0.5)
 

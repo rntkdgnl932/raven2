@@ -19,6 +19,8 @@ def potion_check(cla):
     try:
         print("potion_check")
 
+        is_buying = False
+
         is_potion = False
 
         result_juljun = juljun_check(cla)
@@ -61,10 +63,11 @@ def potion_check(cla):
 
             if v_.potion_count > 4:
                 potion_buy(cla)
+                is_buying = True
             else:
                 if v_.potion_count > 0:
                     v_.potion_count -= 1
-
+        return is_buying
     except Exception as e:
         print(e)
         return 0

@@ -17,7 +17,7 @@ def go_test():
 
     from function_game import imgs_set_, drag_pos, text_check_get, imgs_set_for, drag_pos_click, click_pos_2
     from tuto_raven2 import way_point_click, tuto_start
-    from action_raven2 import move_check, menu_open, go_maul, juljun_check, juljun_on, juljun_off, bag_open
+    from action_raven2 import move_check, menu_open, go_maul, juljun_check, juljun_on, juljun_off, bag_open, confirm_all, skip_click
     from clean_screen_raven2 import clean_screen
     from potion_raven2 import potion_buy, potion_check
     from chango_raven2 import chango_in
@@ -29,6 +29,7 @@ def go_test():
     from get_item import get_post, get_upjuk, get_item_start
     from steegma import steegma_start
     from boonhae_collection import collection_start, boonhae_start
+    from tgmoodae_mission import tgmoodae_mission_get_ready
 
 
 
@@ -65,14 +66,45 @@ def go_test():
     #         break
     #     time.sleep(0.1)
 
-    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\random_move.PNG"
+    # data = "특무대_엘베름"
+    # tgmoodae_mission_get_ready(cla, data)
+
+
+    # 진행도 없고 완료도 없는데 ! 클릭 몇번 해보고 더이상 안되면 완료하는걸로...
+
+    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\gyobum_point_2.PNG"
     img_array = np.fromfile(full_path, np.uint8)
     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(360, 940, 470, 1010, cla, img, 0.8)
+    imgs_ = imgs_set_(50, 130, 210, 700, cla, img, 0.8)
     if imgs_ is not None and imgs_ != False:
-        print("random_move", imgs_)
-    else:
-        print("아노ㄴㅇ")
+        print("confirm : immediately_move_confirm", imgs_)
+
+    # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tgmoodae_mission\\two.PNG"
+    # img_array = np.fromfile(full_path, np.uint8)
+    # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    # imgs_ = imgs_set_(30, 90, 70, 500, cla, img, 0.8)
+    # if imgs_ is not None and imgs_ != False:
+    #     print("two", imgs_)
+    #
+    # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tgmoodae_mission\\three.PNG"
+    # img_array = np.fromfile(full_path, np.uint8)
+    # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    # imgs_ = imgs_set_(30, 90, 70, 500, cla, img, 0.8)
+    # if imgs_ is not None and imgs_ != False:
+    #     print("three", imgs_)
+    # else:
+    #     print("아노ㄴㅇ")
+
+
+    #
+    # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tgmoodae_mission\\maul_complete.PNG"
+    # img_array = np.fromfile(full_path, np.uint8)
+    # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    # imgs_ = imgs_set_for(210, 80, 270, 500, cla, img, 0.8)
+    # if imgs_ is not None and imgs_ != False:
+    #     print("maul_complete", imgs_)
+    # else:
+    #     print("아노ㄴㅇ")
 
     #
     # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag\\bag_jabhwa.PNG"
