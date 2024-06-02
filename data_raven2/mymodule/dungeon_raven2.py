@@ -247,8 +247,8 @@ def dungeon_in(cla, data):
                                 if result_out == True:
                                     dun_in = True
                                     # 고대의 신전은 랜덤이동하기
-                                    if dun_name == "temple":
-                                        go_random(cla)
+                                    # if dun_name == "temple":
+                                    go_random(cla)
 
                                     # 공격
                                     attack_on(cla)
