@@ -27,6 +27,9 @@ def out_check(cla):
             print("close_window", imgs_)
             click_pos_reg(imgs_.x, imgs_.y, cla)
 
+        # 게임 오류 체크
+        game_check(cla)
+
         out_ = False
 
         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\out\\talk.PNG"
@@ -432,10 +435,13 @@ def game_check(cla):
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from massenger import line_to_me
+    from character_select_and_game_start import game_start_screen
+    from schedule import myQuest_play_check
+
     import os
 
     try:
-        print("game_check")
+        print("게임 오류 체크...game_check")
 
         out_ = False
 
@@ -460,11 +466,29 @@ def game_check(cla):
 
             why = "접속종료"
 
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\monitor\\dongihwa_info.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(300, 400, 650, 800, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("dongihwa_info", imgs_)
+            out_ = True
+
+            why = "동기화정보"
+
         if out_ == True:
             line_to_me(cla, why)
 
-            if why == "장시간":
+            if why == "장시간" or why == "동기화정보":
+
+                result_schedule = myQuest_play_check(v_.now_cla, "check")
+                print("game_check : result_schedule", result_schedule)
+                character_id = result_schedule[0][1]
+                result_schedule_ = result_schedule[0][2]
+
                 confirm_all(cla)
+                game_start_screen(cla, character_id)
+
             elif why == "접속종료":
 
                 confirm_all(cla)
@@ -707,6 +731,9 @@ def juljun_check(cla):
 
     try:
         print("juljun_check")
+
+        # 게임 오류 체크
+        game_check(cla)
 
         juljun_ = False
         position = "none"

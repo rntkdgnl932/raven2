@@ -66,7 +66,7 @@ from event_get import event_get_check
 from event_allget import event_allget_check
 from gyobum_raven2 import gyobum_check
 
-from action_raven2 import bag_open, organize_start
+from action_raven2 import bag_open, organize_start, game_check
 
 
 from server import game_start
@@ -3366,7 +3366,8 @@ class game_Playing(QThread):
                                 _stop_please(v_.now_cla)
 
 
-
+                                # 게임 오류 확인
+                                game_check(v_.now_cla)
 
 
                                 # 죽었는지 파악
