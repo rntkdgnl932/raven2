@@ -244,7 +244,7 @@ def game_ready(cla):
     import cv2
 
     from function_game import imgs_set_, click_pos_2, text_check_get
-    # from action_raven2 import loading, out_check
+    from action_raven2 import confirm_all
 
 
     try:
@@ -257,6 +257,10 @@ def game_ready(cla):
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
         imgs_ = imgs_set_(800, 900, 950, 1000, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
+
+            confirm_all(cla)
+            time.sleep(0.3)
+
             click_pos_2(500, 600, cla)
 
 

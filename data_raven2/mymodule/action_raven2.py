@@ -464,7 +464,7 @@ def game_check(cla):
             print("join_out", imgs_)
             out_ = True
 
-            why = "접속종료"
+            why = "운영자에의해접속종료"
 
         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\monitor\\dongihwa_info.PNG"
         img_array = np.fromfile(full_path, np.uint8)
@@ -479,35 +479,39 @@ def game_check(cla):
         if out_ == True:
             line_to_me(cla, why)
 
+            result_schedule = myQuest_play_check(v_.now_cla, "check")
+            print("game_check : result_schedule", result_schedule)
+            character_id = result_schedule[0][1]
+            result_schedule_ = result_schedule[0][2]
+
             if why == "장시간" or why == "동기화정보":
 
-                result_schedule = myQuest_play_check(v_.now_cla, "check")
-                print("game_check : result_schedule", result_schedule)
-                character_id = result_schedule[0][1]
-                result_schedule_ = result_schedule[0][2]
+
 
                 confirm_all(cla)
                 game_start_screen(cla, character_id)
 
-            elif why == "접속종료":
+            elif why == "운영자에의해접속종료":
 
                 confirm_all(cla)
+                time.sleep(60)
+                game_start_screen(cla, character_id)
 
-                # 끝내기
-                dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
-                file_path = dir_path + "\\start.txt"
-                # cla.txt
-                cla_data = str(v_.now_cla) + "cla"
-                file_path2 = dir_path + "\\" + cla_data + ".txt"
-                with open(file_path, "w", encoding='utf-8-sig') as file:
-                    data = 'no'
-                    file.write(str(data))
-                    time.sleep(0.2)
-                with open(file_path2, "w", encoding='utf-8-sig') as file:
-                    data = v_.now_cla
-                    file.write(str(data))
-                    time.sleep(0.2)
-                os.execl(sys.executable, sys.executable, *sys.argv)
+                # # 끝내기
+                # dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
+                # file_path = dir_path + "\\start.txt"
+                # # cla.txt
+                # cla_data = str(v_.now_cla) + "cla"
+                # file_path2 = dir_path + "\\" + cla_data + ".txt"
+                # with open(file_path, "w", encoding='utf-8-sig') as file:
+                #     data = 'no'
+                #     file.write(str(data))
+                #     time.sleep(0.2)
+                # with open(file_path2, "w", encoding='utf-8-sig') as file:
+                #     data = v_.now_cla
+                #     file.write(str(data))
+                #     time.sleep(0.2)
+                # os.execl(sys.executable, sys.executable, *sys.argv)
 
 
     except Exception as e:
