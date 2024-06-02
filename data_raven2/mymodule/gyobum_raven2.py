@@ -154,7 +154,7 @@ def gyobum_get(cla):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
-    from action_raven2 import confirm_all
+    from action_raven2 import confirm_all, organize_start
 
     try:
         print("gyobum_get")
@@ -215,22 +215,37 @@ def gyobum_get(cla):
                                 if imgs_ is not None and imgs_ != False:
                                     print("monster_boonsuk", imgs_)
                                     click_pos_reg(imgs_.x, imgs_.y, cla)
-                                    time.sleep(0.3)
 
-                                    for b in range(5):
-                                        result = confirm_all(cla)
-                                        if result == True:
+                                    inven = True
+                                    for c in range(3):
+                                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\attack\\attack_cannot.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(320, 160, 560, 230, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("attack_cannot..", imgs_)
+                                            inven = False
                                             break
                                         time.sleep(0.1)
 
-                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\monster_info_close_btn.PNG"
-                                    img_array = np.fromfile(full_path, np.uint8)
-                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(500, 250, 800, 500, cla, img, 0.8)
-                                    if imgs_ is not None and imgs_ != False:
-                                        print("monster_info_close_btn", imgs_)
-                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    if inven == False:
+                                        organize_start(cla)
                                         break
+                                    else:
+                                        for b in range(5):
+                                            result = confirm_all(cla)
+                                            if result == True:
+                                                break
+                                            time.sleep(0.1)
+
+                                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\monster_info_close_btn.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(500, 250, 800, 500, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("monster_info_close_btn", imgs_)
+                                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                                            break
 
                                 else:
 
