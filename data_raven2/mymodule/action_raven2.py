@@ -915,6 +915,22 @@ def bag_open(cla):
                                                 if imgs_ is not None and imgs_ != False:
                                                     print("box_bangugoo", imgs_)
                                                     is_sohwan = True
+                                                else:
+                                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag\\box_moogi.PNG"
+                                                    img_array = np.fromfile(full_path, np.uint8)
+                                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                    imgs_ = imgs_set_(600, 75, 900, 850, cla, img, 0.8)
+                                                    if imgs_ is not None and imgs_ != False:
+                                                        print("box_moogi", imgs_)
+                                                        is_sohwan = True
+                                                    else:
+                                                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag\\box_jejak.PNG"
+                                                        img_array = np.fromfile(full_path, np.uint8)
+                                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                        imgs_ = imgs_set_(600, 75, 900, 850, cla, img, 0.8)
+                                                        if imgs_ is not None and imgs_ != False:
+                                                            print("box_jejak", imgs_)
+                                                            is_sohwan = True
                 if is_sohwan == True:
                     click_pos_reg(imgs_.x, imgs_.y, cla)
                     time.sleep(0.2)
