@@ -35,7 +35,7 @@ def go_test():
 
     print("test")
 
-    cla = "four"
+    cla = "one"
 
     plus = 0
 
@@ -65,12 +65,12 @@ def go_test():
     #         break
     #     time.sleep(0.1)
 
-    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag\\box_jangsingoo.PNG"
+    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\random_move.PNG"
     img_array = np.fromfile(full_path, np.uint8)
     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(600, 75, 900, 850, "two", img, 0.8)
+    imgs_ = imgs_set_(360, 940, 470, 1010, cla, img, 0.8)
     if imgs_ is not None and imgs_ != False:
-        print("box_ganhwasuk", imgs_)
+        print("random_move", imgs_)
     else:
         print("아노ㄴㅇ")
 

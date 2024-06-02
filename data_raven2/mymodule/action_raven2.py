@@ -591,6 +591,69 @@ def go_maul(cla):
         print(e)
         return 0
 
+def go_random(cla):
+    import numpy as np
+    import cv2
+    import os
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from clean_screen_raven2 import clean_screen
+    from massenger import line_to_me
+
+    try:
+        print("go_random")
+
+        is_random = False
+
+        result_juljun = juljun_check(cla)
+        if result_juljun[0] == True:
+            juljun_off(cla)
+
+        for r in range(5):
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\random_move.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(360, 940, 470, 1010, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("random_move", imgs_)
+
+                is_random = True
+
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+                time.sleep(1)
+
+                for i in range(5):
+                    result_out = out_check(cla)
+                    if result_out == True:
+                        break
+                    time.sleep(0.5)
+            else:
+                clean_screen(cla)
+            time.sleep(0.5)
+
+        if is_random == False:
+            why = "랜덤이동서 안보인다"
+            line_to_me(cla, why)
+
+            dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
+            file_path = dir_path + "\\start.txt"
+            # cla.txt
+            cla_data = str(v_.now_cla) + "cla"
+            file_path2 = dir_path + "\\" + cla_data + ".txt"
+            with open(file_path, "w", encoding='utf-8-sig') as file:
+                data = 'no'
+                file.write(str(data))
+                time.sleep(0.2)
+            with open(file_path2, "w", encoding='utf-8-sig') as file:
+                data = v_.now_cla
+                file.write(str(data))
+                time.sleep(0.2)
+            os.execl(sys.executable, sys.executable, *sys.argv)
+
+    except Exception as e:
+        print(e)
+        return 0
+
+
 def juljun_check(cla):
     import numpy as np
     import cv2

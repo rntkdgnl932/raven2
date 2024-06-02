@@ -13,7 +13,7 @@ def dungeon_start(cla, data):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_raven2 import go_maul, move_check, juljun_check, juljun_off, juljun_on, attack_on
+    from action_raven2 import go_maul, move_check, juljun_check, juljun_off, juljun_on, attack_on, go_random
     from clean_screen_raven2 import clean_screen
     from potion_raven2 import potion_check, potion_buy
     from dead_raven2 import dead_check, dead_recover
@@ -34,24 +34,31 @@ def dungeon_start(cla, data):
         result_dungeon_check = dungeon_check(cla, data)
         # result_dungeon_check[0] => True : 던전 진입 맞음
         # result_dungeon_check[1] => True : 사냥 중 맞음
+        # result_dungeon_check[2] => True : 랜덤 이동해야함
         if result_dungeon_check[0] == False:
             # 사냥터 이동
             dungeon_in(cla, data)
-        elif result_dungeon_check[0] == True and result_dungeon_check[1] == True:
-            print("사냥중")
-            potion_check(cla)
-            # 포션 체크...
-            # 절전 중 집 가기...
+        elif result_dungeon_check[0] == True:
+            if result_dungeon_check[1] == True:
+                if result_dungeon_check[2] == False:
+                    print("사냥중")
+                    potion_check(cla)
+                    # 포션 체크...
+                    # 절전 중 집 가기...
+                else:
+                    print("절전 풀고 공격버튼 클릭 후 다시 절전하기")
+                    go_random(cla)
+                    clean_screen(cla)
+                    attack_on(cla)
 
-        elif result_dungeon_check[0] == True and result_dungeon_check[1] == False:
-            print("절전 풀고 공격버튼 클릭 후 다시 절전하기")
-            result_juljun = juljun_check(cla)
-            if result_juljun[0] == True:
-                juljun_off(cla)
-            clean_screen(cla)
-            attack_on(cla)
+                    juljun_on(cla)
+            elif result_dungeon_check[1] == False:
+                print("절전 풀고 공격버튼 클릭 후 다시 절전하기")
+                go_random(cla)
+                clean_screen(cla)
+                attack_on(cla)
 
-            juljun_on(cla)
+                juljun_on(cla)
 
 
 
@@ -239,6 +246,16 @@ def dungeon_in(cla, data):
                                 result_out = out_check(cla)
                                 if result_out == True:
                                     dun_in = True
+                                    # 고대의 신전은 랜덤이동하기
+                                    if dun_name == "temple":
+                                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\random_move.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(360, 940, 470, 1010, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("random_move", imgs_)
+                                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                                            time.sleep(1)
 
                                     # 공격
                                     attack_on(cla)
@@ -278,6 +295,7 @@ def dungeon_in(cla, data):
 def dungeon_check(cla, data):
     import numpy as np
     import cv2
+    import os
     from function_game import imgs_set_, click_pos_reg
     from action_raven2 import juljun_check, juljun_on
     from clean_screen_raven2 import clean_screen
@@ -287,24 +305,25 @@ def dungeon_check(cla, data):
 
         is_dun = False
         attack = False
+        random = False
 
         dun = data.split("_")
 
         if dun[1] == "발바르":
             dun_name = "balbar"
-            dun_len = 3
         elif dun[1] == "타파나":
             dun_name = "tapana"
-            dun_len = 3
         elif dun[1] == "고대의신전":
             dun_name = "temple"
-            dun_len = 3
         elif dun[1] == "깊은늪":
             dun_name = "swamp"
-            dun_len = 3
         elif dun[1] == "붉은바위협곡":
             dun_name = "redstone"
-            dun_len = 3
+
+        folder_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\" + str(dun_name)
+        file_list = os.listdir(folder_path)
+        dun_len = len(file_list)
+        # print(file_count)
 
         # balbar, tapana, temple, swamp, redstone
 
@@ -321,6 +340,11 @@ def dungeon_check(cla, data):
                 imgs_ = imgs_set_(20, 120, 150, 160, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     print("던전 사냥 중", i, "번째 맵 확인")
+
+                    if dun_name == "temple":
+                        if i == 0 or i == 1:
+                            print("랜덤 이동 해야함")
+                            random = True
                     is_dun = True
                     attack = True
                     break
@@ -335,6 +359,10 @@ def dungeon_check(cla, data):
                 imgs_ = imgs_set_(20, 120, 150, 160, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     print("던전이지만 사냥하지 않음", i)
+                    if dun_name == "temple":
+                        if i == 0 or i == 1:
+                            print("랜덤 이동 해야함")
+                            random = True
                     is_dun = True
                     break
 
@@ -385,7 +413,7 @@ def dungeon_check(cla, data):
 
             print("해당 던전 아니다.", data)
 
-        return is_dun, attack
+        return is_dun, attack, random
     except Exception as e:
         print(e)
         return 0
