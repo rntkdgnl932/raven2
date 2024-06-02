@@ -309,6 +309,16 @@ def confirm_all(cla):
                         print("confirm : boonhae_btn", imgs_)
                         click_pos_reg(imgs_.x, imgs_.y, cla)
                         confirm_ = True
+                    else:
+                        # 소환시 바닥에 모두 확인 버튼
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\confirm\\all_confirm.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(300, 580, 800, 1030, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("confirm : all_confirm", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            confirm_ = True
 
         return confirm_
     except Exception as e:
@@ -971,6 +981,7 @@ def bag_open(cla):
                                 time.sleep(0.5)
                             break
                         else:
+                            confirm_all(cla)
                             # 화면 클릭하기
                             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\screen_click.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
