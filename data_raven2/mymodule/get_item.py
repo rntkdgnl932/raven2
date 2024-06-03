@@ -31,7 +31,7 @@ def get_post(cla):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_reg
-    from action_raven2 import out_check, confirm_all, menu_open
+    from action_raven2 import inven_check, confirm_all, menu_open
     from clean_screen_raven2 import clean_screen
 
     try:
@@ -85,24 +85,27 @@ def get_post(cla):
                                 if imgs_ is not None and imgs_ != False:
                                     print("close_post", imgs_)
                                     click_pos_reg(imgs_.x, imgs_.y, cla)
-                                    time.sleep(0.5)
-                                    click_pos_2(870, 1000, cla)
-                                    time.sleep(0.2)
-                                    confirm_all(cla)
+                                    result_inven = inven_check(cla)
+                                    if result_inven == True:
+                                        click_pos_2(870, 1000, cla)
+                                        result_inven = inven_check(cla)
+                                        if result_inven == True:
+                                            confirm_all(cla)
                                 else:
                                     click_pos_2(870, 1000, cla)
-                                    time.sleep(0.2)
-                                    confirm_all(cla)
-                                    time.sleep(0.2)
-                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\close_window.PNG"
-                                    img_array = np.fromfile(full_path, np.uint8)
-                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(400, 900, 600, 1000, cla, img, 0.8)
-                                    if imgs_ is not None and imgs_ != False:
-                                        print("close_window", imgs_)
-                                        click_pos_reg(imgs_.x, imgs_.y, cla)
-                                        time.sleep(0.5)
-                                    break
+                                    result_inven = inven_check(cla)
+                                    if result_inven == True:
+                                        confirm_all(cla)
+                                        time.sleep(0.2)
+                                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\close_window.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(400, 900, 600, 1000, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("close_window", imgs_)
+                                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                                            time.sleep(0.5)
+                                        break
                         time.sleep(0.5)
                 else:
                     get_ = True

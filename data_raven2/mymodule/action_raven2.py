@@ -69,9 +69,7 @@ def attack_on(cla):
     import numpy as np
     import cv2
     import os
-    from function_game import imgs_set_, click_pos_reg, click_pos_2
-
-    from massenger import line_to_me
+    from function_game import click_pos_2
 
     try:
         print("attack_check")
@@ -80,24 +78,63 @@ def attack_on(cla):
 
         attack_ = True
 
-        for c in range(7):
-            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\attack\\attack_cannot.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(320, 160, 560, 230, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                print("attack_cannot..", imgs_)
-                attack_ = False
-                break
-            time.sleep(0.1)
+        result_inven = inven_check(cla)
+        if result_inven == False:
+            attack_ = False
 
-        if attack_ == False:
-            organize_start(cla)
         return attack_
     except Exception as e:
         print(e)
         return 0
 
+
+def juljun_attack_check(cla):
+    import numpy as np
+    import cv2
+    import os
+    from function_game import text_check_get_reg, imgs_set_, in_number_check, int_put_
+
+    try:
+        print("juljun_attack_check")
+
+        attack_ = False
+
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_gold.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(10, 100, 50, 300, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("juljun_attack_check : juljun_gold", imgs_)
+            x_reg = imgs_.x
+            y_reg = imgs_.y
+            # 27, 167
+            for i in range(20):
+                result_text_1 = text_check_get_reg(x_reg + 10, y_reg - 10, x_reg + 100, y_reg + 10, cla)
+                result_text_1 = int_put_(result_text_1)
+                result_text_1_num_check = in_number_check(result_text_1)
+                if result_text_1_num_check == True:
+                    result_text_1 = int(result_text_1)
+                    break
+                time.sleep(1)
+
+            for i in range(20):
+                result_text_2 = text_check_get_reg(x_reg + 10, y_reg - 10, x_reg + 100, y_reg + 10, cla)
+                result_text_2 = int_put_(result_text_2)
+                result_text_2_num_check = in_number_check(result_text_2)
+                if result_text_2_num_check == True:
+                    result_text_2 = int(result_text_2)
+                    if result_text_1 != result_text_2:
+                        print(result_text_1, result_text_2)
+                        attack_ = True
+                        break
+                time.sleep(1)
+
+
+
+        return attack_
+    except Exception as e:
+        print(e)
+        return 0
 
 def organize_start(cla):
 
@@ -585,6 +622,7 @@ def go_maul(cla):
 
 
         else:
+            clean_screen(cla)
             for i in range(4):
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\jabhwa_btn.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
@@ -778,6 +816,10 @@ def juljun_check(cla):
                     print("attack", imgs_)
                     position = "attack"
 
+        if position == "attack":
+            result_attack = juljun_attack_check(cla)
+            if result_attack == False:
+                position = "ready"
         return juljun_, position
     except Exception as e:
         print(e)
@@ -1126,8 +1168,19 @@ def bag_item_open(cla):
     try:
         print("bag_item_open")
 
+        item_list = ['devil_1', 'devil_2', 'devil_3', 'sung_1', 'sung_2', 'gold_box', 'box_ganhwasuk', 'box_jangsingoo', 'box_bangugoo', 'box_moogi', 'box_jejak']
+
         open_ = False
 
+        for i in range(len(item_list)):
+
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag\\" + str(item_list[i]) + ".PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(600, 75, 900, 850, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print(item_list[i], imgs_)
+                open_ = True
 
         return open_
     except Exception as e:
@@ -1135,4 +1188,37 @@ def bag_item_open(cla):
         return 0
 
 
+def inven_check(cla):
+    import numpy as np
+    import cv2
+    from function_game import imgs_set_
 
+    try:
+        print("inven_check")
+
+        inven = True
+        for c in range(5):
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_cannot.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(300, 80, 600, 200, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("juljun_cannot..", imgs_)
+                inven = False
+                break
+            else:
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\attack\\attack_cannot.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(320, 160, 560, 230, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("attack_cannot..", imgs_)
+                    inven = False
+            time.sleep(0.1)
+        if inven == False:
+            organize_start(cla)
+
+        return inven
+    except Exception as e:
+        print(e)
+        return 0

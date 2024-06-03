@@ -17,7 +17,7 @@ def go_test():
 
     from function_game import imgs_set_, drag_pos, text_check_get, imgs_set_for, drag_pos_click, click_pos_2
     from tuto_raven2 import way_point_click, tuto_start
-    from action_raven2 import move_check, menu_open, go_maul, juljun_check, juljun_on, juljun_off, bag_open, confirm_all, skip_click
+    from action_raven2 import move_check, menu_open, go_maul, juljun_check, juljun_on, juljun_off, bag_open, confirm_all, skip_click, juljun_attack_check
     from clean_screen_raven2 import clean_screen
     from potion_raven2 import potion_buy, potion_check
     from chango_raven2 import chango_in
@@ -53,6 +53,8 @@ def go_test():
         plus = 960 * 4
     elif cla == "six":
         plus = 960 * 5
+
+    juljun_attack_check(cla)
 
     # click_pos_2(30, 880, cla)
     #

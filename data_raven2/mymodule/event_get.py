@@ -41,12 +41,14 @@ def event_get_start(cla):
     import numpy as np
     import cv2
     import os
-    from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_raven2 import out_check, confirm_all
+    from function_game import imgs_set_, click_pos_reg
+    from action_raven2 import inven_check
     from clean_screen_raven2 import clean_screen
 
     try:
         print("event_get_start")
+
+        result_inven = True
 
         # 폴더 내 파일 개수
         folder_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_title"
@@ -74,27 +76,41 @@ def event_get_start(cla):
             if imgs_ is not None and imgs_ != False:
                 print("e_in_point_1", imgs_)
                 click_pos_reg(imgs_.x - 15, imgs_.y + 15, cla)
-                time.sleep(0.5)
+                result_inven = inven_check(cla)
+                if result_inven == True:
 
-                # is_pic = False
-                for n in range(file_count):
+                    # is_pic = False
+                    for n in range(file_count):
 
-                    pic_num = n + 1
+                        pic_num = n + 1
 
-                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_title\\" + str(
-                        pic_num) + ".PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(220, 320, 800, 400, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        print("pic_num", pic_num)
-                        # is_pic = True
-                        is_picture = str(pic_num)
-                        event_get_click(cla, is_picture)
-                        break
-                # if is_pic == True:
-                #     break
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_title\\" + str(
+                            pic_num) + ".PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(220, 320, 800, 400, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("pic_num", pic_num)
+                            # is_pic = True
+                            is_picture = str(pic_num)
+                            event_get_click(cla, is_picture)
+                            break
+                    # if is_pic == True:
+                    #     break
+                else:
+                    break
             time.sleep(0.5)
+
+        # 다시 샤샤샥
+        if result_inven == False:
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\e_out_point_1.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(690, 30, 750, 65, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("e_out_point_1", imgs_)
+                click_pos_reg(imgs_.x - 15, imgs_.y + 15, cla)
+                event_get_start(cla)
 
 
     except Exception as e:
