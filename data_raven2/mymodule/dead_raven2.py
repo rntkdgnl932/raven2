@@ -41,7 +41,7 @@ def dead_check(cla):
         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\boohwal_btn.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(530, 30, 650, 100, cla, img, 0.8)
+        imgs_ = imgs_set_(530, 30, 650, 100, cla, img, 0.75)
         if imgs_ is not None and imgs_ != False:
             print("boohwal_btn", imgs_)
             dead_ = True
@@ -114,7 +114,7 @@ def dead_recover(cla):
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\boohwal_btn.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(530, 30, 650, 100, cla, img, 0.8)
+                imgs_ = imgs_set_(530, 30, 650, 100, cla, img, 0.75)
                 if imgs_ is not None and imgs_ != False:
                     print("boohwal_btn", imgs_)
                     click_pos_reg(imgs_.x, imgs_.y, cla)
