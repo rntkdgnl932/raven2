@@ -455,26 +455,37 @@ def game_check(cla):
 
             # 추후 재접속
             why = "장시간"
+        else:
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\monitor\\join_out.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(350, 490, 570, 570, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("join_out", imgs_)
+                out_ = True
 
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\monitor\\join_out.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(350, 490, 570, 570, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("join_out", imgs_)
-            out_ = True
+                why = "운영자에의해접속종료"
 
-            why = "운영자에의해접속종료"
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\monitor\\dongihwa_info.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(300, 400, 650, 800, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("dongihwa_info", imgs_)
+                out_ = True
 
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\monitor\\dongihwa_info.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(300, 400, 650, 800, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("dongihwa_info", imgs_)
-            out_ = True
+                why = "동기화정보"
+            else:
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\monitor\\network_status.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(300, 400, 650, 800, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("dongihwa_info", imgs_)
+                    out_ = True
 
-            why = "동기화정보"
+                    why = "네트워크 상태 이상"
+
 
         if out_ == True:
             line_to_me(cla, why)
@@ -489,6 +500,7 @@ def game_check(cla):
 
 
                 confirm_all(cla)
+                time.sleep()
                 game_start_screen(cla, character_id)
 
             elif why == "운영자에의해접속종료":
