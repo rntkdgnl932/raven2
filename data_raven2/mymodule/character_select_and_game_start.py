@@ -291,18 +291,17 @@ def game_ready(cla):
             if imgs_ is not None and imgs_ != False:
                 ready_ = True
             else:
-                for i in range(10):
-                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\gameout\\my_character_seach.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(800, 900, 950, 1000, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        break
-                    else:
-                        result_confirm = confirm_all(cla)
-                        if result_confirm == False:
-                            click_pos_2(500, 600, cla)
-                    time.sleep(0.5)
+                confirm_all(cla)
+            #     for i in range(10):
+            #         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\gameout\\my_character_seach.PNG"
+            #         img_array = np.fromfile(full_path, np.uint8)
+            #         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            #         imgs_ = imgs_set_(800, 900, 950, 1000, cla, img, 0.8)
+            #         if imgs_ is not None and imgs_ != False:
+            #             break
+            #         else:
+            #             result_confirm = confirm_all(cla)
+            #         time.sleep(0.5)
 
 
         # 접속대기일 경우 기다리기
