@@ -122,7 +122,7 @@ def event_get_click(cla, is_picture):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_raven2 import out_check
+    from action_raven2 import inven_check
 
     try:
         print("event_get_click")
@@ -153,11 +153,12 @@ def event_get_click(cla, is_picture):
             if imgs_ is not None and imgs_ != False:
                 print("checked_2", imgs_)
                 click_pos_reg(imgs_.x - 20, imgs_.y + 50, cla)
-                time.sleep(0.2)
-                click_pos_reg(imgs_.x - 20, imgs_.y + 50, cla)
-                time.sleep(0.2)
-                click_pos_reg(imgs_.x - 20, imgs_.y + 50, cla)
-                time.sleep(0.2)
+                result_inven = inven_check(cla)
+                if result_inven == True:
+                    click_pos_reg(imgs_.x - 20, imgs_.y + 50, cla)
+                    time.sleep(0.2)
+                    click_pos_reg(imgs_.x - 20, imgs_.y + 50, cla)
+                    time.sleep(0.2)
 
 
         elif data == "seven_six":
@@ -193,11 +194,12 @@ def event_get_click(cla, is_picture):
                         if imgs_ is not None and imgs_ != False:
                             print("checked", imgs_)
                             click_pos_reg(imgs_.x - 20, imgs_.y, cla)
-                            time.sleep(0.2)
-                            click_pos_reg(imgs_.x - 20, imgs_.y, cla)
-                            time.sleep(0.2)
-                            click_pos_reg(imgs_.x - 20, imgs_.y, cla)
-                            time.sleep(0.2)
+                            result_inven = inven_check(cla)
+                            if result_inven == True:
+                                click_pos_reg(imgs_.x - 20, imgs_.y, cla)
+                                time.sleep(0.2)
+                                click_pos_reg(imgs_.x - 20, imgs_.y, cla)
+                                time.sleep(0.2)
                         else:
                             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\checked_top.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
@@ -206,11 +208,12 @@ def event_get_click(cla, is_picture):
                             if imgs_ is not None and imgs_ != False:
                                 print("checked_top", imgs_)
                                 click_pos_reg(imgs_.x - 30, imgs_.y, cla)
-                                time.sleep(0.2)
-                                click_pos_reg(imgs_.x - 30, imgs_.y, cla)
-                                time.sleep(0.2)
-                                click_pos_reg(imgs_.x - 30, imgs_.y, cla)
-                                time.sleep(0.2)
+                                result_inven = inven_check(cla)
+                                if result_inven == True:
+                                    click_pos_reg(imgs_.x - 30, imgs_.y, cla)
+                                    time.sleep(0.2)
+                                    click_pos_reg(imgs_.x - 30, imgs_.y, cla)
+                                    time.sleep(0.2)
                         time.sleep(0.3)
                 else:
                     break
@@ -226,11 +229,12 @@ def event_get_click(cla, is_picture):
                 if imgs_ is not None and imgs_ != False:
                     print("checked", imgs_)
                     click_pos_reg(imgs_.x - 20, imgs_.y, cla)
-                    time.sleep(0.2)
-                    click_pos_reg(imgs_.x - 20, imgs_.y, cla)
-                    time.sleep(0.2)
-                    click_pos_reg(imgs_.x - 20, imgs_.y, cla)
-                    time.sleep(0.2)
+                    result_inven = inven_check(cla)
+                    if result_inven == True:
+                        click_pos_reg(imgs_.x - 20, imgs_.y, cla)
+                        time.sleep(0.2)
+                        click_pos_reg(imgs_.x - 20, imgs_.y, cla)
+                        time.sleep(0.2)
                 else:
                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\checked_top.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
@@ -239,11 +243,12 @@ def event_get_click(cla, is_picture):
                     if imgs_ is not None and imgs_ != False:
                         print("checked_top", imgs_)
                         click_pos_reg(imgs_.x - 30, imgs_.y, cla)
-                        time.sleep(0.2)
-                        click_pos_reg(imgs_.x - 30, imgs_.y, cla)
-                        time.sleep(0.2)
-                        click_pos_reg(imgs_.x - 30, imgs_.y, cla)
-                        time.sleep(0.2)
+                        result_inven = inven_check(cla)
+                        if result_inven == True:
+                            click_pos_reg(imgs_.x - 30, imgs_.y, cla)
+                            time.sleep(0.2)
+                            click_pos_reg(imgs_.x - 30, imgs_.y, cla)
+                            time.sleep(0.2)
                 time.sleep(0.3)
         elif data == "five":
             print("five")
@@ -255,11 +260,12 @@ def event_get_click(cla, is_picture):
                 if imgs_ is not None and imgs_ != False:
                     print("checked", imgs_)
                     click_pos_reg(imgs_.x - 20, imgs_.y, cla)
-                    time.sleep(0.2)
-                    click_pos_reg(imgs_.x - 20, imgs_.y, cla)
-                    time.sleep(0.2)
-                    click_pos_reg(imgs_.x - 20, imgs_.y, cla)
-                    time.sleep(0.2)
+                    result_inven = inven_check(cla)
+                    if result_inven == True:
+                        click_pos_reg(imgs_.x - 20, imgs_.y, cla)
+                        time.sleep(0.2)
+                        click_pos_reg(imgs_.x - 20, imgs_.y, cla)
+                        time.sleep(0.2)
                 time.sleep(0.3)
         elif data == "8_click":
             print("8_click")
@@ -271,11 +277,12 @@ def event_get_click(cla, is_picture):
                 if imgs_ is not None and imgs_ != False:
                     print("checked", imgs_)
                     click_pos_reg(imgs_.x - 20, imgs_.y, cla)
-                    time.sleep(0.2)
-                    click_pos_reg(imgs_.x - 20, imgs_.y, cla)
-                    time.sleep(0.2)
-                    click_pos_reg(imgs_.x - 20, imgs_.y, cla)
-                    time.sleep(0.2)
+                    result_inven = inven_check(cla)
+                    if result_inven == True:
+                        click_pos_reg(imgs_.x - 20, imgs_.y, cla)
+                        time.sleep(0.2)
+                        click_pos_reg(imgs_.x - 20, imgs_.y, cla)
+                        time.sleep(0.2)
                 else:
                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\checked_top.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
@@ -284,11 +291,12 @@ def event_get_click(cla, is_picture):
                     if imgs_ is not None and imgs_ != False:
                         print("checked_top", imgs_)
                         click_pos_reg(imgs_.x - 30, imgs_.y, cla)
-                        time.sleep(0.2)
-                        click_pos_reg(imgs_.x - 30, imgs_.y, cla)
-                        time.sleep(0.2)
-                        click_pos_reg(imgs_.x - 30, imgs_.y, cla)
-                        time.sleep(0.2)
+                        result_inven = inven_check(cla)
+                        if result_inven == True:
+                            click_pos_reg(imgs_.x - 30, imgs_.y, cla)
+                            time.sleep(0.2)
+                            click_pos_reg(imgs_.x - 30, imgs_.y, cla)
+                            time.sleep(0.2)
                 time.sleep(0.3)
 
     except Exception as e:
