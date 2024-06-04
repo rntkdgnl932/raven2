@@ -15,6 +15,8 @@ def out_check(cla):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from dead_raven2 import dead_check, dead_recover, dead_check_2
 
+    from schedule import myQuest_play_check
+
     try:
         result_schedule = myQuest_play_check(v_.now_cla, "check")
         print("result_schedule", result_schedule)
