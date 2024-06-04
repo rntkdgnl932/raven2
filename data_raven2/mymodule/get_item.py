@@ -91,6 +91,7 @@ def get_post(cla):
                                         result_inven = inven_check(cla)
                                         if result_inven == True:
                                             confirm_all(cla)
+                                            inven_check(cla)
                                 else:
                                     click_pos_2(870, 1000, cla)
                                     result_inven = inven_check(cla)

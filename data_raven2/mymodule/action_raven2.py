@@ -370,6 +370,7 @@ def confirm_all(cla):
                             click_pos_reg(imgs_.x, imgs_.y, cla)
                             confirm_ = True
 
+
         return confirm_
     except Exception as e:
         print(e)
