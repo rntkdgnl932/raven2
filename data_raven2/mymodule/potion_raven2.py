@@ -23,6 +23,8 @@ def potion_check(cla):
 
         is_potion = False
 
+        is_pass = False
+
         result_juljun = juljun_check(cla)
         if result_juljun[0] == True:
             print("절전모드")
@@ -56,17 +58,18 @@ def potion_check(cla):
                         break
             else:
                 print("바깥화면 아니다.")
-                is_potion = True
+                is_pass = True
 
         if is_potion == False:
-            v_.potion_count += 1
+            if is_pass == False:
+                v_.potion_count += 1
 
             if v_.potion_count > 4:
                 potion_buy(cla)
                 is_buying = True
-            else:
-                if v_.potion_count > 0:
-                    v_.potion_count -= 1
+        else:
+            if v_.potion_count > 0:
+                v_.potion_count -= 1
         return is_buying
     except Exception as e:
         print(e)
