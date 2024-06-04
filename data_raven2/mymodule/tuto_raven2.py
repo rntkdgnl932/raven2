@@ -15,7 +15,7 @@ def tuto_start(cla):
     import cv2
     import os
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_raven2 import out_check, skip_click, move_check, confirm_all, juljun_check, juljun_off
+    from action_raven2 import out_check, skip_click, move_check, confirm_all, juljun_check, juljun_off, bag_open
     from dead_raven2 import dead_check, dead_recover
     from schedule import myQuest_play_add
 
@@ -70,17 +70,39 @@ def tuto_start(cla):
                 result_out = out_check(cla)
 
                 if result_out == True:
-                    click_pos_2(880, 105, cla)
 
-                    for i in range(3):
-                        result_confirm = confirm_all(cla)
-                        if result_confirm == True:
-                            break
-                        time.sleep(0.5)
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tuto\\quest_yagcho.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(650, 90, 900, 150, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("quest_yagcho", imgs_)
+                        bag_open(cla)
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tuto\\yagcho_click.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(600, 75, 900, 850, cla, img, 0.75)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            time.sleep(0.2)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            time.sleep(0.2)
 
-                    skip_click(cla)
+                            for i in range(3):
+                                confirm_all(cla)
+                                time.sleep(0.5)
+                    else:
+                        click_pos_2(880, 105, cla)
 
-                    way_point_click(cla)
+                        for i in range(3):
+                            result_confirm = confirm_all(cla)
+                            if result_confirm == True:
+                                break
+                            time.sleep(0.5)
+
+                        skip_click(cla)
+
+                        way_point_click(cla)
 
                 else:
                     click_pos_2(480, 600, cla)
