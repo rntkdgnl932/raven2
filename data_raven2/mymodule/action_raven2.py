@@ -1215,6 +1215,14 @@ def inven_check(cla):
                 if imgs_ is not None and imgs_ != False:
                     print("attack_cannot..", imgs_)
                     inven = False
+                else:
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\post\\insufficient_inven.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(300, 90, 700, 190, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("insufficient_inven..", imgs_)
+                        inven = False
             time.sleep(0.1)
         if inven == False:
             organize_start(cla)
