@@ -952,6 +952,9 @@ def bag_open(cla):
             if imgs_ is not None and imgs_ != False:
                 print("bag_jabhwa", imgs_)
                 click_pos_reg(imgs_.x, imgs_.y, cla)
+                time.sleep(0.1)
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+                time.sleep(0.1)
                 break
             else:
                 click_pos_2(865, 65, cla)
@@ -1089,6 +1092,9 @@ def bag_open(cla):
                                 if imgs_ is not None and imgs_ != False:
                                     print("bag_jabhwa", imgs_)
                                     click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    time.sleep(0.1)
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    time.sleep(0.1)
                                     break
                                 else:
                                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\clean_screen\\middle_exit_btn.PNG"
@@ -1141,6 +1147,9 @@ def bag_open(cla):
                         if imgs_ is not None and imgs_ != False:
                             print("bag_jabhwa", imgs_)
                             click_pos_reg(imgs_.x, imgs_.y, cla)
+                            time.sleep(0.1)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            time.sleep(0.1)
                             break
                         else:
                             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\clean_screen\\middle_exit_btn.PNG"
