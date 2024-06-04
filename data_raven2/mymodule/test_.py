@@ -36,7 +36,7 @@ def go_test():
 
     print("test")
 
-    cla = "six"
+    cla = "four"
 
     plus = 0
 
@@ -54,12 +54,21 @@ def go_test():
     elif cla == "six":
         plus = 960 * 5
 
+    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\map_btn.PNG"
+    img_array = np.fromfile(full_path, np.uint8)
+    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    imgs_ = imgs_set_(190, 100, 280, 160, cla, img, 0.8)
+    if imgs_ is not None and imgs_ != False:
+        print("map_btn", imgs_)
+    else:
+        print(" nonnnnbbffkkk9")
+
     is_potion = False
     for i in range(10):
         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\out_potion\\" + str(i) + ".PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(280, 982, 288, 1000, cla, img, 0.8)
+        imgs_ = imgs_set_(270, 982, 288, 1000, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
             many = i * 100
             print_say = str(many) + "개 이상"
@@ -69,6 +78,7 @@ def go_test():
 
     if is_potion == False:
         print("안보야요")
+        text_check_get(270, 982, 288, 1000, cla)
 
     # click_pos_2(30, 880, cla)
     #
