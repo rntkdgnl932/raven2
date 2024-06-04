@@ -49,6 +49,7 @@ def gyobum_start(cla):
 
         gyobum_in = False
         gyobum_in_count = 0
+        result_inven = True
 
         while gyobum_in is False:
             gyobum_in_count += 1
