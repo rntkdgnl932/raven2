@@ -13,9 +13,15 @@ def out_check(cla):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from dead_raven2 import dead_check, dead_recover
+    from dead_raven2 import dead_check, dead_recover, dead_check_2
 
     try:
+        result_schedule = myQuest_play_check(v_.now_cla, "check")
+        print("result_schedule", result_schedule)
+        character_id = result_schedule[0][1]
+        result_schedule_ = result_schedule[0][2]
+
+
         print("out_check")
 
         # 화면 닫기
@@ -45,8 +51,10 @@ def out_check(cla):
                 if result_confirm == True:
                     break
                 time.sleep(0.5)
-
-            result_dead = dead_check(cla)
+            if result_schedule_ == "튜토육성":
+                result_dead = dead_check_2(cla)
+            else:
+                result_dead = dead_check(cla)
             if result_dead == True:
                 dead_recover(cla)
         else:

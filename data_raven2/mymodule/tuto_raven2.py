@@ -16,7 +16,7 @@ def tuto_start(cla):
     import os
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from action_raven2 import out_check, skip_click, move_check, confirm_all, juljun_check, juljun_off, bag_open
-    from dead_raven2 import dead_check, dead_recover
+    from dead_raven2 import dead_check_2, dead_recover
     from schedule import myQuest_play_add
     from clean_screen_raven2 import clean_screen
 
@@ -29,7 +29,7 @@ def tuto_start(cla):
         if result_juljun[0] == True:
             juljun_off(cla)
 
-        result_dead = dead_check(cla)
+        result_dead = dead_check_2(cla)
 
         if result_dead == True:
 
