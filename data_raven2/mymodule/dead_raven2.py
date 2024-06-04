@@ -152,15 +152,28 @@ def dead_recover(cla):
                     if imgs_ is not None and imgs_ != False:
                         print("exp_recover_title", imgs_)
 
+
+                        for c in range(10):
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\today_free_recover.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(270, 700, 700, 760, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                break
+                            else:
+                                click_pos_2(600, 360, cla)
+                            time.sleep(0.5)
+
+
                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\exp_click.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                         imgs_ = imgs_set_(280, 380, 380, 680, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             print("exp_click", imgs_)
-                            click_pos_2(600, 360, cla)
-                            time.sleep(0.5)
                             # 클릭 후 590, 735
+                            x_reg = imgs_.x
+                            y_reg = imgs_.y
                             click_pos_reg(imgs_.x, imgs_.y, cla)
 
                             not_free_recover = False
