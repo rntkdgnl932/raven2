@@ -36,7 +36,7 @@ def go_test():
 
     print("test")
 
-    cla = "four"
+    cla = "one"
 
     plus = 0
 
@@ -53,6 +53,27 @@ def go_test():
         plus = 960 * 4
     elif cla == "six":
         plus = 960 * 5
+
+    print("으랏차차")
+    for y in range(4):
+        y_reg = 270 - (y * 50)
+        for x in range(5):
+            x_reg = 858 - (x * 52)
+
+            cal = 40
+
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\chango\\null.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(x_reg - cal, y_reg - cal, x_reg + cal, y_reg + cal, cla, img, 0.6)
+            if imgs_ is not None and imgs_ != False:
+                print("pass............", x_reg, y_reg)
+            else:
+                click_pos_2(x_reg, y_reg, cla)
+                time.sleep(0.2)
+                result_confirm = confirm_all(cla)
+                if result_confirm == True:
+                    time.sleep(0.2)
 
     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\map_btn.PNG"
     img_array = np.fromfile(full_path, np.uint8)
