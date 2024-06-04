@@ -892,7 +892,7 @@ def juljun_on(cla):
 def juljun_off(cla):
     import numpy as np
     import cv2
-    from function_game import imgs_set_, drag_pos, click_pos_2, drag_pos_click
+    from function_game import imgs_set_, click_pos_2, drag_pos_click
     from clean_screen_raven2 import clean_screen
 
     try:
@@ -934,7 +934,7 @@ def juljun_off(cla):
 def bag_open(cla):
     import numpy as np
     import cv2
-    from function_game import imgs_set_, drag_pos, click_pos_2, drag_pos_click, click_pos_reg
+    from function_game import imgs_set_, click_pos_2, click_pos_reg
     from clean_screen_raven2 import clean_screen
 
     try:
@@ -1163,7 +1163,7 @@ def bag_open(cla):
 def bag_item_open(cla):
     import numpy as np
     import cv2
-    from function_game import imgs_set_, drag_pos, click_pos_2, drag_pos_click
+    from function_game import imgs_set_
     from clean_screen_raven2 import clean_screen
 
     try:
