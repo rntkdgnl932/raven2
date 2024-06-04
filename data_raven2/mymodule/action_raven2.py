@@ -817,10 +817,10 @@ def juljun_check(cla):
                     print("attack", imgs_)
                     position = "attack"
 
-        if position == "attack":
-            result_attack = juljun_attack_check(cla)
-            if result_attack == False:
-                position = "ready"
+            if position == "attack":
+                result_attack = juljun_attack_check(cla)
+                if result_attack == False:
+                    position = "ready"
         return juljun_, position
     except Exception as e:
         print(e)
