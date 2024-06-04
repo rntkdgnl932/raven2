@@ -54,7 +54,12 @@ def go_test():
     elif cla == "six":
         plus = 960 * 5
 
-    inven_check(cla)
+    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\attack\\attack_cannot.PNG"
+    img_array = np.fromfile(full_path, np.uint8)
+    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    imgs_ = imgs_set_(320, 160, 560, 230, cla, img, 0.8)
+    if imgs_ is not None and imgs_ != False:
+        print("attack_cannotattack_cannotattack_cannotattack_cannotattack_cannotattack_cannotattack_cannotattack_cannot..", imgs_)
 
 
     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\map_btn.PNG"
