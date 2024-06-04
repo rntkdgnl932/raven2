@@ -18,6 +18,7 @@ def tuto_start(cla):
     from action_raven2 import out_check, skip_click, move_check, confirm_all, juljun_check, juljun_off, bag_open
     from dead_raven2 import dead_check, dead_recover
     from schedule import myQuest_play_add
+    from clean_screen_raven2 import clean_screen
 
     from massenger import line_to_me
 
@@ -91,6 +92,7 @@ def tuto_start(cla):
                             for i in range(3):
                                 confirm_all(cla)
                                 time.sleep(0.5)
+                            clean_screen(cla)
                     else:
                         click_pos_2(880, 105, cla)
 
