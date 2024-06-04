@@ -17,7 +17,7 @@ def go_test():
 
     from function_game import imgs_set_, drag_pos, text_check_get, imgs_set_for, drag_pos_click, click_pos_2
     from tuto_raven2 import way_point_click, tuto_start
-    from action_raven2 import move_check, menu_open, go_maul, juljun_check, juljun_on, juljun_off, bag_open, confirm_all, skip_click, juljun_attack_check
+    from action_raven2 import inven_check
     from clean_screen_raven2 import clean_screen
     from potion_raven2 import potion_buy, potion_check
     from chango_raven2 import chango_in
@@ -54,26 +54,8 @@ def go_test():
     elif cla == "six":
         plus = 960 * 5
 
-    print("으랏차차")
-    for y in range(4):
-        y_reg = 270 - (y * 50)
-        for x in range(5):
-            x_reg = 858 - (x * 52)
+    inven_check(cla)
 
-            cal = 40
-
-            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\chango\\null.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(x_reg - cal, y_reg - cal, x_reg + cal, y_reg + cal, cla, img, 0.6)
-            if imgs_ is not None and imgs_ != False:
-                print("pass............", x_reg, y_reg)
-            else:
-                click_pos_2(x_reg, y_reg, cla)
-                time.sleep(0.2)
-                result_confirm = confirm_all(cla)
-                if result_confirm == True:
-                    time.sleep(0.2)
 
     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\map_btn.PNG"
     img_array = np.fromfile(full_path, np.uint8)
