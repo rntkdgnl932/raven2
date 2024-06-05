@@ -133,6 +133,16 @@ def event_get_click(cla, is_picture):
         # 4 : 서리대검
         # 5 : 필드보스
 
+        ######
+
+        # 1 : 방명록 o
+        # 2 : 바트람 o
+        # 3 : 정예 o
+        # 4 : 서리대검 o
+        # 5 : 필드보스 o
+        # 6 : (길드) 던전 보급 new
+        # 7 : (길드) 소집령 new
+
         if is_picture == "1":
             data = "fourteen"
         elif is_picture == "2":
@@ -143,6 +153,11 @@ def event_get_click(cla, is_picture):
             data = "eight"
         elif is_picture == "5":
             data = "five"
+        elif is_picture == "6":
+            data = "seven"
+        elif is_picture == "7":
+            data = "five"
+
 
         if data == "fourteen":
             print("fourteen")
@@ -159,6 +174,23 @@ def event_get_click(cla, is_picture):
                     time.sleep(0.2)
                     click_pos_reg(imgs_.x - 20, imgs_.y + 50, cla)
                     time.sleep(0.2)
+
+        elif data == "seven":
+            print("fourteen")
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\fourteen\\checked_2.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(240, 550, 870, 610, cla, img, 0.75)
+            if imgs_ is not None and imgs_ != False:
+                print("checked_2", imgs_)
+                click_pos_reg(imgs_.x - 20, imgs_.y + 50, cla)
+                result_inven = inven_check(cla)
+                if result_inven == True:
+                    click_pos_reg(imgs_.x - 20, imgs_.y + 50, cla)
+                    time.sleep(0.2)
+                    click_pos_reg(imgs_.x - 20, imgs_.y + 50, cla)
+                    time.sleep(0.2)
+
 
 
         elif data == "seven_six":

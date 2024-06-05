@@ -15,9 +15,9 @@ def go_test():
     import pyautogui
     import random
 
-    from function_game import imgs_set_, drag_pos, text_check_get, imgs_set_for, drag_pos_click, click_pos_2
+    from function_game import imgs_set_, drag_pos, text_check_get, imgs_set_for, drag_pos_click, click_pos_2, click_pos_reg
     from tuto_raven2 import way_point_click, tuto_start
-    from action_raven2 import inven_check
+    from action_raven2 import inven_check, bag_open
     from clean_screen_raven2 import clean_screen
     from potion_raven2 import potion_buy, potion_check
     from chango_raven2 import chango_in
@@ -54,22 +54,30 @@ def go_test():
     elif cla == "six":
         plus = 960 * 5
 
-    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\attack\\attack_cannot.PNG"
-    img_array = np.fromfile(full_path, np.uint8)
-    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(320, 160, 560, 230, cla, img, 0.8)
-    if imgs_ is not None and imgs_ != False:
-        print("attack_cannotattack_cannotattack_cannotattack_cannotattack_cannotattack_cannotattack_cannotattack_cannot..", imgs_)
+    bag_open(cla)
 
+    my_bag_item = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag"
+    file_list = os.listdir(my_bag_item)
+    print("file_list", file_list)
+    for i in range(len(file_list)):
+        result_file_list = file_list[i].split(".")
+        print("result_file_list", result_file_list[0])
 
-    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\map_btn.PNG"
-    img_array = np.fromfile(full_path, np.uint8)
-    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(190, 100, 280, 160, cla, img, 0.8)
-    if imgs_ is not None and imgs_ != False:
-        print("map_btn", imgs_)
-    else:
-        print(" nonnnnbbffkkk9")
+    # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag\\data\\fourteen\\checked_2.PNG"
+    # img_array = np.fromfile(full_path, np.uint8)
+    # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    # imgs_ = imgs_set_(240, 460, 870, 700, cla, img, 0.75)
+    # if imgs_ is not None and imgs_ != False:
+    #     print("checked_2", imgs_)
+    #     click_pos_reg(imgs_.x - 20, imgs_.y + 50, cla)
+    #     result_inven = inven_check(cla)
+    #     if result_inven == True:
+    #         click_pos_reg(imgs_.x - 20, imgs_.y + 50, cla)
+    #         time.sleep(0.2)
+    #         click_pos_reg(imgs_.x - 20, imgs_.y + 50, cla)
+    #         time.sleep(0.2)
+    # else:
+    #     print(" nonnnnbbffkkk9")
 
     is_potion = False
     for i in range(10):
