@@ -23,8 +23,72 @@ def out_check(cla):
         character_id = result_schedule[0][1]
         result_schedule_ = result_schedule[0][2]
 
+        if "일반" in result_schedule_ or "특수수" in reult_schedule_ or result_schedule_ == "자동사냥":
+            out_ = out_check_pure(cla)
+        else:
 
-        print("out_check")
+
+            print("out_check")
+
+            # 화면 닫기
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\close_window.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(400, 900, 600, 1000, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("close_window", imgs_)
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+
+            # 게임 오류 체크
+            game_check(cla)
+
+            out_ = False
+
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\out\\talk.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(5, 900, 50, 960, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("out : talk", imgs_)
+                out_ = True
+
+                for i in range(5):
+                    result_confirm = confirm_all(cla)
+                    if result_confirm == True:
+                        break
+                    time.sleep(0.5)
+                if result_schedule_ == "튜토육성":
+                    result_dead = dead_check_2(cla)
+                else:
+                    result_dead = dead_check(cla)
+
+                if result_dead == True:
+                    dead_recover(cla)
+            else:
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\post\\get.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(400, 370, 560, 450, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("get", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+
+
+        return out_
+    except Exception as e:
+        print(e)
+        return 0
+
+def out_check_pure(cla):
+    import numpy as np
+    import cv2
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from dead_raven2 import dead_check, dead_recover, dead_check_2
+
+    from schedule import myQuest_play_check
+
+    try:
+        print("out_check_pure")
 
         # 화면 닫기
         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\close_window.PNG"
@@ -53,12 +117,7 @@ def out_check(cla):
                 if result_confirm == True:
                     break
                 time.sleep(0.5)
-            if result_schedule_ == "튜토육성":
-                result_dead = dead_check_2(cla)
-            else:
-                result_dead = dead_check(cla)
-            if result_dead == True:
-                dead_recover(cla)
+
         else:
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\post\\get.PNG"
             img_array = np.fromfile(full_path, np.uint8)
@@ -73,7 +132,6 @@ def out_check(cla):
     except Exception as e:
         print(e)
         return 0
-
 
 def attack_on(cla):
     import numpy as np
