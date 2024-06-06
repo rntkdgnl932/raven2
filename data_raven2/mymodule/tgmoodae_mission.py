@@ -40,6 +40,7 @@ def tgmoodae_mission_start(cla, data):
                 imgs_ = imgs_set_(390, 30, 540, 100, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     print("tcmoodae_mission_title", imgs_)
+                    result_inven = True
                     # 완료 시키기
                     for i in range(10):
                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tgmoodae_mission\\mission_complete.PNG"
