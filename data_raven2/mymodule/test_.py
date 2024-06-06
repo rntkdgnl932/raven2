@@ -54,7 +54,7 @@ def go_test():
     elif cla == "six":
         plus = 960 * 5
 
-    tuto_start(cla)
+    boonhae_start("six")
 
     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\confirm\\all_y.PNG"
     img_array = np.fromfile(full_path, np.uint8)
