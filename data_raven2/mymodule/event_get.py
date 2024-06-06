@@ -12,8 +12,7 @@ sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder)
 def event_get_check(cla):
     import numpy as np
     import cv2
-    from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_raven2 import out_check
+    from function_game import imgs_set_, click_pos_reg
 
     try:
         print("event_get_check")

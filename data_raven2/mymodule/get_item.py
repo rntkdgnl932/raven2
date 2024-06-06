@@ -10,10 +10,6 @@ sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder)
 
 
 def get_item_start(cla):
-    import numpy as np
-    import cv2
-    from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_raven2 import out_check
 
     try:
         print("get_item_start")
@@ -159,7 +155,7 @@ def get_upjuk(cla):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_reg
-    from action_raven2 import out_check, confirm_all, menu_open
+    from action_raven2 import menu_open
     from clean_screen_raven2 import clean_screen
 
     try:
@@ -273,7 +269,7 @@ def get_sangjum(cla):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_reg
-    from action_raven2 import out_check, confirm_all, menu_open, skip_click
+    from action_raven2 import confirm_all, menu_open, skip_click
     from clean_screen_raven2 import clean_screen
 
     try:

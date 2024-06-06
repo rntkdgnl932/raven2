@@ -194,7 +194,7 @@ def tgmoodae_mission_get(cla):
     import random
     import os
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
-    from action_raven2 import out_check, confirm_all, inven_check, skip_click
+    from action_raven2 import confirm_all, inven_check, skip_click
     from clean_screen_raven2 import clean_screen
 
 
@@ -276,7 +276,7 @@ def tgmoodae_mission_get_ready(cla, data):
     import random
     import os
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_raven2 import out_check, confirm_all, juljun_on, move_check
+    from action_raven2 import out_check, confirm_all, move_check
     from clean_screen_raven2 import clean_screen
 
     from massenger import line_to_me

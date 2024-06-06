@@ -11,10 +11,8 @@ sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder)
 def potion_check(cla):
     import numpy as np
     import cv2
-    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from function_game import imgs_set_
     from action_raven2 import juljun_check, out_check
-    from clean_screen_raven2 import clean_screen
-    from chango_raven2 import chango_in
 
     try:
         print("potion_check")

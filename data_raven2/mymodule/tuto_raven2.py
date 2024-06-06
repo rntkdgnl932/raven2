@@ -154,8 +154,7 @@ def tuto_start(cla):
 def quest_complete(cla):
     import numpy as np
     import cv2
-    from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_raven2 import out_check
+    from function_game import imgs_set_, click_pos_reg
 
     try:
         print("quest_complete")
@@ -177,8 +176,7 @@ def quest_complete(cla):
 def way_point_click(cla):
     import numpy as np
     import cv2
-    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos_reg, drag_pos_reg_click
-    from action_raven2 import out_check
+    from function_game import imgs_set_, click_pos_reg, drag_pos_reg_click
 
     try:
         print("way_point_click")

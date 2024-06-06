@@ -12,8 +12,8 @@ sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder)
 def steegma_start(cla):
     import numpy as np
     import cv2
-    from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_reg
-    from action_raven2 import out_check, confirm_all, menu_open
+    from function_game import imgs_set_, click_pos_reg
+    from action_raven2 import menu_open
     from clean_screen_raven2 import clean_screen
 
     try:

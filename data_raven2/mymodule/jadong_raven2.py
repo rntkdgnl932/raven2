@@ -63,11 +63,9 @@ def jadong_in(cla):
     import random
     import os
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
-    from action_raven2 import go_maul, move_check, menu_open, out_check, confirm_all, juljun_on
+    from action_raven2 import out_check, confirm_all, juljun_on
     from clean_screen_raven2 import clean_screen
     from massenger import line_to_me
-
-    from schedule import myQuest_play_add
 
     try:
         print("jadong_in")

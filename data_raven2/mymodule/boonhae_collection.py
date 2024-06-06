@@ -126,7 +126,7 @@ def boonhae_start(cla):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_raven2 import out_check, confirm_all, bag_open
+    from action_raven2 import confirm_all, bag_open
     from clean_screen_raven2 import clean_screen
 
     try:
