@@ -36,7 +36,7 @@ def go_test():
 
     print("test")
 
-    cla = "one"
+    cla = "six"
 
     plus = 0
 
@@ -54,12 +54,14 @@ def go_test():
     elif cla == "six":
         plus = 960 * 5
 
-    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag_checked.PNG"
+    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\get_gyobum_btn.PNG"
     img_array = np.fromfile(full_path, np.uint8)
     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(860, 220, 930, 340, cla, img, 0.8)
+    imgs_ = imgs_set_(630, 130, 800, 1030, cla, img, 0.8)
     if imgs_ is not None and imgs_ != False:
-        print("bag_checked", imgs_)
+        print("get_gyobum_btn", imgs_)
+        click_pos_reg(imgs_.x, imgs_.y, cla)
+        result_inven = inven_check(cla)
 
     # boonhae_start("six")
 
