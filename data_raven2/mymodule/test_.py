@@ -54,7 +54,14 @@ def go_test():
     elif cla == "six":
         plus = 960 * 5
 
-    boonhae_start("six")
+    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag_checked.PNG"
+    img_array = np.fromfile(full_path, np.uint8)
+    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    imgs_ = imgs_set_(860, 220, 930, 340, cla, img, 0.8)
+    if imgs_ is not None and imgs_ != False:
+        print("bag_checked", imgs_)
+
+    # boonhae_start("six")
 
     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\confirm\\all_y.PNG"
     img_array = np.fromfile(full_path, np.uint8)

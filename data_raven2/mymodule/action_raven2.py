@@ -956,19 +956,26 @@ def bag_open(cla):
 
 
         for i in range(10):
-            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag\\bag_jabhwa.PNG"
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag_checked.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(880, 230, 960, 330, cla, img, 0.8)
+            imgs_ = imgs_set_(860, 220, 930, 340, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
-                print("bag_jabhwa", imgs_)
-                click_pos_reg(imgs_.x, imgs_.y, cla)
-                time.sleep(0.1)
-                click_pos_reg(imgs_.x, imgs_.y, cla)
-                time.sleep(0.1)
+                print("bag_checked", imgs_)
                 break
             else:
-                click_pos_2(865, 65, cla)
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag\\bag_jabhwa.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(880, 230, 960, 330, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("bag_jabhwa", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    time.sleep(0.1)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    time.sleep(0.1)
+                else:
+                    click_pos_2(865, 65, cla)
             time.sleep(0.5)
 
         sohwan_ = True
@@ -1020,25 +1027,33 @@ def bag_open(cla):
                                 sohwan_count = 0
 
                                 for c in range(10):
-                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag\\bag_jabhwa.PNG"
+                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag_checked.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(880, 230, 960, 330, cla, img, 0.8)
+                                    imgs_ = imgs_set_(860, 220, 930, 340, cla, img, 0.8)
                                     if imgs_ is not None and imgs_ != False:
-                                        print("bag_jabhwa", imgs_)
-                                        click_pos_reg(imgs_.x, imgs_.y, cla)
-                                        time.sleep(0.1)
-                                        click_pos_reg(imgs_.x, imgs_.y, cla)
-                                        time.sleep(0.1)
+                                        print("bag_checked", imgs_)
                                         break
                                     else:
-                                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\clean_screen\\middle_exit_btn.PNG"
+                                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag\\bag_jabhwa.PNG"
                                         img_array = np.fromfile(full_path, np.uint8)
                                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                        imgs_ = imgs_set_(250, 960, 750, 1040, cla, img, 0.8)
+                                        imgs_ = imgs_set_(880, 230, 960, 330, cla, img, 0.8)
                                         if imgs_ is not None and imgs_ != False:
-                                            print("middle_exit_btn", imgs_)
+                                            print("bag_jabhwa", imgs_)
                                             click_pos_reg(imgs_.x, imgs_.y, cla)
+                                            time.sleep(0.1)
+                                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                                            time.sleep(0.1)
+
+                                        else:
+                                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\clean_screen\\middle_exit_btn.PNG"
+                                            img_array = np.fromfile(full_path, np.uint8)
+                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                            imgs_ = imgs_set_(250, 960, 750, 1040, cla, img, 0.8)
+                                            if imgs_ is not None and imgs_ != False:
+                                                print("middle_exit_btn", imgs_)
+                                                click_pos_reg(imgs_.x, imgs_.y, cla)
                                     time.sleep(0.5)
                                 break
                             else:
@@ -1046,33 +1061,41 @@ def bag_open(cla):
                                 time.sleep(0.3)
                                 # 화면 클릭하기
                                 for c in range(10):
-                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag\\bag_jabhwa.PNG"
+                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag_checked.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(880, 230, 960, 330, cla, img, 0.8)
+                                    imgs_ = imgs_set_(860, 220, 930, 340, cla, img, 0.8)
                                     if imgs_ is not None and imgs_ != False:
-                                        print("bag_jabhwa", imgs_)
-                                        click_pos_reg(imgs_.x, imgs_.y, cla)
-                                        time.sleep(0.1)
-                                        click_pos_reg(imgs_.x, imgs_.y, cla)
-                                        time.sleep(0.1)
+                                        print("bag_checked", imgs_)
                                         break
                                     else:
-                                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\screen_click.PNG"
+                                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag\\bag_jabhwa.PNG"
                                         img_array = np.fromfile(full_path, np.uint8)
                                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                        imgs_ = imgs_set_(300, 900, 600, 1000, cla, img, 0.8)
+                                        imgs_ = imgs_set_(880, 230, 960, 330, cla, img, 0.8)
                                         if imgs_ is not None and imgs_ != False:
-                                            print("screen_click", imgs_)
+                                            print("bag_jabhwa", imgs_)
                                             click_pos_reg(imgs_.x, imgs_.y, cla)
+                                            time.sleep(0.1)
+                                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                                            time.sleep(0.1)
+                                            break
                                         else:
-                                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\screen_click2.PNG"
+                                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\screen_click.PNG"
                                             img_array = np.fromfile(full_path, np.uint8)
                                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                                             imgs_ = imgs_set_(300, 900, 600, 1000, cla, img, 0.8)
                                             if imgs_ is not None and imgs_ != False:
-                                                print("screen_click2", imgs_)
+                                                print("screen_click", imgs_)
                                                 click_pos_reg(imgs_.x, imgs_.y, cla)
+                                            else:
+                                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\screen_click2.PNG"
+                                                img_array = np.fromfile(full_path, np.uint8)
+                                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                imgs_ = imgs_set_(300, 900, 600, 1000, cla, img, 0.8)
+                                                if imgs_ is not None and imgs_ != False:
+                                                    print("screen_click2", imgs_)
+                                                    click_pos_reg(imgs_.x, imgs_.y, cla)
                                     time.sleep(0.3)
                             time.sleep(0.5)
             else:
@@ -1086,25 +1109,32 @@ def bag_open(cla):
                     sohwan_count = 0
 
                     for i in range(10):
-                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag\\bag_jabhwa.PNG"
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag_checked.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(880, 230, 960, 330, cla, img, 0.8)
+                        imgs_ = imgs_set_(860, 220, 930, 340, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
-                            print("bag_jabhwa", imgs_)
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
-                            time.sleep(0.1)
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
-                            time.sleep(0.1)
+                            print("bag_checked", imgs_)
                             break
                         else:
-                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\clean_screen\\middle_exit_btn.PNG"
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag\\bag_jabhwa.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(250, 960, 750, 1040, cla, img, 0.8)
+                            imgs_ = imgs_set_(880, 230, 960, 330, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
-                                print("middle_exit_btn", imgs_)
+                                print("bag_jabhwa", imgs_)
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
+                                time.sleep(0.1)
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                time.sleep(0.1)
+                            else:
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\clean_screen\\middle_exit_btn.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(250, 960, 750, 1040, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("middle_exit_btn", imgs_)
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
                         time.sleep(0.5)
 
             time.sleep(1)
