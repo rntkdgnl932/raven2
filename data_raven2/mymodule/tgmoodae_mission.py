@@ -51,7 +51,7 @@ def tgmoodae_mission_start(cla, data):
                         if imgs_ is not None and imgs_ != False:
                             click_pos_reg(imgs_.x - 50, imgs_.y, cla)
                             result_inven = inven_check(cla)
-                            if result_inven == True
+                            if result_inven == True:
                                 click_pos_2(760, 1000, cla)
                                 time.sleep(0.5)
                                 skip_click(cla)
