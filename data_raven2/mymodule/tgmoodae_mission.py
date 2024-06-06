@@ -24,10 +24,9 @@ def tgmoodae_mission_start(cla, data):
 
         tg_in = False
         tg_in_count = 0
-
         while tg_in is False:
             tg_in_count += 1
-            if tg_in_count > 3:
+            if tg_in_count > 5:
                 tg_in = True
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tgmoodae_mission\\quest_title.PNG"
             img_array = np.fromfile(full_path, np.uint8)
@@ -41,7 +40,6 @@ def tgmoodae_mission_start(cla, data):
                 imgs_ = imgs_set_(390, 30, 540, 100, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     print("tcmoodae_mission_title", imgs_)
-
                     # 완료 시키기
                     for i in range(10):
                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tgmoodae_mission\\mission_complete.PNG"
@@ -50,10 +48,10 @@ def tgmoodae_mission_start(cla, data):
                         imgs_ = imgs_set_(560, 80, 620, 600, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             click_pos_reg(imgs_.x - 50, imgs_.y, cla)
+                            time.sleep(0.3)
+                            click_pos_2(760, 1000, cla)
                             result_inven = inven_check(cla)
                             if result_inven == True:
-                                click_pos_2(760, 1000, cla)
-                                time.sleep(0.5)
                                 skip_click(cla)
                             else:
                                 break
@@ -61,81 +59,115 @@ def tgmoodae_mission_start(cla, data):
                             break
                         time.sleep(0.2)
 
+                    if result_inven == True:
 
-
-                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tgmoodae_mission\\mission_ing.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(560, 80, 620, 600, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        print("mission_ing", imgs_)
-
-                        click_pos_reg(imgs_.x - 50, imgs_.y, cla)
-                        time.sleep(0.3)
-
-                        # 특무대 진행
-
-                        click_pos_2(820, 1000, cla)
-                        time.sleep(0.3)
-
-                        for i in range(10):
-                            result_confirm = confirm_all(cla)
-                            if result_confirm == False:
-                                break
-
-                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tgmoodae_mission\\tg_ing.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(300, 80, 620, 160, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                print("tg_ing...현재 진행중...", imgs_)
-                                tg_in = True
-                                break
-                            time.sleep(0.2)
-
-                        if tg_in == True:
-                            clean_screen(cla)
-
-                            for i in range(20):
-
-                                print(i, "번째 체크중")
-                                result_dead_2 = dead_check_2(cla)
-                                if result_dead_2 == True:
-                                    dead_recover(cla)
-                                    break
-                                else:
-                                    result_buy = potion_check(cla)
-                                    if result_buy == True:
-                                        break
-
-                                time.sleep(1)
-
-                    else:
-                        # ing 없으면 보상받기 후 특무대 받기
-                        print("get tgmoodae")
-                        tgmoodae_mission_get_ready(cla, data)
-
-                        # 특무대 받다가 진행 없으면 완료
-                        tgmoodae_mission_get(cla)
-
-                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tgmoodae_mission\\maul_ing.PNG"
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tgmoodae_mission\\mission_ing.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(210, 80, 270, 500, cla, img, 0.8)
+                        imgs_ = imgs_set_(560, 80, 620, 600, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
-                            print("ing")
+                            print("mission_ing", imgs_)
+
                             click_pos_reg(imgs_.x - 50, imgs_.y, cla)
-                            time.sleep(0.5)
-                            confirm_all(cla)
+                            time.sleep(0.3)
+
+                            # 특무대 진행
+
+                            click_pos_2(820, 1000, cla)
+                            time.sleep(0.3)
+
+                            for i in range(10):
+                                result_confirm = confirm_all(cla)
+                                if result_confirm == False:
+                                    break
+
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tgmoodae_mission\\tg_ing.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(300, 80, 620, 160, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("tg_ing...현재 진행중...", imgs_)
+                                    tg_in = True
+                                    break
+                                time.sleep(0.2)
+
+                            if tg_in == True:
+                                clean_screen(cla)
+
+                                for i in range(20):
+
+                                    print(i, "번째 체크중")
+                                    result_dead_2 = dead_check_2(cla)
+                                    if result_dead_2 == True:
+                                        dead_recover(cla)
+                                        break
+                                    else:
+                                        result_buy = potion_check(cla)
+                                        if result_buy == True:
+                                            break
+
+                                    time.sleep(1)
+
                         else:
-                            tg_in = True
-                            myQuest_play_add(cla, data)
-                            clean_screen(cla)
-                            print("끝")
+                            # ing 없으면 보상받기 후 특무대 받기
+                            print("get tgmoodae")
+                            tgmoodae_mission_get_ready(cla, data)
 
+                            # 완료부터 없애기
+                            for i in range(10):
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tgmoodae_mission\\maul_complete.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(210, 80, 270, 500, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_reg(imgs_.x - 50, imgs_.y, cla)
+                                    time.sleep(0.2)
+                                    click_pos_2(820, 1000, cla)
+                                    result_inven = inven_check(cla)
+                                    if result_inven == True:
+                                        skip_click(cla)
+                                        time.sleep(0.2)
+                                    else:
+                                        break
+                                else:
+                                    break
+                                time.sleep(0.3)
 
+                            if result_inven == True:
+
+                                # 특무대 받다가 진행 없으면 완료
+                                tgmoodae_mission_get(cla)
+
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tgmoodae_mission\\maul_ing.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(210, 80, 270, 500, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("ing")
+                                    click_pos_reg(imgs_.x - 50, imgs_.y, cla)
+                                    time.sleep(0.5)
+                                    confirm_all(cla)
+                                else:
+                                    tg_in = True
+                                    myQuest_play_add(cla, data)
+                                    clean_screen(cla)
+                                    print("끝")
+                            else:
+                                tg_in_count = 0
+                    else:
+                        tg_in_count = 0
                 else:
-                    click_pos_2(920, 280, cla)
+                    for i in range(10):
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tgmoodae_mission\\tcmoodae_mission_title.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(390, 30, 540, 100, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("break : tcmoodae_mission_title", imgs_)
+                            break
+                        else:
+                            click_pos_2(920, 280, cla)
+                        time.sleep(0.5)
 
             else:
                 menu_open(cla)
@@ -162,8 +194,9 @@ def tgmoodae_mission_get(cla):
     import random
     import os
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
-    from action_raven2 import out_check, confirm_all, juljun_on, skip_click
+    from action_raven2 import out_check, confirm_all, inven_check, skip_click
     from clean_screen_raven2 import clean_screen
+
 
     from massenger import line_to_me
 
@@ -181,9 +214,12 @@ def tgmoodae_mission_get(cla):
                 click_pos_reg(imgs_.x - 50, imgs_.y, cla)
                 time.sleep(0.2)
                 click_pos_2(820, 1000, cla)
-                time.sleep(0.2)
-                skip_click(cla)
-                time.sleep(0.2)
+                result_inven = inven_check(cla)
+                if result_inven == True:
+                    skip_click(cla)
+                    time.sleep(0.2)
+                else:
+                    break
             else:
                 break
             time.sleep(0.3)
