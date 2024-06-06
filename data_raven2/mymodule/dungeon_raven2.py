@@ -334,7 +334,7 @@ def dungeon_check(cla, data):
                 if imgs_ is not None and imgs_ != False:
                     print("던전 사냥 중", i, "번째 맵 확인")
 
-                    if dun_name == "temple":
+                    if dun_name == "temple" or dun_name == "swamp":
                         if i == 0 or i == 1:
                             print("랜덤 이동 해야함")
                             random = True

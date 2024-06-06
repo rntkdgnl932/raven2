@@ -37,29 +37,19 @@ def tuto_start(cla):
 
             myQuest_play_add(cla, "튜토육성")
 
-            # 초반에는 잠시 끝내기
 
-            # why = "튜토 정비해주자자"
-            # line_to_me(cla, why)
-            #
-
-            # # 끝내기
-            # dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
-            # file_path = dir_path + "\\start.txt"
-            # # cla.txt
-            # cla_data = str(v_.now_cla) + "cla"
-            # file_path2 = dir_path + "\\" + cla_data + ".txt"
-            # with open(file_path, "w", encoding='utf-8-sig') as file:
-            #     data = 'no'
-            #     file.write(str(data))
-            #     time.sleep(0.2)
-            # with open(file_path2, "w", encoding='utf-8-sig') as file:
-            #     data = v_.now_cla
-            #     file.write(str(data))
-            #     time.sleep(0.2)
-            # os.execl(sys.executable, sys.executable, *sys.argv)
 
         else:
+
+            # 가방 열렸으면 닫아주기
+
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag\\bag_jabhwa.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(880, 230, 960, 330, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("bag_jabhwa", imgs_)
+                clean_screen(cla)
 
             result_move_check = move_check(cla)
 
@@ -96,22 +86,61 @@ def tuto_start(cla):
                     else:
                         click_pos_2(880, 105, cla)
 
-                        for i in range(3):
+                        for i in range(5):
                             result_confirm = confirm_all(cla)
                             if result_confirm == True:
                                 break
-                            time.sleep(0.5)
+                            else:
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tuto\\quest_youngyak.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(330, 100, 650, 150, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    bag_open(cla)
+                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tuto\\youngyak_click.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(600, 75, 900, 850, cla, img, 0.75)
+                                    if imgs_ is not None and imgs_ != False:
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        time.sleep(0.2)
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        time.sleep(0.2)
+
+                                        for c in range(3):
+                                            confirm_all(cla)
+                                            time.sleep(0.5)
+                                        clean_screen(cla)
+                            time.sleep(0.1)
 
                         skip_click(cla)
 
                         way_point_click(cla)
 
                 else:
-                    click_pos_2(480, 600, cla)
+                    # click_pos_2(480, 600, cla)
 
                     for i in range(5):
                         skip_click(cla)
-                        time.sleep(0.2)
+
+                        ################sub##################
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tuto\\sub_click_btn.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(600, 850, 700, 950, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("sub : sub_click_btn", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tuto\\sub_soolock_btn.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(800, 940, 910, 950, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("sub : sub_soolock_btn", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                        time.sleep(0.1)
 
                     way_point_click(cla)
 

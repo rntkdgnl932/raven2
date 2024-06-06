@@ -17,7 +17,7 @@ def go_test():
 
     from function_game import imgs_set_, drag_pos, text_check_get, imgs_set_for, drag_pos_click, click_pos_2, click_pos_reg
     from tuto_raven2 import way_point_click, tuto_start
-    from action_raven2 import inven_check, bag_open
+    from action_raven2 import inven_check, bag_open, skip_click
     from clean_screen_raven2 import clean_screen
     from potion_raven2 import potion_buy, potion_check
     from chango_raven2 import chango_in
@@ -26,7 +26,7 @@ def go_test():
     from gyobum_raven2 import gyobum_check, gyobum_get, gyobum_start
     from event_allget import event_allget_check, event_allget_start
     from event_get import event_get_check, event_get_start
-    from get_item import get_post, get_upjuk, get_item_start
+    from get_item import get_post, get_upjuk, get_item_start, get_sangjum
     from steegma import steegma_start
     from boonhae_collection import collection_start, boonhae_start
     from tgmoodae_mission import tgmoodae_mission_get_ready
@@ -54,14 +54,39 @@ def go_test():
     elif cla == "six":
         plus = 960 * 5
 
-    bag_open(cla)
+    tuto_start(cla)
 
-    my_bag_item = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag"
-    file_list = os.listdir(my_bag_item)
-    print("file_list", file_list)
-    for i in range(len(file_list)):
-        result_file_list = file_list[i].split(".")
-        print("result_file_list", result_file_list[0])
+    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\confirm\\all_y.PNG"
+    img_array = np.fromfile(full_path, np.uint8)
+    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    imgs_ = imgs_set_(350, 500, 700, 800, cla, img, 0.8)
+    if imgs_ is not None and imgs_ != False:
+        print("confirm : all_y", imgs_)
+
+
+    ################sub##################
+    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tuto\\sub_click_btn.PNG"
+    img_array = np.fromfile(full_path, np.uint8)
+    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    imgs_ = imgs_set_(600, 850, 700, 950, cla, img, 0.8)
+    if imgs_ is not None and imgs_ != False:
+        print("sub : sub_click_btn", imgs_)
+        click_pos_reg(imgs_.x, imgs_.y, cla)
+
+    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tuto\\sub_soolock_btn.PNG"
+    img_array = np.fromfile(full_path, np.uint8)
+    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    imgs_ = imgs_set_(800, 940, 910, 950, cla, img, 0.8)
+    if imgs_ is not None and imgs_ != False:
+        print("sub : sub_soolock_btn", imgs_)
+        click_pos_reg(imgs_.x, imgs_.y, cla)
+
+    # my_bag_item = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag"
+    # file_list = os.listdir(my_bag_item)
+    # print("file_list", file_list)
+    # for i in range(len(file_list)):
+    #     result_file_list = file_list[i].split(".")
+    #     print("result_file_list", result_file_list[0])
 
     # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag\\data\\fourteen\\checked_2.PNG"
     # img_array = np.fromfile(full_path, np.uint8)

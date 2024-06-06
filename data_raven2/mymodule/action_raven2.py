@@ -18,7 +18,7 @@ def out_check(cla):
     from schedule import myQuest_play_check
 
     try:
-        result_schedule = myQuest_play_check(v_.now_cla, "check")
+        result_schedule = myQuest_play_check(cla, "check")
         print("result_schedule", result_schedule)
         character_id = result_schedule[0][1]
         result_schedule_ = result_schedule[0][2]
@@ -538,7 +538,7 @@ def game_check(cla):
         if out_ == True:
             line_to_me(cla, why)
 
-            result_schedule = myQuest_play_check(v_.now_cla, "check")
+            result_schedule = myQuest_play_check(cla, "check")
             print("game_check : result_schedule", result_schedule)
             character_id = result_schedule[0][1]
             result_schedule_ = result_schedule[0][2]
