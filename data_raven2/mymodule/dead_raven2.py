@@ -15,7 +15,14 @@ def dead_check(cla):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from action_raven2 import out_check
 
+    from schedule import myQuest_play_check
+
     try:
+
+        result_schedule = myQuest_play_check(cla, "check")
+        character_id = result_schedule[0][1]
+        result_schedule_ = result_schedule[0][2]
+
         print("dead_check")
 
         dead_ = False
@@ -38,13 +45,15 @@ def dead_check(cla):
             dead_ = True
             click_pos_reg(imgs_.x, imgs_.y, cla)
 
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\boohwal_btn.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(530, 30, 650, 100, cla, img, 0.75)
-        if imgs_ is not None and imgs_ != False:
-            print("boohwal_btn", imgs_)
-            dead_ = True
+        if "일반" in result_schedule_ or "특수" in result_schedule_ or result_schedule_ == "자동사냥":
+
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\boohwal_btn.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(530, 30, 650, 100, cla, img, 0.75)
+            if imgs_ is not None and imgs_ != False:
+                print("boohwal_btn", imgs_)
+                dead_ = True
 
 
         return dead_

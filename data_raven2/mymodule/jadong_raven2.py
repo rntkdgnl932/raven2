@@ -16,12 +16,12 @@ def jadong_start(cla):
     from action_raven2 import go_maul, move_check, juljun_check, juljun_off, juljun_on, attack_on
     from clean_screen_raven2 import clean_screen
     from potion_raven2 import potion_check, potion_buy
-    from dead_raven2 import dead_check, dead_recover
+    from dead_raven2 import dead_check_2, dead_recover
 
     try:
         print("jadong_start")
 
-        result_dead = dead_check(cla)
+        result_dead = dead_check_2(cla)
 
         if result_dead == True:
             dead_recover(cla)

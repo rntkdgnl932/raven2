@@ -23,7 +23,7 @@ def out_check(cla):
         character_id = result_schedule[0][1]
         result_schedule_ = result_schedule[0][2]
 
-        if "일반" in result_schedule_ or "특수수" in reult_schedule_ or result_schedule_ == "자동사냥":
+        if "일반" in result_schedule_ or "특수" in result_schedule_ or result_schedule_ == "자동사냥":
             out_ = out_check_pure(cla)
         else:
 
@@ -82,10 +82,7 @@ def out_check(cla):
 def out_check_pure(cla):
     import numpy as np
     import cv2
-    from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from dead_raven2 import dead_check, dead_recover, dead_check_2
-
-    from schedule import myQuest_play_check
+    from function_game import imgs_set_, click_pos_reg
 
     try:
         print("out_check_pure")
