@@ -121,7 +121,7 @@ def dead_recover(cla):
                 imgs_ = imgs_set_(530, 30, 650, 100, cla, img, 0.75)
                 if imgs_ is not None and imgs_ != False:
                     click_count += 1
-                    if click_count > 5:
+                    if click_count > 9:
                         why = "boohwal_btn 클릭이 안된다"
                         print("boohwal_btn 클릭이 안된다")
                         line_to_me(cla, why)
