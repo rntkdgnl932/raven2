@@ -13,10 +13,12 @@ def clean_screen(cla):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_raven2 import skip_click, juljun_check, juljun_off, confirm_all
+    from action_raven2 import skip_click, juljun_check, juljun_off, confirm_all, out_check
 
     try:
         print("clean_screen")
+
+        out_break_count = 0
 
         for i in range(10):
             clean = True
@@ -24,7 +26,12 @@ def clean_screen(cla):
             result_juljun = juljun_check(cla)
             if result_juljun[0] == True:
                 juljun_off(cla)
-
+            else:
+                result_out = out_check(cla)
+                if result_out == True:
+                    out_break_count += 1
+                    if out_break_count > 2:
+                        break
             skip_click(cla)
 
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_off_result_title.PNG"
@@ -78,7 +85,7 @@ def clean_screen(cla):
             if clean == True:
                 break
 
-            time.sleep(0.3)
+            time.sleep(0.1)
 
 
 
