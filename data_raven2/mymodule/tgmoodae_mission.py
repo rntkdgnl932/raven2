@@ -13,7 +13,7 @@ def tgmoodae_mission_start(cla, data):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_raven2 import out_check, menu_open, confirm_all, skip_click
+    from action_raven2 import inven_check, menu_open, confirm_all, skip_click
     from schedule import myQuest_play_add
     from clean_screen_raven2 import clean_screen
     from potion_raven2 import potion_check
@@ -50,10 +50,13 @@ def tgmoodae_mission_start(cla, data):
                         imgs_ = imgs_set_(560, 80, 620, 600, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             click_pos_reg(imgs_.x - 50, imgs_.y, cla)
-                            time.sleep(0.5)
-                            click_pos_2(760, 1000, cla)
-                            time.sleep(0.5)
-                            skip_click(cla)
+                            result_inven = inven_check(cla)
+                            if result_inven == True
+                                click_pos_2(760, 1000, cla)
+                                time.sleep(0.5)
+                                skip_click(cla)
+                            else:
+                                break
                         else:
                             break
                         time.sleep(0.2)

@@ -91,9 +91,11 @@ def dead_check_2(cla):
 def dead_recover(cla):
     import numpy as np
     import cv2
+    import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from action_raven2 import out_check, confirm_all
     from clean_screen_raven2 import clean_screen
+    from massenger import line_to_me
 
     try:
         print("dead_recover")
@@ -101,6 +103,8 @@ def dead_recover(cla):
         recover = False
 
         clean_screen(cla)
+
+        click_count = 0
 
         for i in range(10):
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\exp_recover_title.PNG"
@@ -116,8 +120,15 @@ def dead_recover(cla):
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(530, 30, 650, 100, cla, img, 0.75)
                 if imgs_ is not None and imgs_ != False:
+                    click_count += 1
+                    if click_count > 5:
+                        why = "boohwal_btn 클릭이 안된다"
+                        print("boohwal_btn 클릭이 안된다")
+                        line_to_me(cla, why)
                     print("boohwal_btn", imgs_)
-                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    ran_int_x = random.randint(0, 2)
+                    ran_int_y = random.randint(0, 2)
+                    click_pos_reg(imgs_.x + ran_int_x, imgs_.y + ran_int_y, cla)
             time.sleep(0.5)
 
         if recover == True:

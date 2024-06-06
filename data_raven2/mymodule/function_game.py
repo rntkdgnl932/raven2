@@ -535,9 +535,11 @@ def click_pos_2(pos_1, pos_2, cla):
 
 
 def click_pos_reg(pos_1, pos_2, cla):
+    import serial
+    import pyautogui
     try:
-        import serial
-        import pyautogui
+
+
 
         coordinate = 0
         if cla == 'one':
