@@ -1198,7 +1198,7 @@ def inven_check(cla):
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_cannot.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(300, 80, 600, 200, cla, img, 0.7)
+            imgs_ = imgs_set_(300, 80, 600, 200, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 print("juljun_cannot..", imgs_)
                 inven = False
@@ -1207,7 +1207,7 @@ def inven_check(cla):
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\attack\\attack_cannot.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(320, 160, 560, 230, cla, img, 0.7)
+                imgs_ = imgs_set_(320, 160, 560, 230, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     print("attack_cannot..", imgs_)
                     inven = False
@@ -1215,7 +1215,7 @@ def inven_check(cla):
                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\post\\insufficient_inven.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(300, 90, 700, 190, cla, img, 0.7)
+                    imgs_ = imgs_set_(300, 90, 700, 190, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         print("insufficient_inven..", imgs_)
                         inven = False
@@ -1223,7 +1223,7 @@ def inven_check(cla):
                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\clean_screen\\close_btn_x.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(630, 30, 780, 100, cla, img, 0.7)
+                        imgs_ = imgs_set_(630, 30, 780, 100, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             print("close_btn_x..", imgs_)
                             click_pos_reg(imgs_.x, imgs_.y, cla)
@@ -1231,7 +1231,7 @@ def inven_check(cla):
                             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\attack\\can_not_attack_aim.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(300, 100, 780, 170, cla, img, 0.7)
+                            imgs_ = imgs_set_(300, 100, 780, 170, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
                                 print("can_not_attack_aim..", imgs_)
                                 go_maul(cla)
