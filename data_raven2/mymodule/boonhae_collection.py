@@ -13,7 +13,7 @@ def collection_start(cla):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_raven2 import confirm_all, menu_open
+    from action_raven2 import confirm_all, menu_open_pure
     from clean_screen_raven2 import clean_screen
 
     try:
@@ -98,7 +98,7 @@ def collection_start(cla):
 
 
             else:
-                menu_open(cla)
+                menu_open_pure(cla)
                 for i in range(10):
                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\collection\\title_collection.PNG"
                     img_array = np.fromfile(full_path, np.uint8)

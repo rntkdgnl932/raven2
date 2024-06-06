@@ -478,6 +478,40 @@ def menu_open(cla):
         return 0
 
 
+def menu_open_pure(cla):
+    import numpy as np
+    import cv2
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_reg
+    from clean_screen_raven2 import clean_screen
+    from massenger import line_to_me
+    from get_item import get_post
+
+    from event_get import event_get_check, event_get_start
+    from event_allget import event_allget_check, event_allget_start
+    from gyobum_raven2 import gyobum_check, gyobum_start
+
+    try:
+        print("menu_open_pure")
+
+        for i in range(10):
+
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\menu_character_select.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(800, 930, 920, 1030, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("menu : menu_character_select...end", imgs_)
+                break
+            else:
+                clean_screen(cla)
+            time.sleep(0.5)
+
+
+
+    except Exception as e:
+        print(e)
+        return 0
+
 def game_check(cla):
     import numpy as np
     import cv2
