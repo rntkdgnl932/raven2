@@ -28,8 +28,8 @@ def jadong_start(cla):
             potion_buy(cla)
 
         result_juljun = juljun_check(cla)
-        # result_juljun[0] => True : 던전 진입 맞음
-        # result_juljun[1] => attack : 사냥 중 맞음, ready : 사냥 아님
+        # result_juljun[0] => True : 절전 맞음
+        # result_juljun[1] => attack : 사냥 중 맞음, ready : 사냥 아님, no_spot : 사냥터로 ㄱㄱ
         if result_juljun[0] == False:
             # 사냥터 이동
             jadong_in(cla)
@@ -45,6 +45,10 @@ def jadong_start(cla):
             clean_screen(cla)
             attack_on(cla)
             juljun_on(cla)
+            result_juljun = juljun_check(cla)
+            if result_juljun[0] == True and result_juljun[1] != "attack":
+                juljun_off(cla)
+                jadong_in(cla)
 
 
 
@@ -63,7 +67,7 @@ def jadong_in(cla):
     import random
     import os
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
-    from action_raven2 import out_check, confirm_all, juljun_on
+    from action_raven2 import out_check, confirm_all, juljun_on, attack_on
     from clean_screen_raven2 import clean_screen
     from massenger import line_to_me
 
@@ -167,6 +171,8 @@ def jadong_in(cla):
                         if result_out == True:
 
                             spot_in = True
+
+                            attack_on(cla)
 
                             juljun_on(cla)
                             break
