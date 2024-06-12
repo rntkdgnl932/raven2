@@ -878,15 +878,15 @@ def drag_pos(pos_1, pos_2, pos_3, pos_4, cla):
             mouse_move_cpp(pos_1, pos_2, cla)
 
             # 0.1초
-            time.sleep(0.1)
+            # time.sleep(0.1)
             # 마우스 누르기
             drag_pos_Press()
             # # 0.2초
-            time.sleep(0.2)
+            time.sleep(0.1)
             # 마우스 이동
             mouse_move_cpp(pos_3, pos_4, cla)
             # # 0.2초
-            time.sleep(0.2)
+            time.sleep(0.1)
             # 마우스 떼기
             drag_pos_Release()
             # 0.2초

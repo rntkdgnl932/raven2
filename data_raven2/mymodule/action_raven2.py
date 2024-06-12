@@ -913,7 +913,7 @@ def juljun_on(cla):
 def juljun_off(cla):
     import numpy as np
     import cv2
-    from function_game import imgs_set_, click_pos_2, drag_pos_click
+    from function_game import imgs_set_, click_pos_2, drag_pos_click, drag_pos_py
     from clean_screen_raven2 import clean_screen
 
     try:
@@ -933,6 +933,19 @@ def juljun_off(cla):
                     break
             time.sleep(0.5)
 
+        for i in range(10):
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_mode_check.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(350, 50, 600, 120, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("juljun_mode_check", imgs_)
+                drag_pos_py(250, 520, 750, 520, cla)
+            else:
+                result_out = out_check(cla)
+                if result_out == True:
+                    break
+            time.sleep(0.5)
 
 
         for i in range(10):

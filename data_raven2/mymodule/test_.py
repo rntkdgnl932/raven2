@@ -36,7 +36,7 @@ def go_test():
 
     print("test")
 
-    cla = "six"
+    cla = "one"
 
     plus = 0
 
@@ -54,41 +54,9 @@ def go_test():
     elif cla == "six":
         plus = 960 * 5
 
-    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\get_gyobum_btn.PNG"
-    img_array = np.fromfile(full_path, np.uint8)
-    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(630, 130, 800, 1030, cla, img, 0.8)
-    if imgs_ is not None and imgs_ != False:
-        print("get_gyobum_btn", imgs_)
-        click_pos_reg(imgs_.x, imgs_.y, cla)
-        result_inven = inven_check(cla)
 
-    # boonhae_start("six")
+    event_get_start(cla)
 
-    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\confirm\\all_y.PNG"
-    img_array = np.fromfile(full_path, np.uint8)
-    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(350, 500, 700, 800, cla, img, 0.8)
-    if imgs_ is not None and imgs_ != False:
-        print("confirm : all_y", imgs_)
-
-
-    ################sub##################
-    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tuto\\sub_click_btn.PNG"
-    img_array = np.fromfile(full_path, np.uint8)
-    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(600, 850, 700, 950, cla, img, 0.8)
-    if imgs_ is not None and imgs_ != False:
-        print("sub : sub_click_btn", imgs_)
-        click_pos_reg(imgs_.x, imgs_.y, cla)
-
-    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tuto\\sub_soolock_btn.PNG"
-    img_array = np.fromfile(full_path, np.uint8)
-    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(800, 940, 910, 950, cla, img, 0.8)
-    if imgs_ is not None and imgs_ != False:
-        print("sub : sub_soolock_btn", imgs_)
-        click_pos_reg(imgs_.x, imgs_.y, cla)
 
     # my_bag_item = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag"
     # file_list = os.listdir(my_bag_item)
@@ -113,22 +81,22 @@ def go_test():
     # else:
     #     print(" nonnnnbbffkkk9")
 
-    is_potion = False
-    for i in range(10):
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\out_potion\\" + str(i) + ".PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(270, 982, 288, 1000, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            many = i * 100
-            print_say = str(many) + "개 이상"
-            print("num", print_say)
-            is_potion = True
-            break
-
-    if is_potion == False:
-        print("안보야요")
-        text_check_get(270, 982, 288, 1000, cla)
+    # is_potion = False
+    # for i in range(10):
+    #     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\out_potion\\" + str(i) + ".PNG"
+    #     img_array = np.fromfile(full_path, np.uint8)
+    #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    #     imgs_ = imgs_set_(270, 982, 288, 1000, cla, img, 0.8)
+    #     if imgs_ is not None and imgs_ != False:
+    #         many = i * 100
+    #         print_say = str(many) + "개 이상"
+    #         print("num", print_say)
+    #         is_potion = True
+    #         break
+    #
+    # if is_potion == False:
+    #     print("안보야요")
+    #     text_check_get(270, 982, 288, 1000, cla)
 
     # click_pos_2(30, 880, cla)
     #

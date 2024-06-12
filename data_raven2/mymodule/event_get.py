@@ -40,7 +40,7 @@ def event_get_start(cla):
     import numpy as np
     import cv2
     import os
-    from function_game import imgs_set_, click_pos_reg, drag_pos
+    from function_game import imgs_set_, click_pos_reg, drag_pos, click_pos_2, drag_pos_py
     from action_raven2 import inven_check
     from clean_screen_raven2 import clean_screen
 
@@ -60,7 +60,7 @@ def event_get_start(cla):
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\e_in_point_1.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(100, 300, 225, 750, cla, img, 0.8)
+            imgs_ = imgs_set_(80, 300, 225, 680, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 print("e_in_point_1", imgs_)
                 click_pos_reg(imgs_.x - 15, imgs_.y + 15, cla)
@@ -71,7 +71,7 @@ def event_get_start(cla):
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\e_in_point_1.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(30, 300, 225, 750, cla, img, 0.8)
+            imgs_ = imgs_set_(80, 300, 225, 680, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 print("e_in_point_1", imgs_)
                 click_pos_reg(imgs_.x - 15, imgs_.y + 15, cla)
@@ -104,11 +104,20 @@ def event_get_start(cla):
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\e_in_point_1.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(30, 300, 225, 750, cla, img, 0.8)
+                imgs_ = imgs_set_(80, 300, 225, 680, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    print("e_in_point_1", imgs_)
+                    print("drag_pos : e_in_point_1", imgs_)
                 else:
-                    break
+                    drag_pos_py(140, 680, 140, 330, cla)
+                    time.sleep(0.5)
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\e_in_point_1.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    iimgs_ = imgs_set_(80, 300, 225, 680, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("drag_pos_py : e_in_point_1", imgs_)
+                    else:
+                        break
             time.sleep(0.5)
 
         # 다시 샤샤샥
