@@ -40,7 +40,7 @@ def event_get_start(cla):
     import numpy as np
     import cv2
     import os
-    from function_game import imgs_set_, click_pos_reg
+    from function_game import imgs_set_, click_pos_reg, drag_pos
     from action_raven2 import inven_check
     from clean_screen_raven2 import clean_screen
 
@@ -98,6 +98,17 @@ def event_get_start(cla):
                     #     break
                 else:
                     break
+            else:
+                drag_pos(140, 680, 140, 330, cla)
+                time.sleep(0.5)
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\e_in_point_1.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(30, 300, 225, 750, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("e_in_point_1", imgs_)
+                else:
+                    break
             time.sleep(0.5)
 
         # 다시 샤샤샥
@@ -139,8 +150,12 @@ def event_get_click(cla, is_picture):
         # 3 : 정예 o
         # 4 : 서리대검 o
         # 5 : 필드보스 o
-        # 6 : (길드) 던전 보급 new
-        # 7 : (길드) 소집령 new
+        # 6 : (길드) 던전 보급 o
+        # 7 : (길드) 소집령 o
+        # 8 : 군열보스 new
+        # 9 : 별빛마법 new
+        # 10 : 신비한성장 new
+        # 11 : 마물사냥 new
 
         if is_picture == "1":
             data = "fourteen"
@@ -148,14 +163,12 @@ def event_get_click(cla, is_picture):
             data = "seven_six"
         elif is_picture == "3":
             data = "8_click"
-        elif is_picture == "4":
+        elif is_picture == "4" or is_picture == "10" or is_picture == "11":
             data = "eight"
-        elif is_picture == "5":
+        elif is_picture == "5" or is_picture == "7" or is_picture == "8":
             data = "five"
-        elif is_picture == "6":
+        elif is_picture == "6" or is_picture == "9":
             data = "seven"
-        elif is_picture == "7":
-            data = "five"
 
 
         if data == "fourteen":
