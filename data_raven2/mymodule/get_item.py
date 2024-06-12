@@ -357,23 +357,31 @@ def get_sangjum(cla):
                 menu_open(cla)
 
                 for i in range(10):
-                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\sangjum\\title_sangjum.PNG"
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\clean_screen\\close_btn_x.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(30, 30, 200, 100, cla, img, 0.8)
+                    imgs_ = imgs_set_(630, 30, 780, 100, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
-                        break
+                        print("close_btn_x..", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
                     else:
-                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\sangjum\\menu_sanjum.PNG"
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\sangjum\\title_sangjum.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(600, 30, 960, 120, cla, img, 0.8)
+                        imgs_ = imgs_set_(30, 30, 200, 100, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
-                            print("menu_sanjum", imgs_)
+                            break
+                        else:
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\sangjum\\menu_sanjum.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(600, 30, 960, 120, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("menu_sanjum", imgs_)
 
-                            x_reg = imgs_.x
-                            y_reg = imgs_.y
-                            click_pos_reg(x_reg, y_reg, cla)
+                                x_reg = imgs_.x
+                                y_reg = imgs_.y
+                                click_pos_reg(x_reg, y_reg, cla)
                     time.sleep(0.5)
 
         clean_screen(cla)
