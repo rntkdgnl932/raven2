@@ -32,7 +32,6 @@ def clean_screen(cla):
                     out_break_count += 1
                     if out_break_count > 2:
                         break
-            skip_click(cla)
 
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_off_result_title.PNG"
             img_array = np.fromfile(full_path, np.uint8)
@@ -40,6 +39,9 @@ def clean_screen(cla):
             imgs_ = imgs_set_(330, 310, 500, 4000, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 confirm_all(cla)
+                clean = False
+
+            skip_click(cla)
 
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\clean_screen\\close_btn_1.PNG"
             img_array = np.fromfile(full_path, np.uint8)

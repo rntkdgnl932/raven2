@@ -388,6 +388,7 @@ def menu_open(cla):
                 print("menu : menu_character_select...end", imgs_)
                 break
             else:
+
                 clean_screen(cla)
                 result_out = out_check(cla)
                 if result_out == True:
