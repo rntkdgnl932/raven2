@@ -341,7 +341,10 @@ def dungeon_check(cla, data):
             # 절전모드이면서 던전 정상적으로 던전 사냥중
 
             for i in range(dun_len):
-                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\" + str(dun_name) + "\\" + str(i) + ".PNG"
+                if dun_name == "temple" or dun_name == "swamp":
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\" + str(dun_name) + "\\" + str(dun[2]) + "\\" + str(i) + ".PNG"
+                else:
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\" + str(dun_name) + "\\" + str(i) + ".PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(20, 120, 150, 160, cla, img, 0.8)
