@@ -77,11 +77,25 @@ def dungeon_in(cla, data):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from action_raven2 import go_maul, move_check, menu_open, out_check, juljun_on, attack_on, go_random
     from clean_screen_raven2 import clean_screen
+    from dead_raven2 import dead_recover
+    from potion_raven2 import potion_buy
 
     from schedule import myQuest_play_add
 
     try:
         print("dungeon_in")
+
+        clean_screen(cla)
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\boohwal_btn.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(530, 30, 650, 100, cla, img, 0.75)
+        if imgs_ is not None and imgs_ != False:
+            print("boohwal_btn", imgs_)
+            dead_recover(cla)
+            potion_buy(cla)
+        else:
+            potion_buy(cla)
 
         complete = False
 

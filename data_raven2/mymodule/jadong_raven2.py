@@ -69,13 +69,25 @@ def jadong_in(cla):
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
     from action_raven2 import out_check, confirm_all, juljun_on, attack_on
     from clean_screen_raven2 import clean_screen
+    from dead_raven2 import dead_recover
+    from potion_raven2 import potion_buy
     from massenger import line_to_me
 
     try:
         print("jadong_in")
 
-
         clean_screen(cla)
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\boohwal_btn.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(530, 30, 650, 100, cla, img, 0.75)
+        if imgs_ is not None and imgs_ != False:
+            print("boohwal_btn", imgs_)
+            dead_recover(cla)
+            potion_buy(cla)
+        else:
+            potion_buy(cla)
+
 
         spot_in = False
         spot_in_count = 0
