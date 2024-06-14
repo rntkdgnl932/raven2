@@ -805,6 +805,7 @@ def juljun_check(cla):
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from clean_screen_raven2 import clean_screen
+    from dead_raven2 import dead_check, dead_recover
 
     try:
         print("juljun_check")
@@ -843,6 +844,10 @@ def juljun_check(cla):
                 result_attack = juljun_attack_check(cla)
                 if result_attack == False:
                     position = "ready"
+        else:
+            result_dead = dead_check(cla)
+            if result_dead == True:
+                dead_recover(cla)
         return juljun_, position
     except Exception as e:
         print(e)
@@ -919,6 +924,10 @@ def juljun_off(cla):
 
     try:
         print("juljun_off")
+
+        result_dead = dead_check(cla)
+        if result_dead == True:
+            dead_recover(cla)
 
         for i in range(10):
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_mode_check.PNG"

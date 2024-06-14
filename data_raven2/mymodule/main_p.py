@@ -67,6 +67,7 @@ from event_allget import event_allget_check
 from gyobum_raven2 import gyobum_check
 
 from action_raven2 import bag_open, organize_start, game_check
+from auction_raven2 import auction_start
 
 
 from server import game_start
@@ -3396,6 +3397,8 @@ class game_Playing(QThread):
                                 elif result_schedule_ == "자동사냥":
                                     jadong_start(v_.now_cla)
                                     time.sleep(5)
+                                elif result_schedule_ == "거래소등록":
+                                    jadong_start(v_.now_cla)
                                 elif "특무대" in result_schedule_:
                                     tgmoodae_mission_start(v_.now_cla, result_schedule_)
                                 elif result_schedule_ == "버프와물약사기":

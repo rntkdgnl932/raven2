@@ -142,20 +142,27 @@ def dead_recover(cla):
                 recover = True
                 break
             else:
-                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\boohwal_btn.PNG"
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_off_result_title.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(530, 30, 650, 100, cla, img, 0.75)
+                imgs_ = imgs_set_(330, 310, 500, 4000, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    click_count += 1
-                    if click_count > 9:
-                        why = "boohwal_btn 클릭이 안된다"
-                        print("boohwal_btn 클릭이 안된다")
-                        line_to_me(cla, why)
-                    print("boohwal_btn", imgs_)
-                    ran_int_x = random.randint(0, 2)
-                    ran_int_y = random.randint(0, 2)
-                    click_pos_reg(imgs_.x + ran_int_x, imgs_.y + ran_int_y, cla)
+                    confirm_all(cla)
+                else:
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\boohwal_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(530, 30, 650, 100, cla, img, 0.75)
+                    if imgs_ is not None and imgs_ != False:
+                        click_count += 1
+                        if click_count > 9:
+                            why = "boohwal_btn 클릭이 안된다"
+                            print("boohwal_btn 클릭이 안된다")
+                            line_to_me(cla, why)
+                        print("boohwal_btn", imgs_)
+                        ran_int_x = random.randint(0, 2)
+                        ran_int_y = random.randint(0, 2)
+                        click_pos_reg(imgs_.x + ran_int_x, imgs_.y + ran_int_y, cla)
             time.sleep(0.5)
 
         if recover == True:

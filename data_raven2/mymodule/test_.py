@@ -15,7 +15,7 @@ def go_test():
     import pyautogui
     import random
 
-    from function_game import imgs_set_, drag_pos, text_check_get, imgs_set_for, drag_pos_click, click_pos_2, click_pos_reg
+    from function_game import imgs_set_, drag_pos, text_check_get, imgs_set_for, drag_pos_click, click_pos_2, click_pos_reg, text_check_get_reg, in_number_check, int_put_, change_number
     from tuto_raven2 import way_point_click, tuto_start
     from action_raven2 import inven_check, bag_open, skip_click, confirm_all
     from clean_screen_raven2 import clean_screen
@@ -30,6 +30,7 @@ def go_test():
     from steegma import steegma_start
     from boonhae_collection import collection_start, boonhae_start
     from tgmoodae_mission import tgmoodae_mission_get_ready
+    from auction_raven2 import auction_start
 
 
 
@@ -54,14 +55,16 @@ def go_test():
     elif cla == "six":
         plus = 960 * 5
 
-    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\dead_description.PNG"
-    img_array = np.fromfile(full_path, np.uint8)
-    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(300, 300, 700, 700, cla, img, 0.8)
-    if imgs_ is not None and imgs_ != False:
-        print("dead_description", imgs_)
+    # text_check_get(522, 550, 580, 580, cla)
+    #
+    # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\last_sell_gold.PNG"
+    # img_array = np.fromfile(full_path, np.uint8)
+    # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    # imgs_ = imgs_set_(522, 550, 580, 580, cla, img, 0.8)
+    # if imgs_ is not None and imgs_ != False:
+    #     print("last_sell_gold", imgs_)
 
-        confirm_all(cla)
+    auction_start(cla)
 
 
     # my_bag_item = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag"
