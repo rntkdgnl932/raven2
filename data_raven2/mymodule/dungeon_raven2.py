@@ -327,7 +327,10 @@ def dungeon_check(cla, data):
         elif dun[1] == "붉은바위협곡":
             dun_name = "redstone"
 
-        folder_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\" + str(dun_name)
+        if dun_name == "temple" or dun_name == "swamp":
+            folder_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\" + str(dun_name)+ "\\" + str(dun[2])
+        else:
+            folder_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\" + str(dun_name)
         file_list = os.listdir(folder_path)
         dun_len = len(file_list)
         # print(file_count)
@@ -335,51 +338,34 @@ def dungeon_check(cla, data):
         # balbar, tapana, temple, swamp, redstone
 
 
-        result_juljun = juljun_check(cla)
-
-        if result_juljun[0] == True and result_juljun[1] == "attack":
-            # 절전모드이면서 던전 정상적으로 던전 사냥중
-
-            for i in range(dun_len):
-                if dun_name == "temple" or dun_name == "swamp":
-                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\" + str(dun_name) + "\\" + str(dun[2]) + "\\" + str(i) + ".PNG"
-                else:
-                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\" + str(dun_name) + "\\" + str(i) + ".PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(20, 120, 150, 160, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    print("던전 사냥 중", i, "번째 맵 확인")
-
-                    if dun_name == "temple" or dun_name == "swamp":
-                        if i == 0 or i == 1:
-                            print("랜덤 이동 해야함")
-                            random = True
-                    is_dun = True
-                    attack = True
-                    break
-        elif result_juljun[0] == True and result_juljun[1] != "attack":
-            # 던전인데 공격하지 않는 경우
-
-            for i in range(dun_len):
+        # 애초에 절전 던전인지 먼저 확인하기
+        for i in range(dun_len):
+            if dun_name == "temple" or dun_name == "swamp":
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\" + str(dun_name) + "\\" + str(
+                    dun[2]) + "\\" + str(i) + ".PNG"
+            else:
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\" + str(dun_name) + "\\" + str(
                     i) + ".PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(20, 120, 150, 160, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    print("던전이지만 사냥하지 않음", i)
-                    if dun_name == "temple":
-                        if i == 0 or i == 1:
-                            print("랜덤 이동 해야함")
-                            random = True
-                    is_dun = True
-                    break
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(20, 120, 150, 160, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("던전 사냥 중", i, "번째 맵 확인")
 
+                if dun_name == "temple" or dun_name == "swamp":
+                    if i == 0 or i == 1:
+                        print("랜덤 이동 해야함")
+                        random = True
+                is_dun = True
+                break
 
-        elif result_juljun[0] == False:
-            # 절전모드가 아닌 경우
-
+        if is_dun == True:
+            result_juljun = juljun_check(cla)
+            if result_juljun[1] == "attack":
+                attack = True
+            else:
+                attack = False
+        else:
             # 우선 던전에 들어왔는지 확인하기
 
             for i in range(5):
@@ -404,7 +390,7 @@ def dungeon_check(cla, data):
                         if result_juljun_check[1] == "attack":
                             attack = True
 
-                        break
+                    break
                 else:
 
                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\map_btn.PNG"
@@ -417,6 +403,91 @@ def dungeon_check(cla, data):
                     else:
                         clean_screen(cla)
                 time.sleep(0.5)
+
+        #
+        #
+        # result_juljun = juljun_check(cla)
+        #
+        # if result_juljun[0] == True and result_juljun[1] == "attack":
+        #     # 절전모드이면서 던전 정상적으로 던전 사냥중
+        #
+        #     for i in range(dun_len):
+        #         if dun_name == "temple" or dun_name == "swamp":
+        #             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\" + str(dun_name) + "\\" + str(dun[2]) + "\\" + str(i) + ".PNG"
+        #         else:
+        #             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\" + str(dun_name) + "\\" + str(i) + ".PNG"
+        #         img_array = np.fromfile(full_path, np.uint8)
+        #         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #         imgs_ = imgs_set_(20, 120, 150, 160, cla, img, 0.8)
+        #         if imgs_ is not None and imgs_ != False:
+        #             print("던전 사냥 중", i, "번째 맵 확인")
+        #
+        #             if dun_name == "temple" or dun_name == "swamp":
+        #                 if i == 0 or i == 1:
+        #                     print("랜덤 이동 해야함")
+        #                     random = True
+        #             is_dun = True
+        #             attack = True
+        #             break
+        # elif result_juljun[0] == True and result_juljun[1] != "attack":
+        #     # 던전인데 공격하지 않는 경우
+        #
+        #     for i in range(dun_len):
+        #         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\" + str(dun_name) + "\\" + str(
+        #             i) + ".PNG"
+        #         img_array = np.fromfile(full_path, np.uint8)
+        #         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #         imgs_ = imgs_set_(20, 120, 150, 160, cla, img, 0.8)
+        #         if imgs_ is not None and imgs_ != False:
+        #             print("던전이지만 사냥하지 않음", i)
+        #             if dun_name == "temple":
+        #                 if i == 0 or i == 1:
+        #                     print("랜덤 이동 해야함")
+        #                     random = True
+        #             is_dun = True
+        #             break
+        #
+        #
+        # elif result_juljun[0] == False:
+        #     # 절전모드가 아닌 경우
+        #
+        #     # 우선 던전에 들어왔는지 확인하기
+        #
+        #     for i in range(5):
+        #
+        #         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\map\\map_open.PNG"
+        #         img_array = np.fromfile(full_path, np.uint8)
+        #         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #         imgs_ = imgs_set_(800, 950, 960, 1030, cla, img, 0.8)
+        #         if imgs_ is not None and imgs_ != False:
+        #             print("map_open", imgs_)
+        #
+        #             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\map_title\\" + str(dun_name) + ".PNG"
+        #             img_array = np.fromfile(full_path, np.uint8)
+        #             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #             imgs_ = imgs_set_(350, 30, 600, 80, cla, img, 0.8)
+        #             if imgs_ is not None and imgs_ != False:
+        #                 is_dun = True
+        #                 print("던전 진입 완료")
+        #                 juljun_on(cla)
+        #
+        #                 result_juljun_check = juljun_check(cla)
+        #                 if result_juljun_check[1] == "attack":
+        #                     attack = True
+        #
+        #                 break
+        #         else:
+        #
+        #             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\map_btn.PNG"
+        #             img_array = np.fromfile(full_path, np.uint8)
+        #             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #             imgs_ = imgs_set_(190, 100, 280, 160, cla, img, 0.8)
+        #             if imgs_ is not None and imgs_ != False:
+        #                 print("map_btn", imgs_)
+        #                 click_pos_reg(imgs_.x, imgs_.y, cla)
+        #             else:
+        #                 clean_screen(cla)
+        #         time.sleep(0.5)
 
         if is_dun == False:
             # 던전 아니라서 던전 들어가기 시도하기

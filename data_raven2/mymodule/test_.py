@@ -17,7 +17,7 @@ def go_test():
 
     from function_game import imgs_set_, drag_pos, text_check_get, imgs_set_for, drag_pos_click, click_pos_2, click_pos_reg
     from tuto_raven2 import way_point_click, tuto_start
-    from action_raven2 import inven_check, bag_open, skip_click
+    from action_raven2 import inven_check, bag_open, skip_click, confirm_all
     from clean_screen_raven2 import clean_screen
     from potion_raven2 import potion_buy, potion_check
     from chango_raven2 import chango_in
@@ -54,8 +54,14 @@ def go_test():
     elif cla == "six":
         plus = 960 * 5
 
+    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\dead_description.PNG"
+    img_array = np.fromfile(full_path, np.uint8)
+    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    imgs_ = imgs_set_(300, 300, 700, 700, cla, img, 0.8)
+    if imgs_ is not None and imgs_ != False:
+        print("dead_description", imgs_)
 
-    event_get_start(cla)
+        confirm_all(cla)
 
 
     # my_bag_item = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag"
