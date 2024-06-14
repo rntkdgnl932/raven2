@@ -16,14 +16,16 @@ def auction_start(cla):
 
         chango_in(cla)
 
+        # 수집, 분해 넣자
+        collection_start(cla)
+        boonhae_start(cla)
+
         auction_ready(cla)
         auction_sell_start(cla)
         print("끝!")
         clean_screen(cla)
 
-        # 수집, 분해 넣자
-        collection_start(cla)
-        boonhae_start(cla)
+
 
 
 
