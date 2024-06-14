@@ -13,7 +13,7 @@ def dead_check(cla):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg
-
+    from action_raven2 import confirm_all
     from schedule import myQuest_play_check
 
     try:
@@ -44,6 +44,15 @@ def dead_check(cla):
             dead_ = True
             click_pos_reg(imgs_.x, imgs_.y, cla)
 
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\dead_description.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(300, 300, 700, 700, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("dead_description", imgs_)
+            dead_ = True
+            confirm_all(cla)
+
         # if "일반" in result_schedule_ or "특수" in result_schedule_ or result_schedule_ == "자동사냥":
         #
         #     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\boohwal_btn.PNG"
@@ -64,6 +73,7 @@ def dead_check_2(cla):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg
+    from action_raven2 import confirm_all
 
     try:
         print("dead_check_2")
@@ -87,6 +97,15 @@ def dead_check_2(cla):
             print("dead_2", imgs_)
             dead_ = True
             click_pos_reg(imgs_.x, imgs_.y, cla)
+
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\dead_description.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(300, 300, 700, 700, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("dead_description", imgs_)
+            dead_ = True
+            confirm_all(cla)
 
 
         return dead_
