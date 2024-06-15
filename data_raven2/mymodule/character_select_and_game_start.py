@@ -196,6 +196,24 @@ def character_change(cla, character_id):
 
                         print("게임 접속 끝")
                         time.sleep(0.1)
+                    else:
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\game_start_btn.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(600, 900, 920, 1020, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            x_reg = imgs_.x
+                            y_reg = imgs_.y
+
+                            # select 1 (730, 360)
+                            # select 2 (730, 435)
+
+                            y_click = 50 + (int(character_id) * 68)
+
+                            click_pos_2(777, y_click, cla)
+                            time.sleep(0.5)
+                            click_pos_reg(x_reg, y_reg, cla)
+                            time.sleep(0.1)
 
                     time.sleep(1)
             else:
