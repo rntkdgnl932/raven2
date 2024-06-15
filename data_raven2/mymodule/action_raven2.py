@@ -96,7 +96,7 @@ def juljun_attack_check(cla):
             y_reg = imgs_.y
             # 27, 167
             for i in range(20):
-                result_text_1 = text_check_get_reg(x_reg + 10, y_reg - 10, x_reg + 100, y_reg + 10, cla)
+                result_text_1 = text_check_get_reg(x_reg + 10, y_reg - 10, x_reg + 100, y_reg + 10)
                 result_text_1 = int_put_(result_text_1)
                 result_text_1_num_check = in_number_check(result_text_1)
                 if result_text_1_num_check == True:
@@ -105,7 +105,7 @@ def juljun_attack_check(cla):
                 time.sleep(1)
 
             for i in range(20):
-                result_text_2 = text_check_get_reg(x_reg + 10, y_reg - 10, x_reg + 100, y_reg + 10, cla)
+                result_text_2 = text_check_get_reg(x_reg + 10, y_reg - 10, x_reg + 100, y_reg + 10)
                 result_text_2 = int_put_(result_text_2)
                 result_text_2_num_check = in_number_check(result_text_2)
                 if result_text_2_num_check == True:
@@ -921,6 +921,7 @@ def juljun_off(cla):
     import cv2
     from function_game import imgs_set_, click_pos_2, drag_pos_click, drag_pos_py
     from clean_screen_raven2 import clean_screen
+    from dead_raven2 import dead_check, dead_recover
 
     try:
         print("juljun_off")
