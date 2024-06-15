@@ -30,7 +30,7 @@ def clean_screen(cla):
                 result_out = out_check(cla)
                 if result_out == True:
                     out_break_count += 1
-                    if out_break_count > 2:
+                    if out_break_count > 1:
                         break
 
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_off_result_title.PNG"

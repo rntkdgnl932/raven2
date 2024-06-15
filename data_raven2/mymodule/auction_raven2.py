@@ -278,7 +278,7 @@ def auction_sell_start(cla):
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
                                 time.sleep(0.1)
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
-                                time.sleep(0.1)
+                                time.sleep(0.3)
                                 click_pos_2(680, 625, cla)
                                 time.sleep(0.1)
                                 click_pos_2(680, 625, cla)
@@ -286,7 +286,7 @@ def auction_sell_start(cla):
                                 click_pos_2(680, 625, cla)
                                 time.sleep(0.1)
                                 click_pos_2(680, 625, cla)
-                                time.sleep(0.1)
+                                time.sleep(0.3)
                         # 다야 갯수 정하기
                         for last in range(5):
                             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\qun_btn.PNG"
@@ -297,7 +297,7 @@ def auction_sell_start(cla):
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
                                 time.sleep(0.1)
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
-                                time.sleep(0.1)
+                                time.sleep(0.2)
                                 click_pos_2(570, 395, cla)
                                 time.sleep(0.1)
                                 click_pos_2(570, 395, cla)
