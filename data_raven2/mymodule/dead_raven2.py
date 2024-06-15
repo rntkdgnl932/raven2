@@ -14,7 +14,7 @@ def dead_check(cla):
     import cv2
     from function_game import imgs_set_, click_pos_reg
     from action_raven2 import confirm_all
-    from schedule import myQuest_play_check
+    from schedule import myQuest_play_check, myQuest_play_add
 
     try:
 
@@ -52,6 +52,9 @@ def dead_check(cla):
             print("dead_description", imgs_)
             dead_ = True
             confirm_all(cla)
+
+        if result_schedule_ == "튜토육성":
+            myQuest_play_add(cla, result_schedule_)
 
         # if "일반" in result_schedule_ or "특수" in result_schedule_ or result_schedule_ == "자동사냥":
         #
@@ -206,7 +209,14 @@ def dead_recover(cla):
                             if imgs_ is not None and imgs_ != False:
                                 break
                             else:
-                                click_pos_2(600, 360, cla)
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\today_free_recover2.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(270, 700, 700, 760, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("today_free_recover2", imgs_)
+                                else:
+                                    click_pos_2(600, 360, cla)
                             time.sleep(0.5)
 
 

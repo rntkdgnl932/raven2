@@ -19,6 +19,7 @@ def tuto_start(cla):
     from dead_raven2 import dead_check_2, dead_recover
     from schedule import myQuest_play_add
     from clean_screen_raven2 import clean_screen
+    from potion_raven2 import potion_buy
 
     from massenger import line_to_me
 
@@ -33,9 +34,11 @@ def tuto_start(cla):
 
         if result_dead == True:
 
+            potion_buy(cla)
+
             dead_recover(cla)
 
-            myQuest_play_add(cla, "튜토육성")
+            # myQuest_play_add(cla, "튜토육성")
 
 
 

@@ -64,12 +64,28 @@ def go_test():
     # if imgs_ is not None and imgs_ != False:
     #     print("last_sell_gold", imgs_)
 
-    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\allget\\allget_point_1.PNG"
+    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\today_free_recover.PNG"
     img_array = np.fromfile(full_path, np.uint8)
     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(60, 300, 225, 765, cla, img, 0.8)
+    imgs_ = imgs_set_(270, 700, 700, 760, cla, img, 0.8)
     if imgs_ is not None and imgs_ != False:
-        print("allget_point_1", imgs_)
+        print("today_free_recover", imgs_)
+    else:
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\today_free_recover2.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(270, 700, 700, 760, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("today_free_recover2", imgs_)
+        else:
+            print("없디 18")
+
+    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\exp_click.PNG"
+    img_array = np.fromfile(full_path, np.uint8)
+    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    imgs_ = imgs_set_(280, 380, 380, 680, cla, img, 0.8)
+    if imgs_ is not None and imgs_ != False:
+        print("exp_click", imgs_)
 
     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\allget\\allget_point_2.PNG"
     img_array = np.fromfile(full_path, np.uint8)
