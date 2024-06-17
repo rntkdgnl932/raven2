@@ -181,6 +181,14 @@ def tgmoodae_mission_start(cla, data):
                     print("menu_quest", imgs_)
                     click_pos_reg(imgs_.x, imgs_.y, cla)
                     time.sleep(0.5)
+                    for i in range(5):
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tgmoodae_mission\\quest_title.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(320, 30, 420, 100, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                        time.sleep(0.2)
 
 
     except Exception as e:

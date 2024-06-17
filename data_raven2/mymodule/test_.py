@@ -31,7 +31,7 @@ def go_test():
     from boonhae_collection import collection_start, boonhae_start
     from tgmoodae_mission import tgmoodae_mission_get_ready
     from auction_raven2 import auction_start
-
+    from subquest_raven2 import subquest_get
 
 
 
@@ -64,36 +64,50 @@ def go_test():
     # if imgs_ is not None and imgs_ != False:
     #     print("last_sell_gold", imgs_)
 
-    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\today_free_recover.PNG"
-    img_array = np.fromfile(full_path, np.uint8)
-    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(270, 700, 700, 760, cla, img, 0.8)
-    if imgs_ is not None and imgs_ != False:
-        print("today_free_recover", imgs_)
-    else:
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\today_free_recover2.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(270, 700, 700, 760, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("today_free_recover2", imgs_)
-        else:
-            print("없디 18")
 
-    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\exp_click.PNG"
-    img_array = np.fromfile(full_path, np.uint8)
-    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(280, 380, 380, 680, cla, img, 0.8)
-    if imgs_ is not None and imgs_ != False:
-        print("exp_click", imgs_)
+    data = "서브퀘스트_벨루시아"
+    # 데론, 로메른
+    now_sub_ready = data.split("_")
+    if now_sub_ready[1] == "벨루시아":
+        now_sub = "beloosia"
+    elif now_sub_ready[1] == "데론":
+        now_sub = "delon"
+    elif now_sub_ready[1] == "데론":
+        now_sub = "lomeln"
 
-    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\allget\\allget_point_2.PNG"
+    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\allget\\allget_point_1.PNG"
     img_array = np.fromfile(full_path, np.uint8)
     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
     imgs_ = imgs_set_(60, 300, 225, 765, cla, img, 0.8)
     if imgs_ is not None and imgs_ != False:
-        print("allget_point_2", imgs_)
+        print("allget_point_1", imgs_)
+    else:
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\allget\\allget_point_2.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(60, 300, 225, 765, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("allget_point_2", imgs_)
 
+    # ################# 계약 소환 관련 ################################
+    # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\gyeyak\\gyeyak_high_confirm.PNG"
+    # img_array = np.fromfile(full_path, np.uint8)
+    # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    # imgs_ = imgs_set_(430, 460, 530, 550, cla, img, 0.8)
+    # if imgs_ is not None and imgs_ != False:
+    #     print("gyeyak_high_confirm", imgs_)
+    #     click_pos_reg(imgs_.x, imgs_.y, cla)
+    #     time.sleep(0.5)
+    #     # 위에 확인이 보이지 않는다면...
+    #     drag_pos(330, 540, 630, 540, cla)
+    #     # 아래 바텀 나가기 나오면 끝
+    #     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\gyeyak\\exit_bottom.PNG"
+    #     img_array = np.fromfile(full_path, np.uint8)
+    #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    #     imgs_ = imgs_set_(390, 970, 560, 1030, cla, img, 0.8)
+    #     if imgs_ is not None and imgs_ != False:
+    #         print("exit_bottom", imgs_)
+    # ################################################################################
 
     # my_bag_item = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag"
     # file_list = os.listdir(my_bag_item)

@@ -68,6 +68,7 @@ from gyobum_raven2 import gyobum_check
 
 from action_raven2 import bag_open, organize_start, game_check
 from auction_raven2 import auction_start
+from subquest_raven2 import subquest_start
 
 
 from server import game_start
@@ -1035,22 +1036,22 @@ class FirstTab(QWidget):
         self.dun_group_2.setLayout(dun_box_2)
 
         # 던전 종류
-        self.dun_group_3 = QGroupBox('월드')
+        self.dun_group_3 = QGroupBox('서브퀘스트')
         dun_g3_name = QComboBox()
         # list4 = ['던전 선택', '일반_업보', '일반_지옥', '일반_죄악', '일반_저주', '특수_마족', '특수_아르카스', '파티_묘지']
         # dun_g3_list = ['데이모스전장', '모리아기지', 'coming soon']
-        dun_g3_list = ['월드 던전 선택', '스피렌의안뜰']
+        dun_g3_list = ['서브퀘스트 선택', '서브퀘스트_벨루시아', '서브퀘스트_데론', '서브퀘스트_로메른']
         dun_g3_name.addItems(dun_g3_list)
 
-        dun_g3_stair = QComboBox()
-        dun_g3_stair_list = ['층', '1', '2', '3', '4', '5', '6']
-        dun_g3_stair.addItems(dun_g3_stair_list)
+        # dun_g3_stair = QComboBox()
+        # dun_g3_stair_list = ['층', '1', '2', '3', '4', '5', '6']
+        # dun_g3_stair.addItems(dun_g3_stair_list)
 
         dun_box_3 = QHBoxLayout()
         dun_box_3.addWidget(dun_g3_name)
-        dun_box_3.addWidget(dun_g3_stair)
+        # dun_box_3.addWidget(dun_g3_stair)
 
-        dungeon_3 = QPushButton('월드 추가')
+        dungeon_3 = QPushButton('서브퀘스트 추가')
         dungeon_3.clicked.connect(self.onActivated_dunjeon_3_add)
 
         dun_box_3.addWidget(dungeon_3)
@@ -1174,7 +1175,7 @@ class FirstTab(QWidget):
         # dun_g2_step.activated[str].connect(self.onActivated_dunjeon_2_step)  # 던전2 난이도
 
         dun_g3_name.activated[str].connect(self.onActivated_dunjeon_3)  # 던전3 이름
-        dun_g3_stair.activated[str].connect(self.onActivated_dunjeon_3_level)  # 던전3 층수
+        # dun_g3_stair.activated[str].connect(self.onActivated_dunjeon_3_level)  # 던전3 층수
         # dun_g3_step.activated[str].connect(self.onActivated_dunjeon_3_step)  # 던전3 난이도
 
         cb5.activated[str].connect(self.onActivated_hunt)  # 요건 함수
@@ -1570,21 +1571,21 @@ class FirstTab(QWidget):
 
     def onActivated_dunjeon_3(self, text):
         global onDunjeon_3
-        if text != 0 and text != '월드 던전 선택':
+        if text != "none" or text != '서브퀘스트 선택':
             onDunjeon_3 = text
             print('onDunjeon_3', onDunjeon_3)
         else:
             onDunjeon_3 = 'none'
             print("던전을 선택해 주세요.")
 
-    def onActivated_dunjeon_3_level(self, text):
-        global onDunjeon_3_level
-        if text != 0 and text != '층':
-            onDunjeon_3_level = text
-            print('onDunjeon_3_level', onDunjeon_3_level)
-        else:
-            onDunjeon_3_level = 0
-            print("던전 층수를 선택해 주세요.")
+    # def onActivated_dunjeon_3_level(self, text):
+    #     global onDunjeon_3_level
+    #     if text != 0 and text != '층':
+    #         onDunjeon_3_level = text
+    #         print('onDunjeon_3_level', onDunjeon_3_level)
+    #     else:
+    #         onDunjeon_3_level = 0
+    #         print("던전 층수를 선택해 주세요.")
 
     # def onActivated_dunjeon_3_step(self, text):
     #     global onDunjeon_3_step
@@ -1717,14 +1718,14 @@ class FirstTab(QWidget):
 
     def onActivated_dunjeon_3_add(self):
         char_ = onCharacter
-        dun_ = "던전/월드/" + str(onDunjeon_3) + "_" + str(onDunjeon_3_level)
+        dun_ = str(onDunjeon_3)
         if onCharacter == 0:
             pyautogui.alert(button='넵', text='캐릭터를 선택해 주시지예', title='뭐합니꺼')
         elif onCla == 'none':
             pyautogui.alert(button='넵', text='몇 클라인지 선택해 주시지예', title='뭐합니꺼')
-        elif onDunjeon_3 == '던전 선택' or onDunjeon_3 == 'none' or onDunjeon_3_level == 0 or onDunjeon_3_level == "층":
+        elif onDunjeon_3 == '서브퀘스트 선택' or onDunjeon_3 == 'none':
             pyautogui.alert(button='넵', text='던전 및 층수를 선택해 주시지예', title='아 진짜 뭐합니꺼')
-        elif onCharacter != 0 and (onDunjeon_2 != '던전 선택' or onDunjeon_2 != 'none'):
+        elif onCharacter != 0 and (onDunjeon_3 != '서브퀘스트 선택' or onDunjeon_3 != 'none'):
             print('char_', char_)
             print('dun_', dun_)
 
@@ -3402,6 +3403,8 @@ class game_Playing(QThread):
                                     myQuest_play_add(v_.now_cla, result_schedule_)
                                 elif "특무대" in result_schedule_:
                                     tgmoodae_mission_start(v_.now_cla, result_schedule_)
+                                elif "서브퀘스트" in result_schedule_:
+                                    subquest_start(v_.now_cla, result_schedule_)
                                 elif result_schedule_ == "버프와물약사기":
                                     potion_buy(v_.now_cla)
                                     myQuest_play_add(v_.now_cla, result_schedule_)

@@ -86,35 +86,56 @@ def juljun_attack_check(cla):
 
         attack_ = False
 
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_gold.PNG"
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_mode_check.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(10, 100, 50, 300, cla, img, 0.8)
+        imgs_ = imgs_set_(350, 50, 600, 120, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
-            print("juljun_attack_check : juljun_gold", imgs_)
-            x_reg = imgs_.x
-            y_reg = imgs_.y
-            # 27, 167
-            for i in range(20):
-                result_text_1 = text_check_get_reg(x_reg + 10, y_reg - 10, x_reg + 100, y_reg + 10)
-                result_text_1 = int_put_(result_text_1)
-                result_text_1_num_check = in_number_check(result_text_1)
-                if result_text_1_num_check == True:
-                    result_text_1 = int(result_text_1)
-                    break
-                time.sleep(1)
+            print("juljun_attack_check : juljun_mode_check", imgs_)
 
-            for i in range(20):
-                result_text_2 = text_check_get_reg(x_reg + 10, y_reg - 10, x_reg + 100, y_reg + 10)
-                result_text_2 = int_put_(result_text_2)
-                result_text_2_num_check = in_number_check(result_text_2)
-                if result_text_2_num_check == True:
-                    result_text_2 = int(result_text_2)
-                    if result_text_1 != result_text_2:
-                        print(result_text_1, result_text_2)
-                        attack_ = True
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_gold.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(10, 100, 50, 300, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("juljun_attack_check : juljun_gold", imgs_)
+                x_reg = imgs_.x
+                y_reg = imgs_.y
+                # 27, 167
+                for i in range(20):
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_mode_check.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(350, 50, 600, 120, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        result_text_1 = text_check_get_reg(x_reg + 10, y_reg - 10, x_reg + 100, y_reg + 10)
+                        result_text_1 = int_put_(result_text_1)
+                        result_text_1_num_check = in_number_check(result_text_1)
+                        if result_text_1_num_check == True:
+                            result_text_1 = int(result_text_1)
+                            break
+                    else:
                         break
-                time.sleep(1)
+                    time.sleep(1)
+
+                for i in range(20):
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_mode_check.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(350, 50, 600, 120, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        result_text_2 = text_check_get_reg(x_reg + 10, y_reg - 10, x_reg + 100, y_reg + 10)
+                        result_text_2 = int_put_(result_text_2)
+                        result_text_2_num_check = in_number_check(result_text_2)
+                        if result_text_2_num_check == True:
+                            result_text_2 = int(result_text_2)
+                            if result_text_1 != result_text_2:
+                                print(result_text_1, result_text_2)
+                                attack_ = True
+                                break
+                    else:
+                        break
+                    time.sleep(1)
 
 
 
@@ -378,6 +399,8 @@ def menu_open(cla):
     try:
         print("menu_open")
 
+        not_available = False
+
         for i in range(10):
 
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\menu_character_select.PNG"
@@ -444,13 +467,14 @@ def menu_open(cla):
 
 
                             break
+
                         time.sleep(0.5)
 
 
             time.sleep(0.5)
 
 
-
+        return not_available
     except Exception as e:
         print(e)
         return 0
@@ -839,6 +863,14 @@ def juljun_check(cla):
                 if imgs_ is not None and imgs_ != False:
                     print("attack", imgs_)
                     position = "attack"
+                else:
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\move.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(400, 910, 550, 970, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("move", imgs_)
+                        position = "move"
 
             if position == "attack":
                 result_attack = juljun_attack_check(cla)

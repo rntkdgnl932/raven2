@@ -56,6 +56,7 @@ def event_get_start(cla):
         # print(file_count)
 
 
+
         for i in range(10):
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\e_in_point_1.PNG"
             img_array = np.fromfile(full_path, np.uint8)
@@ -65,6 +66,15 @@ def event_get_start(cla):
                 print("e_in_point_1", imgs_)
                 click_pos_reg(imgs_.x - 15, imgs_.y + 15, cla)
                 break
+            else:
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\allget\\allget_point_2.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(60, 300, 225, 765, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("allget_point_2", imgs_)
+                    click_pos_reg(imgs_.x - 15, imgs_.y + 15, cla)
+                    break
             time.sleep(0.5)
 
         for i in range(10):
@@ -99,25 +109,56 @@ def event_get_start(cla):
                 else:
                     break
             else:
-                drag_pos(140, 680, 140, 330, cla)
-                time.sleep(0.5)
-                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\e_in_point_1.PNG"
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\allget\\allget_point_2.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(80, 300, 225, 680, cla, img, 0.8)
+                imgs_ = imgs_set_(60, 300, 225, 765, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    print("drag_pos : e_in_point_1", imgs_)
+                    print("allget_point_2", imgs_)
+                    click_pos_reg(imgs_.x - 15, imgs_.y + 15, cla)
+                    result_inven = inven_check(cla)
+                    if result_inven == True:
+
+                        # is_pic = False
+                        for n in range(file_count):
+
+                            pic_num = n + 1
+
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_title\\" + str(
+                                pic_num) + ".PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(220, 320, 800, 400, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("pic_num", pic_num)
+                                # is_pic = True
+                                is_picture = str(pic_num)
+                                event_get_click(cla, is_picture)
+                                break
+                        # if is_pic == True:
+                        #     break
+                    else:
+                        break
                 else:
-                    drag_pos_py(140, 680, 140, 330, cla)
+                    drag_pos(140, 680, 140, 330, cla)
                     time.sleep(0.5)
                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\e_in_point_1.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    iimgs_ = imgs_set_(80, 300, 225, 680, cla, img, 0.8)
+                    imgs_ = imgs_set_(80, 300, 225, 680, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
-                        print("drag_pos_py : e_in_point_1", imgs_)
+                        print("drag_pos : e_in_point_1", imgs_)
                     else:
-                        break
+                        drag_pos_py(140, 680, 140, 330, cla)
+                        time.sleep(0.5)
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\e_in_point_1.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        iimgs_ = imgs_set_(80, 300, 225, 680, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("drag_pos_py : e_in_point_1", imgs_)
+                        else:
+                            break
             time.sleep(0.5)
 
         # 다시 샤샤샥
