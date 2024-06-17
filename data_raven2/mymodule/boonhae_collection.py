@@ -13,7 +13,7 @@ def collection_start(cla):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_raven2 import confirm_all, menu_open_pure
+    from action_raven2 import confirm_all, menu_open_pure, skip_click
     from clean_screen_raven2 import clean_screen
 
     try:
@@ -82,10 +82,9 @@ def collection_start(cla):
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
 
                                 for c in range(5):
-                                    result_confirm = confirm_all(cla)
-                                    if result_confirm == True:
-                                        break
-                                    time.sleep(0.2)
+                                    confirm_all(cla)
+                                    skip_click(cla)
+                                    time.sleep(0.1)
                         else:
                             col_point_count += 1
                             if col_point_count > 2:
