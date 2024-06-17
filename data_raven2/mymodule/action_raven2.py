@@ -506,6 +506,8 @@ def menu_open_pure(cla):
                 break
             else:
                 clean_screen(cla)
+                time.sleep(0.5)
+                click_pos_2(925, 60, cla)
             time.sleep(0.5)
 
 
