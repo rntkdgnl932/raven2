@@ -960,49 +960,51 @@ def juljun_off(cla):
     try:
         print("juljun_off")
 
-        result_dead = dead_check(cla)
-        if result_dead == True:
-            dead_recover(cla)
-
-        for i in range(10):
-            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_mode_check.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(350, 50, 600, 120, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                print("juljun_mode_check", imgs_)
-                drag_pos_click(250, 520, 750, 520, cla)
-            else:
-                result_out = out_check(cla)
-                if result_out == True:
-                    break
-            time.sleep(0.5)
-
-        for i in range(10):
-            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_mode_check.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(350, 50, 600, 120, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                print("juljun_mode_check", imgs_)
-                drag_pos_py(250, 520, 750, 520, cla)
-            else:
-                result_out = out_check(cla)
-                if result_out == True:
-                    break
-            time.sleep(0.5)
 
 
-        for i in range(10):
-            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_off_result_title.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(330, 310, 500, 4000, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                result_confirm = confirm_all(cla)
-                if result_confirm == True:
-                    break
-            time.sleep(0.4)
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_mode_check.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(350, 50, 600, 120, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+
+            for i in range(5):
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_mode_check.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(350, 50, 600, 120, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("juljun_mode_check", imgs_)
+                    drag_pos_click(250, 520, 750, 520, cla)
+                    time.sleep(0.5)
+
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_mode_check.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(350, 50, 600, 120, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("juljun_mode_check", imgs_)
+                        drag_pos_py(250, 520, 750, 520, cla)
+                        time.sleep(0.5)
+                else:
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_off_result_title.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(330, 310, 500, 4000, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        result_confirm = confirm_all(cla)
+                        if result_confirm == True:
+                            break
+                    else:
+                        result_out = out_check(cla)
+                        if result_out == True:
+                            break
+                time.sleep(0.5)
+        else:
+            result_dead = dead_check(cla)
+            if result_dead == True:
+                dead_recover(cla)
+
 
     except Exception as e:
         print(e)
