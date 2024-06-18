@@ -36,14 +36,21 @@ def out_check(cla):
         if imgs_ is not None and imgs_ != False:
             print("out : talk", imgs_)
             out_ = True
-        else:
-            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\post\\get.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(400, 370, 560, 450, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                print("get", imgs_)
-                click_pos_reg(imgs_.x, imgs_.y, cla)
+
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\post\\get.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(400, 370, 560, 450, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("get", imgs_)
+            click_pos_reg(imgs_.x, imgs_.y, cla)
+
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_off_result_title.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(330, 310, 500, 4000, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            confirm_all(cla)
 
 
         return out_
