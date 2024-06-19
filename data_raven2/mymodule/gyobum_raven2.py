@@ -176,7 +176,7 @@ def gyobum_get(cla):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
-    from action_raven2 import confirm_all, organize_start, inven_check
+    from action_raven2 import confirm_all, organize_start, inven_check, skip_click
 
     try:
         print("gyobum_get")
@@ -601,12 +601,34 @@ def gyobum_get(cla):
                                         time.sleep(0.1)
 
                             else:
+                                # 440 + 77
+                                # 1005
+
+                                for c in range(7):
+                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\gyobum_point_5.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(50, 90, 210, 120, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("gyobum_point_5", imgs_)
+                                        x_reg = 440 + (c * 77)
+                                        click_pos_2(x_reg, 1005, cla)
+
+                                        for s in range(1):
+                                            result_skip = skip_click(cla)
+                                            if result_skip == True:
+                                                break
+                                            time.sleep(0.1)
+                                    else:
+                                        break
+                                    time.sleep(0.2)
+
+
                                 print("지식 도감 끝")
                                 break
                         else:
                             click_pos_2(100, 60, cla)
                     # 지식 도감은 오류 있어서 아예 나가기
-                    cl
 
                     # 특무대 교범으로 돌아가기
                     for i in range(10):

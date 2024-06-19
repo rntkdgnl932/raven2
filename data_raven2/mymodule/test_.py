@@ -64,30 +64,7 @@ def go_test():
     # if imgs_ is not None and imgs_ != False:
     #     print("last_sell_gold", imgs_)
 
-
-    data = "서브퀘스트_벨루시아"
-    # 데론, 로메른
-    now_sub_ready = data.split("_")
-    if now_sub_ready[1] == "벨루시아":
-        now_sub = "beloosia"
-    elif now_sub_ready[1] == "데론":
-        now_sub = "delon"
-    elif now_sub_ready[1] == "데론":
-        now_sub = "lomeln"
-
-    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\allget\\allget_point_1.PNG"
-    img_array = np.fromfile(full_path, np.uint8)
-    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(60, 300, 225, 765, cla, img, 0.8)
-    if imgs_ is not None and imgs_ != False:
-        print("allget_point_1", imgs_)
-    else:
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\allget\\allget_point_2.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(60, 300, 225, 765, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("allget_point_2", imgs_)
+    drag_pos(550, 700, 550, 600, cla)
 
     # ################# 계약 소환 관련 ################################
     # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\gyeyak\\gyeyak_high_confirm.PNG"

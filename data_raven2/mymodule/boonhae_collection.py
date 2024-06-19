@@ -94,6 +94,90 @@ def collection_start(cla):
 
                     time.sleep(0.5)
 
+                # 고급 등록
+                if v_.onCollection == True:
+                    for i in range(10):
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\collection\\col_gogb_1.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(20, 80, 200, 600, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("col_gogb_1", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            break
+                        else:
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\collection\\col_gogb_2.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(20, 80, 200, 600, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("col_gogb_2", imgs_)
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                break
+                            else:
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\collection\\col_jangbi.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(20, 80, 200, 600, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("col_jangbi", imgs_)
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.5)
+
+
+                    col_point_count = 0
+                    for i in range(10):
+                        is_gogb = False
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\collection\\col_gogb_1.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(20, 80, 200, 600, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("col_gogb_1", imgs_)
+                            is_gogb = True
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            time.sleep(0.3)
+                        else:
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\collection\\col_gogb_2.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(20, 80, 200, 600, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("col_gogb_2", imgs_)
+                                is_gogb = True
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                time.sleep(0.3)
+                                
+                        if is_gogb == True:
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\collection\\col_point.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(450, 140, 670, 1020, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("col_point", imgs_)
+                                click_pos_reg(imgs_.x - 20, imgs_.y + 15, cla)
+                                time.sleep(0.3)
+
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\collection\\sign_up_btn.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(815, 970, 940, 1030, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("sign_up_btn", imgs_)
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                                    for c in range(5):
+                                        confirm_all(cla)
+                                        skip_click(cla)
+                                        time.sleep(0.1)
+                            else:
+                                col_point_count += 1
+                                if col_point_count > 2:
+                                    col_ = True
+                                    clean_screen(cla)
+                                    break
+
+                        time.sleep(0.5)
 
 
             else:
@@ -169,6 +253,10 @@ def boonhae_start(cla):
                             print("common_btn", imgs_)
                             click_pos_reg(imgs_.x, imgs_.y, cla)
                             time.sleep(0.5)
+
+                            if v_.onCollection == True:
+                                click_pos_2(460, 865, cla)
+                                time.sleep(0.5)
 
                             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\boonhae\\include_collection.PNG"
                             img_array = np.fromfile(full_path, np.uint8)

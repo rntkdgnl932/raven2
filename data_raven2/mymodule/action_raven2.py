@@ -216,6 +216,8 @@ def skip_click(cla):
     try:
         print("skip_click")
 
+        clicked = False
+
         # 아이템 획득
         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\post\\get.PNG"
         img_array = np.fromfile(full_path, np.uint8)
@@ -224,6 +226,7 @@ def skip_click(cla):
         if imgs_ is not None and imgs_ != False:
             print("get", imgs_)
             click_pos_reg(imgs_.x, imgs_.y, cla)
+            clicked = True
 
         # 화면 닫기
         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\close_window.PNG"
@@ -233,6 +236,7 @@ def skip_click(cla):
         if imgs_ is not None and imgs_ != False:
             print("close_window", imgs_)
             click_pos_reg(imgs_.x, imgs_.y, cla)
+            clicked = True
 
         # 소환 나가기
         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\clean_screen\\middle_exit_btn.PNG"
@@ -242,6 +246,7 @@ def skip_click(cla):
         if imgs_ is not None and imgs_ != False:
             print("middle_exit_btn", imgs_)
             click_pos_reg(imgs_.x, imgs_.y, cla)
+            clicked = True
 
         # 레벨업
         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\level_up.PNG"
@@ -251,6 +256,7 @@ def skip_click(cla):
         if imgs_ is not None and imgs_ != False:
             print("skip : level_up", imgs_)
             click_pos_reg(imgs_.x, imgs_.y, cla)
+            clicked = True
 
         # 퀘스트 완료
         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tuto\\quest_complete_1.PNG"
@@ -260,6 +266,7 @@ def skip_click(cla):
         if imgs_ is not None and imgs_ != False:
             print("quest_complete_1", imgs_)
             click_pos_reg(imgs_.x, imgs_.y, cla)
+            clicked = True
 
         # 화면 클릭하기
         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\screen_click.PNG"
@@ -269,6 +276,7 @@ def skip_click(cla):
         if imgs_ is not None and imgs_ != False:
             print("screen_click", imgs_)
             click_pos_reg(imgs_.x, imgs_.y, cla)
+            clicked = True
         else:
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\screen_click2.PNG"
             img_array = np.fromfile(full_path, np.uint8)
@@ -277,6 +285,7 @@ def skip_click(cla):
             if imgs_ is not None and imgs_ != False:
                 print("screen_click2", imgs_)
                 click_pos_reg(imgs_.x, imgs_.y, cla)
+                clicked = True
 
         # 퀘스트 완료
 
@@ -290,6 +299,7 @@ def skip_click(cla):
             print("skip_1", imgs_)
             click_pos_reg(imgs_.x, imgs_.y, cla)
             skip_ = True
+            clicked = True
 
         else:
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\skip_2.PNG"
@@ -300,6 +310,7 @@ def skip_click(cla):
                 print("skip_2", imgs_)
                 click_pos_reg(imgs_.x, imgs_.y, cla)
                 skip_ = True
+                clicked = True
 
         if skip_ == True:
             for i in range(3):
@@ -308,7 +319,7 @@ def skip_click(cla):
                     break
                 time.sleep(0.5)
 
-
+        return clicked
     except Exception as e:
         print(e)
         return 0
