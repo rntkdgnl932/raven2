@@ -64,7 +64,12 @@ def go_test():
     # if imgs_ is not None and imgs_ != False:
     #     print("last_sell_gold", imgs_)
 
-    drag_pos(550, 700, 550, 600, cla)
+    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\post\\post_point_1.PNG"
+    img_array = np.fromfile(full_path, np.uint8)
+    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    imgs_ = imgs_set_(50, 80, 110, 800, cla, img, 0.8)
+    if imgs_ is not None and imgs_ != False:
+        print("post_point_1", imgs_)
 
     # ################# 계약 소환 관련 ################################
     # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\gyeyak\\gyeyak_high_confirm.PNG"
