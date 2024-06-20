@@ -212,13 +212,13 @@ def event_get_click(cla, is_picture):
         # 15 : 샬럿의골드거래제안  +
         # 16 : 샬럿의강회의뢰 +
 
-        if is_picture == "1" or is_picture == "13" or is_picture == "14" or is_picture == "15":
+        if is_picture == "1" or is_picture == "13" or is_picture == "14":
             data = "fourteen"
         elif is_picture == "2":
             data = "seven_six"
         elif is_picture == "3":
             data = "8_click"
-        elif is_picture == "4" or is_picture == "10" or is_picture == "11" or is_picture == "16":
+        elif is_picture == "4" or is_picture == "10" or is_picture == "11" or is_picture == "16" or is_picture == "15":
             data = "eight"
         elif is_picture == "5" or is_picture == "7" or is_picture == "8":
             data = "five"
