@@ -181,7 +181,7 @@ def event_get_start(cla):
 def event_get_click(cla, is_picture):
     import numpy as np
     import cv2
-    from function_game import imgs_set_, click_pos_reg, drag_pos
+    from function_game import imgs_set_, click_pos_reg, drag_pos, click_pos_2
     from action_raven2 import inven_check
 
     try:
@@ -320,34 +320,51 @@ def event_get_click(cla, is_picture):
 
         elif data == "eight":
             print("eight")
-            for c in range(10):
-                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\checked.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(480, 480, 860, 710, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    print("checked", imgs_)
-                    click_pos_reg(imgs_.x - 20, imgs_.y, cla)
-                    result_inven = inven_check(cla)
-                    if result_inven == True:
-                        click_pos_reg(imgs_.x - 20, imgs_.y, cla)
-                        time.sleep(0.2)
-                        click_pos_reg(imgs_.x - 20, imgs_.y, cla)
-                        time.sleep(0.2)
-                else:
-                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\checked_top.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(730, 300, 860, 420, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        print("checked_top", imgs_)
-                        click_pos_reg(imgs_.x - 30, imgs_.y, cla)
-                        result_inven = inven_check(cla)
-                        if result_inven == True:
-                            click_pos_reg(imgs_.x - 30, imgs_.y, cla)
-                            time.sleep(0.2)
-                            click_pos_reg(imgs_.x - 30, imgs_.y, cla)
-                            time.sleep(0.2)
+
+
+            # 510, 825 // 515, 570, 625, 680
+            for c in range(4):
+                y_reg = 515 + (55 * c)
+                click_pos_2(510, y_reg, cla)
+                time.sleep(0.5)
+                click_pos_2(510, y_reg, cla)
+                time.sleep(0.5)
+            # 510, 825 // 515, 570, 625, 680
+            for c in range(4):
+                y_reg = 515 + (55 * c)
+                click_pos_2(825, y_reg, cla)
+                time.sleep(0.5)
+                click_pos_2(825, y_reg, cla)
+                time.sleep(0.5)
+
+            # for c in range(10):
+            #     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\checked.PNG"
+            #     img_array = np.fromfile(full_path, np.uint8)
+            #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            #     imgs_ = imgs_set_(480, 480, 860, 710, cla, img, 0.8)
+            #     if imgs_ is not None and imgs_ != False:
+            #         print("checked", imgs_)
+            #         click_pos_reg(imgs_.x - 20, imgs_.y, cla)
+            #         result_inven = inven_check(cla)
+            #         if result_inven == True:
+            #             click_pos_reg(imgs_.x - 20, imgs_.y, cla)
+            #             time.sleep(0.2)
+            #             click_pos_reg(imgs_.x - 20, imgs_.y, cla)
+            #             time.sleep(0.2)
+            #     else:
+            #         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\checked_top.PNG"
+            #         img_array = np.fromfile(full_path, np.uint8)
+            #         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            #         imgs_ = imgs_set_(730, 300, 860, 420, cla, img, 0.8)
+            #         if imgs_ is not None and imgs_ != False:
+            #             print("checked_top", imgs_)
+            #             click_pos_reg(imgs_.x - 30, imgs_.y, cla)
+            #             result_inven = inven_check(cla)
+            #             if result_inven == True:
+            #                 click_pos_reg(imgs_.x - 30, imgs_.y, cla)
+            #                 time.sleep(0.2)
+            #                 click_pos_reg(imgs_.x - 30, imgs_.y, cla)
+            #                 time.sleep(0.2)
                 time.sleep(0.3)
         elif data == "five":
             print("five")
