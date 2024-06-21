@@ -13,7 +13,7 @@ def dungeon_start(cla, data):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_raven2 import go_maul, move_check, juljun_check, juljun_off, juljun_on, attack_on, go_random
+    from action_raven2 import go_maul, move_check, juljun_check, juljun_off, juljun_on, attack_on, go_random, confirm_all
     from clean_screen_raven2 import clean_screen
     from potion_raven2 import potion_check, potion_buy
     from dead_raven2 import dead_check_2, dead_recover
@@ -51,12 +51,18 @@ def dungeon_start(cla, data):
                     clean_screen(cla)
                     attack_on(cla)
 
+                    # 혹시 진입할 수도 있음
+                    confirm_all(cla)
+
                     juljun_on(cla)
             elif result_dungeon_check[1] == False:
                 print("절전 풀고 공격버튼 클릭 후 다시 절전하기")
                 go_random(cla)
                 clean_screen(cla)
                 attack_on(cla)
+
+                # 혹시 진입할 수도 있음
+                confirm_all(cla)
 
                 juljun_on(cla)
 
@@ -328,7 +334,7 @@ def dungeon_check(cla, data):
             dun_name = "redstone"
 
         if dun_name == "temple" or dun_name == "swamp":
-            folder_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\" + str(dun_name)+ "\\" + str(dun[2])
+            folder_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\" + str(dun_name) + "\\" + str(dun[2])
         else:
             folder_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\" + str(dun_name)
         file_list = os.listdir(folder_path)
@@ -382,14 +388,21 @@ def dungeon_check(cla, data):
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                     imgs_ = imgs_set_(350, 30, 600, 80, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
-                        is_dun = True
-                        print("던전 진입 완료")
-                        juljun_on(cla)
 
-                        result_juljun_check = juljun_check(cla)
-                        if result_juljun_check[1] == "attack":
-                            attack = True
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\map_title\\step.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(350, 70, 600, 110, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("던전 진입 완료")
+                            is_dun = True
+                            juljun_on(cla)
 
+                            result_juljun_check = juljun_check(cla)
+                            if result_juljun_check[1] == "attack":
+                                attack = True
+                        else:
+                            print("처음부터 다시 진입")
                     break
                 else:
 

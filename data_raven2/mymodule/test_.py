@@ -64,12 +64,12 @@ def go_test():
     # if imgs_ is not None and imgs_ != False:
     #     print("last_sell_gold", imgs_)
 
-    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\post\\post_point_1.PNG"
+    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\map_title\\step.PNG"
     img_array = np.fromfile(full_path, np.uint8)
     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(50, 80, 110, 800, cla, img, 0.8)
+    imgs_ = imgs_set_(350, 70, 600, 110, cla, img, 0.8)
     if imgs_ is not None and imgs_ != False:
-        print("post_point_1", imgs_)
+        print("step", imgs_)
 
     # ################# 계약 소환 관련 ################################
     # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\gyeyak\\gyeyak_high_confirm.PNG"
@@ -149,12 +149,7 @@ def go_test():
 
     # 진행도 없고 완료도 없는데 ! 클릭 몇번 해보고 더이상 안되면 완료하는걸로...
 
-    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\gyobum_point_2.PNG"
-    img_array = np.fromfile(full_path, np.uint8)
-    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(50, 130, 210, 700, cla, img, 0.8)
-    if imgs_ is not None and imgs_ != False:
-        print("confirm : immediately_move_confirm", imgs_)
+
 
     # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tgmoodae_mission\\two.PNG"
     # img_array = np.fromfile(full_path, np.uint8)
