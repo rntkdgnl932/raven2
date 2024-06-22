@@ -71,6 +71,13 @@ def go_test():
     if imgs_ is not None and imgs_ != False:
         print("attack_cannot..", imgs_)
 
+    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_cannot.PNG"
+    img_array = np.fromfile(full_path, np.uint8)
+    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    imgs_ = imgs_set_(300, 80, 600, 200, cla, img, 0.8)
+    if imgs_ is not None and imgs_ != False:
+        print("juljun_cannot..", imgs_)
+
     # ################# 계약 소환 관련 ################################
     # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\gyeyak\\gyeyak_high_confirm.PNG"
     # img_array = np.fromfile(full_path, np.uint8)
