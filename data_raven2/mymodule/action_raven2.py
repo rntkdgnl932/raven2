@@ -1297,6 +1297,7 @@ def inven_check(cla):
                 if imgs_ is not None and imgs_ != False:
                     print("attack_cannot..", imgs_)
                     inven = False
+                    break
                 else:
                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\post\\insufficient_inven.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
@@ -1305,6 +1306,7 @@ def inven_check(cla):
                     if imgs_ is not None and imgs_ != False:
                         print("insufficient_inven..", imgs_)
                         inven = False
+                        break
                     else:
                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\clean_screen\\close_btn_x.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
