@@ -168,12 +168,46 @@ def jadong_in(cla):
                         time.sleep(0.2)
                     os.execl(sys.executable, sys.executable, *sys.argv)
 
+                # 보석 있다면 보석 클릭해서 가기
 
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\jadong\\bosuk_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(675, 170, 930, 910, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("bosuk_btn", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                    for m in range(5):
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\jadong\\immediately_move.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(400, 900, 600, 1030, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("immediately_move", imgs_)
+                            break
+                        else:
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\jadong\\monster_click_btn1.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(400, 400, 680, 680, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("monster_click_btn1", imgs_)
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                            else:
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\jadong\\monster_click_btn2.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(400, 400, 680, 680, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("monster_click_btn2", imgs_)
+                                    click_pos_reg(imgs_.x - 50, imgs_.y, cla)
+                        time.sleep(0.5)
 
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\jadong\\immediately_move.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(770, 900, 930, 950, cla, img, 0.8)
+                imgs_ = imgs_set_(400, 900, 930, 1030, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     print("immediately_move", imgs_)
                     click_pos_reg(imgs_.x, imgs_.y, cla)
