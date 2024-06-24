@@ -250,18 +250,24 @@ def dungeon_in(cla, data):
                                 time.sleep(0.5)
                                 click_pos_2(770, 720, cla)
 
-                                already = False
-                                for a in range(10):
-                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\already_dun_in.PNG"
-                                    img_array = np.fromfile(full_path, np.uint8)
-                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(370, 110, 570, 150, cla, img, 0.8)
-                                    if imgs_ is not None and imgs_ != False:
-                                        already = True
-                                        break
-                                    time.sleep(0.2)
-                                if already == True:
-                                    clean_screen(cla)
+                                result_inven = inven_check(cla)
+
+                                if result_inven == True:
+
+                                    already = False
+                                    for a in range(10):
+                                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\already_dun_in.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(370, 110, 570, 150, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            already = True
+                                            break
+                                        time.sleep(0.2)
+                                    if already == True:
+                                        clean_screen(cla)
+                                else:
+                                    break
                             else:
                                 result_out = out_check(cla)
                                 if result_out == True:
