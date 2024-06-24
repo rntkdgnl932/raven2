@@ -81,7 +81,7 @@ def dungeon_in(cla, data):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_raven2 import go_maul, move_check, menu_open, out_check, juljun_on, attack_on, go_random
+    from action_raven2 import go_maul, move_check, menu_open, out_check, juljun_on, attack_on, go_random, inven_check
     from clean_screen_raven2 import clean_screen
     from dead_raven2 import dead_recover
     from potion_raven2 import potion_buy
