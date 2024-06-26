@@ -195,34 +195,34 @@ def event_get_click(cla, is_picture):
 
         ######
 
-        # 1 : 특무대합류기념방명록  o
-        # 2 : 바트람의훈련교범  o
-        # 3 : 정예특무대합류작전  o
-        # 4 : 서리대검획득작전  o
-        # 5 : 필드보스사냥소집령  o
-        # 6 : 길드던전보급출석  o
-        # 7 : 특무대길드소집령  o
-        # 8 : 균열보스사냥소집령  o
-        # 9 : 벨린다의별빛마법출석  o
-        # 10 : 벨린다의신비한성장지원  o
-        # 11 : 벨린다의마물사냥소집령  o
-        # 12 : 샬럿상단의증서지원출석  +
-        # 13 : 14일성의출석  +
-        # 14 : 14일사역마출석  +
-        # 15 : 샬럿의골드거래제안  +
-        # 16 : 샬럿의강회의뢰 +
+        # - :
 
-        if is_picture == "1" or is_picture == "13" or is_picture == "14":
+        # 1 : 특무대합류기념방명록  o k
+        # 2 : 바트람의훈련교범  o k
+        # 3 : 정예특무대합류작전  o k
+        # 4 : 서리대검획득작전  o k
+        # 5 : 심연의100회소환 +
+        # 6 : 심연지배자의출석석 +
+        # 7 : 어비스업데이트기념출석1 +
+        # 8 : 균열보스사냥소집령  o k
+        # 9 : 정예특무대원7일출석 +
+        # 10 : 심연악마와의계약 +
+        # 11 : 14일성의출석  k
+        # 12 : 14일사역마출석  k
+
+
+
+        if is_picture == "1" or is_picture == "11" or is_picture == "12" or is_picture == "6":
             data = "fourteen"
         elif is_picture == "2":
             data = "seven_six"
-        elif is_picture == "3":
+        elif is_picture == "3" or is_picture == "5":
             data = "8_click"
-        elif is_picture == "4" or is_picture == "10" or is_picture == "11" or is_picture == "16" or is_picture == "15":
+        elif is_picture == "4" or is_picture == "10":
             data = "eight"
-        elif is_picture == "5" or is_picture == "7" or is_picture == "8":
+        elif is_picture == "8":
             data = "five"
-        elif is_picture == "6" or is_picture == "9" or is_picture == "12":
+        elif is_picture == "7" or is_picture == "9":
             data = "seven"
 
 
