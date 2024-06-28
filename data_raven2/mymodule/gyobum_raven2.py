@@ -313,7 +313,7 @@ def gyobum_get(cla):
                                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\gyobum_point_3.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(220, 180, 900, 1000, cla, img, 0.8)
+                                    imgs_ = imgs_set_(220, 180, 900, 1000, cla, img, 0.75)
                                     if imgs_ is not None and imgs_ != False:
                                         print("gyobum_point_3", imgs_)
                                         click_pos_reg(imgs_.x - 10, imgs_.y + 10, cla)
@@ -334,7 +334,7 @@ def gyobum_get(cla):
                                                 imgs_ = imgs_set_(50, 130, 210, 700, cla, img, 0.8)
                                                 if imgs_ is not None and imgs_ != False:
                                                     # 600, 715, 830
-                                                    x_reg = 600 + (c * 115)
+                                                    x_reg = 640 + (c * 130)
                                                     end_ = False
                                                     for d in range(3):
                                                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\close_window.PNG"

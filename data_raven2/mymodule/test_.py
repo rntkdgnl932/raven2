@@ -64,69 +64,12 @@ def go_test():
     # if imgs_ is not None and imgs_ != False:
     #     print("last_sell_gold", imgs_)
 
-    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\jadong\\immediately_move.PNG"
+    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\gyobum_point_3.PNG"
     img_array = np.fromfile(full_path, np.uint8)
     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(400, 900, 930, 1030, cla, img, 0.8)
+    imgs_ = imgs_set_(220, 180, 900, 1000, cla, img, 0.8)
     if imgs_ is not None and imgs_ != False:
-        print("immediately_movennnnnnnnnnnnnnn", imgs_)
-
-
-    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\jadong\\bosuk_btn.PNG"
-    img_array = np.fromfile(full_path, np.uint8)
-    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(675, 170, 930, 910, cla, img, 0.8)
-    if imgs_ is not None and imgs_ != False:
-        print("bosuk_btn", imgs_)
-        click_pos_reg(imgs_.x, imgs_.y, cla)
-
-        for m in range(5):
-            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\jadong\\immediately_move.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(400, 900, 600, 1030, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                print("immediately_move", imgs_)
-                break
-            else:
-                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\jadong\\monster_click_btn1.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(400, 400, 680, 680, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    print("monster_click_btn1", imgs_)
-                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                else:
-                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\jadong\\monster_click_btn2.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(400, 400, 680, 680, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        print("monster_click_btn2", imgs_)
-                        click_pos_reg(imgs_.x - 50, imgs_.y, cla)
-            time.sleep(0.5)
-
-    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\jadong\\immediately_move.PNG"
-    img_array = np.fromfile(full_path, np.uint8)
-    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(400, 900, 930, 1030, cla, img, 0.8)
-    if imgs_ is not None and imgs_ != False:
-        print("immediately_move", imgs_)
-        click_pos_reg(imgs_.x, imgs_.y, cla)
-
-        for i in range(10):
-            result_out = out_check(cla)
-            if result_out == True:
-
-                spot_in = True
-
-                attack_on(cla)
-
-                juljun_on(cla)
-                break
-            else:
-                confirm_all(cla)
-            time.sleep(0.5)
+        print("gyobum_point_3", imgs_)
 
     # ################# 계약 소환 관련 ################################
     # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\gyeyak\\gyeyak_high_confirm.PNG"
