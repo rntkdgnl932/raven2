@@ -313,7 +313,7 @@ def gyobum_get(cla):
                                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\gyobum_point_3.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(220, 180, 900, 1000, cla, img, 0.75)
+                                    imgs_ = imgs_set_(220, 180, 930, 1000, cla, img, 0.75)
                                     if imgs_ is not None and imgs_ != False:
                                         print("gyobum_point_3", imgs_)
                                         click_pos_reg(imgs_.x - 10, imgs_.y + 10, cla)
@@ -322,60 +322,69 @@ def gyobum_get(cla):
                                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\gyobum_point_33.PNG"
                                         img_array = np.fromfile(full_path, np.uint8)
                                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                        imgs_ = imgs_set_(220, 180, 900, 1000, cla, img, 0.75)
+                                        imgs_ = imgs_set_(220, 180, 930, 1000, cla, img, 0.75)
                                         if imgs_ is not None and imgs_ != False:
                                             print("gyobum_point_33", imgs_)
                                             click_pos_reg(imgs_.x - 10, imgs_.y + 10, cla)
                                             time.sleep(0.3)
-
                                         else:
-                                            # 큰 포인트는 없는데 왼쪽에는 있을 경우 위에 보상을 받아야 하는 경우이다.
-                                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\gyobum_point_2.PNG"
+                                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\gyobum_point_333.PNG"
                                             img_array = np.fromfile(full_path, np.uint8)
                                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                            imgs_ = imgs_set_(50, 130, 210, 700, cla, img, 0.8)
+                                            imgs_ = imgs_set_(220, 180, 930, 1000, cla, img, 0.75)
                                             if imgs_ is not None and imgs_ != False:
+                                                print("gyobum_point_333", imgs_)
+                                                click_pos_reg(imgs_.x - 10, imgs_.y + 10, cla)
+                                                time.sleep(0.3)
 
-                                                for c in range(3):
-                                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\gyobum_point_2.PNG"
-                                                    img_array = np.fromfile(full_path, np.uint8)
-                                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                                    imgs_ = imgs_set_(50, 130, 210, 700, cla, img, 0.8)
-                                                    if imgs_ is not None and imgs_ != False:
-                                                        # 600, 715, 830
-                                                        x_reg = 640 + (c * 130)
-                                                        end_ = False
-                                                        for d in range(3):
-                                                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\close_window.PNG"
-                                                            img_array = np.fromfile(full_path, np.uint8)
-                                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                                            imgs_ = imgs_set_(400, 900, 600, 1000, cla, img, 0.8)
-                                                            if imgs_ is not None and imgs_ != False:
-                                                                print("close_window", imgs_)
-                                                                click_pos_reg(imgs_.x, imgs_.y, cla)
-                                                                end_ = True
-                                                                break
-                                                            else:
-                                                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\screen_click2.PNG"
+                                            else:
+                                                # 큰 포인트는 없는데 왼쪽에는 있을 경우 위에 보상을 받아야 하는 경우이다.
+                                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\gyobum_point_2.PNG"
+                                                img_array = np.fromfile(full_path, np.uint8)
+                                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                imgs_ = imgs_set_(50, 130, 210, 700, cla, img, 0.8)
+                                                if imgs_ is not None and imgs_ != False:
+
+                                                    for c in range(3):
+                                                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\gyobum_point_2.PNG"
+                                                        img_array = np.fromfile(full_path, np.uint8)
+                                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                        imgs_ = imgs_set_(50, 130, 210, 700, cla, img, 0.8)
+                                                        if imgs_ is not None and imgs_ != False:
+                                                            # 600, 715, 830
+                                                            x_reg = 640 + (c * 130)
+                                                            end_ = False
+                                                            for d in range(3):
+                                                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\close_window.PNG"
                                                                 img_array = np.fromfile(full_path, np.uint8)
                                                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                                                imgs_ = imgs_set_(300, 900, 600, 1000, cla, img, 0.8)
+                                                                imgs_ = imgs_set_(400, 900, 600, 1000, cla, img, 0.8)
                                                                 if imgs_ is not None and imgs_ != False:
-                                                                    print("screen_click2", imgs_)
+                                                                    print("close_window", imgs_)
                                                                     click_pos_reg(imgs_.x, imgs_.y, cla)
                                                                     end_ = True
                                                                     break
-
                                                                 else:
-                                                                    click_pos_2(x_reg, 135, cla)
-                                                                    result_inven = inven_check(cla)
-                                                                    if result_inven == False:
+                                                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\screen_click2.PNG"
+                                                                    img_array = np.fromfile(full_path, np.uint8)
+                                                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                                    imgs_ = imgs_set_(300, 900, 600, 1000, cla, img, 0.8)
+                                                                    if imgs_ is not None and imgs_ != False:
+                                                                        print("screen_click2", imgs_)
+                                                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                                                        end_ = True
                                                                         break
-                                                        if end_ == True:
+
+                                                                    else:
+                                                                        click_pos_2(x_reg, 135, cla)
+                                                                        result_inven = inven_check(cla)
+                                                                        if result_inven == False:
+                                                                            break
+                                                            if end_ == True:
+                                                                break
+                                                        else:
                                                             break
-                                                    else:
-                                                        break
-                                                    time.sleep(0.3)
+                                                        time.sleep(0.3)
                             else:
                                 click_pos_2(100, 60, cla)
 
