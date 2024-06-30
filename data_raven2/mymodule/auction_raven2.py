@@ -279,14 +279,18 @@ def auction_sell_start(cla):
                                 time.sleep(0.1)
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
                                 time.sleep(0.3)
-                                click_pos_2(680, 625, cla)
-                                time.sleep(0.1)
-                                click_pos_2(680, 625, cla)
-                                time.sleep(0.1)
-                                click_pos_2(680, 625, cla)
-                                time.sleep(0.1)
-                                click_pos_2(680, 625, cla)
-                                time.sleep(0.3)
+
+                                for m in range(5):
+                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\maximum_quantity.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(380, 100, 550, 160, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        break
+                                    else:
+                                        click_pos_2(680, 625, cla)
+                                        time.sleep(0.2)
+                                    time.sleep(0.2)
                         # 다야 갯수 정하기
                         for last in range(5):
                             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\qun_btn.PNG"
