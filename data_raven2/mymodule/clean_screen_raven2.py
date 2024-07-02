@@ -20,6 +20,51 @@ def clean_screen(cla):
 
         juljun_off(cla)
 
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_off_result_title.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(300, 310, 600, 700, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            confirm_all(cla)
+
+        skip_click(cla)
+
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\clean_screen\\close_btn_1.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(5, 30, 960, 1040, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("close_btn_1", imgs_)
+            click_pos_reg(imgs_.x, imgs_.y, cla)
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\clean_screen\\close_btn_2.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(5, 30, 960, 1040, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("close_btn_2", imgs_)
+            click_pos_reg(imgs_.x, imgs_.y, cla)
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\clean_screen\\close_btn_3.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(5, 30, 960, 1040, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("close_btn_3", imgs_)
+            click_pos_reg(imgs_.x, imgs_.y, cla)
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\clean_screen\\close_btn_4.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(5, 30, 960, 1040, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("close_btn_4", imgs_)
+            click_pos_reg(imgs_.x, imgs_.y, cla)
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\clean_screen\\close_btn_5.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(5, 30, 960, 1040, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("close_btn_5", imgs_)
+            click_pos_reg(imgs_.x, imgs_.y, cla)
+
         for i in range(5):
             clean = True
 
@@ -31,7 +76,7 @@ def clean_screen(cla):
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_off_result_title.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(330, 310, 500, 4000, cla, img, 0.8)
+                imgs_ = imgs_set_(300, 310, 600, 700, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     confirm_all(cla)
                     clean = False

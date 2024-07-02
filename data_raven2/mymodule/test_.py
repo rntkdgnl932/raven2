@@ -64,53 +64,12 @@ def go_test():
     # if imgs_ is not None and imgs_ != False:
     #     print("last_sell_gold", imgs_)
 
-    for i in range(10):
-
-        is_point = False
-
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\steegma\\small_point.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(80, 80, 140, 300, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("small_point", imgs_)
-            is_point = True
-            click_pos_reg(imgs_.x - 10, imgs_.y + 5, cla)
-            time.sleep(0.5)
-
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\steegma\\small_point2.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(80, 80, 140, 300, cla, img, 0.75)
-        if imgs_ is not None and imgs_ != False:
-            print("small_point2", imgs_)
-            is_point = True
-            click_pos_reg(imgs_.x - 10, imgs_.y + 5, cla)
-            time.sleep(0.5)
-
-        if is_point == True:
-            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\steegma\\gagin_btn.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(730, 960, 935, 1030, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                print("gagin_btn", imgs_)
-                click_pos_reg(imgs_.x, imgs_.y, cla)
-                for c in range(10):
-                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\close_window.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(400, 900, 600, 1000, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        print("close_window", imgs_)
-                        click_pos_reg(imgs_.x, imgs_.y, cla)
-                        time.sleep(0.5)
-                    time.sleep(0.2)
-        else:
-            clean_screen(cla)
-            break
-
-        time.sleep(0.5)
+    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\maul_move_juljun.PNG"
+    img_array = np.fromfile(full_path, np.uint8)
+    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    imgs_ = imgs_set_(850, 900, 950, 1040, cla, img, 0.7)
+    if imgs_ is not None and imgs_ != False:
+        print("maul_move_juljun", imgs_)
 
     # ################# 계약 소환 관련 ################################
     # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\gyeyak\\gyeyak_high_confirm.PNG"

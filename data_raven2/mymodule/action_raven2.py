@@ -662,6 +662,7 @@ def go_maul(cla):
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(50, 100, 200, 260, cla, img, 0.75)
                 if imgs_ is not None and imgs_ != False:
+                    is_move = True
                     maul_in = True
                 else:
                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\maul_move_juljun.PNG"
@@ -670,6 +671,7 @@ def go_maul(cla):
                     imgs_ = imgs_set_(850, 900, 950, 1040, cla, img, 0.7)
                     if imgs_ is not None and imgs_ != False:
                         print("maul_move_juljun", imgs_)
+                        is_move = True
                         click_pos_reg(imgs_.x, imgs_.y, cla)
                         for i in range(10):
                             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\jabhwa_btn.PNG"
@@ -681,7 +683,7 @@ def go_maul(cla):
                             time.sleep(0.5)
                     else:
                         print("마을 이동서 없다")
-                        why = "마을이동서 없다. 정비해라"
+                        why = "절전 마을이동서 없다. 정비해라"
                         line_to_me(cla, why)
                         is_move = False
                 time.sleep(0.5)
@@ -697,6 +699,7 @@ def go_maul(cla):
                 imgs_ = imgs_set_(50, 100, 200, 260, cla, img, 0.75)
                 if imgs_ is not None and imgs_ != False:
                     print("jabhwa_btn", imgs_)
+                    is_move = True
                     maul_in = True
                     break
                 else:
@@ -735,6 +738,7 @@ def go_maul(cla):
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(50, 100, 200, 260, cla, img, 0.75)
                 if imgs_ is not None and imgs_ != False:
+                    is_move = True
                     maul_in = True
                 else:
                     clean_screen(cla)
@@ -744,6 +748,7 @@ def go_maul(cla):
                     imgs_ = imgs_set_(360, 940, 470, 1010, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         print("maul_move", imgs_)
+                        is_move = True
                         click_pos_reg(imgs_.x, imgs_.y, cla)
                         for i in range(10):
                             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\jabhwa_btn.PNG"
