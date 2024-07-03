@@ -31,6 +31,7 @@ def get_post(cla):
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_reg
     from action_raven2 import inven_check, confirm_all, menu_open
     from clean_screen_raven2 import clean_screen
+    from stop_event18 import _stop_please
 
     try:
         print("get_post")
@@ -103,7 +104,8 @@ def get_post(cla):
                                         result_inven = inven_check(cla)
                                         if result_inven == True:
                                             confirm_all(cla)
-                                            inven_check(cla)
+                                            time.sleep(0.5)
+                                            _stop_please(cla)
                                 else:
                                     click_pos_2(870, 1000, cla)
                                     result_inven = inven_check(cla)
