@@ -313,7 +313,7 @@ def gyobum_get(cla):
                                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\gyobum_point_3.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(220, 180, 930, 1000, cla, img, 0.75)
+                                    imgs_ = imgs_set_(220, 180, 930, 1040, cla, img, 0.75)
                                     if imgs_ is not None and imgs_ != False:
                                         print("gyobum_point_3", imgs_)
                                         click_pos_reg(imgs_.x - 10, imgs_.y + 10, cla)
@@ -322,7 +322,7 @@ def gyobum_get(cla):
                                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\gyobum_point_33.PNG"
                                         img_array = np.fromfile(full_path, np.uint8)
                                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                        imgs_ = imgs_set_(220, 180, 930, 1000, cla, img, 0.75)
+                                        imgs_ = imgs_set_(220, 180, 930, 1040, cla, img, 0.75)
                                         if imgs_ is not None and imgs_ != False:
                                             print("gyobum_point_33", imgs_)
                                             click_pos_reg(imgs_.x - 10, imgs_.y + 10, cla)
@@ -331,7 +331,7 @@ def gyobum_get(cla):
                                             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\gyobum_point_333.PNG"
                                             img_array = np.fromfile(full_path, np.uint8)
                                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                            imgs_ = imgs_set_(220, 180, 930, 1000, cla, img, 0.75)
+                                            imgs_ = imgs_set_(220, 180, 930, 1040, cla, img, 0.75)
                                             if imgs_ is not None and imgs_ != False:
                                                 print("gyobum_point_333", imgs_)
                                                 click_pos_reg(imgs_.x - 10, imgs_.y + 10, cla)
