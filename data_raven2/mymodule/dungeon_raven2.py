@@ -372,11 +372,12 @@ def dungeon_check(cla, data):
                 break
 
         if is_dun == True:
-            result_juljun = juljun_check(cla)
-            if result_juljun[1] == "attack":
-                attack = True
-            else:
-                attack = False
+            if random != True:
+                result_juljun = juljun_check(cla)
+                if result_juljun[1] == "attack":
+                    attack = True
+                else:
+                    attack = False
         else:
             # 우선 던전에 들어왔는지 확인하기
 
