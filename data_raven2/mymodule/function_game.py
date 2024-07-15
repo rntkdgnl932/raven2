@@ -431,7 +431,6 @@ def click_pos_2(pos_1, pos_2, cla):
         import pyautogui
 
 
-
         coordinate = 0
         if cla == 'one':
             coordinate = 0
@@ -446,7 +445,7 @@ def click_pos_2(pos_1, pos_2, cla):
         if cla == 'six':
             coordinate = 960 * 5
 
-        # pyautogui.moveTo(pos_1 + coordinate, pos_2)
+        pyautogui.moveTo(pos_1 + coordinate, pos_2)
 
         if v_.now_arduino == "on":
             arduino_port = v_.COM_
@@ -514,14 +513,30 @@ def click_pos_2(pos_1, pos_2, cla):
                         # print("moveY", moveY)
                         # print("x_reg", x_reg)
                         # print("y_reg", y_reg)
-                        moveZ = 2
                         move_ = True
+
+                        # moveZ = 2
+                        # data = f'x = {moveX}, y = {moveY}, z = {moveZ}\n'
+                        # ser.write(data.encode())
+
+                        moveX = 0
+                        moveY = 0
+                        moveZ = 3
                         data = f'x = {moveX}, y = {moveY}, z = {moveZ}\n'
                         ser.write(data.encode())
-                    # else:
-                    #     print("아직 오차 범위 밖이다...", move_count)
-                    #     print("x_reg", x_reg)
-                    #     print("y_reg", y_reg)
+
+                        time.sleep(0.1)
+
+                        moveX = 0
+                        moveY = 0
+                        moveZ = 4
+                        data = f'x = {moveX}, y = {moveY}, z = {moveZ}\n'
+                        ser.write(data.encode())
+
+                # else:
+                #     print("아직 오차 범위 밖이다...", move_count)
+                #     print("x_reg", x_reg)
+                #     print("y_reg", y_reg)
             ser.close()
         else:
 
@@ -555,7 +570,7 @@ def click_pos_reg(pos_1, pos_2, cla):
         if cla == 'six':
             coordinate = 0
 
-        # pyautogui.moveTo(pos_1 + coordinate, pos_2)
+        pyautogui.moveTo(pos_1 + coordinate, pos_2)
 
         if v_.now_arduino == "on":
             arduino_port = v_.COM_
@@ -612,10 +627,30 @@ def click_pos_reg(pos_1, pos_2, cla):
                     x_reg = pos_1 + coordinate - pyautogui.position()[0]
                     y_reg = pos_2 - pyautogui.position()[1]
                     if -c_reg < x_reg < c_reg and -c_reg < y_reg < c_reg and pyautogui.position()[1] >= 31:
-                        moveZ = 2
                         move_ = True
+
+                        # moveZ = 2
+                        # data = f'x = {moveX}, y = {moveY}, z = {moveZ}\n'
+                        # ser.write(data.encode())
+
+                        moveX = 0
+                        moveY = 0
+                        moveZ = 3
                         data = f'x = {moveX}, y = {moveY}, z = {moveZ}\n'
                         ser.write(data.encode())
+
+                        time.sleep(0.1)
+
+                        moveX = 0
+                        moveY = 0
+                        moveZ = 4
+                        data = f'x = {moveX}, y = {moveY}, z = {moveZ}\n'
+                        ser.write(data.encode())
+
+                        # drag_pos_Press()
+                        # time.sleep(0.1)
+                        # drag_pos_Release()
+
             ser.close()
         else:
 
@@ -1118,7 +1153,7 @@ def drag_pos(pos_1, pos_2, pos_3, pos_4, cla):
         if cla == 'six':
             coordinate = 960 * 5
 
-
+        pyautogui.moveTo(pos_1 + coordinate, pos_2)
 
         if v_.now_arduino == "on":
 
@@ -1196,7 +1231,7 @@ def drag_pos_click(pos_1, pos_2, pos_3, pos_4, cla):
         if v_.now_arduino == "on":
 
             # 마우스 이동
-            mouse_move_cpp(pos_1, pos_2, cla)
+            mouse_move_drag(pos_1, pos_2, cla, 20)
 
             # 0.1초
             time.sleep(0.1)
@@ -1205,7 +1240,7 @@ def drag_pos_click(pos_1, pos_2, pos_3, pos_4, cla):
             # # 0.2초
             time.sleep(0.2)
             # 마우스 이동
-            mouse_move_cpp(pos_3, pos_4, cla)
+            mouse_move_drag(pos_3, pos_4, cla, 5)
             # # 0.2초
             time.sleep(0.2)
             # 마우스 떼기
@@ -1240,6 +1275,7 @@ def drag_pos_reg(pos_1, pos_2, pos_3, pos_4, cla):
         if cla == 'six':
             coordinate = 0
 
+        pyautogui.moveTo(pos_1 + coordinate, pos_2)
 
         if v_.now_arduino == "on":
             cla = "one"
