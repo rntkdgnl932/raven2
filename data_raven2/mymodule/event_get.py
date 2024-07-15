@@ -343,6 +343,11 @@ def event_get_click(cla, is_picture):
                 time.sleep(0.5)
                 click_pos_2(825, y_reg, cla)
                 time.sleep(0.5)
+            click_pos_2(800, 370, cla)
+            time.sleep(0.5)
+            click_pos_2(800, 370, cla)
+            time.sleep(0.5)
+
 
             # for c in range(10):
             #     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\checked.PNG"
