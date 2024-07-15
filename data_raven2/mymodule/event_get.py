@@ -377,7 +377,6 @@ def event_get_click(cla, is_picture):
             #                 time.sleep(0.2)
             #                 click_pos_reg(imgs_.x - 30, imgs_.y, cla)
             #                 time.sleep(0.2)
-                time.sleep(0.3)
         elif data == "five":
             print("five")
             for c in range(10):
