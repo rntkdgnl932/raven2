@@ -32,6 +32,7 @@ def go_test():
     from tgmoodae_mission import tgmoodae_mission_get_ready
     from auction_raven2 import auction_start
     from subquest_raven2 import subquest_get
+    from character_select_and_game_start import game_start_screen
 
 
 
@@ -55,35 +56,7 @@ def go_test():
     elif cla == "six":
         plus = 960 * 5
 
-    event_get_start(cla)
-
-    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_title\\7.PNG"
-    img_array = np.fromfile(full_path, np.uint8)
-    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(220, 320, 800, 400, cla, img, 0.8)
-    if imgs_ is not None and imgs_ != False:
-        print("pic_num", imgs_)
-
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_des\\50_1.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(640, 310, 880, 450, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("50_1", imgs_)
-
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_des\\50_2.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(640, 310, 880, 450, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("50_2", imgs_)
-
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_des\\50_3.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(640, 310, 880, 450, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("50_3", imgs_)
+    game_start_screen
 
     # text_check_get(522, 550, 580, 580, cla)
     #

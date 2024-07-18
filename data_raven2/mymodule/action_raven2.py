@@ -604,8 +604,21 @@ def game_check(cla):
 
 
                 confirm_all(cla)
-                time.sleep()
-                game_start_screen(cla, character_id)
+                time.sleep(1)
+
+                for i in range(10):
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\gameout\\my_character_seach.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(800, 900, 950, 1000, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        game_start_screen(cla, character_id)
+                        break
+                    time.sleep(2)
+
+
+
+
 
             elif why == "운영자에의해접속종료":
 
