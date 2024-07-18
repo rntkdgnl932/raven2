@@ -26,7 +26,7 @@ def out_check(cla):
 
         # 게임 오류 체크
         game_check(cla)
-        
+
 
         out_ = False
 
@@ -590,6 +590,16 @@ def game_check(cla):
                     out_ = True
 
                     why = "네트워크 상태 이상"
+                else:
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\monitor\\network_status.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(300, 400, 650, 800, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("dongihwa_info", imgs_)
+                        out_ = True
+
+                        why = "장시간"
 
 
         if out_ == True:
