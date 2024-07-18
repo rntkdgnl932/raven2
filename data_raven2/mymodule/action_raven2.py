@@ -26,6 +26,7 @@ def out_check(cla):
 
         # 게임 오류 체크
         game_check(cla)
+        
 
         out_ = False
 
