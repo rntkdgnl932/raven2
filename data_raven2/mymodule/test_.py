@@ -38,7 +38,7 @@ def go_test():
 
         print("test")
 
-        cla = "one"
+        cla = "four"
 
         plus = 0
 
@@ -56,12 +56,15 @@ def go_test():
         elif cla == "six":
             plus = 960 * 5
 
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\checked.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(480, 480, 860, 710, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("checked", imgs_)
+        event_get_start(cla)
+        #
+        # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_des\\50_3.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(640, 310, 880, 450, cla, img, 0.8)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("50_3", imgs_)
+
 
         # text_check_get(522, 550, 580, 580, cla)
         #

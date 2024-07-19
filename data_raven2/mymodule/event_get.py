@@ -64,7 +64,7 @@ def event_get_start(cla):
             imgs_ = imgs_set_(80, 300, 225, 680, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 print("e_in_point_1", imgs_)
-                click_pos_reg(imgs_.x - 15, imgs_.y + 15, cla)
+                # click_pos_reg(imgs_.x - 15, imgs_.y + 15, cla)
                 break
             else:
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\allget\\allget_point_2.PNG"
@@ -73,7 +73,7 @@ def event_get_start(cla):
                 imgs_ = imgs_set_(60, 300, 225, 765, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     print("allget_point_2", imgs_)
-                    click_pos_reg(imgs_.x - 15, imgs_.y + 15, cla)
+                    # click_pos_reg(imgs_.x - 15, imgs_.y + 15, cla)
                     break
             time.sleep(0.5)
 
@@ -102,7 +102,7 @@ def event_get_start(cla):
                             print("pic_num", pic_num)
                             # is_pic = True
 
-                            if pic_num == "7":
+                            if pic_num == 7:
                                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_des\\50_1.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -158,7 +158,7 @@ def event_get_start(cla):
                                 print("pic_num", pic_num)
                                 # is_pic = True
 
-                                if pic_num == "7":
+                                if pic_num == 7:
                                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_des\\50_1.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -444,7 +444,7 @@ def event_get_click(cla, is_picture):
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\checked.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(480, 480, 860, 710, cla, img, 0.75)
+                imgs_ = imgs_set_(480, 480, 860, 710, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     print("checked", imgs_)
                     click_pos_reg(imgs_.x - 20, imgs_.y, cla)
