@@ -11,7 +11,7 @@ sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder)
 def potion_check(cla):
     import numpy as np
     import cv2
-    from function_game import imgs_set_
+    from function_game import imgs_set_, click_pos_2
     from action_raven2 import juljun_check, out_check
 
     try:
@@ -37,6 +37,30 @@ def potion_check(cla):
                     print("num", print_say)
                     is_potion = True
                     break
+            if is_potion == False:
+
+                for i in range(10):
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\juljun_off.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(445, 755, 500, 810, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        break
+                    else:
+                        click_pos_2(480, 1000, cla)
+                    time.sleep(0.5)
+
+                for i in range(10):
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\juljun_potion\\" + str(i) + ".PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(445, 895, 477, 915, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        many = i * 100
+                        print_say = str(many) + "개 이상"
+                        print("num", print_say)
+                        is_potion = True
+                        break
         else:
             print("절전모드 아님")
 
@@ -54,6 +78,31 @@ def potion_check(cla):
                         print("num", print_say)
                         is_potion = True
                         break
+                if is_potion == False:
+
+                    for i in range(10):
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\out_off.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(265, 805, 310, 845, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                        else:
+                            click_pos_2(290, 980, cla)
+                        time.sleep(0.5)
+
+                    for i in range(10):
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\out_potion\\" + str(i) + ".PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(265, 905, 310, 923, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            many = i * 100
+                            print_say = str(many) + "개 이상"
+                            print("num", print_say)
+                            is_potion = True
+                            break
+
             else:
                 print("바깥화면 아니다.")
                 is_pass = True
