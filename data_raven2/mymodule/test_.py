@@ -56,7 +56,7 @@ def go_test():
         elif cla == "six":
             plus = 960 * 5
 
-        potion_check(cla)
+        # potion_check(cla)
 
         # for i in range(10):
         #     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\out_potion\\" + str(i) + ".PNG"
@@ -88,12 +88,19 @@ def go_test():
         # if imgs_ is not None and imgs_ != False:
         #     print("last_sell_gold", imgs_)
 
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\maul_move_juljun.PNG"
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\checked.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(850, 900, 950, 1040, cla, img, 0.7)
+        imgs_ = imgs_set_(480, 480, 860, 710, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
-            print("maul_move_juljun", imgs_)
+            print("checked 1", imgs_)
+
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\five\\checked.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(480, 480, 860, 710, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("checked 2", imgs_)
 
         # ################# 계약 소환 관련 ################################
         # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\gyeyak\\gyeyak_high_confirm.PNG"
