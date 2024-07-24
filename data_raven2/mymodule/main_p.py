@@ -80,6 +80,7 @@ rowcount = 0
 colcount = 0
 thisRow = 0
 thisCol = 0
+thisValue = "none"
 table_datas = ""
 #  onCollection= False
 onCla = 'none'
@@ -756,12 +757,17 @@ class FirstTab(QWidget):
         # 스케쥴 선택 삭제
         self.del_ = QPushButton('삭제')
         self.del_.clicked.connect(self.mySchedule_del)
+
         # 스케쥴 초기화
         self.clear = QPushButton('초기화')
         self.clear.clicked.connect(self.mySchedule_refresh)
+
         # 스케쥴 완전 초기화
-        self.all_clear = QPushButton('완전 초기화')
+        self.all_clear = QPushButton('스케쥴 변경')
         self.all_clear.clicked.connect(self.mySchedule_refresh_all)
+        # 스케쥴 완전 초기화
+        self.all_clear_2 = QPushButton('스케쥴 완전 변경')
+        self.all_clear_2.clicked.connect(self.mySchedule_refresh_all_2)
 
         # self.setItems = QPushButton('Set Items')
         # self.setItems.clicked.connect(self.set_rand_int)
@@ -1190,6 +1196,11 @@ class FirstTab(QWidget):
         colcount = self.tableWidget.columnCount()
 
         # 레이아웃
+
+        hbox1_1 = QVBoxLayout()
+        hbox1_1.addWidget(self.all_clear)
+        hbox1_1.addWidget(self.all_clear_2)
+
         hbox1 = QHBoxLayout()
         # hbox1.addWidget(self.setItems)
         hbox1.addWidget(self.mytestin)
@@ -1197,7 +1208,7 @@ class FirstTab(QWidget):
         hbox1.addWidget(self.again_restart)
         hbox1.addWidget(self.del_)
         hbox1.addWidget(self.clear)
-        hbox1.addWidget(self.all_clear)
+        hbox1.addLayout(hbox1_1)
 
         go_cla_1 = QHBoxLayout()
         go_cla_1.addWidget(self.sche_add1)
@@ -2137,9 +2148,10 @@ class FirstTab(QWidget):
             return 0
 
     def set_label(self, row, column):
-        global thisRow, thisCol
+        global thisRow, thisCol, thisValue
         item = self.tableWidget.item(row, column)
         value = item.text()
+        thisValue = value
         col = str(row + 1)
         col_ = int(col)
         col2 = str(column + 1)
@@ -2490,114 +2502,323 @@ class FirstTab(QWidget):
             print(e)
             return 0
 
-
     def mySchedule_refresh_all(self):
         try:
             ##############다시 코딩
+            print("thisValue", thisValue)
+            print("thisCol", thisCol)
 
-            v_.one_cla_count = 0
-            v_.two_cla_count = 0
-            v_.one_cla_ing = 'check'
-            v_.two_cla_ing = 'check'
+            if thisValue != "none":
+                if thisValue == "One" or thisValue == "Two" or thisValue == "Three" or thisValue == "Four" or thisValue == "Five" or thisValue == "Six":
+                    print("클라말고 스케쥴을 직어달라")
+                elif thisValue == "1" or thisValue == "2" or thisValue == "3" or thisValue == "4" or thisValue == "5":
+                    print("케릭터번호(ID) 말고 스케쥴을 직어달라")
+                elif thisValue == "대기중" or thisValue == "완료":
+                    print("현재상태 말고 스케쥴을 직어달라")
+                else:
+                    v_.one_cla_count = 0
+                    v_.two_cla_count = 0
+                    v_.one_cla_ing = 'check'
+                    v_.two_cla_ing = 'check'
 
-            v_.dead_count = 0
+                    v_.dead_count = 0
 
-            # myQuest_number_check('all', 'refresh')
+                    # myQuest_number_check('all', 'refresh')
 
-            dir_path = "C:\\my_games\\" + str(v_.game_folder)
-            file_path = dir_path + "\\mysettings\\myschedule\\schedule.txt"
-            file_path2 = dir_path + "\\mysettings\\refresh_time\\quest.txt"
-            file_path3 = dir_path + "\\mysettings\\myschedule\\schedule2.txt"
-            file_path13 = dir_path + "\\mysettings\\refresh_time\\refresh_time.txt"
+                    dir_path = "C:\\my_games\\" + str(v_.game_folder)
+                    file_path = dir_path + "\\mysettings\\myschedule\\schedule.txt"
+                    file_path2 = dir_path + "\\mysettings\\refresh_time\\quest.txt"
+                    file_path3 = dir_path + "\\mysettings\\myschedule\\schedule2.txt"
+                    file_path13 = dir_path + "\\mysettings\\refresh_time\\refresh_time.txt"
 
-            if os.path.isdir(dir_path) == False:
-                print('디렉토리 존재하지 않음')
-                os.makedirs(dir_path)
+                    if os.path.isdir(dir_path) == False:
+                        print('디렉토리 존재하지 않음')
+                        os.makedirs(dir_path)
 
-            isRefresh = False
-            while isRefresh is False:
-                if os.path.isfile(file_path13) == True:
-                    with open(file_path13, "r", encoding='utf-8-sig') as file:
-                        refresh_time = file.read()
-                        refresh_time_bool = refresh_time.isdigit()
-                        if refresh_time_bool == True:
-                            isRefresh = True
-                            print("refresh_time", refresh_time)
+                    ######################
+
+                    ######################
+
+                    with open(file_path, "r", encoding='utf-8-sig') as file:
+                        lines = file.read().splitlines()
+                        lines = ' '.join(lines).split()
+
+                        isSchedule_ = False
+                        while isSchedule_ is False:
+                            if lines == [] or lines == "":
+                                print("스케쥴이 비었다 : myQuest_play_check")
+                                with open(file_path3, "r", encoding='utf-8-sig') as file:
+                                    schedule_ready = file.read()
+                                with open(file_path, "w", encoding='utf-8-sig') as file:
+                                    file.write(schedule_ready)
+                                with open(file_path, "r", encoding='utf-8-sig') as file:
+                                    lines = file.read().splitlines()
+                            else:
+                                isSchedule_ = True
+                        # 표 수정
+                        reset_schedule_ = ""
+                        for i in range(len(lines)):
+                            complete_ = lines[i].split(":")
+                            for j in range(len(complete_)):
+                                if j < 3:
+                                    reset_schedule_ += complete_[j] + ":"
+                                if j == 3:
+                                    if thisValue in complete_[2] and thisCol < 5:
+                                        if complete_[j] == "대기중":
+                                            print("대기중??????????")
+                                            reset_schedule_ += '완료:'
+                                        elif complete_[j] == "완료":
+                                            reset_schedule_ += '대기중:'
+                                    else:
+                                        reset_schedule_ += complete_[j] + ":"
+
+                                if 3 < j < 7:
+                                    reset_schedule_ += complete_[j] + ":"
+                                if j == 7:
+                                    if thisValue in complete_[6] and thisCol > 4:
+                                        if complete_[j] == "대기중":
+                                            print("대기중?????!!!!!!!!!?????")
+                                            reset_schedule_ += '완료\n'
+                                        elif complete_[j] == "완료":
+                                            reset_schedule_ += '대기중\n'
+                                    else:
+                                        reset_schedule_ += complete_[j] + "\n"
+
+                        print('reset_schedule_표 수정', reset_schedule_)
+                        with open(file_path, "w", encoding='utf-8-sig') as file:
+                            file.write(reset_schedule_)
+
+                        # 백업 수정
+                        reset_schedule_ = ""
+                        for i in range(len(lines)):
+                            complete_ = lines[i].split(":")
+                            for j in range(len(complete_)):
+                                if j < 3:
+                                    reset_schedule_ += complete_[j] + ":"
+                                if j == 3:
+                                    reset_schedule_ += '대기중:'
+                                if 3 < j < 7:
+                                    reset_schedule_ += complete_[j] + ":"
+                                if j == 7:
+                                    reset_schedule_ += '대기중\n'
+
+                        print('reset_schedule_백업 수정', reset_schedule_)
+                        with open(file_path3, "w", encoding='utf-8-sig') as file:
+                            file.write(reset_schedule_)
+
+                    #######################################################
+
+                    isRefresh = False
+                    while isRefresh is False:
+                        if os.path.isfile(file_path13) == True:
+                            with open(file_path13, "r", encoding='utf-8-sig') as file:
+                                refresh_time = file.read()
+                                refresh_time_bool = refresh_time.isdigit()
+                                if refresh_time_bool == True:
+                                    isRefresh = True
+                                    print("refresh_time", refresh_time)
+                                else:
+                                    with open(file_path13, "w", encoding='utf-8-sig') as file:
+                                        file.write(str(4))
                         else:
                             with open(file_path13, "w", encoding='utf-8-sig') as file:
                                 file.write(str(4))
-                else:
-                    with open(file_path13, "w", encoding='utf-8-sig') as file:
-                        file.write(str(4))
 
-            with open(file_path3, "r", encoding='utf-8-sig') as file:
-                reset_schedule_ = ""
-                with open(file_path, "r", encoding='utf-8-sig') as file:
-                    lines = file.read().splitlines()
-                    lines = ' '.join(lines).split()
+                    # with open(file_path3, "r", encoding='utf-8-sig') as file:
+                    #     lines = file.read()
+                    #     # lines = file.read().splitlines()
+                    #     print('line_refresh', lines)
+                    # with open(file_path, "w", encoding='utf-8-sig') as file:
+                    #     file.write(lines)
 
-                    isSchedule_ = False
-                    while isSchedule_ is False:
-                        if lines == [] or lines == "":
-                            print("스케쥴이 비었다 : myQuest_play_check")
-                            with open(file_path3, "r", encoding='utf-8-sig') as file:
-                                schedule_ready = file.read()
-                            with open(file_path, "w", encoding='utf-8-sig') as file:
-                                file.write(schedule_ready)
-                            with open(file_path, "r", encoding='utf-8-sig') as file:
-                                lines = file.read().splitlines()
-                        else:
-                            isSchedule_ = True
+                    with open(file_path, "r", encoding='utf-8-sig') as file:
+                        lines = file.read()
 
-                    for i in range(len(lines)):
-                        complete_ = lines[i].split(":")
-                        for j in range(len(complete_)):
-                            if j < 3:
-                                reset_schedule_ += complete_[j] + ":"
-                            if j == 3:
-                                reset_schedule_ += '대기중:'
-                            if 3 < j < 7:
-                                reset_schedule_ += complete_[j] + ":"
-                            if j == 7:
-                                reset_schedule_ += "대기중\n"
-                    print('reset_schedule_', reset_schedule_)
-                    with open(file_path, "w", encoding='utf-8-sig') as file:
-                        file.write(reset_schedule_)
-                    with open(file_path3, "w", encoding='utf-8-sig') as file:
-                        file.write(reset_schedule_)
-            # with open(file_path, "w", encoding='utf-8-sig') as file:
-            #     file.write(lines)
-            with open(file_path3, "r", encoding='utf-8-sig') as file:
-                lines = file.read()
+                    ############################################################
 
-            nowDay_ = datetime.today().strftime("%Y%m%d")
-            nowDay = int(nowDay_)
-            nowTime = int(datetime.today().strftime("%H"))
-            yesterday_ = date.today() - timedelta(1)
-            yesterday = int(yesterday_.strftime('%Y%m%d'))
+                    nowDay_ = datetime.today().strftime("%Y%m%d")
+                    nowDay = int(nowDay_)
+                    nowTime = int(datetime.today().strftime("%H"))
+                    yesterday_ = date.today() - timedelta(1)
+                    yesterday = int(yesterday_.strftime('%Y%m%d'))
 
-            if nowTime >= int(refresh_time):
-                nowDay = str(nowDay)
+                    if nowTime >= int(refresh_time):
+                        nowDay = str(nowDay)
+                    else:
+                        nowDay = yesterday
+                        nowDay = str(nowDay)
+                    with open(file_path2, "w", encoding='utf-8-sig') as file:
+                        file.write(str(nowDay) + ":" + str(refresh_time) + "\n")
+
+                    remove_ = self.tableWidget.rowCount()
+                    print("remove_", remove_)
+                    for i in range(remove_ - 1):
+                        self.tableWidget.removeRow(0)
+
+                    refresh_result = lines.split("\n")
+                    rowcount = self.tableWidget.rowCount()
+                    print("refresh_rowcount", self.tableWidget.rowCount())
+                    count_ = len(refresh_result) - rowcount - 1
+                    for i in range(count_):
+                        self.tableWidget.insertRow(self.tableWidget.rowCount())
+                    print("refresh_rowcount2", self.tableWidget.rowCount())
+                    self.set_rand_int()
             else:
-                nowDay = yesterday
-                nowDay = str(nowDay)
-            with open(file_path2, "w", encoding='utf-8-sig') as file:
-                file.write(str(nowDay) + ":" + str(refresh_time) + "\n")
+                print("해당 스케쥴을 클릭해라")
+        except Exception as e:
+            print(e)
+            return 0
 
-            remove_ = self.tableWidget.rowCount()
-            print("remove_", remove_)
-            for i in range(remove_ - 1):
-                self.tableWidget.removeRow(0)
 
-            refresh_result = lines.split("\n")
-            rowcount = self.tableWidget.rowCount()
-            print("refresh_rowcount", self.tableWidget.rowCount())
-            count_ = len(refresh_result) - rowcount - 1
-            for i in range(count_):
-                self.tableWidget.insertRow(self.tableWidget.rowCount())
-            print("refresh_rowcount2", self.tableWidget.rowCount())
-            self.set_rand_int()
+    def mySchedule_refresh_all_2(self):
+        try:
+            ##############다시 코딩
+            print("thisValue", thisValue)
+            print("thisCol", thisCol)
 
+            if thisValue != "none":
+                if thisValue == "One" or thisValue == "Two" or thisValue == "Three" or thisValue == "Four" or thisValue == "Five" or thisValue == "Six":
+                    print("클라말고 스케쥴을 직어달라")
+                elif thisValue == "1" or thisValue == "2" or thisValue == "3" or thisValue == "4" or thisValue == "5":
+                    print("케릭터번호(ID) 말고 스케쥴을 직어달라")
+                elif thisValue == "대기중" or thisValue == "완료":
+                    print("현재상태 말고 스케쥴을 직어달라")
+                else:
+
+                    v_.one_cla_count = 0
+                    v_.two_cla_count = 0
+                    v_.one_cla_ing = 'check'
+                    v_.two_cla_ing = 'check'
+
+                    v_.dead_count = 0
+
+                    # myQuest_number_check('all', 'refresh')
+
+                    dir_path = "C:\\my_games\\" + str(v_.game_folder)
+                    file_path = dir_path + "\\mysettings\\myschedule\\schedule.txt"
+                    file_path2 = dir_path + "\\mysettings\\refresh_time\\quest.txt"
+                    file_path3 = dir_path + "\\mysettings\\myschedule\\schedule2.txt"
+                    file_path13 = dir_path + "\\mysettings\\refresh_time\\refresh_time.txt"
+
+                    if os.path.isdir(dir_path) == False:
+                        print('디렉토리 존재하지 않음')
+                        os.makedirs(dir_path)
+
+                    ######################
+
+                    ######################
+
+                    with open(file_path, "r", encoding='utf-8-sig') as file:
+                        lines = file.read().splitlines()
+                        lines = ' '.join(lines).split()
+
+                        isSchedule_ = False
+                        while isSchedule_ is False:
+                            if lines == [] or lines == "":
+                                print("스케쥴이 비었다 : myQuest_play_check")
+                                with open(file_path3, "r", encoding='utf-8-sig') as file:
+                                    schedule_ready = file.read()
+                                with open(file_path, "w", encoding='utf-8-sig') as file:
+                                    file.write(schedule_ready)
+                                with open(file_path, "r", encoding='utf-8-sig') as file:
+                                    lines = file.read().splitlines()
+                            else:
+                                isSchedule_ = True
+                        # 표 수정
+                        reset_schedule_ = ""
+                        for i in range(len(lines)):
+                            complete_ = lines[i].split(":")
+                            for j in range(len(complete_)):
+                                if j < 3:
+                                    reset_schedule_ += complete_[j] + ":"
+                                if j == 3:
+                                    if thisValue in complete_[2] and thisCol < 5:
+                                        if complete_[j] == "대기중":
+                                            print("대기중??????????")
+                                            reset_schedule_ += '완료:'
+                                        elif complete_[j] == "완료":
+                                            reset_schedule_ += '대기중:'
+                                    else:
+                                        reset_schedule_ += complete_[j] + ":"
+
+                                if 3 < j < 7:
+                                    reset_schedule_ += complete_[j] + ":"
+                                if j == 7:
+                                    if thisValue in complete_[6] and thisCol > 4:
+                                        if complete_[j] == "대기중":
+                                            print("대기중?????!!!!!!!!!?????")
+                                            reset_schedule_ += '완료\n'
+                                        elif complete_[j] == "완료":
+                                            reset_schedule_ += '대기중\n'
+                                    else:
+                                        reset_schedule_ += complete_[j] + "\n"
+
+                        print('reset_schedule_표 수정', reset_schedule_)
+                        with open(file_path, "w", encoding='utf-8-sig') as file:
+                            file.write(reset_schedule_)
+
+                        with open(file_path3, "w", encoding='utf-8-sig') as file:
+                            file.write(reset_schedule_)
+
+                    #######################################################
+
+                    isRefresh = False
+                    while isRefresh is False:
+                        if os.path.isfile(file_path13) == True:
+                            with open(file_path13, "r", encoding='utf-8-sig') as file:
+                                refresh_time = file.read()
+                                refresh_time_bool = refresh_time.isdigit()
+                                if refresh_time_bool == True:
+                                    isRefresh = True
+                                    print("refresh_time", refresh_time)
+                                else:
+                                    with open(file_path13, "w", encoding='utf-8-sig') as file:
+                                        file.write(str(4))
+                        else:
+                            with open(file_path13, "w", encoding='utf-8-sig') as file:
+                                file.write(str(4))
+
+                    # with open(file_path3, "r", encoding='utf-8-sig') as file:
+                    #     lines = file.read()
+                    #     # lines = file.read().splitlines()
+                    #     print('line_refresh', lines)
+                    # with open(file_path, "w", encoding='utf-8-sig') as file:
+                    #     file.write(lines)
+
+                    with open(file_path, "r", encoding='utf-8-sig') as file:
+                        lines = file.read()
+
+                    ############################################################
+
+                    nowDay_ = datetime.today().strftime("%Y%m%d")
+                    nowDay = int(nowDay_)
+                    nowTime = int(datetime.today().strftime("%H"))
+                    yesterday_ = date.today() - timedelta(1)
+                    yesterday = int(yesterday_.strftime('%Y%m%d'))
+
+                    if nowTime >= int(refresh_time):
+                        nowDay = str(nowDay)
+                    else:
+                        nowDay = yesterday
+                        nowDay = str(nowDay)
+                    with open(file_path2, "w", encoding='utf-8-sig') as file:
+                        file.write(str(nowDay) + ":" + str(refresh_time) + "\n")
+
+                    remove_ = self.tableWidget.rowCount()
+                    print("remove_", remove_)
+                    for i in range(remove_ - 1):
+                        self.tableWidget.removeRow(0)
+
+                    refresh_result = lines.split("\n")
+                    rowcount = self.tableWidget.rowCount()
+                    print("refresh_rowcount", self.tableWidget.rowCount())
+                    count_ = len(refresh_result) - rowcount - 1
+                    for i in range(count_):
+                        self.tableWidget.insertRow(self.tableWidget.rowCount())
+                    print("refresh_rowcount2", self.tableWidget.rowCount())
+                    self.set_rand_int()
+            else:
+                print("해당 스케쥴을 클릭해라")
         except Exception as e:
             print(e)
             return 0
