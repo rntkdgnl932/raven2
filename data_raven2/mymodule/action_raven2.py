@@ -591,15 +591,15 @@ def game_check(cla):
 
                     why = "네트워크 상태 이상"
                 else:
-                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\monitor\\network_status.PNG"
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\monitor\\fix_game.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                     imgs_ = imgs_set_(300, 400, 650, 800, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
-                        print("dongihwa_info", imgs_)
+                        print("fix_game", imgs_)
                         out_ = True
 
-                        why = "장시간"
+                        why = "서버점검"
 
 
         if out_ == True:
@@ -652,7 +652,26 @@ def game_check(cla):
                 #     file.write(str(data))
                 #     time.sleep(0.2)
                 # os.execl(sys.executable, sys.executable, *sys.argv)
+            elif why == "서버점검":
 
+                confirm_all(cla)
+                time.sleep(1)
+                # 끝내기
+                dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
+                file_path = dir_path + "\\start.txt"
+                # cla.txt
+                cla_data = str(v_.now_cla) + "cla"
+                file_path2 = dir_path + "\\" + cla_data + ".txt"
+                with open(file_path, "w", encoding='utf-8-sig') as file:
+                    data = 'no'
+                    file.write(str(data))
+                    time.sleep(0.2)
+                with open(file_path2, "w", encoding='utf-8-sig') as file:
+                    data = v_.now_cla
+                    file.write(str(data))
+                    time.sleep(0.2)
+                os.execl(sys.executable, sys.executable, *sys.argv)
+        return out_
 
     except Exception as e:
         print(e)
@@ -707,10 +726,12 @@ def go_maul(cla):
                                 break
                             time.sleep(0.5)
                     else:
-                        print("마을 이동서 없다")
-                        why = "절전 마을이동서 없다. 정비해라"
-                        line_to_me(cla, why)
-                        is_move = False
+                        result_gamecheck = game_check(cla)
+                        if result_gamecheck == False:
+                            print("마을 이동서 없다")
+                            why = "절전 마을이동서 없다. 정비해라"
+                            line_to_me(cla, why)
+                            is_move = False
                 time.sleep(0.5)
 
 
@@ -788,10 +809,12 @@ def go_maul(cla):
                                     break
                                 time.sleep(1)
                         else:
-                            print("마을 이동서 없다")
-                            why = "마을이동서 없다. 정비해라"
-                            line_to_me(cla, why)
-                            is_move = False
+                            result_gamecheck = game_check(cla)
+                            if result_gamecheck == False:
+                                print("마을 이동서 없다")
+                                why = "마을이동서 없다. 정비해라"
+                                line_to_me(cla, why)
+                                is_move = False
                 time.sleep(0.5)
         if is_move == False:
             dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)

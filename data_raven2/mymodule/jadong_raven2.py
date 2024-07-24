@@ -168,15 +168,60 @@ def jadong_in(cla):
                         time.sleep(0.2)
                     os.execl(sys.executable, sys.executable, *sys.argv)
 
-                # 보석 있다면 보석 클릭해서 가기
+                random_go = True
 
-                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\jadong\\bosuk_btn.PNG"
+                # 조각(흩어진) 있다면 보석 클릭해서 가기
+
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\jadong\\heaven_stone_wonsuk.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(675, 170, 930, 910, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    print("bosuk_btn", imgs_)
+                    print("heaven_stone_wonsuk", imgs_)
                     click_pos_reg(imgs_.x, imgs_.y, cla)
+                    random_go = False
+                else:
+                    # 헤븐스톤 있다면 헤븐스톤 클릭해서 가기
+
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\jadong\\heaven_stone_wonsuk.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(675, 170, 930, 910, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("heaven_stone_wonsuk", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        random_go = False
+                    else:
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\jadong\\heaven_stone_papun.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(675, 170, 930, 910, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("heaven_stone_wonsuk", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            random_go = False
+                        else:
+                            # 보석 있다면 보석 클릭해서 가기
+
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\jadong\\sangb_bosuk_btn.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(675, 170, 930, 910, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("sangb_bosuk_btn", imgs_)
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                random_go = False
+                            else:
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\jadong\\bosuk_btn.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(675, 170, 930, 910, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("bosuk_btn", imgs_)
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    random_go = False
+
+                if random_go == False:
 
                     for m in range(5):
                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\jadong\\immediately_move.PNG"

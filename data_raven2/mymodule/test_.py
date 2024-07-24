@@ -88,19 +88,12 @@ def go_test():
         # if imgs_ is not None and imgs_ != False:
         #     print("last_sell_gold", imgs_)
 
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\checked.PNG"
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\clean_screen\\close_btn_3.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(480, 480, 860, 710, cla, img, 0.8)
+        imgs_ = imgs_set_(5, 30, 960, 1040, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
-            print("checked 1", imgs_)
-
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\five\\checked.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(480, 480, 860, 710, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("checked 2", imgs_)
+            print("close_btn_3", imgs_)
 
         # ################# 계약 소환 관련 ################################
         # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\gyeyak\\gyeyak_high_confirm.PNG"

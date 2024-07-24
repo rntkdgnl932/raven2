@@ -100,37 +100,9 @@ def event_get_start(cla):
                         imgs_ = imgs_set_(220, 320, 800, 400, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             print("pic_num", pic_num)
-                            # is_pic = True
-
-                            if pic_num == 7:
-                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_des\\50_1.PNG"
-                                img_array = np.fromfile(full_path, np.uint8)
-                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(640, 310, 880, 450, cla, img, 0.8)
-                                if imgs_ is not None and imgs_ != False:
-                                    print("50_1", imgs_)
-
-                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_des\\50_2.PNG"
-                                img_array = np.fromfile(full_path, np.uint8)
-                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(640, 310, 880, 450, cla, img, 0.8)
-                                if imgs_ is not None and imgs_ != False:
-                                    print("50_2", imgs_)
-                                    pic_num = "8"
-
-                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_des\\50_3.PNG"
-                                img_array = np.fromfile(full_path, np.uint8)
-                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(640, 310, 880, 450, cla, img, 0.8)
-                                if imgs_ is not None and imgs_ != False:
-                                    print("50_3", imgs_)
-                                    pic_num = "3"
-
                             is_picture = str(pic_num)
                             event_get_click(cla, is_picture)
                             break
-                    # if is_pic == True:
-                    #     break
                 else:
                     break
             else:
@@ -248,33 +220,39 @@ def event_get_click(cla, is_picture):
 
         # - :
 
-        # 1 : 특무대합류기념방명록 o
+        # 1 : 시너림업데이트특별출석 +
         # 2 : 바트람의훈련교범 o
         # 3 : 정예특무대합류작전 o
-        # 4 : 서리대검획득작전 o
+        # 4 : 석양의축복이내린여름출석 +
 
         # 5 : 심연의100회소환(1주차) o
         # 5 : 심연의100회소환(2주차) o (사진 같이 인식됨)
         # 5 : 심연의100회소환(3주차) o (사진 같이 인식됨)
-        # 5 : 심연의100회소환(4주차) + (사진 같이 인식됨)
+        # 5 : 심연의100회소환(4주차) o (사진 같이 인식됨)
 
         # 6 : 심연지배자의출석 o
 
-        # 7 : 50일기념출석 o
-        # 7 : 50일기념출석II +
+        # 7 : 시너림에서의마법훈련 +
 
-        # 8 : 수수께끼소환출석 -
-        # 9 : 정예특무대원7일출석 o
+        # 8 : 시너림모험일지 +
 
-        # 11 : 14일성의출석 -
-        # 12 : 14일사역마출석 -
+        # 9 : 길드&성유물성장미션 +
 
-        # 10 : 시련의성터훈련미션 o
-        # 13 : 시련의성터지원미션 o
 
-        #  : 50일기념특별지령 +
+        # 10 :
 
-        # 8 11 12
+        # 11 :
+        # 12 :
+
+
+        # 13 :
+
+        # ?? : 시너림업데이트특별출석
+        # ?? : 석양의축복이내린여름출석
+        # ?? : 시너림에서의마법훈련
+        # ?? : 시너림모험일지
+        # ?? : 길드&성유물성장미션
+
 
 
 
@@ -282,15 +260,15 @@ def event_get_click(cla, is_picture):
 
         if is_picture == "1" or is_picture == "6":
             data = "fourteen"
-        elif is_picture == "2":
+        elif is_picture == "2" or is_picture == "7":
             data = "seven_six"
         elif is_picture == "3":
             data = "8_click"
-        elif is_picture == "4" or is_picture == "10" or is_picture == "5" or is_picture == "10" or is_picture == "13":
+        elif is_picture == "5" or is_picture == "8" or is_picture == "9":
             data = "eight"
-        elif is_picture == "8":
-            data = "five"
-        elif is_picture == "9"  or is_picture == "7":
+        # elif is_picture == "8":
+        #     data = "five"
+        elif is_picture == "4":
             data = "seven"
 
 
@@ -409,35 +387,6 @@ def event_get_click(cla, is_picture):
             click_pos_2(800, 370, cla)
             time.sleep(0.5)
 
-
-            # for c in range(10):
-            #     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\checked.PNG"
-            #     img_array = np.fromfile(full_path, np.uint8)
-            #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            #     imgs_ = imgs_set_(480, 480, 860, 710, cla, img, 0.8)
-            #     if imgs_ is not None and imgs_ != False:
-            #         print("checked", imgs_)
-            #         click_pos_reg(imgs_.x - 20, imgs_.y, cla)
-            #         result_inven = inven_check(cla)
-            #         if result_inven == True:
-            #             click_pos_reg(imgs_.x - 20, imgs_.y, cla)
-            #             time.sleep(0.2)
-            #             click_pos_reg(imgs_.x - 20, imgs_.y, cla)
-            #             time.sleep(0.2)
-            #     else:
-            #         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\checked_top.PNG"
-            #         img_array = np.fromfile(full_path, np.uint8)
-            #         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            #         imgs_ = imgs_set_(730, 300, 860, 420, cla, img, 0.8)
-            #         if imgs_ is not None and imgs_ != False:
-            #             print("checked_top", imgs_)
-            #             click_pos_reg(imgs_.x - 30, imgs_.y, cla)
-            #             result_inven = inven_check(cla)
-            #             if result_inven == True:
-            #                 click_pos_reg(imgs_.x - 30, imgs_.y, cla)
-            #                 time.sleep(0.2)
-            #                 click_pos_reg(imgs_.x - 30, imgs_.y, cla)
-            #                 time.sleep(0.2)
         elif data == "five":
             print("five")
             for c in range(10):
