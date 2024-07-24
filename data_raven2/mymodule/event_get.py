@@ -421,6 +421,21 @@ def event_get_click(cla, is_picture):
         elif data == "8_click":
             print("8_click")
             for c in range(5):
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\eight\\8_click_checked_1.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(480, 480, 860, 710, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("checked", imgs_)
+                    click_pos_reg(imgs_.x - 20, imgs_.y, cla)
+                    result_inven = inven_check(cla)
+                    if result_inven == True:
+                        click_pos_reg(imgs_.x - 20, imgs_.y, cla)
+                        time.sleep(0.2)
+                        click_pos_reg(imgs_.x - 20, imgs_.y, cla)
+                        time.sleep(0.2)
+
+
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\checked.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
