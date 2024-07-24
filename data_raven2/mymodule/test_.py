@@ -61,7 +61,7 @@ def go_test():
         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\eight\\8_click_checked_1.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(480, 480, 860, 710, cla, img, 0.8)
+        imgs_ = imgs_set_(480, 480, 860, 710, cla, img, 0.75)
         if imgs_ is not None and imgs_ != False:
             print("8_click_checked_1", imgs_)
 
