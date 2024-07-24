@@ -84,7 +84,7 @@ def event_get_start(cla):
             imgs_ = imgs_set_(80, 300, 225, 680, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 print("e_in_point_1", imgs_)
-                click_pos_reg(imgs_.x - 15, imgs_.y + 15, cla)
+                click_pos_reg(imgs_.x - 15, imgs_.y, cla)
                 result_inven = inven_check(cla)
                 if result_inven == True:
 
@@ -112,7 +112,7 @@ def event_get_start(cla):
                 imgs_ = imgs_set_(60, 300, 225, 765, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     print("allget_point_2", imgs_)
-                    click_pos_reg(imgs_.x - 15, imgs_.y + 15, cla)
+                    click_pos_reg(imgs_.x - 15, imgs_.y, cla)
                     result_inven = inven_check(cla)
                     if result_inven == True:
 
@@ -177,7 +177,7 @@ def event_get_start(cla):
                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\e_in_point_1.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        iimgs_ = imgs_set_(80, 300, 225, 680, cla, img, 0.8)
+                        imgs_ = imgs_set_(80, 300, 225, 680, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             print("drag_pos_py : e_in_point_1", imgs_)
                         else:
