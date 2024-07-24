@@ -426,7 +426,7 @@ def event_get_click(cla, is_picture):
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(480, 480, 860, 710, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    print("checked", imgs_)
+                    print("8_click_checked_1", imgs_)
                     click_pos_reg(imgs_.x - 20, imgs_.y, cla)
                     result_inven = inven_check(cla)
                     if result_inven == True:

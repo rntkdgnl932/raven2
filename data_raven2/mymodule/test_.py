@@ -58,6 +58,13 @@ def go_test():
 
         # potion_check(cla)
 
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\eight\\8_click_checked_1.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(480, 480, 860, 710, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("8_click_checked_1", imgs_)
+
         # for i in range(10):
         #     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\out_potion\\" + str(i) + ".PNG"
         #     img_array = np.fromfile(full_path, np.uint8)
@@ -88,12 +95,6 @@ def go_test():
         # if imgs_ is not None and imgs_ != False:
         #     print("last_sell_gold", imgs_)
 
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\clean_screen\\close_btn_3.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(5, 30, 960, 1040, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("close_btn_3", imgs_)
 
         # ################# 계약 소환 관련 ################################
         # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\gyeyak\\gyeyak_high_confirm.PNG"
