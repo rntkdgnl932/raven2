@@ -57,6 +57,7 @@ def go_test():
             plus = 960 * 5
 
         # potion_check(cla)
+        bag_open(cla)
 
         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\checked.PNG"
         img_array = np.fromfile(full_path, np.uint8)

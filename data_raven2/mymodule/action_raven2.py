@@ -337,65 +337,75 @@ def confirm_all(cla):
 
         confirm_ = False
 
-        # 이동
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\confirm\\move_confirm.PNG"
+        # 보상선택
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\confirm\\bosang_select.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(350, 500, 700, 700, cla, img, 0.8)
+        imgs_ = imgs_set_(400, 650, 550, 750, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
-            print("confirm : move_confirm", imgs_)
+            print("confirm : bosang_select", imgs_)
             click_pos_reg(imgs_.x, imgs_.y, cla)
             confirm_ = True
-        # else:
-        #     # 즉시이동
-        #     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\confirm\\immediately_move_confirm.PNG"
-        #     img_array = np.fromfile(full_path, np.uint8)
-        #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        #     imgs_ = imgs_set_(350, 500, 960, 1030, cla, img, 0.8)
-        #     if imgs_ is not None and imgs_ != False:
-        #         print("confirm : immediately_move_confirm", imgs_)
-        #         click_pos_reg(imgs_.x, imgs_.y, cla)
-        #         confirm_ = True
         else:
-            # 확인
-            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\confirm\\skip_confirm.PNG"
+            # 이동
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\confirm\\move_confirm.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(350, 500, 700, 800, cla, img, 0.8)
+            imgs_ = imgs_set_(350, 500, 700, 700, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
-                print("confirm : skip_confirm", imgs_)
+                print("confirm : move_confirm", imgs_)
                 click_pos_reg(imgs_.x, imgs_.y, cla)
                 confirm_ = True
+            # else:
+            #     # 즉시이동
+            #     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\confirm\\immediately_move_confirm.PNG"
+            #     img_array = np.fromfile(full_path, np.uint8)
+            #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            #     imgs_ = imgs_set_(350, 500, 960, 1030, cla, img, 0.8)
+            #     if imgs_ is not None and imgs_ != False:
+            #         print("confirm : immediately_move_confirm", imgs_)
+            #         click_pos_reg(imgs_.x, imgs_.y, cla)
+            #         confirm_ = True
             else:
-                # y
-                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\confirm\\all_y.PNG"
+                # 확인
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\confirm\\skip_confirm.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(350, 500, 700, 800, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    print("confirm : all_y", imgs_)
+                    print("confirm : skip_confirm", imgs_)
                     click_pos_reg(imgs_.x, imgs_.y, cla)
                     confirm_ = True
                 else:
-                    # 분해
-                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\boonhae\\boonhae_btn.PNG"
+                    # y
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\confirm\\all_y.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(480, 580, 610, 630, cla, img, 0.8)
+                    imgs_ = imgs_set_(350, 500, 700, 800, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
-                        print("confirm : boonhae_btn", imgs_)
+                        print("confirm : all_y", imgs_)
                         click_pos_reg(imgs_.x, imgs_.y, cla)
                         confirm_ = True
                     else:
-                        # 소환시 바닥에 모두 확인 버튼
-                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\confirm\\all_confirm.PNG"
+                        # 분해
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\boonhae\\boonhae_btn.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(300, 580, 800, 1030, cla, img, 0.8)
+                        imgs_ = imgs_set_(480, 580, 610, 630, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
-                            print("confirm : all_confirm", imgs_)
+                            print("confirm : boonhae_btn", imgs_)
                             click_pos_reg(imgs_.x, imgs_.y, cla)
                             confirm_ = True
+                        else:
+                            # 소환시 바닥에 모두 확인 버튼
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\confirm\\all_confirm.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(300, 580, 800, 1030, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("confirm : all_confirm", imgs_)
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                confirm_ = True
 
 
         return confirm_
@@ -1148,7 +1158,7 @@ def bag_open(cla):
                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag\\" + str(result_file_list[0]) + ".PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(600, 75, 900, 850, cla, img, 0.8)
+                    imgs_ = imgs_set_(600, 75, 900, 850, cla, img, 0.75)
                     if imgs_ is not None and imgs_ != False:
                         print(result_file_list[0], imgs_)
 
@@ -1158,8 +1168,18 @@ def bag_open(cla):
                         click_pos_reg(imgs_.x, imgs_.y, cla)
                         time.sleep(0.2)
 
-                        for i in range(3):
-                            confirm_all(cla)
+                        for i in range(4):
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag_select.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(380, 400, 530, 460, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("bag_select", imgs_)
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                time.sleep(0.2)
+                                confirm_all(cla)
+                            else:
+                                confirm_all(cla)
                             time.sleep(0.5)
 
                         for i in range(10):
