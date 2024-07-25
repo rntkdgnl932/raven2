@@ -153,13 +153,15 @@ def potion_buy(cla):
                     need_skip = True
 
         if need_skip == True:
-            click_pos_2(950, 50, cla)
+            click_pos_2(920, 860, cla)
             time.sleep(1)
             result_skip = skip_click(cla)
             if result_skip == False:
                 why = "이유가 뭘까"
                 print(why)
                 line_to_me(cla, why)
+            else:
+                click_pos_2(920, 860, cla)
 
         else:
             # 먼저 마을로 가기
