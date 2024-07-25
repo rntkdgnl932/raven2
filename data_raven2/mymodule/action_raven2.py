@@ -287,6 +287,15 @@ def skip_click(cla):
                 print("screen_click2", imgs_)
                 click_pos_reg(imgs_.x, imgs_.y, cla)
                 clicked = True
+            else:
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\screen_click3.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(300, 900, 600, 1040, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("screen_click3", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    clicked = True
 
         # 퀘스트 완료
 
@@ -406,6 +415,25 @@ def confirm_all(cla):
                                 print("confirm : all_confirm", imgs_)
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
                                 confirm_ = True
+                            else:
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\gyeyak_sohwan\\rare_confirm.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(450, 490, 510, 540, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("rare_confirm", imgs_)
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    time.sleep(0.5)
+                                    drag_pos(400, 540, 800, 540, cla)
+                                    time.sleep(2)
+                                else:
+                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\gyeyak_sohwan\\exit.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(400, 980, 560, 1030, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("gyeyak_ready", imgs_)
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
 
 
         return confirm_

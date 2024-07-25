@@ -15,7 +15,7 @@ def go_test():
     import pyautogui
     import random
 
-    from function_game import imgs_set_, drag_pos, text_check_get, imgs_set_for, drag_pos_click, click_pos_2, click_pos_reg, text_check_get_reg, in_number_check, int_put_, change_number
+    from function_game import imgs_set_, drag_pos, imgs_set_reg, imgs_set_for, drag_pos_click, click_pos_2, click_pos_reg, text_check_get_reg, in_number_check, int_put_, change_number
     from tuto_raven2 import way_point_click, tuto_start
     from action_raven2 import inven_check, bag_open, skip_click, confirm_all, out_check, attack_on, juljun_on
     from clean_screen_raven2 import clean_screen
@@ -26,7 +26,7 @@ def go_test():
     from gyobum_raven2 import gyobum_check, gyobum_get, gyobum_start
     from event_allget import event_allget_check, event_allget_start
     from event_get import event_get_check, event_get_start
-    from get_item import get_post, get_upjuk, get_item_start, get_sangjum
+    from get_item import get_post, get_upjuk, get_item_start, get_sangjum, get_gyeyak_sohwan
     from steegma import steegma_start
     from boonhae_collection import collection_start, boonhae_start
     from tgmoodae_mission import tgmoodae_mission_get_ready
@@ -56,10 +56,16 @@ def go_test():
         elif cla == "six":
             plus = 960 * 5
 
-        # potion_check(cla)
+        get_gyeyak_sohwan(cla)
 
-        v_.onCollection = True
-        collection_start(cla)
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\screen_click3.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(300, 900, 600, 1040, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("screen_click3", imgs_)
+
+
 
         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\checked.PNG"
         img_array = np.fromfile(full_path, np.uint8)
