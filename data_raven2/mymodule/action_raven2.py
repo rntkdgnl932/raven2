@@ -339,7 +339,7 @@ def skip_click(cla):
 def confirm_all(cla):
     import numpy as np
     import cv2
-    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from function_game import imgs_set_, click_pos_reg, drag_pos
 
     try:
         print("confrim_all")
@@ -723,9 +723,12 @@ def go_maul(cla):
     from clean_screen_raven2 import clean_screen
     from massenger import line_to_me
     from dead_raven2 import dead_check, dead_recover
+    from schedule import myQuest_play_check
 
     try:
         print("go_maul")
+
+
 
         maul_in = False
         maul_in_count = 0

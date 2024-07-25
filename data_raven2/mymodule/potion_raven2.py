@@ -127,73 +127,71 @@ def potion_buy(cla):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_raven2 import go_maul, move_check, confirm_all
+    from action_raven2 import go_maul, move_check, confirm_all, juljun_check, out_check, skip_click
     from clean_screen_raven2 import clean_screen
     from chango_raven2 import chango_in
+    from massenger import line_to_me
+    from schedule import myQuest_play_check
 
     try:
         print("potion_buy")
 
-        # 먼저 마을로 가기
+        need_skip = False
 
-        go_maul(cla)
+        # 마을 가기전 튜토 체크하기
+        result_schedule = myQuest_play_check(cla, "check")
+        character_id = result_schedule[0][1]
+        result_schedule_ = result_schedule[0][2]
 
-        confirm_all(cla)
+        if result_schedule_ == "튜토육성":
 
-        # 창고 한번 가주기
+            result_juljun = juljun_check(cla)
+            if result_juljun == False:
+                result_out = out_check(cla)
+                if result_out == False:
 
-        chango_in(cla)
+                    need_skip = True
 
-        # 마을인지 확인되면 정해진 포션 사기
+        if need_skip == True:
+            click_pos_2(950, 50, cla)
+            time.sleep(1)
+            result_skip = skip_click(cla)
+            if result_skip == False:
+                why = "이유가 뭘까"
+                print(why)
+                line_to_me(cla, why)
 
-        buy_ = False
-        buy_count = 0
+        else:
+            # 먼저 마을로 가기
 
-        while buy_ is False:
-            buy_count += 1
-            if buy_count > 7:
-                buy_ = True
+            go_maul(cla)
 
-            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\auto_buy_btn.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(400, 980, 600, 1020, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                print("auto_buy_btn", imgs_)
-                click_pos_reg(imgs_.x, imgs_.y, cla)
+            confirm_all(cla)
 
-                anymore_buy = False
+            # 창고 한번 가주기
 
-                for i in range(10):
-                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\money_point.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(600, 980, 650, 1020, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        print("money_point", imgs_)
-                        break
-                    else:
-                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\anymore_buy.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(460, 110, 650, 160, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            print("anymore_buy", imgs_)
-                            anymore_buy = True
-                        else:
-                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\auto_buy_btn.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(400, 980, 600, 1020, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                print("auto_buy_btn", imgs_)
-                                click_pos_reg(imgs_.x, imgs_.y, cla)
-                    time.sleep(0.5)
-                if anymore_buy == True:
-                    v_.potion_count = 0
-                    clean_screen(cla)
+            chango_in(cla)
+
+            # 마을인지 확인되면 정해진 포션 사기
+
+            buy_ = False
+            buy_count = 0
+
+            while buy_ is False:
+                buy_count += 1
+                if buy_count > 7:
                     buy_ = True
-                else:
+
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\auto_buy_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(400, 980, 600, 1020, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("auto_buy_btn", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                    anymore_buy = False
+
                     for i in range(10):
                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\money_point.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
@@ -201,41 +199,71 @@ def potion_buy(cla):
                         imgs_ = imgs_set_(600, 980, 650, 1020, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             print("money_point", imgs_)
-                            click_pos_2(815, 1000, cla)
-                        else:
-                            v_.potion_count = 0
-                            clean_screen(cla)
-                            buy_ = True
                             break
-                        time.sleep(0.5)
-            else:
-                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\jabhwa_btn.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(50, 100, 200, 260, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    print("jabhwa_btn", imgs_)
-                    click_pos_reg(imgs_.x, imgs_.y, cla)
-
-                    move_count = 0
-                    for i in range(50):
-                        result_move = move_check(cla)
-                        if result_move == False:
-                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\auto_buy_btn.PNG"
+                        else:
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\anymore_buy.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(400, 980, 600, 1020, cla, img, 0.8)
+                            imgs_ = imgs_set_(460, 110, 650, 160, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
-                                print("auto_buy_btn", imgs_)
-                                break
+                                print("anymore_buy", imgs_)
+                                anymore_buy = True
                             else:
-                                move_count += 1
-                                if move_count > 3:
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\auto_buy_btn.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(400, 980, 600, 1020, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("auto_buy_btn", imgs_)
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.5)
+                    if anymore_buy == True:
+                        v_.potion_count = 0
+                        clean_screen(cla)
+                        buy_ = True
+                    else:
+                        for i in range(10):
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\money_point.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(600, 980, 650, 1020, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("money_point", imgs_)
+                                click_pos_2(815, 1000, cla)
+                            else:
+                                v_.potion_count = 0
+                                clean_screen(cla)
+                                buy_ = True
+                                break
+                            time.sleep(0.5)
+                else:
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\jabhwa_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(50, 100, 200, 260, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("jabhwa_btn", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                        move_count = 0
+                        for i in range(50):
+                            result_move = move_check(cla)
+                            if result_move == False:
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\auto_buy_btn.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(400, 980, 600, 1020, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("auto_buy_btn", imgs_)
                                     break
-                        else:
-                            move_count = 0
-                        time.sleep(1)
-            time.sleep(0.5)
+                                else:
+                                    move_count += 1
+                                    if move_count > 3:
+                                        break
+                            else:
+                                move_count = 0
+                            time.sleep(1)
+                time.sleep(0.5)
 
 
     except Exception as e:
