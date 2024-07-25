@@ -416,10 +416,11 @@ def confirm_all(cla):
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
                                 confirm_ = True
                             else:
+                                # sohwan drag
                                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\gyeyak_sohwan\\rare_confirm.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(450, 490, 510, 540, cla, img, 0.8)
+                                imgs_ = imgs_set_(350, 490, 750, 1040, cla, img, 0.8)
                                 if imgs_ is not None and imgs_ != False:
                                     print("rare_confirm", imgs_)
                                     click_pos_reg(imgs_.x, imgs_.y, cla)
@@ -1132,7 +1133,7 @@ def bag_open(cla):
     import numpy as np
     import cv2
     import os
-    from function_game import imgs_set_, click_pos_2, click_pos_reg
+    from function_game import imgs_set_, click_pos_2, click_pos_reg, drag_pos
     from clean_screen_raven2 import clean_screen
 
     try:
@@ -1214,6 +1215,18 @@ def bag_open(cla):
                             time.sleep(0.5)
 
                         for i in range(10):
+
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\right__drag.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(350, 490, 750, 1040, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("rare_confirm", imgs_)
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                time.sleep(0.5)
+                                drag_pos(400, 540, 800, 540, cla)
+                                time.sleep(2)
+
                             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\clean_screen\\middle_exit_btn.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
