@@ -101,6 +101,7 @@ def dead_recover(cla):
     from action_raven2 import confirm_all
     from clean_screen_raven2 import clean_screen
     from massenger import line_to_me
+    from potion_raven2 import potion_buy
 
     try:
         print("dead_recover")
@@ -235,6 +236,8 @@ def dead_recover(cla):
 
         clean_screen(cla)
 
+        potion_buy(cla)
+
 
     except Exception as e:
         print(e)
@@ -250,7 +253,7 @@ def dead_recover_jadong(cla):
     from massenger import line_to_me
 
     try:
-        print("dead_recover")
+        print("dead_recover_jadong")
 
         recover = False
 

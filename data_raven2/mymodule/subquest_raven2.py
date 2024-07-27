@@ -328,8 +328,16 @@ def subquest_get(cla, data):
                         print("sub_click_btn", imgs_)
                         click_pos_reg(imgs_.x, imgs_.y, cla)
                     else:
-                        confirm_all(cla)
-                        skip_click(cla)
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\subquest\\sub_click_btn2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(610, 850, 700, 950, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("sub_click_btn2", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                        else:
+                            confirm_all(cla)
+                            skip_click(cla)
                 time.sleep(0.5)
         else:
             myQuest_play_add(cla, data)

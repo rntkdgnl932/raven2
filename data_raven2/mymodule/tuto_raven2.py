@@ -34,9 +34,11 @@ def tuto_start(cla):
 
         if result_dead == True:
 
+            dead_recover(cla)
+
             potion_buy(cla)
 
-            dead_recover(cla)
+
 
             # myQuest_play_add(cla, "튜토육성")
 
