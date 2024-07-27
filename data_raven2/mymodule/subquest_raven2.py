@@ -19,7 +19,7 @@ def subquest_start(cla, data):
     try:
         print("subquest_start", data)
 
-        # data => 벨루시아, 데론, 로메른른
+        # data => 벨루시아, 데론, 로메른, 시너림
 
         sub_in = False
         sub_in_count = 0
@@ -169,7 +169,6 @@ def subquest_get(cla, data):
         print("subquest_get", data)
 
         # data = "서브퀘스트_벨루시아"
-        # 데론, 로메른
         now_sub_ready = data.split("_")
         if now_sub_ready[1] == "벨루시아":
             now_sub = "beloosia"
@@ -177,6 +176,10 @@ def subquest_get(cla, data):
             now_sub = "delon"
         elif now_sub_ready[1] == "로메른":
             now_sub = "lomeln"
+        elif now_sub_ready[1] == "시너림":
+            now_sub = "sinerim"
+
+
 
         for i in range(5):
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\subquest\\down_clicked.PNG"
@@ -202,7 +205,7 @@ def subquest_get(cla, data):
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\subquest\\" + str(now_sub) + ".PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(330, 80, 440, 1030, cla, img, 0.8)
+                imgs_ = imgs_set_(330, 80, 440, 1030, cla, img, 0.9)
                 if imgs_ is not None and imgs_ != False:
                     click_pos_reg(imgs_.x, imgs_.y, cla)
                     time.sleep(0.5)
