@@ -15,6 +15,7 @@ def subquest_start(cla, data):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from action_raven2 import inven_check, menu_open, confirm_all, skip_click
     from clean_screen_raven2 import clean_screen
+    from schedule import myQuest_play_add
 
     try:
         print("subquest_start", data)
@@ -27,6 +28,9 @@ def subquest_start(cla, data):
             sub_in_count += 1
             if sub_in_count > 5:
                 sub_in = True
+
+            end_sub = False
+
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\subquest\\quest_title.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -95,14 +99,29 @@ def subquest_start(cla, data):
                                         print("서브퀘...현재 진행중...", imgs_)
                                         sub_in = True
                                         break
+                                    else:
+                                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\subquest\\idonotknow_region.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(300, 80, 620, 160, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("idonotknow_region...", imgs_)
+                                            sub_in = True
+                                            end_sub = True
+                                            break
                                     time.sleep(0.2)
 
                                 if sub_in == True:
+
                                     clean_screen(cla)
 
-                                    # 절전모드 후 어택 또는 이동은 진행중이고, 절전모드가 풀리면 스킵 발동 및 브레이크하고 다시 퀘스트 받기 하면 됨
+                                    if end_sub == True:
 
-                                    juljun_sub_play(cla)
+                                        myQuest_play_add(cla, data)
+                                    else:
+                                        # 절전모드 후 어택 또는 이동은 진행중이고, 절전모드가 풀리면 스킵 발동 및 브레이크하고 다시 퀘스트 받기 하면 됨
+
+                                        juljun_sub_play(cla)
 
                         else:
                             # ing 없으면 보상받기 후 특무대 받기

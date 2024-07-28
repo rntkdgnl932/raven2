@@ -495,3 +495,179 @@ def mine_check(cla):
     except Exception as e:
         print(e)
 
+##################거래 단가 구하기##################
+
+
+def get_sell_price(cla):
+    import numpy as np
+    import cv2
+
+    from function_game import imgs_set_, text_check_get_reg, in_number_check, int_put_, change_number
+    try:
+        print("get_sell_price")
+        sell_price = 0
+
+        # 최근 거래 단가
+        result_now = get_low_price(cla, "now")
+        # 현재 최저 단가
+        result_low = get_low_price(cla, "low")
+
+        print("result now", result_now)
+        print("result low", result_low)
+
+        if result_now == 1:
+            sell_price = result_low
+        else:
+            if result_low > result_now:
+                sell_price = result_low
+            else:
+                sell_price = (result_low + result_now) / 2
+
+
+        print("##########################")
+        print("sell_price", sell_price)
+        sell_price = round(sell_price, 2)
+        print("sell_price", sell_price)
+        print("##########################")
+
+    except Exception as e:
+        print(e)
+
+
+
+def get_low_price(cla, data):
+    import numpy as np
+    import cv2
+    import os
+
+    from function_game import imgs_set_reg
+
+    if cla == 'one':
+        plus = 0
+    if cla == 'two':
+        plus = 960
+    if cla == 'three':
+        plus = 960 * 2
+    if cla == 'four':
+        plus = 960 * 3
+    if cla == 'five':
+        plus = 960 * 4
+    if cla == 'six':
+        plus = 960 * 5
+
+    try:
+        print("auction_item", data)
+
+        # 최근
+        if data == "now":
+            x_1 = 500 + plus
+            x_2 = 600 + plus
+            point_reg = x_2
+        else:
+            x_1 = 700 + plus
+            x_2 = 820 + plus
+            point_reg = x_2
+        y_1 = 375
+        y_2 = 405
+
+        is_point = False
+
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\point.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_reg(x_1, y_1, x_2, y_2, cla, img, 0.9)
+        if imgs_ is not None and imgs_ != False:
+            print("point", imgs_)
+            is_point = True
+            point_reg = imgs_.x
+            x_2 = point_reg
+
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\dia_start.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_reg(x_1, y_1, x_2, y_2, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("dia_start", imgs_)
+            x_1 = imgs_.x + 7
+            x_2 = x_1 + 10
+
+        # 포인트가 있으면 9차이, 없으면 7차이
+
+        print("##################")
+        print("x_1", x_1)
+        print("x_2", x_2)
+        print("#######################")
+        #
+        # result = text_check_get_reg(x_1, y_1, x_2, y_2)
+        # print("result", result)
+
+        # 소수점 이전
+        num = False
+        num_count = 0
+        result_num = ""
+        while num is False:
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\price_num\\" + str(num_count) + ".PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_reg(x_1, y_1, x_2, y_2, cla, img, 0.85)
+            if imgs_ is not None and imgs_ != False:
+                print("is num...", str(num_count), imgs_)
+
+                x_1 = imgs_.x
+                x_2 = x_1 + 14
+
+                if is_point == True:
+                    if imgs_.x > point_reg:
+                        num = True
+                    else:
+                        result_num += str(num_count)
+                else:
+                    result_num += str(num_count)
+                # print("result_num...", result_num)
+                num_count = 0
+            else:
+                num_count += 1
+                if num_count > 9:
+                    num = True
+
+        # 소수점 이후
+        if is_point == True:
+
+            x_1 = point_reg
+            x_2 = x_1 + 10
+
+            result_num += "."
+
+            print("result_num(point)", result_num)
+
+            num = False
+            num_count = 0
+            while num is False:
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\price_num\\" + str(num_count) + ".PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_reg(x_1, y_1, x_2, y_2, cla, img, 0.85)
+                if imgs_ is not None and imgs_ != False:
+                    print("is num...", str(num_count), imgs_)
+
+                    x_1 = imgs_.x
+                    x_2 = x_1 + 14
+                    result_num += str(num_count)
+                    # print("result_num...", result_num)
+                    num_count = 0
+                else:
+                    num_count += 1
+                    if num_count > 9:
+                        num = True
+
+
+
+        result_num = float(result_num)
+        print("result_num", result_num)
+
+
+        return result_num
+    except Exception as e:
+        print(e)
+        return 0
+
