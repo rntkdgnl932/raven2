@@ -35,6 +35,15 @@ def dead_check(cla):
             dead_ = True
             click_pos_reg(imgs_.x, imgs_.y, cla)
 
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\check\\out_out.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(300, 300, 750, 800, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("out_out", imgs_)
+            dead_ = True
+            click_pos_reg(imgs_.x, imgs_.y, cla)
+
         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\dead_2.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -52,6 +61,14 @@ def dead_check(cla):
             print("dead_description", imgs_)
             dead_ = True
             confirm_all(cla)
+
+        # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\boohwal_btn.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(530, 30, 650, 100, cla, img, 0.75)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("boohwal_btn", imgs_)
+        #     dead_ = True
 
         if dead_ == True:
             if result_schedule_ == "튜토육성" or "서브퀘스트" in result_schedule_:
