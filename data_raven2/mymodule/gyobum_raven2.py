@@ -619,26 +619,33 @@ def gyobum_get(cla):
                                         time.sleep(0.1)
 
                             else:
-                                # 440 + 77
+                                # 275 350 425 500 575 650 // 715 780 845 910
+                                # 75 // 65
                                 # 1005
 
-                                for c in range(7):
-                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\gyobum_point_5.PNG"
-                                    img_array = np.fromfile(full_path, np.uint8)
-                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(50, 90, 210, 120, cla, img, 0.8)
-                                    if imgs_ is not None and imgs_ != False:
-                                        print("gyobum_point_5", imgs_)
-                                        x_reg = 440 + (c * 77)
+                                for c in range(10):
+                                    if c < 6:
+                                        x_reg = 275 + (c * 75)
+                                        click_pos_2(x_reg, 1005, cla)
+                                    elif c == 6:
+                                        x_reg = 715
+                                        click_pos_2(x_reg, 1005, cla)
+                                    elif c == 7:
+                                        x_reg = 780
+                                        click_pos_2(x_reg, 1005, cla)
+                                    elif c == 8:
+                                        x_reg = 845
+                                        click_pos_2(x_reg, 1005, cla)
+                                    elif c == 9:
+                                        x_reg = 910
                                         click_pos_2(x_reg, 1005, cla)
 
-                                        for s in range(1):
-                                            result_skip = skip_click(cla)
-                                            if result_skip == True:
-                                                break
-                                            time.sleep(0.1)
-                                    else:
-                                        break
+
+                                    for s in range(1):
+                                        result_skip = skip_click(cla)
+                                        if result_skip == True:
+                                            break
+                                        time.sleep(0.1)
                                     time.sleep(0.2)
 
 
