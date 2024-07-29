@@ -3607,8 +3607,9 @@ class game_Playing(QThread):
                                 # 오토 시작
 
                                 if result_schedule_ == "튜토육성":
-                                    tuto_start(v_.now_cla)
+                                    # tuto_start(v_.now_cla)
                                     print("start")
+                                    myQuest_play_add(v_.now_cla, result_schedule_)
                                     time.sleep(5)
                                 elif "일반" in result_schedule_:
                                     dungeon_start(v_.now_cla, result_schedule_)
