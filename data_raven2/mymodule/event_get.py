@@ -130,31 +130,6 @@ def event_get_start(cla):
                                 print("pic_num", pic_num)
                                 # is_pic = True
 
-                                if pic_num == 7:
-                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_des\\50_1.PNG"
-                                    img_array = np.fromfile(full_path, np.uint8)
-                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(640, 310, 880, 450, cla, img, 0.8)
-                                    if imgs_ is not None and imgs_ != False:
-                                        print("50_1", imgs_)
-
-                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_des\\50_2.PNG"
-                                    img_array = np.fromfile(full_path, np.uint8)
-                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(640, 310, 880, 450, cla, img, 0.8)
-                                    if imgs_ is not None and imgs_ != False:
-                                        print("50_2", imgs_)
-                                        pic_num = "8"
-
-                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_des\\50_3.PNG"
-                                    img_array = np.fromfile(full_path, np.uint8)
-                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(640, 310, 880, 450, cla, img, 0.8)
-                                    if imgs_ is not None and imgs_ != False:
-                                        print("50_3", imgs_)
-                                        pic_num = "3"
-
-
                                 is_picture = str(pic_num)
                                 event_get_click(cla, is_picture)
                                 break
@@ -220,24 +195,20 @@ def event_get_click(cla, is_picture):
 
         # - :
 
-        # 1 : 시너림업데이트특별출석 +
+        # 1 : 시너림업데이트특별출석 o
         # 2 : 바트람의훈련교범 o
         # 3 : 정예특무대합류작전 o
-        # 4 : 석양의축복이내린여름출석 +
+        # 4 : 석양의축복이내린여름출석 o
 
-        # 5 : 심연의100회소환(1주차) o
-        # 5 : 심연의100회소환(2주차) o (사진 같이 인식됨)
-        # 5 : 심연의100회소환(3주차) o (사진 같이 인식됨)
-        # 5 : 심연의100회소환(4주차) o (사진 같이 인식됨)
+        # 5 : 영광과헌신의집결령(eight)
 
-        # 6 : 심연지배자의출석 o
+        # 6 : 마물정화일지(eight)
 
-        # 7 : 시너림에서의마법훈련 +
+        # 7 : 시너림에서의마법훈련 o
 
-        # 8 : 시너림모험일지 +
+        # 8 : 시너림모험일지 o
 
-        # 9 : 길드&성유물성장미션 +
-
+        # 9 : none
 
         # 10 :
 
@@ -247,24 +218,21 @@ def event_get_click(cla, is_picture):
 
         # 13 :
 
-        # ?? : 시너림업데이트특별출석
-        # ?? : 석양의축복이내린여름출석
-        # ?? : 시너림에서의마법훈련
-        # ?? : 시너림모험일지
-        # ?? : 길드&성유물성장미션
+        # ?? : 영광과헌신의집결령(eight)
+        # ?? : 마물정화일지(eight)
 
 
 
 
 
 
-        if is_picture == "1" or is_picture == "6":
+        if is_picture == "1":
             data = "fourteen"
         elif is_picture == "2" or is_picture == "7":
             data = "seven_six"
         elif is_picture == "3":
             data = "8_click"
-        elif is_picture == "5" or is_picture == "8" or is_picture == "9":
+        elif is_picture == "8" or is_picture == "5" or is_picture == "6":
             data = "eight"
         # elif is_picture == "8":
         #     data = "five"
