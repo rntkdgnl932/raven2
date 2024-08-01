@@ -84,7 +84,6 @@ def subquest_start(cla, data):
                             if imgs_ is not None and imgs_ != False:
                                 print("now_move_btn", imgs_)
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
-                                time.sleep(0.5)
 
                                 for i in range(10):
                                     result_confirm = confirm_all(cla)
