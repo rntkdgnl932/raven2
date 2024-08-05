@@ -588,9 +588,6 @@ class SecondTab(QWidget):
             click_pos_reg(imgs_.x + 100, imgs_.y, "three")
             time.sleep(0.5)
             win_right_move("three")
-            # pyautogui.keyDown('win')
-            # pyautogui.press('right')
-            # pyautogui.keyUp('win')
             time.sleep(0.3)
             full_path = "c:\\my_games\\" + str(v_.game_folder) + "\\" + str(v_.data_folder) + "\\imgs\\check\\moonlight_title.PNG"
             img_array = np.fromfile(full_path, np.uint8)
@@ -613,9 +610,6 @@ class SecondTab(QWidget):
             click_pos_reg(imgs_.x + 100, imgs_.y, "four")
             time.sleep(0.5)
             win_right_move("four")
-            # pyautogui.keyDown('win')
-            # pyautogui.press('right')
-            # pyautogui.keyUp('win')
             time.sleep(0.3)
             full_path = "c:\\my_games\\" + str(v_.game_folder) + "\\" + str(v_.data_folder) + "\\imgs\\check\\moonlight_title.PNG"
             img_array = np.fromfile(full_path, np.uint8)
@@ -765,8 +759,8 @@ class FirstTab(QWidget):
         # 스케쥴 완전 초기화
         self.all_clear = QPushButton('스케쥴 변경')
         self.all_clear.clicked.connect(self.mySchedule_refresh_all)
-        # 스케쥴 완전 초기화
-        self.all_clear_2 = QPushButton('스케쥴 완전 변경')
+        # 스케쥴 잠금
+        self.all_clear_2 = QPushButton('스케쥴 잠금')
         self.all_clear_2.clicked.connect(self.mySchedule_refresh_all_2)
 
         # self.setItems = QPushButton('Set Items')
@@ -1979,6 +1973,8 @@ class FirstTab(QWidget):
                 # 파일 읽기
                 with open(file_path, "r", encoding='utf-8-sig') as file:
                     lines = file.read().splitlines()
+                    lines = ' '.join(lines).split()
+
             else:
                 print('파일 없당')
                 if os.path.isdir(dir_path) == True:
@@ -1989,6 +1985,7 @@ class FirstTab(QWidget):
                             file.write(str(shcedule))
                             with open(file_path, "r", encoding='utf-8-sig') as file:
                                 lines = file.read().splitlines()
+                                lines = ' '.join(lines).split()
                 else:
                     print('디렉토리 존재하지 않음')
                     os.makedirs(dir_path)
@@ -2216,6 +2213,10 @@ class FirstTab(QWidget):
 
     def sche_up_modify(self):
         global thisRow, thisCol, rowcount
+
+        dir_path = "C:\\my_games\\" + str(v_.game_folder)
+        file_path3 = dir_path + "\\mysettings\\myschedule\\schedule2.txt"
+
         try:
             rowcount = self.tableWidget.rowCount()
             last_1 = ""
@@ -2302,10 +2303,99 @@ class FirstTab(QWidget):
                 modi_result_ = self.mySchedule_change(how_, last_result)
 
                 if modi_result_ == True:
-                    thisRow -= 1
+                    # thisRow -= 1
                     self.set_rand_int()
                 else:
                     print("수정 실패")
+
+                print("")
+                last_1 = ""
+                last_2 = ""
+                last_result = ""
+                modi_result = ""
+
+                with open(file_path3, "r", encoding='utf-8-sig') as file:
+                    lines = file.read().splitlines()
+                    modi_ready_ = ' '.join(lines).split()
+
+                    for i in range(len(modi_ready_)):
+
+                        # if i + 1 == len(modi_ready_):
+                        #     modi_result += modi_ready_[i]
+
+                        if i == thisRow - 2:
+                            modi_result += modi_ready_[i + 1] + "\n"
+
+                        elif i == thisRow - 1:
+                            modi_result += modi_ready_[i - 1] + "\n"
+
+                        else:
+                            modi_result += modi_ready_[i] + "\n"
+
+                    modi_result__ = modi_result.split("\n")
+                    print("modi_ready__!!!!!!!!!!!!!", modi_ready__)
+                    print("modi_result__!!!!!!!!!!!", modi_result__)
+
+                    modi_spl_1 = modi_ready_[thisRow - 2].split(":")  # 바뀌기전 5678 => 그대로
+                    modi_spl_2 = modi_ready_[thisRow - 1].split(":")  # 바뀌기전 5678 => 그대로
+
+                    modi_spl_3 = modi_result__[thisRow - 2].split(":")  # 바뀐 후 1234 => 바꾸기 b
+                    modi_spl_4 = modi_result__[thisRow - 1].split(":")  # 바뀐후 1234 => 바꾸기 a
+
+                    #      4번기준
+                    #      thisRow - 2
+                    #      modi_spl_3 + modi_spl_2
+                    #      thisRow - 1
+                    #      modi_spl_1 + modi_spl_4
+                    # else:
+                    #     thisRow - 2
+                    #     modi_spl_1 + modi_spl_4
+                    #     thisRow - 1
+                    #     modi_spl_3 + modi_spl_2##################나중에 마지막줄을 올릴때 잘못 처리되는거 수정하기
+
+                    if thisCol < 5:
+
+                        last_1 = str(modi_spl_3[0]) + ":" + str(modi_spl_3[1]) + ":" + str(modi_spl_3[2]) + ":" + str(
+                            modi_spl_3[3]) + ":" + str(modi_spl_1[4]) + ":" + str(modi_spl_1[5]) + ":" + str(
+                            modi_spl_1[6]) + ":" + str(modi_spl_1[7])
+                        last_2 = str(modi_spl_4[0]) + ":" + str(modi_spl_4[1]) + ":" + str(modi_spl_4[2]) + ":" + str(
+                            modi_spl_4[3]) + ":" + str(modi_spl_2[4]) + ":" + str(modi_spl_2[5]) + ":" + str(
+                            modi_spl_2[6]) + ":" + str(modi_spl_2[7])
+                    else:
+
+                        last_1 = str(modi_spl_1[0]) + ":" + str(modi_spl_1[1]) + ":" + str(modi_spl_1[2]) + ":" + str(
+                            modi_spl_1[3]) + ":" + str(modi_spl_3[4]) + ":" + str(modi_spl_3[5]) + ":" + str(
+                            modi_spl_3[6]) + ":" + str(modi_spl_3[7])
+                        last_2 = str(modi_spl_2[0]) + ":" + str(modi_spl_2[1]) + ":" + str(modi_spl_2[2]) + ":" + str(
+                            modi_spl_2[3]) + ":" + str(modi_spl_4[4]) + ":" + str(modi_spl_4[5]) + ":" + str(
+                            modi_spl_4[6]) + ":" + str(modi_spl_4[7])
+
+                    for i in range(len(modi_result__)):
+                        print("last_result", modi_result__[i])
+                        # if i == len(modi_result__) - 1:
+                        #     last_result += str(modi_result__[i]) + 'a'
+                        #     # last_result += str(i) + str(modi_result__[i])
+                        #     print("i", i)
+                        if thisRow - 1 == i:
+                            last_result += last_2 + "\n"
+                        elif thisRow - 2 == i:
+                            last_result += last_1 + "\n"
+                        elif i == len(modi_result__) - 1:
+                            last_result += str(modi_result__[i]) + ''
+                            # last_result += str(i) + str(modi_result__[i])
+                            print("i", i)
+                        else:
+                            last_result += str(modi_result__[i]) + "\n"
+
+                    print("last_result_up", last_result)
+                    how_ = 'modify'
+                    modi_result_ = self.mySchedule_change2(how_, last_result)
+
+                    if modi_result_ == True:
+                        thisRow -= 1
+                        self.set_rand_int()
+                    else:
+                        print("수정 실패")
 
 
             else:
@@ -2329,6 +2419,13 @@ class FirstTab(QWidget):
 
     def sche_down_modify(self):
         global thisRow, thisCol, rowcount
+
+        # row:
+
+        dir_path = "C:\\my_games\\" + str(v_.game_folder)
+        file_path3 = dir_path + "\\mysettings\\myschedule\\schedule2.txt"
+
+
         try:
             rowcount = self.tableWidget.rowCount()
             last_1 = ""
@@ -2391,14 +2488,89 @@ class FirstTab(QWidget):
                 how_ = 'modify'
                 modi_result_ = self.mySchedule_change(how_, last_result)
                 if modi_result_ == True:
-                    thisRow += 1
+                    # thisRow += 1
                     self.set_rand_int()
                 else:
                     print("수정 실패")
 
+
+                ###
+                # 백엔드 수정
+
+                last_1 = ""
+                last_2 = ""
+                last_result = ""
+                modi_result = ""
+
+                with open(file_path3, "r", encoding='utf-8-sig') as file:
+                    lines = file.read().splitlines()
+                    modi_ready_ = ' '.join(lines).split()
+
+                    for i in range(len(modi_ready_)):
+
+                        # if i + 1 == len(modi_ready_):
+                        #     modi_result += modi_ready_[i]
+                        if thisRow == i:
+                            modi_result += modi_ready_[i - 1] + "\n"
+                        elif thisRow - 1 == i:
+                            modi_result += modi_ready_[i + 1] + "\n"
+                        else:
+                            modi_result += modi_ready_[i] + "\n"
+
+                    modi_result__ = modi_result.split("\n")
+
+                    modi_spl_1 = modi_ready_[thisRow - 1].split(":")  # 바뀌기전 1234 => 바꾸기
+                    modi_spl_2 = modi_ready_[thisRow].split(":")  # 바뀌기전 5678 => 그대로
+                    modi_spl_3 = modi_result__[thisRow - 1].split(":")  # 바뀐 후 1234 => 바꾸기
+                    modi_spl_4 = modi_result__[thisRow].split(":")  # 바뀐후 5678 => 그대로
+
+                    if thisCol < 5:
+
+                        last_1 = str(modi_spl_3[0]) + ":" + str(modi_spl_3[1]) + ":" + str(
+                            modi_spl_3[2]) + ":" + str(
+                            modi_spl_3[3]) + ":" + str(modi_spl_1[4]) + ":" + str(modi_spl_1[5]) + ":" + str(
+                            modi_spl_1[6]) + ":" + str(modi_spl_1[7])
+                        last_2 = str(modi_spl_4[0]) + ":" + str(modi_spl_4[1]) + ":" + str(
+                            modi_spl_4[2]) + ":" + str(
+                            modi_spl_4[3]) + ":" + str(modi_spl_2[4]) + ":" + str(modi_spl_2[5]) + ":" + str(
+                            modi_spl_2[6]) + ":" + str(modi_spl_2[7])
+                    else:
+
+                        last_1 = str(modi_spl_1[0]) + ":" + str(modi_spl_1[1]) + ":" + str(
+                            modi_spl_1[2]) + ":" + str(
+                            modi_spl_1[3]) + ":" + str(modi_spl_3[4]) + ":" + str(modi_spl_3[5]) + ":" + str(
+                            modi_spl_3[6]) + ":" + str(modi_spl_3[7])
+                        last_2 = str(modi_spl_2[0]) + ":" + str(modi_spl_2[1]) + ":" + str(
+                            modi_spl_2[2]) + ":" + str(
+                            modi_spl_2[3]) + ":" + str(modi_spl_4[4]) + ":" + str(modi_spl_4[5]) + ":" + str(
+                            modi_spl_4[6]) + ":" + str(modi_spl_4[7])
+
+                    for i in range(len(modi_result__)):
+
+                        if i + 1 == len(modi_result__):
+                            last_result += str(modi_result__[i])
+                        elif thisRow - 1 == i:
+                            last_result += last_1 + "\n"
+                        elif thisRow == i:
+                            last_result += last_2 + "\n"
+                        else:
+                            last_result += str(modi_result__[i]) + "\n"
+
+                    print("last_result_down", last_result)
+                    how_ = 'modify'
+                    modi_result_ = self.mySchedule_change2(how_, last_result)
+                    if modi_result_ == True:
+                        thisRow += 1
+                        self.set_rand_int()
+                    else:
+                        print("수정 실패")
+
             else:
                 pyautogui.alert(button='넵', text='수정할 행을 선택해 주세요', title='확인해주이소')
                 print("수정할 행을 선택해 주세요. 추후 알러트로...")
+
+
+
 
         except Exception as e:
             print(e)
@@ -2588,23 +2760,7 @@ class FirstTab(QWidget):
                         with open(file_path, "w", encoding='utf-8-sig') as file:
                             file.write(reset_schedule_)
 
-                        # 백업 수정
-                        reset_schedule_ = ""
-                        for i in range(len(lines)):
-                            complete_ = lines[i].split(":")
-                            for j in range(len(complete_)):
-                                if j < 3:
-                                    reset_schedule_ += complete_[j] + ":"
-                                if j == 3:
-                                    reset_schedule_ += '대기중:'
-                                if 3 < j < 7:
-                                    reset_schedule_ += complete_[j] + ":"
-                                if j == 7:
-                                    reset_schedule_ += '대기중\n'
 
-                        print('reset_schedule_백업 수정', reset_schedule_)
-                        with open(file_path3, "w", encoding='utf-8-sig') as file:
-                            file.write(reset_schedule_)
 
                     #######################################################
 
@@ -2624,12 +2780,6 @@ class FirstTab(QWidget):
                             with open(file_path13, "w", encoding='utf-8-sig') as file:
                                 file.write(str(4))
 
-                    # with open(file_path3, "r", encoding='utf-8-sig') as file:
-                    #     lines = file.read()
-                    #     # lines = file.read().splitlines()
-                    #     print('line_refresh', lines)
-                    # with open(file_path, "w", encoding='utf-8-sig') as file:
-                    #     file.write(lines)
 
                     with open(file_path, "r", encoding='utf-8-sig') as file:
                         lines = file.read()
@@ -2671,6 +2821,12 @@ class FirstTab(QWidget):
 
 
     def mySchedule_refresh_all_2(self):
+
+        # row:
+
+        # dir_path = "C:\\my_games\\" + str(v_.game_folder)
+        # file_path3 = dir_path + "\\mysettings\\myschedule\\schedule2.txt"
+
         try:
             ##############다시 코딩
             print("thisValue", thisValue)
@@ -2722,6 +2878,7 @@ class FirstTab(QWidget):
                                     file.write(schedule_ready)
                                 with open(file_path, "r", encoding='utf-8-sig') as file:
                                     lines = file.read().splitlines()
+                                    lines = ' '.join(lines).split()
                             else:
                                 isSchedule_ = True
                         # 표 수정
@@ -2737,7 +2894,7 @@ class FirstTab(QWidget):
                                             print("대기중??????????")
                                             reset_schedule_ += '완료:'
                                         elif complete_[j] == "완료":
-                                            reset_schedule_ += '대기중:'
+                                            reset_schedule_ += complete_[j] + ":"
                                     else:
                                         reset_schedule_ += complete_[j] + ":"
 
@@ -2749,13 +2906,14 @@ class FirstTab(QWidget):
                                             print("대기중?????!!!!!!!!!?????")
                                             reset_schedule_ += '완료\n'
                                         elif complete_[j] == "완료":
-                                            reset_schedule_ += '대기중\n'
+                                            reset_schedule_ += complete_[j] + "\n"
                                     else:
                                         reset_schedule_ += complete_[j] + "\n"
 
                         print('reset_schedule_표 수정', reset_schedule_)
                         with open(file_path, "w", encoding='utf-8-sig') as file:
                             file.write(reset_schedule_)
+
 
                         with open(file_path3, "w", encoding='utf-8-sig') as file:
                             file.write(reset_schedule_)
@@ -2778,12 +2936,6 @@ class FirstTab(QWidget):
                             with open(file_path13, "w", encoding='utf-8-sig') as file:
                                 file.write(str(4))
 
-                    # with open(file_path3, "r", encoding='utf-8-sig') as file:
-                    #     lines = file.read()
-                    #     # lines = file.read().splitlines()
-                    #     print('line_refresh', lines)
-                    # with open(file_path, "w", encoding='utf-8-sig') as file:
-                    #     file.write(lines)
 
                     with open(file_path, "r", encoding='utf-8-sig') as file:
                         lines = file.read()
@@ -2890,151 +3042,56 @@ class FirstTab(QWidget):
                     print("add????", datas)
                     file.write(datas)
                     ishow_ = True
-                # reset_schedule_ = ""
-                # with open(file_path, "r", encoding='utf-8-sig') as file:
-                #     lines = file.read().splitlines()
-                #     lines = ' '.join(lines).split()
-                #     print("lineslineslineslineslineslineslineslineslineslineslines", lines)
-                #     for i in range(len(lines)):
-                #         complete_ = lines[i].split(":")
-                #         for j in range(len(complete_)):
-                #             if j < 3:
-                #                 reset_schedule_ += complete_[j] + ":"
-                #             if j == 3:
-                #                 reset_schedule_ += '대기중:'
-                #             if 3 < j < 7:
-                #                 reset_schedule_ += complete_[j] + ":"
-                #             if j == 7:
-                #                 reset_schedule_ += "대기중\n"
-                #     print("reset_schedule_reset_schedule_reset_schedule_reset_schedule_reset_schedule_",
-                #           reset_schedule_)
-                #     with open(file_path3, "w", encoding='utf-8-sig') as file:
-                #         file.write(reset_schedule_)
-                ishow_ = True
-                reset_schedule_ = ""
-                with open(file_path, "r", encoding='utf-8-sig') as file:
-                    lines = file.read().splitlines()
-                    lines = ' '.join(lines).split()
 
-                    isSchedule_ = False
-                    while isSchedule_ is False:
-                        if lines == [] or lines == "":
-                            print("스케쥴이 비었다 : myQuest_play_check")
-                            with open(file_path3, "r", encoding='utf-8-sig') as file:
-                                schedule_ready = file.read()
-                            with open(file_path, "w", encoding='utf-8-sig') as file:
-                                file.write(schedule_ready)
-                            with open(file_path, "r", encoding='utf-8-sig') as file:
-                                lines = file.read().splitlines()
-                        else:
-                            isSchedule_ = True
-
-                    for i in range(len(lines)):
-                        complete_ = lines[i].split(":")
-                        for j in range(len(complete_)):
-                            if j < 3:
-                                reset_schedule_ += complete_[j] + ":"
-                            if j == 3:
-                                reset_schedule_ += '대기중:'
-                                # if '_' in complete_[2]:
-                                #     dunjeon_spl_ = complete_[2].split("_")
-                                #     print("dunjeon_spl_[0]", dunjeon_spl_[0])
-                                #     print("dunjeon_spl_[1]", dunjeon_spl_[1])
-                                #
-                                #     # if dunjeon_spl_[1] == "신전" or dunjeon_spl_[1] == "동굴":
-                                #     if dunjeon_spl_[1] == "신전":
-                                #         reset_schedule_ += complete_[j] + ":"
-                                #     else:
-                                #         reset_schedule_ += '대기중:'
-                                # else:
-                                #     reset_schedule_ += '대기중:'
-
-                                # if complete_[2] == "지하감옥":
-                                #     reset_schedule_ += complete_[j] + ":"
-                                # else:
-                                #     reset_schedule_ += '대기중:'
-                            if 3 < j < 7:
-                                reset_schedule_ += complete_[j] + ":"
-                            if j == 7:
-                                reset_schedule_ += "대기중\n"
-                                # if '_' in complete_[6]:
-                                #     dunjeon_spl_ = complete_[6].split("_")
-                                #     print("dunjeon_spl_[0]", dunjeon_spl_[0])
-                                #     print("dunjeon_spl_[1]", dunjeon_spl_[1])
-                                #
-                                #     # if dunjeon_spl_[1] == "신전" or dunjeon_spl_[1] == "동굴":
-                                #     if dunjeon_spl_[1] == "신전":
-                                #         reset_schedule_ += complete_[j] + "\n"
-                                #     else:
-                                #         reset_schedule_ += "대기중\n"
-                                # else:
-                                #     reset_schedule_ += "대기중\n"
-
-                                # if complete_[6] == "지하감옥":
-                                #     reset_schedule_ += complete_[j] + "\n"
-                                # else:
-                                #     reset_schedule_ += "대기중\n"
-
-                    print('reset_schedule_', reset_schedule_)
-                    # with open(file_path, "w", encoding='utf-8-sig') as file:
-                    #     file.write(reset_schedule_)
-                    with open(file_path3, "w", encoding='utf-8-sig') as file:
-                        file.write(reset_schedule_)
                 self.set_rand_int()
 
             elif how_ == "modify":
 
-                # with open(file_path, "w", encoding='utf-8-sig') as file:
-                #     file.write(datas)
-                #     ishow_ = True
-                #     reset_schedule_ = ""
-                #     lines = datas
-                #     lines = lines.split('\n')
-                #     lines = ' '.join(lines).split()
-                #     for i in range(len(lines)):
-                #         complete_ = lines[i].split(":")
-                #         for j in range(len(complete_)):
-                #             if j < 3:
-                #                 reset_schedule_ += complete_[j] + ":"
-                #             if j == 3:
-                #                 reset_schedule_ += '대기중:'
-                #             if 3 < j < 7:
-                #                 reset_schedule_ += complete_[j] + ":"
-                #             if j == 7:
-                #                 reset_schedule_ += "대기중\n"
-                #
-                # with open(file_path3, "w", encoding='utf-8-sig') as file:
-                #     file.write(reset_schedule_)
-
                 with open(file_path, "w", encoding='utf-8-sig') as file:
                     file.write(datas)
 
-                ishow_ = True
-                reset_schedule_ = ""
-                lines = datas
-                lines = lines.split('\n')
-                lines = ' '.join(lines).split()
+                    ishow_ = True
+
+                self.set_rand_int()
+
+            return ishow_
+        except Exception as e:
+            print(e)
+            return 0
+
+    def mySchedule_change2(self, how_, datas):
+        try:
+            ishow_ = False
+            dir_path = "C:\\my_games\\" + str(v_.game_folder)
+            file_path = dir_path + "\\mysettings\\myschedule\\schedule.txt"
+            file_path3 = dir_path + "\\mysettings\\myschedule\\schedule2.txt"
+            print(os.path.isfile(file_path))
+            print(os.path.isdir(dir_path))
+
+            if os.path.isdir(dir_path) == True:
+                print('디렉토리 존재')
+            else:
+                os.makedirs(dir_path)
+
+            print("how_", how_)
+            if how_ == "add":
+                with open(file_path3, "a", encoding='utf-8-sig') as file:
+                    print("add????", datas)
+                    file.write(datas)
+                    ishow_ = True
+
+
+                self.set_rand_int()
+
+            elif how_ == "modify":
 
 
 
-                for i in range(len(lines)):
-                    complete_ = lines[i].split(":")
-                    for j in range(len(complete_)):
-                        if j < 3:
-                            reset_schedule_ += complete_[j] + ":"
-                        if j == 3:
-                            reset_schedule_ += '대기중:'
-                        if 3 < j < 7:
-                            reset_schedule_ += complete_[j] + ":"
-                        if j == 7:
-
-                            reset_schedule_ += '대기중\n'
-
-                print('reset_schedule_', reset_schedule_)
-                # with open(file_path, "w", encoding='utf-8-sig') as file:
-                #     file.write(reset_schedule_)
                 with open(file_path3, "w", encoding='utf-8-sig') as file:
-                    file.write(reset_schedule_)
+                    file.write(datas)
+
+                    ishow_ = True
+
                 self.set_rand_int()
 
             return ishow_
