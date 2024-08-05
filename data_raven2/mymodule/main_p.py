@@ -2590,6 +2590,7 @@ class FirstTab(QWidget):
             print("result", result)
             how_ = "modify"
             self.mySchedule_change(how_, result)
+            self.mySchedule_change2(how_, result)
             self.mystatus_refresh()
 
         except Exception as e:
@@ -2894,7 +2895,7 @@ class FirstTab(QWidget):
                                             print("대기중??????????")
                                             reset_schedule_ += '완료:'
                                         elif complete_[j] == "완료":
-                                            reset_schedule_ += complete_[j] + ":"
+                                            reset_schedule_ += '대기중:'
                                     else:
                                         reset_schedule_ += complete_[j] + ":"
 
@@ -2906,7 +2907,7 @@ class FirstTab(QWidget):
                                             print("대기중?????!!!!!!!!!?????")
                                             reset_schedule_ += '완료\n'
                                         elif complete_[j] == "완료":
-                                            reset_schedule_ += complete_[j] + "\n"
+                                            reset_schedule_ += '대기중\n'
                                     else:
                                         reset_schedule_ += complete_[j] + "\n"
 
@@ -3011,6 +3012,7 @@ class FirstTab(QWidget):
             how_ = 'add'
             datas = str(data)
             result = self.mySchedule_change(how_, datas)
+            result = self.mySchedule_change2(how_, datas)
             print("added_", result)
             if result == True:
                 schedule_add = True
