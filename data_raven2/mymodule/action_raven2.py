@@ -94,6 +94,9 @@ def juljun_attack_check(cla):
 
         attack_ = False
 
+        result_text_1 = 0
+        result_text_2 = 0
+
         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_mode_check.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -145,7 +148,7 @@ def juljun_attack_check(cla):
                         break
                     time.sleep(1)
 
-
+        print("gold...???", result_text_1, result_text_2)
 
         return attack_
     except Exception as e:

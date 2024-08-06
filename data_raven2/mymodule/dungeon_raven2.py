@@ -328,6 +328,8 @@ def dungeon_check(cla, data):
 
         dun = data.split("_")
 
+        # 특수_타파나_4
+
         if dun[1] == "발바르":
             dun_name = "balbar"
         elif dun[1] == "타파나":
