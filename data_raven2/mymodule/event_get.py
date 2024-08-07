@@ -200,17 +200,17 @@ def event_get_click(cla, is_picture):
         # 3 : 정예특무대합류작전 o
         # 4 : 석양의축복이내린여름출석 o
 
-        # 5 : 영광과헌신의집결령(eight)
+        # 5 : 영광과헌신의집결령(eight) o
 
-        # 6 : 마물정화일지(eight)
+        # 6 : 코맥의제작지원출석(seven)
 
         # 7 : 시너림에서의마법훈련 o
 
         # 8 : 시너림모험일지 o
 
-        # 9 : none
+        # 9 : 코맥의장비공방(8_click)
 
-        # 10 :
+        # 10 :none
 
         # 11 :
         # 12 :
@@ -218,8 +218,8 @@ def event_get_click(cla, is_picture):
 
         # 13 :
 
-        # ?? : 영광과헌신의집결령(eight)
-        # ?? : 마물정화일지(eight)
+        # ?? : 코맥의제작지원출석(seven)
+        # ?? : 코맥의장비공방(8_click)
 
 
 
@@ -230,13 +230,13 @@ def event_get_click(cla, is_picture):
             data = "fourteen"
         elif is_picture == "2" or is_picture == "7":
             data = "seven_six"
-        elif is_picture == "3":
+        elif is_picture == "3" or is_picture == "9":
             data = "8_click"
-        elif is_picture == "8" or is_picture == "5" or is_picture == "6":
+        elif is_picture == "8" or is_picture == "5":
             data = "eight"
         # elif is_picture == "8":
         #     data = "five"
-        elif is_picture == "4":
+        elif is_picture == "4" or is_picture == "6":
             data = "seven"
 
 
