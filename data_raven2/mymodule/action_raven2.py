@@ -970,6 +970,21 @@ def juljun_check(cla):
             print("juljun_mode_check", imgs_)
             juljun_ = True
 
+            # 물약 있을땐 내리기
+
+            for i in range(10):
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\juljun_off.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(445, 755, 500, 810, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    click_pos_2(480, 1000, cla)
+                    time.sleep(0.2)
+                else:
+                    break
+                time.sleep(0.5)
+
+
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\ready.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
