@@ -169,7 +169,8 @@ def event_get_start(cla):
                 print("e_out_point_1", imgs_)
                 click_pos_reg(imgs_.x - 15, imgs_.y + 15, cla)
                 event_get_start(cla)
-
+        else:
+            clean_screen(cla)
 
     except Exception as e:
         print(e)
@@ -200,17 +201,17 @@ def event_get_click(cla, is_picture):
         # 3 : 정예특무대합류작전 o
         # 4 : 석양의축복이내린여름출석 o
 
-        # 5 : 영광과헌신의집결령(eight) o
+        # 5 : 마력깃든5일출석(five) new
 
-        # 6 : 코맥의제작지원출석(seven)
+        # 6 : 코맥의제작지원출석(seven) o
 
         # 7 : 시너림에서의마법훈련 o
 
         # 8 : 시너림모험일지 o
 
-        # 9 : 코맥의장비공방(8_click)
+        # 9 : 불안정한마력의완성(8_click) new
 
-        # 10 :none
+        # 10 :코맥의성장지원(eight) new
 
         # 11 :
         # 12 :
@@ -218,8 +219,12 @@ def event_get_click(cla, is_picture):
 
         # 13 :
 
-        # ?? : 코맥의제작지원출석(seven)
-        # ?? : 코맥의장비공방(8_click)
+        # ?? : 마력깃든5일출석(five)
+        # ?? : 불안정한마력의완성(8_click)
+        # ?? : 코맥의성장지언(eight)
+
+        # 8_click => drag 하는 것
+        # eight => 8개 클릭 후 위에 클릭
 
 
 
@@ -232,10 +237,10 @@ def event_get_click(cla, is_picture):
             data = "seven_six"
         elif is_picture == "3" or is_picture == "9":
             data = "8_click"
-        elif is_picture == "8" or is_picture == "5":
+        elif is_picture == "8" or is_picture == "10":
             data = "eight"
-        # elif is_picture == "8":
-        #     data = "five"
+        elif is_picture == "5":
+            data = "five"
         elif is_picture == "4" or is_picture == "6":
             data = "seven"
 
@@ -361,7 +366,7 @@ def event_get_click(cla, is_picture):
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\checked.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(480, 480, 860, 710, cla, img, 0.8)
+                imgs_ = imgs_set_(300, 480, 860, 710, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     print("checked", imgs_)
                     click_pos_reg(imgs_.x - 20, imgs_.y, cla)
@@ -375,7 +380,7 @@ def event_get_click(cla, is_picture):
                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\five\\checked.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(480, 480, 860, 710, cla, img, 0.8)
+                    imgs_ = imgs_set_(300, 480, 860, 710, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         print("checked 2", imgs_)
                         click_pos_reg(imgs_.x - 20, imgs_.y, cla)
