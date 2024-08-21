@@ -196,22 +196,22 @@ def event_get_click(cla, is_picture):
 
         # - :
 
-        # 1 : 시너림업데이트특별출석 o
-        # 2 : 바트람의훈련교범 o
-        # 3 : 정예특무대합류작전 o
-        # 4 : 석양의축복이내린여름출석 o
+        # 1 : 100일감사출석I(fourteen)
+        # 2 : 바트람의훈련교범(seven_six)
+        # 3 : 정예특무대합류작전(8_click)
+        # 4 : 100일특무대출석I(seven)
 
-        # 5 : 마력깃든5일출석(five) new
+        # 5 : 100일기념연회I(8_click)
 
-        # 6 : 코맥의제작지원출석(seven) o
+        # 6 : 피의전장을위한특별훈련I(eight)
 
-        # 7 : 시너림에서의마법훈련 o
+        # 7 :
 
-        # 8 : 시너림모험일지 o
+        # 8 :
 
-        # 9 : 불안정한마력의완성(8_click) new
+        # 9 :
 
-        # 10 :코맥의성장지원(eight) new
+        # 10 :
 
         # 11 :
         # 12 :
@@ -219,9 +219,11 @@ def event_get_click(cla, is_picture):
 
         # 13 :
 
-        # ?? : 마력깃든5일출석(five)
-        # ?? : 불안정한마력의완성(8_click)
-        # ?? : 코맥의성장지언(eight)
+        # ?? : 100일감사출석I(fourteen)
+        # ?? : 100일특무대출석I(seven)
+        # ?? : 100일특무대출석II(seven) = > 비활성화
+        # ?? : 100일기념연회I(8_click)
+        # ?? : 피의전장을위한특별훈련I(eight)
 
         # 8_click => drag 하는 것
         # eight => 8개 클릭 후 위에 클릭
@@ -233,15 +235,15 @@ def event_get_click(cla, is_picture):
 
         if is_picture == "1":
             data = "fourteen"
-        elif is_picture == "2" or is_picture == "7":
+        elif is_picture == "2":
             data = "seven_six"
-        elif is_picture == "3" or is_picture == "9":
+        elif is_picture == "3" or is_picture == "5":
             data = "8_click"
-        elif is_picture == "8" or is_picture == "10":
+        elif is_picture == "6":
             data = "eight"
-        elif is_picture == "5":
-            data = "five"
-        elif is_picture == "4" or is_picture == "6":
+        # elif is_picture == "":
+        #     data = "five"
+        elif is_picture == "4":
             data = "seven"
 
 
