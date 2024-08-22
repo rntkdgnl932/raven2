@@ -33,6 +33,7 @@ def go_test():
     from auction_raven2 import auction_start
     from subquest_raven2 import subquest_get
     from character_select_and_game_start import game_start_screen
+    from guild_raven2 import guild_check
 
     print("test")
 
@@ -55,7 +56,7 @@ def go_test():
 
     try:
 
-        event_get_start(cla)
+        guild_check(cla)
 
 
         ############################################################################################

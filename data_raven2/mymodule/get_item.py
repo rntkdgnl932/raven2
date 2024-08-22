@@ -11,6 +11,8 @@ sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder)
 
 def get_item_start(cla):
 
+    from guild_raven2 import guild_check
+
     try:
         print("get_item_start")
         get_post(cla)
@@ -20,6 +22,8 @@ def get_item_start(cla):
         get_upjuk(cla)
 
         get_sangjum(cla)
+
+        guild_check(cla)
 
 
     except Exception as e:
