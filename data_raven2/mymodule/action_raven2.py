@@ -1515,63 +1515,85 @@ def juljun_time_check(cla):
 
         print("nowTime", nowTime)
 
-        now_time = ""
-        for i in range(10):
-            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\juljun_time\\" + str(i) + ".PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(480, 100, 530, 165, cla, img, 0.85)
-            if imgs_ is not None and imgs_ != False:
-                print("10 자리", i)
-                now_time += str(i)
-                break
-        for i in range(10):
-            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\juljun_time\\" + str(i) + ".PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(515, 100, 565, 165, cla, img, 0.85)
-            if imgs_ is not None and imgs_ != False:
-                print("1 자리", i)
-                now_time += str(i)
-                break
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\juljun_time\\slush.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(440, 100, 530, 165, cla, img, 0.85)
+        if imgs_ is not None and imgs_ != False:
+            print("slush", imgs_)
+            x_start = imgs_.x
 
-        if now_time == "":
-            print("값이 없다")
-        else:
-            now_time = int(now_time)
-            print("now_time", now_time)
 
-            if nowTime >= 50 and now_time < 10:
-                now_time += 60
-            elif now_time >= 50 and nowTime < 10:
-                nowTime += 60
+            now_time = ""
 
-            result_cal = abs(nowTime - now_time)
+            for i in range(10):
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\juljun_time\\" + str(i) + ".PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(x_start, 100, 600, 165, cla, img, 0.85)
+                if imgs_ is not None and imgs_ != False:
+                    print("자리", i, imgs_)
 
-            if result_cal > 19:
-                print("멈춰있는 상태", result_cal)
+            for i in range(10):
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\juljun_time\\" + str(i) + ".PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(x_start, 100, x_start + 48, 165, cla, img, 0.85)
+                if imgs_ is not None and imgs_ != False:
+                    print("10 자리", i, imgs_)
+                    x_start = imgs_.x
+                    now_time += str(i)
+                    break
 
-                why = str(result_cal) + "분 차이...다운되거나 인터넷이 끊긴것이 확실하다"
-                print(why)
-                line_to_me(cla, why)
+            for i in range(10):
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\juljun_time\\" + str(i) + ".PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(x_start, 100, x_start + 48, 165, cla, img, 0.85)
+                if imgs_ is not None and imgs_ != False:
+                    print("1 자리", i, imgs_)
+                    now_time += str(i)
+                    break
 
-                dir_path = "C:\\my_games\\load\\ares"
-                file_path = dir_path + "\\start.txt"
-                # cla.txt
-                cla_data = str(cla) + "cla"
-                file_path2 = dir_path + "\\" + cla_data + ".txt"
-                with open(file_path, "w", encoding='utf-8-sig') as file:
-                    data = 'no'
-                    file.write(str(data))
-                    time.sleep(0.2)
-                with open(file_path2, "w", encoding='utf-8-sig') as file:
-                    data = cla
-                    file.write(str(data))
-                    time.sleep(0.2)
-                os.execl(sys.executable, sys.executable, *sys.argv)
 
+
+            if now_time == "":
+                print("값이 없다")
             else:
-                print("정상 작동 중", result_cal)
+                now_time = int(now_time)
+                print("now_time", now_time)
+
+                if nowTime >= 50 and now_time < 10:
+                    now_time += 60
+                elif now_time >= 50 and nowTime < 10:
+                    nowTime += 60
+
+                result_cal = abs(nowTime - now_time)
+
+                if result_cal > 19:
+                    print("멈춰있는 상태", result_cal)
+
+                    why = str(result_cal) + "분 차이...다운되거나 인터넷이 끊긴것이 확실하다"
+                    print(why)
+                    line_to_me(cla, why)
+
+                    dir_path = "C:\\my_games\\load\\ares"
+                    file_path = dir_path + "\\start.txt"
+                    # cla.txt
+                    cla_data = str(cla) + "cla"
+                    file_path2 = dir_path + "\\" + cla_data + ".txt"
+                    with open(file_path, "w", encoding='utf-8-sig') as file:
+                        data = 'no'
+                        file.write(str(data))
+                        time.sleep(0.2)
+                    with open(file_path2, "w", encoding='utf-8-sig') as file:
+                        data = cla
+                        file.write(str(data))
+                        time.sleep(0.2)
+                    os.execl(sys.executable, sys.executable, *sys.argv)
+
+                else:
+                    print("정상 작동 중", result_cal)
 
     except Exception as e:
         print(e)
