@@ -1511,6 +1511,19 @@ def juljun_time_check(cla):
     try:
         print("juljun_time_check")
 
+        if cla == "one":
+            plus = 0
+        elif cla == "two":
+            plus = 960
+        elif cla == "three":
+            plus = 960 * 2
+        elif cla == "four":
+            plus = 960 * 3
+        elif cla == "five":
+            plus = 960 * 4
+        elif cla == "six":
+            plus = 960 * 5
+
         nowTime = int(datetime.today().strftime("%M"))
 
         print("nowTime", nowTime)
@@ -1521,7 +1534,7 @@ def juljun_time_check(cla):
         imgs_ = imgs_set_(440, 100, 530, 165, cla, img, 0.85)
         if imgs_ is not None and imgs_ != False:
             print("slush", imgs_)
-            x_start = imgs_.x
+            x_start = imgs_.x - plus
 
 
             now_time = ""
@@ -1541,7 +1554,7 @@ def juljun_time_check(cla):
                 imgs_ = imgs_set_(x_start, 100, x_start + 48, 165, cla, img, 0.85)
                 if imgs_ is not None and imgs_ != False:
                     print("10 자리", i, imgs_)
-                    x_start = imgs_.x
+                    x_start = imgs_.x - plus
                     now_time += str(i)
                     break
 
