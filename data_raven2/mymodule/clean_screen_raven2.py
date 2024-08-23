@@ -1,6 +1,7 @@
 import time
 # import os
 import sys
+from PyQt5.QtTest import *
 
 
 import variable as v_
@@ -127,7 +128,7 @@ def clean_screen(cla):
             if clean == True:
                 break
 
-            time.sleep(0.3)
+            QTest.qWait(500)
 
 
 

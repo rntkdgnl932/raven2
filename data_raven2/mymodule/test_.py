@@ -17,7 +17,7 @@ def go_test():
 
     from function_game import imgs_set_, drag_pos, imgs_set_reg, imgs_set_for, text_check_get, click_pos_2, click_pos_reg, text_check_get_reg, in_number_check, int_put_, change_number
     from tuto_raven2 import way_point_click, tuto_start
-    from action_raven2 import inven_check, bag_open, skip_click, confirm_all, out_check, attack_on, juljun_on
+    from action_raven2 import inven_check, bag_open, skip_click, confirm_all, out_check, attack_on, juljun_on, juljun_time_check
     from clean_screen_raven2 import clean_screen
     from potion_raven2 import potion_buy, potion_check
     from chango_raven2 import chango_in
@@ -56,7 +56,7 @@ def go_test():
 
     try:
 
-        guild_check(cla)
+        juljun_time_check(cla)
 
 
         ############################################################################################
