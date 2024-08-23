@@ -1551,7 +1551,7 @@ def juljun_time_check(cla):
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\juljun_time\\" + str(i) + ".PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(x_start, 100, x_start + 48, 165, cla, img, 0.85)
+                imgs_ = imgs_set_(x_start, 100, x_start + 50, 165, cla, img, 0.85)
                 if imgs_ is not None and imgs_ != False:
                     print("10 자리", i, imgs_)
                     x_start = imgs_.x - plus
@@ -1562,7 +1562,7 @@ def juljun_time_check(cla):
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\juljun_time\\" + str(i) + ".PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(x_start, 100, x_start + 48, 165, cla, img, 0.85)
+                imgs_ = imgs_set_(x_start, 100, x_start + 50, 165, cla, img, 0.85)
                 if imgs_ is not None and imgs_ != False:
                     print("1 자리", i, imgs_)
                     now_time += str(i)
