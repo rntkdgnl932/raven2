@@ -12,55 +12,101 @@ sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder)
 def out_check(cla):
     import numpy as np
     import cv2
+    import os
+
+    from massenger import line_to_me
     from function_game import imgs_set_, click_pos_reg
 
     try:
-        # 화면 닫기
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\close_window.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(400, 900, 600, 1000, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("close_window", imgs_)
-            click_pos_reg(imgs_.x, imgs_.y, cla)
-
-        # 게임 오류 체크
-        game_check(cla)
-
 
         out_ = False
 
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_mode_check.PNG"
+        # 응답없음 확인하기
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\no_response.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(350, 50, 600, 120, cla, img, 0.8)
+        imgs_ = imgs_set_(0, 0, 600, 30, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
-            juljun_time_check(cla)
+            print("no_response", imgs_)
+            no_response = True
+            for i in range(60):
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\no_response.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(0, 0, 600, 30, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("no_response", imgs_)
+                else:
+                    no_response = False
+                    break
+                time.sleep(2)
+            if no_response == True:
+                why = "응답없음 2분 넘어갔다."
+                print(why)
+                line_to_me(cla, why)
+
+                dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
+                file_path = dir_path + "\\start.txt"
+                # cla.txt
+                cla_data = str(cla) + "cla"
+                file_path2 = dir_path + "\\" + cla_data + ".txt"
+                with open(file_path, "w", encoding='utf-8-sig') as file:
+                    data = 'no'
+                    file.write(str(data))
+                    time.sleep(0.2)
+                with open(file_path2, "w", encoding='utf-8-sig') as file:
+                    data = cla
+                    file.write(str(data))
+                    time.sleep(0.2)
+                os.execl(sys.executable, sys.executable, *sys.argv)
+
         else:
-
-
-            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\out\\talk.PNG"
+            # 화면 닫기
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\close_window.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(5, 900, 50, 960, cla, img, 0.8)
+            imgs_ = imgs_set_(400, 900, 600, 1000, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
-                print("out : talk", imgs_)
-                out_ = True
-
-            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\post\\get.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(400, 370, 560, 450, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                print("get", imgs_)
+                print("close_window", imgs_)
                 click_pos_reg(imgs_.x, imgs_.y, cla)
 
-            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_off_result_title.PNG"
+            # 게임 오류 체크
+            game_check(cla)
+
+
+
+
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_mode_check.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(330, 310, 500, 4000, cla, img, 0.8)
+            imgs_ = imgs_set_(350, 50, 600, 120, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
-                confirm_all(cla)
+                juljun_time_check(cla)
+            else:
+
+
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\out\\talk.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(5, 900, 50, 960, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("out : talk", imgs_)
+                    out_ = True
+
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\post\\get.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(400, 370, 560, 450, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("get", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_off_result_title.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(330, 310, 500, 4000, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    confirm_all(cla)
 
 
         return out_
@@ -1596,7 +1642,7 @@ def juljun_time_check(cla):
                             print(why)
                             line_to_me(cla, why)
 
-                            dir_path = "C:\\my_games\\load\\ares"
+                            dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
                             file_path = dir_path + "\\start.txt"
                             # cla.txt
                             cla_data = str(cla) + "cla"
