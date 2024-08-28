@@ -56,7 +56,12 @@ def go_test():
 
     try:
 
-        juljun_time_check(cla)
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_title\\6.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(220, 320, 800, 400, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("6", imgs_)
 
 
 

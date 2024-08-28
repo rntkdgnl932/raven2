@@ -196,14 +196,14 @@ def event_get_click(cla, is_picture):
 
         # - :
 
-        # 1 : 100일감사출석I(fourteen)
+        # 1 : 100일감사출석I(fourteen) o
         # 2 : 바트람의훈련교범(seven_six)
         # 3 : 정예특무대합류작전(8_click)
-        # 4 : 100일특무대출석I(seven)
+        # 4 : 100일특무대출석I, II(seven) o
 
-        # 5 : 100일기념연회I(8_click)
+        # 5 : 100일기념연회I, II(ten) o
 
-        # 6 : 피의전장을위한특별훈련I(eight)
+        # 6 : 피의전장을위한특별훈련I, II(eight)
 
         # 7 :
 
@@ -219,14 +219,13 @@ def event_get_click(cla, is_picture):
 
         # 13 :
 
-        # ?? : 100일감사출석I(fourteen)
-        # ?? : 100일특무대출석I(seven)
-        # ?? : 100일특무대출석II(seven) = > 비활성화
-        # ?? : 100일기념연회I(8_click)
-        # ?? : 피의전장을위한특별훈련I(eight)
+        # ?? :
+
+
 
         # 8_click => drag 하는 것
         # eight => 8개 클릭 후 위에 클릭
+        # ten => 10개 클릭 후 위에 클릭
 
 
 
@@ -237,10 +236,12 @@ def event_get_click(cla, is_picture):
             data = "fourteen"
         elif is_picture == "2":
             data = "seven_six"
-        elif is_picture == "3" or is_picture == "5":
+        elif is_picture == "3":
             data = "8_click"
         elif is_picture == "6":
             data = "eight"
+        elif is_picture == "5":
+            data = "ten"
         # elif is_picture == "":
         #     data = "five"
         elif is_picture == "4":
@@ -362,6 +363,41 @@ def event_get_click(cla, is_picture):
             click_pos_2(800, 370, cla)
             time.sleep(0.5)
 
+        elif data == "ten":
+            print("ten")
+
+
+            # 510, 825 // 515, 570, 625, 680
+            for c in range(5):
+                y_reg = 515 + (55 * c)
+                if c == 4:
+                    click_pos_2(510, 720, cla)
+                    time.sleep(0.5)
+                    click_pos_2(510, 720, cla)
+                    time.sleep(0.5)
+                else:
+                    click_pos_2(510, y_reg, cla)
+                    time.sleep(0.5)
+                    click_pos_2(510, y_reg, cla)
+                    time.sleep(0.5)
+            # 510, 825 // 515, 570, 625, 680
+            for c in range(5):
+                y_reg = 515 + (55 * c)
+                if c == 4:
+                    click_pos_2(825, 720, cla)
+                    time.sleep(0.5)
+                    click_pos_2(825, 720, cla)
+                    time.sleep(0.5)
+                else:
+                    click_pos_2(825, y_reg, cla)
+                    time.sleep(0.5)
+                    click_pos_2(825, y_reg, cla)
+                    time.sleep(0.5)
+            click_pos_2(800, 370, cla)
+            time.sleep(0.5)
+            click_pos_2(800, 370, cla)
+            time.sleep(0.5)
+
         elif data == "five":
             print("five")
             for c in range(10):
@@ -441,6 +477,11 @@ def event_get_click(cla, is_picture):
                     else:
                         drag_pos(550, 700, 550, 600, cla)
                 time.sleep(0.3)
+
+            click_pos_2(800, 370, cla)
+            time.sleep(0.5)
+            click_pos_2(800, 370, cla)
+            time.sleep(0.5)
 
     except Exception as e:
         print(e)
