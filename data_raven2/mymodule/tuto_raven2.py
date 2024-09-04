@@ -19,7 +19,7 @@ def tuto_start(cla):
     from dead_raven2 import dead_check_2, dead_recover
     from schedule import myQuest_play_add
     from clean_screen_raven2 import clean_screen
-    from potion_raven2 import potion_buy
+    from potion_raven2 import potion_buy, potion_check
 
     from massenger import line_to_me
 
@@ -37,10 +37,6 @@ def tuto_start(cla):
             dead_recover(cla)
 
             potion_buy(cla)
-
-
-
-            # myQuest_play_add(cla, "튜토육성")
 
 
 
@@ -66,6 +62,9 @@ def tuto_start(cla):
                 result_out = out_check(cla)
 
                 if result_out == True:
+
+                    # 포션 체크 하자
+                    potion_check(cla)
 
                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tuto\\quest_yagcho.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
