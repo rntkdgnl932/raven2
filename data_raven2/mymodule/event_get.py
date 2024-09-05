@@ -205,7 +205,7 @@ def event_get_click(cla, is_picture):
 
         # 6 : 피의전장을위한특별훈련I, II(eight)
 
-        # 7 :
+        # 7 : 피의전장을위한특별훈련III(eight)
 
         # 8 :
 
@@ -251,7 +251,7 @@ def event_get_click(cla, is_picture):
             data = "seven_six"
         elif is_picture == "3":
             data = "8_click"
-        elif is_picture == "6":
+        elif is_picture == "6" or is_picture == "7":
             data = "eight"
         elif is_picture == "5":
             data = "ten"
