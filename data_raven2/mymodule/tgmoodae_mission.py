@@ -155,9 +155,10 @@ def tgmoodae_mission_start(cla, data):
                                     if imgs_ is not None and imgs_ != False:
                                         print("immediately_move", imgs_)
                                         click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        time.sleep(1)
+                                    for i in range(2):
+                                        confirm_all(cla)
                                         time.sleep(0.5)
-
-                                    confirm_all(cla)
                                 else:
                                     tg_in = True
                                     myQuest_play_add(cla, data)
