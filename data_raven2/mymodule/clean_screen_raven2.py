@@ -70,6 +70,9 @@ def clean_screen(cla):
             clean = True
 
             result_out = out_check(cla)
+
+            print("clean_screen : result_out", result_out, i)
+
             if result_out == True:
                 break
             else:

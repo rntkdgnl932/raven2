@@ -987,7 +987,7 @@ class FirstTab(QWidget):
         self.dun_group_1 = QGroupBox('특수')
         dun_g1_name = QComboBox()
         # list4 = ['던전 선택', '일반_업보', '일반_지옥', '일반_죄악', '일반_저주', '특수_마족', '특수_아르카스', '파티_묘지']
-        dun_g1_list = ['던전선택', '발바르', '타파나']
+        dun_g1_list = ['던전선택', '발바르', '타파나', '이벤트']
         dun_g1_name.addItems(dun_g1_list)
 
         dun_g1_stair = QComboBox()
@@ -1687,7 +1687,10 @@ class FirstTab(QWidget):
 
     def onActivated_dunjeon_1_add(self):
         char_ = onCharacter
-        dun_ = "특수_" + str(onDunjeon_1) + "_" + str(onDunjeon_1_level)
+        if str(onDunjeon_1) == "이벤트":
+            dun_ = str(onDunjeon_1) + "_" + str(onDunjeon_1_level)
+        else:
+            dun_ = "특수_" + str(onDunjeon_1) + "_" + str(onDunjeon_1_level)
         if onCharacter == 0:
             pyautogui.alert(button='넵', text='캐릭터를 선택해 주시지예', title='뭐합니꺼')
         elif onCla == 'none':
@@ -3853,6 +3856,9 @@ class game_Playing(QThread):
                                     dungeon_start(v_.now_cla, result_schedule_)
                                     time.sleep(5)
                                 elif "특수" in result_schedule_:
+                                    dungeon_start(v_.now_cla, result_schedule_)
+                                    time.sleep(5)
+                                elif "이벤트" in result_schedule_:
                                     dungeon_start(v_.now_cla, result_schedule_)
                                     time.sleep(5)
                                 elif result_schedule_ == "자동사냥":

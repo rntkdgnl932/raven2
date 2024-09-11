@@ -1,6 +1,7 @@
 import time
 # import os
 import sys
+from PyQt5.QtTest import *
 
 
 import variable as v_
@@ -108,6 +109,8 @@ def dungeon_in(cla, data):
         # 특수_발바르_4, 특수_타파나_4
         # 일반_고대의신전_5, 일반_깊은늪_5, 일반_붉은바위협곡_2
 
+        dun_y_click = 0
+
         dun = data.split("_")
         if dun[0] == "특수":
             y_check_1 = 90
@@ -118,6 +121,11 @@ def dungeon_in(cla, data):
             y_check_1 = 150
             y_check_2 = 220
             y_click = 190
+
+        elif dun[0] == "이벤트":
+            y_check_1 = 220
+            y_check_2 = 280
+            y_click = 250
 
         if dun[1] == "발바르":
             dun_name = "balbar"
@@ -159,6 +167,12 @@ def dungeon_in(cla, data):
                 dun_y_click = 2
             else:
                 dun_y_click = int(dun[2])
+
+        elif dun[0] == "이벤트":
+            dun_name = "event"
+            dun_x_click = 280
+
+            # dun_y_click => 이벤트는 강제 클릭
 
         # 390, 440, 490...
         dun_y_step = 340 + (dun_y_click * 50)
@@ -228,26 +242,16 @@ def dungeon_in(cla, data):
                     complete = True
 
                 if complete != True:
-                    # 해당 층수 클릭
-                    for i in range(10):
-                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\step_not_opened.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(240, dun_y_step - 30, 280, dun_y_step + 30, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            dun_in = True
-                            complete = True
-                            print("step_not_opened", imgs_)
-                            break
-                        else:
+
+                    if dun[0] == "이벤트":
+                        # 해당 층수 클릭
+                        for i in range(10):
                             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\dungeon_title.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                             imgs_ = imgs_set_(30, 30, 150, 100, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
                                 print("dungeon_title", imgs_)
-                                click_pos_2(180, dun_y_step, cla)
-                                time.sleep(0.5)
                                 click_pos_2(770, 720, cla)
 
                                 result_inven = inven_check(cla)
@@ -281,7 +285,62 @@ def dungeon_in(cla, data):
                                     juljun_on(cla)
 
                                     break
-                        time.sleep(0.5)
+                            time.sleep(0.5)
+                    else:
+                        # 해당 층수 클릭
+                        for i in range(10):
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\step_not_opened.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(240, dun_y_step - 30, 280, dun_y_step + 30, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                dun_in = True
+                                complete = True
+                                print("step_not_opened", imgs_)
+                                break
+                            else:
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\dungeon_title.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(30, 30, 150, 100, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("dungeon_title", imgs_)
+                                    click_pos_2(180, dun_y_step, cla)
+                                    time.sleep(0.5)
+                                    click_pos_2(770, 720, cla)
+
+                                    result_inven = inven_check(cla)
+
+                                    if result_inven == True:
+
+                                        already = False
+                                        for a in range(10):
+                                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\already_dun_in.PNG"
+                                            img_array = np.fromfile(full_path, np.uint8)
+                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                            imgs_ = imgs_set_(370, 110, 570, 150, cla, img, 0.8)
+                                            if imgs_ is not None and imgs_ != False:
+                                                already = True
+                                                break
+                                            time.sleep(0.2)
+                                        if already == True:
+                                            clean_screen(cla)
+                                    else:
+                                        break
+                                else:
+                                    result_out = out_check(cla)
+                                    if result_out == True:
+                                        dun_in = True
+                                        # 고대의 신전은 랜덤이동하기
+                                        # if dun_name == "temple":
+                                        go_random(cla)
+
+                                        # 공격
+                                        attack_on(cla)
+                                        juljun_on(cla)
+
+                                        break
+                            time.sleep(0.5)
 
             else:
                 menu_open(cla)
@@ -315,7 +374,7 @@ def dungeon_check(cla, data):
     import numpy as np
     import cv2
     import os
-    from function_game import imgs_set_, click_pos_reg
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
     from action_raven2 import juljun_check, juljun_on
     from clean_screen_raven2 import clean_screen
 
@@ -340,6 +399,8 @@ def dungeon_check(cla, data):
             dun_name = "swamp"
         elif dun[1] == "붉은바위협곡":
             dun_name = "redstone"
+        elif dun[0] == "이벤트":
+            dun_name = "event"
 
         if dun_name == "temple" or dun_name == "swamp":
             folder_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\" + str(dun_name) + "\\" + str(dun[2])
@@ -424,8 +485,16 @@ def dungeon_check(cla, data):
                         print("map_btn", imgs_)
                         click_pos_reg(imgs_.x, imgs_.y, cla)
                     else:
-                        clean_screen(cla)
-                time.sleep(0.5)
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\jabhwa_btn.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(50, 100, 200, 260, cla, img, 0.75)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_2(250, 135, cla)
+                        else:
+                            clean_screen(cla)
+
+                QTest.qWait(500)
 
 
 

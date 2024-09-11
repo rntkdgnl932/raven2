@@ -63,9 +63,7 @@ def go_test():
         if imgs_ is not None and imgs_ != False:
             print("confirm : all_y", imgs_)
 
-
-
-
+        event_get_start(cla)
         ############################################################################################
         # sell_price = 0
         #
