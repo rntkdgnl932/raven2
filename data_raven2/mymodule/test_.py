@@ -74,7 +74,7 @@ def go_test():
         file_path = dir_path + "\\mysettings\\myschedule\\schedule.txt"
         file_path3 = dir_path + "\\mysettings\\myschedule\\schedule2.txt"
 
-        data = "Three:1:각종템받기:대기중:Six:1:각종템받기:대기중\nThree:1:튜토육성:대기중:Six:1:거래소등록:대기중\nThree:1:버프와물약사기:대기중:Six:1:튜토육성:대기중\nThree:1:특무대_하코트:대기중:Six:1:버프와물약사기:대기중\nThree:1:특수_발바르_2:대기중:Six:1:특무대_마두마리스:대기중\nThree:1:특수_타파나_2:대기중:Six:1:특수_발바르_3:대기중\nThree:1:일반_고대의신전_2:대기중:Six:1:특수_타파나_3:대기중\nThree:1:각종템받기:대기중:Six:1:일반_고대의신전_4:대기중\nThree:1:자동사냥:대기중:Six:1:일반_깊은늪_3:대기중\nThree:1:거래소등록:대기중:Six:1:이벤트_3:대기중\nThree:1:일반_깊은늪_1:대기중:Six:1:각종템받기:대기중\nThree:1:거래소등록:대기중:Six:1:거래소등록:대기중\nThree:1:이벤트_1:대기중:Six:1:자동사냥:대기중\n"
+        data = "Three:1:각종템받기:대기중:Six:1:각종템받기:대기중\nThree:1:튜토육성:대기중:Six:1:거래소등록:대기중\nThree:1:버프와물약사기:대기중:Six:1:튜토육성:대기중\nThree:1:특무대_하코트:대기중:Six:1:버프와물약사기:대기중\nThree:1:특수_발바르_2:대기중:Six:1:특무대_하코트:대기중\nThree:1:특수_타파나_2:대기중:Six:1:특수_발바르_3:대기중\nThree:1:일반_고대의신전_2:대기중:Six:1:특수_타파나_3:대기중\nThree:1:각종템받기:대기중:Six:1:일반_고대의신전_4:대기중\nThree:1:자동사냥:대기중:Six:1:일반_깊은늪_3:대기중\nThree:1:거래소등록:대기중:Six:1:이벤트_3:대기중\nThree:1:일반_깊은늪_1:대기중:Six:1:각종템받기:대기중\nThree:1:거래소등록:대기중:Six:1:거래소등록:대기중\nThree:1:이벤트_1:대기중:Six:1:자동사냥:대기중\n"
 
         with open(file_path, "w", encoding='utf-8-sig') as file:
             file.write(str(data))
