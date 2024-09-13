@@ -63,7 +63,27 @@ def go_test():
         if imgs_ is not None and imgs_ != False:
             print("confirm : all_y", imgs_)
 
-        event_get_start(cla)
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tgmoodae_mission\\maul_get_point.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_for(210, 80, 270, 500, "four", img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("maul_get_point", imgs_)
+
+        dir_path = "C:\\my_games\\" + str(v_.game_folder)
+        file_path = dir_path + "\\mysettings\\myschedule\\schedule.txt"
+        file_path3 = dir_path + "\\mysettings\\myschedule\\schedule2.txt"
+
+        data = "Three:1:각종템받기:대기중:Six:1:각종템받기:대기중\nThree:1:튜토육성:대기중:Six:1:거래소등록:대기중\nThree:1:버프와물약사기:대기중:Six:1:튜토육성:대기중\nThree:1:특무대_하코트:대기중:Six:1:버프와물약사기:대기중\nThree:1:특수_발바르_2:대기중:Six:1:특무대_마두마리스:대기중\nThree:1:특수_타파나_2:대기중:Six:1:특수_발바르_3:대기중\nThree:1:일반_고대의신전_2:대기중:Six:1:특수_타파나_3:대기중\nThree:1:각종템받기:대기중:Six:1:일반_고대의신전_4:대기중\nThree:1:자동사냥:대기중:Six:1:일반_깊은늪_3:대기중\nThree:1:거래소등록:대기중:Six:1:이벤트_3:대기중\nThree:1:일반_깊은늪_1:대기중:Six:1:각종템받기:대기중\nThree:1:거래소등록:대기중:Six:1:거래소등록:대기중\nThree:1:이벤트_1:대기중:Six:1:자동사냥:대기중\n"
+
+        with open(file_path, "w", encoding='utf-8-sig') as file:
+            file.write(str(data))
+
+        with open(file_path3, "w", encoding='utf-8-sig') as file:
+            file.write(str(data))
+
+
+
         ############################################################################################
         # sell_price = 0
         #

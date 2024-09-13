@@ -84,14 +84,28 @@ def out_check(cla):
                 juljun_time_check(cla)
             else:
 
-
-                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\out\\talk.PNG"
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\menu_character_select.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(5, 900, 50, 960, cla, img, 0.8)
+                imgs_ = imgs_set_(800, 930, 920, 1030, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    print("out : talk", imgs_)
-                    out_ = True
+                    print("menu : menu_character_select...end", imgs_)
+                else:
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\out\\talk.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(5, 900, 50, 960, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("out : talk", imgs_)
+                        out_ = True
+                    else:
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\out\\talk2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(5, 900, 50, 960, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("out : talk", imgs_)
+                            out_ = True
 
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\post\\get.PNG"
                 img_array = np.fromfile(full_path, np.uint8)

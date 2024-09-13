@@ -1,7 +1,7 @@
 import time
 # import os
 import sys
-
+from PyQt5.QtTest import *
 
 import variable as v_
 
@@ -244,46 +244,50 @@ def tgmoodae_mission_get(cla):
                 break
             time.sleep(0.3)
 
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tgmoodae_mission\\maul_get_point.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_for(210, 80, 270, 500, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            # print("maul_get_point", imgs_)
-            #
-            len_imgs = len(imgs_)
-            # print("len_imgs", len_imgs)
-            # print("imgs_[len_imgs - 1]", imgs_[len_imgs - 1])
-            # x_reg = imgs_[len_imgs - 1][0]
-            y_reg = imgs_[len_imgs - 1][1]
 
-            for i in range(10):
-                is_clicked = False
-                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tgmoodae_mission\\three.PNG"
+
+        for i in range(10):
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tgmoodae_mission\\maul_get_point.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_for(210, 80, 270, 500, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                # print("maul_get_point", imgs_)
+                #
+                len_imgs = len(imgs_)
+                # print("len_imgs", len_imgs)
+                # print("imgs_[len_imgs - 1]", imgs_[len_imgs - 1])
+                # x_reg = imgs_[len_imgs - 1][0]
+                y_reg = imgs_[len_imgs - 1][1]
+
+
+            is_clicked = False
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tgmoodae_mission\\three.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(30, 90, 70, y_reg + 20, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("three", imgs_)
+                click_pos_reg(imgs_.x + 50, imgs_.y, cla)
+                is_clicked = True
+            else:
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tgmoodae_mission\\two.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(30, 90, 70, y_reg + 30, cla, img, 0.8)
+                imgs_ = imgs_set_(30, 90, 70, y_reg + 20, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    print("three", imgs_)
+                    print("two", imgs_)
                     click_pos_reg(imgs_.x + 50, imgs_.y, cla)
                     is_clicked = True
-                else:
-                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tgmoodae_mission\\two.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(30, 90, 70, y_reg + 30, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        print("two", imgs_)
-                        click_pos_reg(imgs_.x + 50, imgs_.y, cla)
-                        is_clicked = True
-                if is_clicked == True:
-                    time.sleep(0.5)
-                    click_pos_2(820, 1000, cla)
-                else:
-                    click_pos_2(150, 1000, cla)
-                    time.sleep(0.5)
-                    confirm_all(cla)
+            if is_clicked == True:
                 time.sleep(0.5)
+                click_pos_2(820, 1000, cla)
+            else:
+                click_pos_2(150, 1000, cla)
+                time.sleep(0.5)
+                confirm_all(cla)
+            QTest.qWait(500)
+
 
     except Exception as e:
         print(e)
@@ -352,6 +356,8 @@ def tgmoodae_mission_get_ready(cla, data):
                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tgmoodae_mission\\elbelm_kingdom.PNG"
                     elif tgmoodae_detail == "하코트":
                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tgmoodae_mission\\harcote.PNG"
+                    elif tgmoodae_detail == "마두마리스":
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tgmoodae_mission\\madoomaris.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                     imgs_ = imgs_set_(70, 70, 230, 570, cla, img, 0.8)
@@ -369,7 +375,7 @@ def tgmoodae_mission_get_ready(cla, data):
                             if imgs_ is not None and imgs_ != False:
                                 print("tg_junlyung_click", imgs_)
                                 break
-                            time.sleep(0.4)
+                            time.sleep(1)
 
                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\tgmoodae_mission\\tg_junlyung_click.PNG"
                         img_array = np.fromfile(full_path, np.uint8)

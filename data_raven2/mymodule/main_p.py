@@ -972,7 +972,7 @@ class FirstTab(QWidget):
         # 마을 의뢰
         self.com_group6 = QGroupBox('육성, 각종템받기, 거래소등록하기, 의뢰')
         cb6 = QComboBox()
-        list6 = ['스케쥴 선택', '각종템받기', '버프와물약사기', '거래소등록', '튜토육성', '특무대_엘베름', '특무대_하코트', '자동사냥']
+        list6 = ['스케쥴 선택', '각종템받기', '버프와물약사기', '거래소등록', '튜토육성', '특무대_엘베름', '특무대_하코트', '특무대_마두마리스', '자동사냥']
         cb6.addItems(list6)
         vbox6 = QHBoxLayout()
         vbox6.addWidget(cb6)

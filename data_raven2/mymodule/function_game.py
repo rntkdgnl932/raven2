@@ -333,7 +333,7 @@ def imgs_set_for(a, b, c, d, cla, img, data):
         regs = []
 
         for i in pyautogui.locateAllOnScreen(img, region=(a + plus, b, c - a, d - b), confidence=data):
-            print('i', i)
+            # print('i', i)
             last_x = i.left + int(i.width / 2)
             last_y = i.top + int(i.height / 2)
             last = [last_x, last_y]
