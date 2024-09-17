@@ -302,7 +302,16 @@ def get_gyeyak_sohwan(cla):
                                 if imgs_ is not None and imgs_ != False:
                                     print("rare_confirm", imgs_)
                                     click_pos_reg(imgs_.x, imgs_.y, cla)
-                                    time.sleep(0.5)
+                                    for d in range(10):
+                                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\milgi_drag.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(390, 940, 570, 1010, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            break
+                                        time.sleep(0.1)
+
+
                                     drag_pos(400, 540, 800, 540, cla)
                                     drag = True
                                     time.sleep(2)
@@ -354,6 +363,13 @@ def get_gyeyak_sohwan(cla):
                                         drag_pos(400, 540, 800, 540, cla)
                                         time.sleep(0.5)
                                     time.sleep(2)
+                            else:
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\milgi_drag.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(390, 940, 570, 1010, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    drag_pos(400, 560, 800, 560, cla)
 
                             for i in range(10):
 

@@ -752,14 +752,14 @@ def game_check(cla):
                 # dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
                 # file_path = dir_path + "\\start.txt"
                 # # cla.txt
-                # cla_data = str(v_.now_cla) + "cla"
+                # cla_data = str(cla) + "cla"
                 # file_path2 = dir_path + "\\" + cla_data + ".txt"
                 # with open(file_path, "w", encoding='utf-8-sig') as file:
                 #     data = 'no'
                 #     file.write(str(data))
                 #     time.sleep(0.2)
                 # with open(file_path2, "w", encoding='utf-8-sig') as file:
-                #     data = v_.now_cla
+                #     data = cla
                 #     file.write(str(data))
                 #     time.sleep(0.2)
                 # os.execl(sys.executable, sys.executable, *sys.argv)
@@ -771,14 +771,14 @@ def game_check(cla):
                 dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
                 file_path = dir_path + "\\start.txt"
                 # cla.txt
-                cla_data = str(v_.now_cla) + "cla"
+                cla_data = str(cla) + "cla"
                 file_path2 = dir_path + "\\" + cla_data + ".txt"
                 with open(file_path, "w", encoding='utf-8-sig') as file:
                     data = 'no'
                     file.write(str(data))
                     time.sleep(0.2)
                 with open(file_path2, "w", encoding='utf-8-sig') as file:
-                    data = v_.now_cla
+                    data = cla
                     file.write(str(data))
                     time.sleep(0.2)
                 os.execl(sys.executable, sys.executable, *sys.argv)
@@ -792,7 +792,7 @@ def go_maul(cla):
     import numpy as np
     import cv2
     import os
-    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
     from clean_screen_raven2 import clean_screen
     from massenger import line_to_me
     from dead_raven2 import dead_check, dead_recover
@@ -923,25 +923,67 @@ def go_maul(cla):
                                     break
                                 time.sleep(1)
                         else:
-                            result_gamecheck = game_check(cla)
-                            if result_gamecheck == False:
-                                print("마을 이동서 없다")
-                                why = "마을이동서 없다. 정비해라"
-                                line_to_me(cla, why)
-                                is_move = False
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\milgi_drag.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(390, 940, 570, 1010, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                drag_pos(400, 560, 800, 560, cla)
+
+                            else:
+                                is_game = False
+
+                                for i in range(10):
+                                    full_path = "c:\\my_games\\" + str(v_.game_folder) + "\\" + str(
+                                        v_.data_folder) + "\\imgs\\check\\game_title_1.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(0, 0, 960, 1030, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        is_game = True
+                                        break
+                                    else:
+                                        full_path = "c:\\my_games\\" + str(v_.game_folder) + "\\" + str(
+                                            v_.data_folder) + "\\imgs\\check\\game_title_2.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(0, 0, 960, 1030, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            is_game = True
+                                            break
+                                    time.sleep(1)
+
+                                if is_game == True:
+                                    click_pos_2(930, 55, cla)
+                                    time.sleep(0.2)
+                                    skip_click(cla)
+
+                                    result_gamecheck = game_check(cla)
+                                    if result_gamecheck == False:
+                                        print("마을 이동서 없다")
+                                        why = "마을이동서 없다. 정비해라"
+                                        line_to_me(cla, why)
+                                        is_move = False
+
+                                else:
+                                    why = "게임 꺼졌다."
+                                    line_to_me(cla, why)
+                                    is_move = False
+
+
                 time.sleep(0.5)
         if is_move == False:
             dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
             file_path = dir_path + "\\start.txt"
             # cla.txt
-            cla_data = str(v_.now_cla) + "cla"
+            cla_data = str(cla) + "cla"
             file_path2 = dir_path + "\\" + cla_data + ".txt"
             with open(file_path, "w", encoding='utf-8-sig') as file:
                 data = 'no'
                 file.write(str(data))
                 time.sleep(0.2)
             with open(file_path2, "w", encoding='utf-8-sig') as file:
-                data = v_.now_cla
+                data = cla
                 file.write(str(data))
                 time.sleep(0.2)
             os.execl(sys.executable, sys.executable, *sys.argv)
@@ -998,14 +1040,14 @@ def go_random(cla):
             dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
             file_path = dir_path + "\\start.txt"
             # cla.txt
-            cla_data = str(v_.now_cla) + "cla"
+            cla_data = str(cla) + "cla"
             file_path2 = dir_path + "\\" + cla_data + ".txt"
             with open(file_path, "w", encoding='utf-8-sig') as file:
                 data = 'no'
                 file.write(str(data))
                 time.sleep(0.2)
             with open(file_path2, "w", encoding='utf-8-sig') as file:
-                data = v_.now_cla
+                data = cla
                 file.write(str(data))
                 time.sleep(0.2)
             os.execl(sys.executable, sys.executable, *sys.argv)
