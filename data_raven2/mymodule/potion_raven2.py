@@ -111,7 +111,7 @@ def potion_check(cla):
             if is_pass == False:
                 v_.potion_count += 1
 
-            if v_.potion_count > 4:
+            if v_.potion_count > 3:
                 potion_buy(cla)
                 is_buying = True
         else:
