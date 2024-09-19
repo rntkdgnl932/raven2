@@ -103,6 +103,23 @@ def auction_ready(cla):
                             click_pos_reg(imgs_.x, imgs_.y, cla)
                 time.sleep(0.5)
 
+            # 일괄회수 준비
+            for i in range(10):
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\retrieve_ready_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(530, 130, 630, 970, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    break
+                else:
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\retrieve_ready_btn2.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(530, 130, 630, 970, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        break
+                time.sleep(0.5)
+
             # 일괄회수
             for i in range(10):
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\retrieve_ready_btn.PNG"
@@ -171,6 +188,8 @@ def auction_sell_start(cla):
         # if imgs_ is not None and imgs_ != False:
         #     click_pos_reg(imgs_.x, imgs_.y, cla)
         #     time.sleep(0.5)
+
+        y_item = 970
 
         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\last_e.PNG"
         img_array = np.fromfile(full_path, np.uint8)

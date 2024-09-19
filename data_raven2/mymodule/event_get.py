@@ -201,15 +201,15 @@ def event_get_click(cla, is_picture):
         # 3 : 정예특무대합류작전(8_click) o
         # 4 : 100일특무대출석I, II(seven) o
 
-        # 5 : 만월의추석특별출석(seven)
+        # 5 : 만월의추석특별출석(seven) o
 
-        # 6 : 피의전장을위한특별훈련I, II(eight) o
+        # 6 : 심연맞이준비(eight)
 
         # 7 : 피의전장을위한특별훈련III(eight) o
 
-        # 8 : 만월의숲정복미션(eight)
+        # 8 : 만월의숲정복미션(eight) o
 
-        # 9 : 만월의숲특별지원(eight)
+        # 9 : 만월의숲특별지원(eight) o
 
         # 10 :
 
@@ -219,9 +219,9 @@ def event_get_click(cla, is_picture):
 
         # 13 :
 
-        # ?? : 만월의추석특별출석(seven)
-        # ?? : 만월의숲정복미션(eight)
-        # ?? : 만월의숲특별지원(eight)
+        # ?? : 심연맞이준비(eight)
+        # ?? :
+        # ?? :
 
 
 

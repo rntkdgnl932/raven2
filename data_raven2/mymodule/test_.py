@@ -55,16 +55,7 @@ def go_test():
         plus = 960 * 5
 
     try:
-
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\anymore_time.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(520, 700, 610, 750, cla, img, 0.85)
-        if imgs_ is not None and imgs_ != False:
-            print("anymore_time", imgs_)
-
-        else:
-            print("남은 시간 있음")
+        potion_buy(cla)
 
 
 
