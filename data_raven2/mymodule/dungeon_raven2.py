@@ -402,7 +402,7 @@ def dungeon_check(cla, data):
         elif dun[0] == "이벤트":
             dun_name = "event"
 
-        if dun_name == "temple" or dun_name == "swamp":
+        if dun_name == "temple" or dun_name == "swamp" or dun_name == "redstone":
             folder_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\" + str(dun_name) + "\\" + str(dun[2])
         else:
             folder_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\" + str(dun_name)
@@ -415,7 +415,7 @@ def dungeon_check(cla, data):
 
         # 애초에 절전 던전인지 먼저 확인하기
         for i in range(dun_len):
-            if dun_name == "temple" or dun_name == "swamp":
+            if dun_name == "temple" or dun_name == "swamp" or dun_name == "redstone":
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\" + str(dun_name) + "\\" + str(
                     dun[2]) + "\\" + str(i) + ".PNG"
             else:
@@ -427,7 +427,7 @@ def dungeon_check(cla, data):
             if imgs_ is not None and imgs_ != False:
                 print("던전 사냥 중", i, "번째 맵 확인")
 
-                if dun_name == "temple" or dun_name == "swamp":
+                if dun_name == "temple" or dun_name == "swamp" or dun_name == "redstone":
                     if i == 0 or i == 1:
                         print("랜덤 이동 해야함")
                         random = True
