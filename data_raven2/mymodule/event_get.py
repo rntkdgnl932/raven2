@@ -196,20 +196,22 @@ def event_get_click(cla, is_picture):
 
         # - :
 
-        # 1 : 100일감사출석I(fourteen) o
-        # 2 : 바트람의훈련교범(seven_six) o
-        # 3 : 정예특무대합류작전(8_click) o
-        # 4 : 100일특무대출석I, II(seven) o
+        # 1 : 바트람의훈련교범(seven_six) o
+        # 2 : 정예특무대합류작전(8_click) o
 
-        # 5 : 만월의추석특별출석(seven) o
+        # 3 : 심연의헤븐스톤지원출석(fourteen)
 
-        # 6 : 심연맞이준비(eight)
+        # 4 : 전쟁보급품지원출석(seven)
 
-        # 7 : 피의전장을위한특별훈련III(eight) o
+        # 5 : 심연을위한성장미션I,II,III(eight)
 
-        # 8 : 만월의숲정복미션(eight) o
+        # 6 : 잠재력성장특별지원(ten)
 
-        # 9 : 만월의숲특별지원(eight) o
+        # 7 :
+
+        # 8 :
+
+        # 9 :
 
         # 10 :
 
@@ -219,9 +221,10 @@ def event_get_click(cla, is_picture):
 
         # 13 :
 
-        # ?? : 심연맞이준비(eight)
-        # ?? :
-        # ?? :
+        # ?? : 심연의헤븐스톤지원출석(fourteen)
+        # ?? : 전쟁보급품지원출석(seven)
+        # ?? : 심연을위한성장미션I,II,III(eight)
+        # ?? : 잠재력성장특별지원(ten)
 
 
 
@@ -247,19 +250,19 @@ def event_get_click(cla, is_picture):
 
 
 
-        if is_picture == "1":
+        if is_picture == "3":
             data = "fourteen"
-        elif is_picture == "2":
+        elif is_picture == "1":
             data = "seven_six"
-        elif is_picture == "3":
+        elif is_picture == "2":
             data = "8_click"
-        elif is_picture == "6" or is_picture == "7" or is_picture == "8" or is_picture == "9":
+        elif is_picture == "5":
             data = "eight"
-        # elif is_picture == "5":
-        #     data = "ten"
-        elif is_picture == "five":
-            data = "five"
-        elif is_picture == "4" or is_picture == "5":
+        elif is_picture == "6":
+            data = "ten"
+        # elif is_picture == "":
+        #     data = "five"
+        elif is_picture == "4":
             data = "seven"
 
 
