@@ -94,6 +94,8 @@ onDunjeon_2_level = 0
 onDunjeon_3 = "none"
 onDunjeon_3_level = 0
 onDunjeon_3_step = 0
+onDunjeon_4_level = 0
+
 
 onHunt = "none"
 onHunt2 = "none"
@@ -1036,6 +1038,8 @@ class FirstTab(QWidget):
         dun_box_2.addWidget(dungeon_2)
         self.dun_group_2.setLayout(dun_box_2)
 
+
+
         # 던전 종류
         self.dun_group_3 = QGroupBox('서브퀘스트')
         dun_g3_name = QComboBox()
@@ -1057,6 +1061,22 @@ class FirstTab(QWidget):
 
         dun_box_3.addWidget(dungeon_3)
         self.dun_group_3.setLayout(dun_box_3)
+
+        # 던전 종류
+        self.dun_group_4 = QGroupBox('어비스')
+
+        dun_g4_stair = QComboBox()
+        dun_g4_stair_list = ['단계', '1', '2']
+        dun_g4_stair.addItems(dun_g4_stair_list)
+
+        dun_box_4 = QHBoxLayout()
+        dun_box_4.addWidget(dun_g4_stair)
+
+        dungeon_4 = QPushButton('어비스 추가')
+        dungeon_4.clicked.connect(self.onActivated_dunjeon_4_add)
+
+        dun_box_4.addWidget(dungeon_4)
+        self.dun_group_4.setLayout(dun_box_4)
 
 
         # 사냥터
@@ -1157,7 +1177,7 @@ class FirstTab(QWidget):
         lastbox.addLayout(vbox5_4)
 
 
-        self.com_group5.setLayout(lastbox)
+        # self.com_group5.setLayout(lastbox)
 
         ###
 
@@ -1178,6 +1198,8 @@ class FirstTab(QWidget):
         dun_g3_name.activated[str].connect(self.onActivated_dunjeon_3)  # 던전3 이름
         # dun_g3_stair.activated[str].connect(self.onActivated_dunjeon_3_level)  # 던전3 층수
         # dun_g3_step.activated[str].connect(self.onActivated_dunjeon_3_step)  # 던전3 난이도
+
+        dun_g4_stair.activated[str].connect(self.onActivated_dunjeon_4_level)  # 던전4 층수
 
         cb5.activated[str].connect(self.onActivated_hunt)  # 요건 함수
         cb55.activated[str].connect(self.onActivated_hunt2)  # 요건 함수
@@ -1239,8 +1261,11 @@ class FirstTab(QWidget):
         dun_3_hbox = QHBoxLayout()
         dun_3_hbox.addWidget(self.dun_group_3)
 
-        hbox4 = QHBoxLayout()
-        hbox4.addWidget(self.com_group5)
+        dun_4_hbox = QHBoxLayout()
+        dun_4_hbox.addWidget(self.dun_group_4)
+
+        # hbox4 = QHBoxLayout()
+        # hbox4.addWidget(self.com_group5)
 
 
         hbox5 = QHBoxLayout()
@@ -1273,7 +1298,8 @@ class FirstTab(QWidget):
         Vbox2.addLayout(dun_1_hbox)
         Vbox2.addLayout(dun_2_hbox)
         Vbox2.addLayout(dun_3_hbox)
-        Vbox2.addLayout(hbox4)
+        Vbox2.addLayout(dun_4_hbox)
+        # Vbox2.addLayout(hbox4)
 
         hbox2 = QHBoxLayout()
         hbox2.addLayout(first_vbox_1)
@@ -1585,6 +1611,8 @@ class FirstTab(QWidget):
             print("던전 층수를 선택해 주세요.")
 
 
+
+
     def onActivated_dunjeon_3(self, text):
         global onDunjeon_3
         if text != "none" or text != '서브퀘스트 선택':
@@ -1602,6 +1630,15 @@ class FirstTab(QWidget):
     #     else:
     #         onDunjeon_3_level = 0
     #         print("던전 층수를 선택해 주세요.")
+
+    def onActivated_dunjeon_4_level(self, text):
+        global onDunjeon_4_level
+        if text != 0 and text != '층':
+            onDunjeon_4_level = text
+            print('onDunjeon_4_level', onDunjeon_4_level)
+        else:
+            onDunjeon_4_level = 0
+            print("던전 층수를 선택해 주세요.")
 
     # def onActivated_dunjeon_3_step(self, text):
     #     global onDunjeon_3_step
@@ -1745,6 +1782,30 @@ class FirstTab(QWidget):
         elif onDunjeon_3 == '서브퀘스트 선택' or onDunjeon_3 == 'none':
             pyautogui.alert(button='넵', text='던전 및 층수를 선택해 주시지예', title='아 진짜 뭐합니꺼')
         elif onCharacter != 0 and (onDunjeon_3 != '서브퀘스트 선택' or onDunjeon_3 != 'none'):
+            print('char_', char_)
+            print('dun_', dun_)
+
+            if onCla == "One" or onCla == "Two":
+                data = "One:" + char_ + ":" + dun_ + ":대기중:" + "Two:" + char_ + ":" + dun_ + ":대기중\n"
+            elif onCla == "Three" or onCla == "Four":
+                data = "Three:" + char_ + ":" + dun_ + ":대기중:" + "Four:" + char_ + ":" + dun_ + ":대기중\n"
+            elif onCla == "Five" or onCla == "Six":
+                data = "Five:" + char_ + ":" + dun_ + ":대기중:" + "Six:" + char_ + ":" + dun_ + ":대기중\n"
+
+
+            print(data)
+            self.onActivated_dunjeon_add2(data)
+
+    def onActivated_dunjeon_4_add(self):
+        char_ = onCharacter
+        dun_ = "어비스_" + onDunjeon_4_level
+        if onCharacter == 0:
+            pyautogui.alert(button='넵', text='캐릭터를 선택해 주시지예', title='뭐합니꺼')
+        elif onCla == 'none':
+            pyautogui.alert(button='넵', text='몇 클라인지 선택해 주시지예', title='뭐합니꺼')
+        elif str(onDunjeon_4_level) == "0":
+            pyautogui.alert(button='넵', text='던전 및 층수를 선택해 주시지예', title='아 진짜 뭐합니꺼')
+        elif onCharacter != 0 and str(onDunjeon_4_level) != "0":
             print('char_', char_)
             print('dun_', dun_)
 

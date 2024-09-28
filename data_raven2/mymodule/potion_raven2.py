@@ -54,7 +54,7 @@ def potion_check(cla):
                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\juljun_potion\\" + str(i) + ".PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(450, 895, 477, 915, cla, img, 0.8)
+                    imgs_ = imgs_set_(450, 840, 477, 970, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         many = i * 100
                         print_say = str(many) + "개 이상"
@@ -95,13 +95,25 @@ def potion_check(cla):
                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\out_potion\\" + str(i) + ".PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(265, 905, 310, 923, cla, img, 0.8)
+                        imgs_ = imgs_set_(270, 860, 288, 960, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             many = i * 100
                             print_say = str(many) + "개 이상"
                             print("num", print_say)
-                            is_potion = True
+
                             break
+                        else:
+                            if str(i) == "1":
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\click_out_potion\\1.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(270, 860, 288, 960, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    many = i * 100
+                                    print_say = str(many) + "개 이상"
+                                    print("num", print_say)
+
+                                    break
 
             else:
                 print("바깥화면 아니다.")

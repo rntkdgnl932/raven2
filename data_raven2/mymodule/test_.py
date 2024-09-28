@@ -34,10 +34,11 @@ def go_test():
     from subquest_raven2 import subquest_get
     from character_select_and_game_start import game_start_screen
     from guild_raven2 import guild_check
+    from abyss_raven2 import abyss_sangjum
 
     print("test")
 
-    cla = "one"
+    cla = "six"
 
     plus = 0
 
@@ -55,15 +56,14 @@ def go_test():
         plus = 960 * 5
 
     try:
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_title\\5.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(220, 320, 800, 400, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("pic_num 5", imgs_)
-        else:
-            print("없다....")
 
+        abyss_sangjum(cla, "어비스_1")
+        # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\monster_info_close_btn.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(500, 250, 800, 500, cla, img, 0.75)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("monster_info_close_btn", imgs_)
 
 
         ############################################################################################

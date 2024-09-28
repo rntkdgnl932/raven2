@@ -1,6 +1,8 @@
 import time
 # import os
 import sys
+from PyQt5.QtTest import *
+
 
 
 import variable as v_
@@ -542,7 +544,7 @@ def menu_open(cla):
                 break
             else:
 
-                clean_screen(cla)
+
                 result_out = out_check(cla)
                 if result_out == True:
 
@@ -599,9 +601,10 @@ def menu_open(cla):
                             break
 
                         time.sleep(0.5)
+                else:
+                    clean_screen(cla)
 
-
-            time.sleep(0.5)
+            QTest.qWait(500)
 
 
         return not_available
