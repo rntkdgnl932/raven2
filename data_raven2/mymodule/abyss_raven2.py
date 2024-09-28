@@ -235,7 +235,7 @@ def abyss_sangjum_gyohwan(cla, data):
                                                 break
                                             else:
                                                 click_pos_2(440, 150, cla)
-                                time.sleep(0.5)
+                                QTest.qWait(500)
                 elif result_data[1] == "2":
                     # 저항물약
 
@@ -293,7 +293,7 @@ def abyss_sangjum_gyohwan(cla, data):
                                                 break
                                             else:
                                                 click_pos_2(440, 220, cla)
-                                time.sleep(0.5)
+                                QTest.qWait(500)
                 if added == False:
                     # 어비스시간충전석석
                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\abyss\\sold_out.PNG"
@@ -358,7 +358,7 @@ def abyss_sangjum_gyohwan(cla, data):
                                                     break
                                                 else:
                                                     click_pos_2(440, 285, cla)
-                                    time.sleep(0.5)
+                                    QTest.qWait(500)
 
                     # 심연초대장장
                     for i in range(3):
