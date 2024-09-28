@@ -211,7 +211,7 @@ def abyss_sangjum_gyohwan(cla, data):
                                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\abyss\\anymore_buy.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(390, 115, 580, 150, cla, img, 0.8)
+                                    imgs_ = imgs_set_(390, 115, 580, 150, cla, img, 0.75)
                                     if imgs_ is not None and imgs_ != False:
                                         print("anymore_buy", imgs_)
                                         break
@@ -219,7 +219,7 @@ def abyss_sangjum_gyohwan(cla, data):
                                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\abyss\\anymore_buy_2.PNG"
                                         img_array = np.fromfile(full_path, np.uint8)
                                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                        imgs_ = imgs_set_(390, 115, 580, 150, cla, img, 0.8)
+                                        imgs_ = imgs_set_(390, 115, 580, 150, cla, img, 0.75)
                                         if imgs_ is not None and imgs_ != False:
                                             print("anymore_buy_2", imgs_)
                                             break
@@ -227,7 +227,7 @@ def abyss_sangjum_gyohwan(cla, data):
                                             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\abyss\\level_low.PNG"
                                             img_array = np.fromfile(full_path, np.uint8)
                                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                            imgs_ = imgs_set_(390, 115, 580, 150, cla, img, 0.8)
+                                            imgs_ = imgs_set_(390, 115, 580, 150, cla, img, 0.75)
                                             if imgs_ is not None and imgs_ != False:
                                                 print("level_low", imgs_)
                                                 myQuest_play_add(cla, data)
@@ -269,7 +269,7 @@ def abyss_sangjum_gyohwan(cla, data):
                                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\abyss\\anymore_buy.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(390, 115, 580, 150, cla, img, 0.8)
+                                    imgs_ = imgs_set_(390, 115, 580, 150, cla, img, 0.75)
                                     if imgs_ is not None and imgs_ != False:
                                         print("anymore_buy", imgs_)
                                         break
@@ -277,7 +277,7 @@ def abyss_sangjum_gyohwan(cla, data):
                                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\abyss\\anymore_buy_2.PNG"
                                         img_array = np.fromfile(full_path, np.uint8)
                                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                        imgs_ = imgs_set_(390, 115, 580, 150, cla, img, 0.8)
+                                        imgs_ = imgs_set_(390, 115, 580, 150, cla, img, 0.75)
                                         if imgs_ is not None and imgs_ != False:
                                             print("anymore_buy_2", imgs_)
                                             break
@@ -285,7 +285,7 @@ def abyss_sangjum_gyohwan(cla, data):
                                             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\abyss\\level_low.PNG"
                                             img_array = np.fromfile(full_path, np.uint8)
                                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                            imgs_ = imgs_set_(390, 115, 580, 150, cla, img, 0.8)
+                                            imgs_ = imgs_set_(390, 115, 580, 150, cla, img, 0.75)
                                             if imgs_ is not None and imgs_ != False:
                                                 print("level_low", imgs_)
                                                 myQuest_play_add(cla, data)
@@ -334,7 +334,7 @@ def abyss_sangjum_gyohwan(cla, data):
                                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\abyss\\anymore_buy.PNG"
                                         img_array = np.fromfile(full_path, np.uint8)
                                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                        imgs_ = imgs_set_(390, 115, 580, 150, cla, img, 0.8)
+                                        imgs_ = imgs_set_(390, 115, 580, 150, cla, img, 0.75)
                                         if imgs_ is not None and imgs_ != False:
                                             print("anymore_buy", imgs_)
                                             break
@@ -342,7 +342,7 @@ def abyss_sangjum_gyohwan(cla, data):
                                             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\abyss\\anymore_buy_2.PNG"
                                             img_array = np.fromfile(full_path, np.uint8)
                                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                            imgs_ = imgs_set_(390, 115, 580, 150, cla, img, 0.8)
+                                            imgs_ = imgs_set_(390, 115, 580, 150, cla, img, 0.75)
                                             if imgs_ is not None and imgs_ != False:
                                                 print("anymore_buy_2", imgs_)
                                                 break
@@ -350,7 +350,7 @@ def abyss_sangjum_gyohwan(cla, data):
                                                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\abyss\\level_low.PNG"
                                                 img_array = np.fromfile(full_path, np.uint8)
                                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                                imgs_ = imgs_set_(390, 115, 580, 150, cla, img, 0.8)
+                                                imgs_ = imgs_set_(390, 115, 580, 150, cla, img, 0.75)
                                                 if imgs_ is not None and imgs_ != False:
                                                     print("level_low", imgs_)
                                                     myQuest_play_add(cla, data)
