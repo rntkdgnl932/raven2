@@ -312,6 +312,11 @@ def jadong_in(cla):
                                     if imgs_ is not None and imgs_ != False:
                                         print("change_btn_2", imgs_)
                                         click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    else:
+                                        click_pos_2(250, 130, cla)
+                                        time.sleep(0.5)
+                                        for c in range(3):
+                                            confirm_all(cla)
                             else:
                                 clean_screen(cla)
                     time.sleep(0.5)

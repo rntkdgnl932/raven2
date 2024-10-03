@@ -10,20 +10,19 @@ sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder)
 
 
 
-def abyss_start(cla):
+def abyss_start(cla, data):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
 
     try:
         print("abyss_start")
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\clean_screen\\close_btn_x.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(630, 30, 780, 100, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("close_btn_x..", imgs_)
-            click_pos_reg(imgs_.x, imgs_.y, cla)
+
+        # 사냥터 가기전 물약 및 입장권 구매
+        abyss_sangjum(cla, data)
+
+        # 사냥터 들어가기
+        abyss_dun_in(cla, data)
 
 
 
@@ -37,7 +36,7 @@ def abyss_sangjum(cla, data):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_raven2 import menu_open, go_maul
+    from action_raven2 import menu_open, go_maul, confirm_all
 
     try:
         print("abyss_sangjum")
@@ -94,6 +93,9 @@ def abyss_sangjum(cla, data):
                             time.sleep(1)
 
                             for o in range(10):
+
+
+
                                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\abyss\\already_dun_in.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -110,6 +112,8 @@ def abyss_sangjum(cla, data):
                                         maul_in = True
                                         break
                                     else:
+                                        if result_data[1] == "2":
+                                            confirm_all(cla)
 
                                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\abyss\\abyss_maul_" + str(
                                             result_data[1]) + "_btn.PNG"
@@ -482,3 +486,123 @@ def abyss_sangjum_gyohwan(cla, data):
     except Exception as e:
         print(e)
         return 0
+
+
+
+def abyss_dun_in(cla, data):
+    import numpy as np
+    import cv2
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from action_raven2 import menu_open, go_maul
+
+
+    try:
+        print("abyss_dun_in")
+
+        # 마을에서만 입장 가능
+        go_maul(cla)
+
+        result_data = data.split("_")
+        # 어비스_1
+
+        abyss_maul_in = False
+        abyss_maul_in_count = 0
+        while abyss_maul_in is False:
+            abyss_maul_in_count += 1
+            if abyss_maul_in_count > 7:
+                abyss_maul_in = True
+
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\abyss\\abyss_maul.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(55, 105, 120, 170, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("abyss_maul..", imgs_)
+                abyss_maul_in = True
+
+
+            else:
+                menu_open(cla)
+
+                for i in range(10):
+
+                    maul_in = False
+
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\abyss\\title_abyss.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(30, 30, 120, 170, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("title_abyss", imgs_)
+
+                        if result_data[1] == "1":
+                            y_reg = 180
+                        elif result_data[1] == "2":
+                            y_reg = 300
+
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\abyss\\abyss_in_btn.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(750, 980, 840, 1020, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("abyss", result_data[1], imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            time.sleep(1)
+
+                            for o in range(10):
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\abyss\\already_dun_in.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(375, 100, 600, 160, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("already_dun_in", imgs_)
+
+                                    break
+
+                                time.sleep(1)
+
+                            # 나가기
+                            for x in range(5):
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\abyss\\title_abyss_gyohwan.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(30, 30, 180, 100, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("title_abyss_gyohwan", imgs_)
+                                    click_pos_2(925, 60, cla)
+                                else:
+                                    break
+                                QTest.qWait(500)
+
+
+                        else:
+                            click_pos_2(100, y_reg, cla)
+                        time.sleep(0.5)
+
+                        if maul_in == True:
+                            break
+
+                    else:
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\abyss\\menu_abyss_btn.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(875, 315, 955, 395, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("menu_abyss_btn", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                    time.sleep(0.5)
+            QTest.qWait(500)
+
+
+
+    except Exception as e:
+        print(e)
+        return 0
+
+
+
+
+
+
+
+

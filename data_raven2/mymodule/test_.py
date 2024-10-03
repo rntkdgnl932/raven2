@@ -38,7 +38,7 @@ def go_test():
 
     print("test")
 
-    cla = "six"
+    cla = "one"
 
     plus = 0
 
@@ -57,7 +57,33 @@ def go_test():
 
     try:
 
-        abyss_sangjum(cla, "어비스_1")
+        # abyss_sangjum(cla, "어비스_1")
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\jabhwa_btn.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(50, 100, 200, 260, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("jabhwa_btn", imgs_)
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\change_btn_1.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(190, 100, 280, 160, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("change_btn_1", imgs_)
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+            else:
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\change_btn_2.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(190, 100, 280, 160, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("change_btn_2", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                else:
+                    click_pos_2(250, 130, cla)
+                    time.sleep(0.5)
+                    for c in range(3):
+                        confirm_all(cla)
         # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\monster_info_close_btn.PNG"
         # img_array = np.fromfile(full_path, np.uint8)
         # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)

@@ -199,19 +199,19 @@ def event_get_click(cla, is_picture):
         # 1 : 바트람의훈련교범(seven_six) o
         # 2 : 정예특무대합류작전(8_click) o
 
-        # 3 : 심연의헤븐스톤지원출석(fourteen)
+        # 3 : 심연의헤븐스톤지원출석(fourteen) o
 
-        # 4 : 전쟁보급품지원출석(seven)
+        # 4 : 전쟁보급품지원출석(seven) o
 
-        # 5 : 심연을위한성장미션I,II,III(eight)
+        # 5 : 심연을위한성장미션I,II,III(eight) o
 
-        # 6 : 잠재력성장특별지원(ten)
+        # 6 : 잠재력성장특별지원(ten) o
 
-        # 7 :
+        # 7 : 가을맞이출석(seven)
 
-        # 8 :
+        # 8 : 가을맞이특별미션(seven_six)
 
-        # 9 :
+        # 9 : 성유물강화특별지원(six)
 
         # 10 :
 
@@ -221,10 +221,10 @@ def event_get_click(cla, is_picture):
 
         # 13 :
 
-        # ?? : 심연의헤븐스톤지원출석(fourteen)
-        # ?? : 전쟁보급품지원출석(seven)
-        # ?? : 심연을위한성장미션I,II,III(eight)
-        # ?? : 잠재력성장특별지원(ten)
+        # ?? : 가을맞이출석(seven)
+        # ?? : 가을맞이특별미션(seven_six)
+        # ?? : 성유물강화특별지원(six)
+        # ?? :
 
 
 
@@ -252,17 +252,19 @@ def event_get_click(cla, is_picture):
 
         if is_picture == "3":
             data = "fourteen"
-        elif is_picture == "1":
+        elif is_picture == "1" or is_picture == "8":
             data = "seven_six"
+        # elif is_picture == "":
+        #     data = "five"
+        elif is_picture == "9":
+            data = "six"
         elif is_picture == "2":
             data = "8_click"
         elif is_picture == "5":
             data = "eight"
         elif is_picture == "6":
             data = "ten"
-        # elif is_picture == "":
-        #     data = "five"
-        elif is_picture == "4":
+        elif is_picture == "4" or is_picture == "7":
             data = "seven"
 
 
@@ -357,6 +359,29 @@ def event_get_click(cla, is_picture):
                 else:
                     break
                 time.sleep(0.5)
+
+        elif data == "six":
+            print("six")
+
+
+            # 510, 825 // 515, 570, 625, 680
+            for c in range(3):
+                y_reg = 515 + (55 * c)
+                click_pos_2(510, y_reg, cla)
+                time.sleep(0.5)
+                click_pos_2(510, y_reg, cla)
+                time.sleep(0.5)
+            # 510, 825 // 515, 570, 625, 680
+            for c in range(3):
+                y_reg = 515 + (55 * c)
+                click_pos_2(825, y_reg, cla)
+                time.sleep(0.5)
+                click_pos_2(825, y_reg, cla)
+                time.sleep(0.5)
+            click_pos_2(800, 370, cla)
+            time.sleep(0.5)
+            click_pos_2(800, 370, cla)
+            time.sleep(0.5)
 
         elif data == "eight":
             print("eight")
