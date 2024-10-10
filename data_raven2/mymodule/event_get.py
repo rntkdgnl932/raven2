@@ -201,17 +201,17 @@ def event_get_click(cla, is_picture):
 
         # 3 : 심연의헤븐스톤지원출석(fourteen) o
 
-        # 4 : 전쟁보급품지원출석(seven) o
+        # 4 : 다가오는그림자(eight)
 
-        # 5 : 심연을위한성장미션I,II,III(eight) o
+        # 5 : 에드가의길드집결령(eight)
 
-        # 6 : 잠재력성장특별지원(ten) o
+        # 6 : 성유물강화특별지원(six) o
 
-        # 7 : 가을맞이출석(seven)
+        # 7 : 가을맞이출석(seven) o
 
-        # 8 : 가을맞이특별미션(seven_six)
+        # 8 : 가을맞이특별미션(seven_six) o
 
-        # 9 : 성유물강화특별지원(six)
+        # 9 :
 
         # 10 :
 
@@ -221,9 +221,9 @@ def event_get_click(cla, is_picture):
 
         # 13 :
 
-        # ?? : 가을맞이출석(seven)
-        # ?? : 가을맞이특별미션(seven_six)
-        # ?? : 성유물강화특별지원(six)
+        # ?? : 다가오는그림자(eight)
+        # ?? : 에드가의길드집결령(eight)
+        # ?? :
         # ?? :
 
 
@@ -256,7 +256,7 @@ def event_get_click(cla, is_picture):
             data = "seven_six"
         # elif is_picture == "":
         #     data = "five"
-        elif is_picture == "9":
+        elif is_picture == "6":
             data = "six"
         elif is_picture == "2":
             data = "8_click"

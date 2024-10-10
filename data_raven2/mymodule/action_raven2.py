@@ -1360,7 +1360,17 @@ def bag_open(cla):
                                 time.sleep(0.2)
                                 confirm_all(cla)
                             else:
-                                confirm_all(cla)
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\bag\\bosang_select_btn.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(380, 670, 550, 730, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_2(500, 485, cla)
+                                    time.sleep(0.7)
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                else:
+
+                                    confirm_all(cla)
                             time.sleep(0.5)
 
                         for i in range(10):
