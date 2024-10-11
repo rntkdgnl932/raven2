@@ -1,7 +1,7 @@
 import time
 # import os
 import sys
-
+from PyQt5.QtTest import *
 
 import variable as v_
 
@@ -269,7 +269,7 @@ def jadong_in(cla):
                             break
                         else:
                             confirm_all(cla)
-                        time.sleep(0.5)
+                        QTest.qWait(500)
 
 
             else:
