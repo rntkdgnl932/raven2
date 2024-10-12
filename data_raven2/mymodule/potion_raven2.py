@@ -13,7 +13,7 @@ def potion_check(cla):
     import cv2
     from function_game import imgs_set_, click_pos_2
     from action_raven2 import juljun_check, out_check
-
+    import pyautogui
     try:
         print("potion_check")
 
@@ -36,6 +36,10 @@ def potion_check(cla):
                     print_say = str(many) + "개 이상"
                     print("num", print_say)
                     is_potion = True
+
+                    pos = (450, 1000, 477 - 450, 1020 - 1000)
+                    pyautogui.screenshot("asd.png", region=pos)
+
                     break
             if is_potion == False:
 
@@ -60,6 +64,8 @@ def potion_check(cla):
                         print_say = str(many) + "개 이상"
                         print("num", print_say)
                         is_potion = True
+                        pos = (450, 840, 477 - 450, 970 - 840)
+                        pyautogui.screenshot("asd.png", region=pos)
                         break
         else:
             print("절전모드 아님")
@@ -77,6 +83,10 @@ def potion_check(cla):
                         print_say = str(many) + "개 이상"
                         print("num", print_say)
                         is_potion = True
+
+                        pos = (270, 982, 477 - 270, 1000 - 982)
+                        pyautogui.screenshot("asd.png", region=pos)
+
                         break
                 if is_potion == False:
 
@@ -100,6 +110,9 @@ def potion_check(cla):
                             many = i * 100
                             print_say = str(many) + "개 이상"
                             print("num", print_say)
+
+                            pos = (270, 860, 288 - 270, 960 - 860)
+                            pyautogui.screenshot("asd.png", region=pos)
 
                             break
                         else:
