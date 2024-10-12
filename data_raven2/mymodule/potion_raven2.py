@@ -36,7 +36,8 @@ def potion_check(cla):
 
         is_pass = False
 
-        result_juljun = juljun_check(cla)
+        # result_juljun = juljun_check(cla)
+        result_juljun = True
         if result_juljun[0] == True:
             print("절전모드")
             for i in range(10):
