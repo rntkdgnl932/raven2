@@ -36,26 +36,28 @@ def potion_check(cla):
 
         is_pass = False
 
-        # result_juljun = juljun_check(cla)
-        result_juljun = True
-        # if result_juljun[0] == True:
-        if result_juljun == True:
+        result_juljun = juljun_check(cla)
+        # result_juljun = True
+        if result_juljun[0] == True:
+        # if result_juljun == True:
             print("절전모드")
             for i in range(10):
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\juljun_potion\\" + str(i) + ".PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(450, 1000, 477, 1020, cla, img, 0.85)
+                imgs_ = imgs_set_(450, 1000, 477, 1020, cla, img, 0.95)
                 if imgs_ is not None and imgs_ != False:
                     many = i * 100
                     print_say = str(many) + "개 이상"
                     print("num", print_say)
                     is_potion = True
 
-                    pos = (450 + plus, 1000, 477 - 450, 1020 - 1000)
-                    pyautogui.screenshot("asd.png", region=pos)
+                    # pos = (450 + plus, 1000, 477 - 450, 1020 - 1000)
+                    # pyautogui.screenshot("asd.png", region=pos)
 
                     break
+
+
             if is_potion == False:
 
                 for i in range(10):
@@ -73,16 +75,45 @@ def potion_check(cla):
                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\juljun_potion\\" + str(i) + ".PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(450, 840, 477, 970, cla, img, 0.85)
+                    imgs_ = imgs_set_(450, 840, 477, 970, cla, img, 0.95)
                     if imgs_ is not None and imgs_ != False:
                         many = i * 100
                         print_say = str(many) + "개 이상"
                         print("num.", print_say)
                         is_potion = True
 
-                        pos = (450 + plus, 840, 477 - 450, 970 - 840)
-                        pyautogui.screenshot("asd.png", region=pos)
+                        # pos = (450 + plus, 840, 477 - 450, 970 - 840)
+                        # pyautogui.screenshot("asd.png", region=pos)
                         break
+                    else:
+                        if str(i) == "7":
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\click_juljun_potion\\7.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(450, 840, 477, 970, cla, img, 0.95)
+                            if imgs_ is not None and imgs_ != False:
+                                many = i * 100
+                                print_say = str(many) + "개 이상"
+                                print("num.", print_say)
+                                is_potion = True
+
+                                # pos = (450 + plus, 840, 477 - 450, 970 - 840)
+                                # pyautogui.screenshot("asd.png", region=pos)
+                                break
+                        elif str(i) == "9":
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\click_juljun_potion\\9.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(450, 840, 477, 970, cla, img, 0.95)
+                            if imgs_ is not None and imgs_ != False:
+                                many = i * 100
+                                print_say = str(many) + "개 이상"
+                                print("num.", print_say)
+                                is_potion = True
+
+                                # pos = (450 + plus, 840, 477 - 450, 970 - 840)
+                                # pyautogui.screenshot("asd.png", region=pos)
+                                break
         else:
             print("절전모드 아님")
 
@@ -93,15 +124,15 @@ def potion_check(cla):
                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\out_potion\\" + str(i) + ".PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(270, 982, 287, 1000, cla, img, 0.8)
+                    imgs_ = imgs_set_(270, 982, 288, 1000, cla, img, 0.85)
                     if imgs_ is not None and imgs_ != False:
                         many = i * 100
                         print_say = str(many) + "개 이상"
                         print("num..", print_say)
                         is_potion = True
 
-                        pos = (270 + plus, 982, 287 - 270, 1000 - 982)
-                        pyautogui.screenshot("asd.png", region=pos)
+                        # pos = (270 + plus, 982, 288 - 270, 1000 - 982)
+                        # pyautogui.screenshot("asd.png", region=pos)
 
                         break
                 if is_potion == False:
@@ -124,14 +155,14 @@ def potion_check(cla):
                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\out_potion\\" + str(i) + ".PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(270, 870, 287, 960, cla, img, 0.8)
+                        imgs_ = imgs_set_(270, 860, 288, 960, cla, img, 0.85)
                         if imgs_ is not None and imgs_ != False:
                             many = i * 100
                             print_say = str(many) + "개 이상"
                             print("num...", print_say)
 
-                            pos = (270 + plus, 870, 287 - 270, 960 - 870)
-                            pyautogui.screenshot("asd.png", region=pos)
+                            # pos = (270 + plus, 860, 288 - 270, 960 - 860)
+                            # pyautogui.screenshot("asd.png", region=pos)
 
                             break
                         else:
@@ -139,14 +170,14 @@ def potion_check(cla):
                                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\click_out_potion\\1.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(270, 870, 287, 960, cla, img, 0.8)
+                                imgs_ = imgs_set_(270, 860, 288, 960, cla, img, 0.85)
                                 if imgs_ is not None and imgs_ != False:
                                     many = i * 100
                                     print_say = str(many) + "개 이상"
                                     print("num....", print_say)
 
-                                    pos = (270 + plus, 870, 287 - 270, 960 - 870)
-                                    pyautogui.screenshot("asd.png", region=pos)
+                                    # pos = (270 + plus, 860, 288 - 270, 960 - 860)
+                                    # pyautogui.screenshot("asd.png", region=pos)
 
                                     break
 

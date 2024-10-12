@@ -38,7 +38,7 @@ def go_test():
 
     print("test")
 
-    cla = "six"
+    cla = "four"
 
     plus = 0
 
