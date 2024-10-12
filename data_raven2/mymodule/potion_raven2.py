@@ -62,8 +62,9 @@ def potion_check(cla):
                     if imgs_ is not None and imgs_ != False:
                         many = i * 100
                         print_say = str(many) + "개 이상"
-                        print("num", print_say)
+                        print("num.", print_say)
                         is_potion = True
+                        
                         pos = (450, 840, 477 - 450, 970 - 840)
                         pyautogui.screenshot("asd.png", region=pos)
                         break
@@ -81,7 +82,7 @@ def potion_check(cla):
                     if imgs_ is not None and imgs_ != False:
                         many = i * 100
                         print_say = str(many) + "개 이상"
-                        print("num", print_say)
+                        print("num..", print_say)
                         is_potion = True
 
                         pos = (270, 982, 477 - 270, 1000 - 982)
@@ -109,7 +110,7 @@ def potion_check(cla):
                         if imgs_ is not None and imgs_ != False:
                             many = i * 100
                             print_say = str(many) + "개 이상"
-                            print("num", print_say)
+                            print("num...", print_say)
 
                             pos = (270, 860, 288 - 270, 960 - 860)
                             pyautogui.screenshot("asd.png", region=pos)
@@ -124,7 +125,7 @@ def potion_check(cla):
                                 if imgs_ is not None and imgs_ != False:
                                     many = i * 100
                                     print_say = str(many) + "개 이상"
-                                    print("num", print_say)
+                                    print("num....", print_say)
 
                                     pos = (270, 860, 288 - 270, 960 - 860)
                                     pyautogui.screenshot("asd.png", region=pos)
