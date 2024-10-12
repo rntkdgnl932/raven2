@@ -50,7 +50,7 @@ def potion_check(cla):
                     print("num", print_say)
                     is_potion = True
 
-                    pos = (450 + plus, 1000, 477 - 450 + plus, 1020 - 1000)
+                    pos = (450 + plus, 1000, 477 - 450, 1020 - 1000)
                     pyautogui.screenshot("asd.png", region=pos)
 
                     break
@@ -78,7 +78,7 @@ def potion_check(cla):
                         print("num.", print_say)
                         is_potion = True
 
-                        pos = (450 + plus, 840, 477 - 450 + plus, 970 - 840)
+                        pos = (450 + plus, 840, 477 - 450, 970 - 840)
                         pyautogui.screenshot("asd.png", region=pos)
                         break
         else:
@@ -98,7 +98,7 @@ def potion_check(cla):
                         print("num..", print_say)
                         is_potion = True
 
-                        pos = (270 + plus, 982, 288 - 270 + plus, 1000 - 982)
+                        pos = (270 + plus, 982, 288 - 270, 1000 - 982)
                         pyautogui.screenshot("asd.png", region=pos)
 
                         break
@@ -125,7 +125,7 @@ def potion_check(cla):
                             print_say = str(many) + "개 이상"
                             print("num...", print_say)
 
-                            pos = (270 + plus, 860, 288 - 270 + plus, 960 - 860)
+                            pos = (270 + plus, 860, 288 - 270, 960 - 860)
                             pyautogui.screenshot("asd.png", region=pos)
 
                             break
@@ -140,7 +140,7 @@ def potion_check(cla):
                                     print_say = str(many) + "개 이상"
                                     print("num....", print_say)
 
-                                    pos = (270 + plus, 860, 288 - 270 + plus, 960 - 860)
+                                    pos = (270 + plus, 860, 288 - 270, 960 - 860)
                                     pyautogui.screenshot("asd.png", region=pos)
 
                                     break
