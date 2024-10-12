@@ -37,8 +37,9 @@ def potion_check(cla):
         is_pass = False
 
         # result_juljun = juljun_check(cla)
-        result_juljun[0] = True
-        if result_juljun[0] == True:
+        result_juljun = True
+        # if result_juljun[0] == True:
+        if result_juljun == True:
             print("절전모드")
             for i in range(10):
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\juljun_potion\\" + str(i) + ".PNG"
