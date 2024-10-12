@@ -126,6 +126,9 @@ def potion_check(cla):
                                     print_say = str(many) + "개 이상"
                                     print("num", print_say)
 
+                                    pos = (270, 860, 288 - 270, 960 - 860)
+                                    pyautogui.screenshot("asd.png", region=pos)
+
                                     break
 
             else:
