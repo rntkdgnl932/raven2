@@ -260,11 +260,11 @@ def event_get_click(cla, is_picture):
             data = "six"
         elif is_picture == "2":
             data = "8_click"
-        elif is_picture == "5":
+        elif is_picture == "5" or is_picture == "4":
             data = "eight"
         # elif is_picture == "0":
         #     data = "ten"
-        elif is_picture == "4" or is_picture == "6":
+        elif is_picture == "6":
             data = "seven"
 
 
