@@ -199,15 +199,15 @@ def event_get_click(cla, is_picture):
         # 1 : 바트람의훈련교범(seven_six) o
         # 2 : 정예특무대합류작전(8_click) o
 
-        # 3 : 심연의헤븐스톤지원출석(fourteen) o
+        # 3 : 클래스변경특별지원출석(seven)
 
-        # 4 : 다가오는그림자(eight) o
+        # 4 : 쿠엔틴의암살의뢰I, II, III(eight)
 
-        # 5 : 에드가의길드집결령(eight) o
+        # 5 :
 
-        # 6 : 어쌔신카운트다운출석(seven)
+        # 6 :
 
-        # 7 : 바트람의특무대임무의뢰(six)
+        # 7 :
 
         # 8 :
 
@@ -221,8 +221,8 @@ def event_get_click(cla, is_picture):
 
         # 13 :
 
-        # ?? : 어쌔신카운트다운출석(seven)
-        # ?? : 바트람의특무대임무의뢰(six)
+        # ?? : 클래스변경특별지원출석(seven)
+        # ?? : 쿠엔틴의암살의뢰I, II, III(eight)
         # ?? :
         # ?? :
 
