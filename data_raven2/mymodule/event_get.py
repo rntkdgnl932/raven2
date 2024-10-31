@@ -199,13 +199,13 @@ def event_get_click(cla, is_picture):
         # 1 : 바트람의훈련교범(seven_six) o
         # 2 : 정예특무대합류작전(8_click) o
 
-        # 3 : 클래스변경특별지원출석(seven)
+        # 3 : 클래스변경특별지원출석(seven) o
 
-        # 4 : 쿠엔틴의암살의뢰I, II, III(eight)
+        # 4 : 쿠엔틴의암살의뢰I, II, III(eight) o
 
-        # 5 :
+        # 5 : 그림자로부터의초대출석(seven), 으스스한호박출석(seven)
 
-        # 6 :
+        # 6 : 으스스한호박연회(eight)
 
         # 7 :
 
@@ -221,9 +221,9 @@ def event_get_click(cla, is_picture):
 
         # 13 :
 
-        # ?? : 클래스변경특별지원출석(seven)
-        # ?? : 쿠엔틴의암살의뢰I, II, III(eight)
-        # ?? :
+        # ?? : 그림자로부터의초대출석(seven)
+        # ?? : 으스스한호박출석(seven)
+        # ?? : 으스스한호박연회(eight)
         # ?? :
 
 
@@ -252,19 +252,19 @@ def event_get_click(cla, is_picture):
 
         if is_picture == "3":
             data = "fourteen"
-        elif is_picture == "1" or is_picture == "8":
+        elif is_picture == "1":
             data = "seven_six"
         # elif is_picture == "":
         #     data = "five"
-        elif is_picture == "7":
-            data = "six"
-        elif is_picture == "2":
+        # elif is_picture == "":
+        #     data = "six"
+        elif is_picture == "2" or is_picture == "6":
             data = "8_click"
-        elif is_picture == "5" or is_picture == "4":
+        elif is_picture == "4":
             data = "eight"
         # elif is_picture == "0":
         #     data = "ten"
-        elif is_picture == "6":
+        elif is_picture == "3" or is_picture == "5":
             data = "seven"
 
 
