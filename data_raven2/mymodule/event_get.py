@@ -250,7 +250,7 @@ def event_get_click(cla, is_picture):
 
 
 
-        if is_picture == "3":
+        if is_picture == "0":
             data = "fourteen"
         elif is_picture == "1":
             data = "seven_six"
