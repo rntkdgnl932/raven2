@@ -199,15 +199,15 @@ def event_get_click(cla, is_picture):
         # 1 : 바트람의훈련교범(seven_six) o
         # 2 : 정예특무대합류작전(8_click) o
 
-        # 3 : 휴고의사냥의뢰(ten) o
+        # 3 : 특무대원특별지원출석(twenty_eight)
 
-        # 4 : 쿠엔틴의암살의뢰I, II, III(eight) o
+        # 4 : 신입특무대지원작전(8_click)
 
-        # 5 : 그림자로부터의초대출석(seven) o, 으스스한호박출석(seven), 휴고의의뢰출석(seven) o
+        # 5 : 희귀장신구제작미션(six)
 
-        # 6 : 윌리엄의길드활동의뢰(six)
+        # 6 : 대전쟁의서막7일출석(seven)
 
-        # 7 : 윌라의특무대임무의뢰(six)
+        # 7 : 대전쟁의서막연속미션(seven_six)
 
         # 8 :
 
@@ -221,11 +221,11 @@ def event_get_click(cla, is_picture):
 
         # 13 :
 
-        # ?? : 윌리엄의길드활동의뢰(six)
-        # ?? : 윌라의특무대임무의뢰(six)
-        # ?? :
-        # ?? :
-
+        # ?? : 특무대원특별지원출석(twenty_eight)
+        # ?? : 신입특무대지원작전(8_click)
+        # ?? : 희귀장신구제작미션(six)
+        # ?? : 대전쟁의서막7일출석(seven)
+        # ?? : 대전쟁의서막연속미션(seven_six)
 
 
         # 8_click => drag 하는 것
@@ -252,20 +252,22 @@ def event_get_click(cla, is_picture):
 
         if is_picture == "0":
             data = "fourteen"
-        elif is_picture == "1":
+        elif is_picture == "1" or is_picture == "7":
             data = "seven_six"
         # elif is_picture == "":
         #     data = "five"
-        elif is_picture == "6" or is_picture == "7":
-            data = "six"
-        elif is_picture == "2":
-            data = "8_click"
-        elif is_picture == "4":
-            data = "eight"
-        elif is_picture == "3":
-            data = "ten"
         elif is_picture == "5":
+            data = "six"
+        elif is_picture == "2" or is_picture == "4":
+            data = "8_click"
+        elif is_picture == "0":
+            data = "eight"
+        elif is_picture == "0":
+            data = "ten"
+        elif is_picture == "6":
             data = "seven"
+        elif is_picture == "3":
+            data = "twenty_eight"
 
 
         if data == "fourteen":
@@ -526,6 +528,28 @@ def event_get_click(cla, is_picture):
             click_pos_2(800, 370, cla)
             time.sleep(0.5)
 
+        elif data == "twenty_eight":
+            print("twenty_eight")
+            for c in range(5):
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\twenty_eight\\28_checked.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(250, 360, 750, 730, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("28_checked", imgs_)
+                    click_pos_reg(imgs_.x - 20, imgs_.y, cla)
+                    result_inven = inven_check(cla)
+                    if result_inven == True:
+                        click_pos_reg(imgs_.x - 20, imgs_.y, cla)
+                        time.sleep(0.2)
+                        click_pos_reg(imgs_.x - 20, imgs_.y, cla)
+                        time.sleep(0.2)
+                time.sleep(0.3)
+
+            click_pos_2(815, 640, cla)
+            time.sleep(0.5)
+            click_pos_2(815, 640, cla)
+            time.sleep(0.5)
     except Exception as e:
         print(e)
         return 0
