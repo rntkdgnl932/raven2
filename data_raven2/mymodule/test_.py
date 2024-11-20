@@ -64,25 +64,31 @@ def go_test():
         if imgs_ is not None and imgs_ != False:
             print("pic_num", imgs_)
 
-
-
-        print("twenty_eight")
-        for c in range(5):
-            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\twenty_eight\\28_checked.PNG"
+        for i in range(10):
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\allget\\allget_point_1.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(250, 360, 750, 730, cla, img, 0.8)
+            imgs_ = imgs_set_(60, 300, 260, 765, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
-                print("28_checked", imgs_)
-                click_pos_reg(imgs_.x - 20, imgs_.y, cla)
-                result_inven = inven_check(cla)
-                if result_inven == True:
-                    click_pos_reg(imgs_.x - 20, imgs_.y, cla)
-                    time.sleep(0.2)
-                    click_pos_reg(imgs_.x - 20, imgs_.y, cla)
-                    time.sleep(0.2)
-            time.sleep(0.3)
-
+                print("allget_point_1", imgs_)
+                break
+            else:
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\allget\\allget_point_2.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(60, 300, 260, 765, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("allget_point_2", imgs_)
+                    break
+                else:
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\allget\\allget_point_3.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(60, 300, 260, 765, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("allget_point_3", imgs_)
+                        break
+            time.sleep(0.5)
 
         # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\monster_info_close_btn.PNG"
         # img_array = np.fromfile(full_path, np.uint8)

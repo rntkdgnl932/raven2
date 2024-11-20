@@ -65,6 +65,13 @@ def clean_screen(cla):
         if imgs_ is not None and imgs_ != False:
             print("close_btn_5", imgs_)
             click_pos_reg(imgs_.x, imgs_.y, cla)
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\clean_screen\\close_btn_6.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(5, 30, 960, 1040, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("close_btn_6", imgs_)
+            click_pos_reg(imgs_.x, imgs_.y, cla)
 
         for i in range(5):
             clean = True

@@ -17,7 +17,7 @@ def out_check(cla):
     import os
 
     from massenger import line_to_me
-    from function_game import imgs_set_, click_pos_reg
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
 
     try:
 
@@ -93,21 +93,47 @@ def out_check(cla):
                 if imgs_ is not None and imgs_ != False:
                     print("menu : menu_character_select...end", imgs_)
                 else:
-                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\out\\talk.PNG"
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\allget\\season_pass.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(5, 900, 50, 960, cla, img, 0.8)
+                    imgs_ = imgs_set_(200, 300, 500, 500, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
-                        print("out : talk", imgs_)
-                        out_ = True
+                        print("season_pass", imgs_)
+                        click_pos_2(800, 730, cla)
+                        time.sleep(0.5)
+                        click_pos_2(800, 730, cla)
+                        time.sleep(0.5)
+                        click_pos_2(800, 730, cla)
+                        time.sleep(0.5)
+                        for i in range(5):
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\allget\\season_pass.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(200, 300, 500, 500, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("season_pass", imgs_)
+                                click_pos_2(890, 335, cla)
+                                time.sleep(0.5)
+                            else:
+                                break
+                            time.sleep(0.5)
+
                     else:
-                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\out\\talk2.PNG"
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\out\\talk.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                         imgs_ = imgs_set_(5, 900, 50, 960, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             print("out : talk", imgs_)
                             out_ = True
+                        else:
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\out\\talk2.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(5, 900, 50, 960, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("out : talk", imgs_)
+                                out_ = True
 
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\post\\get.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
