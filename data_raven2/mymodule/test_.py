@@ -62,7 +62,7 @@ def go_test():
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\eight\\8_click_checked_1.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(480, 480, 860, 730, cla, img, 0.8)
+            imgs_ = imgs_set_(480, 480, 900, 730, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 print("8_click_checked_1", imgs_)
                 click_pos_reg(imgs_.x - 20, imgs_.y, cla)
@@ -76,7 +76,7 @@ def go_test():
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\checked.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(480, 480, 860, 730, cla, img, 0.8)
+            imgs_ = imgs_set_(480, 480, 900, 730, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 print("checked", imgs_)
                 click_pos_reg(imgs_.x - 20, imgs_.y, cla)
@@ -90,7 +90,7 @@ def go_test():
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\checked_top.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(730, 300, 860, 420, cla, img, 0.8)
+                imgs_ = imgs_set_(730, 300, 900, 420, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     print("checked_top", imgs_)
                     click_pos_reg(imgs_.x - 30, imgs_.y, cla)

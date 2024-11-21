@@ -275,7 +275,7 @@ def event_get_click(cla, is_picture):
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\fourteen\\checked_2.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(240, 460, 870, 700, cla, img, 0.75)
+            imgs_ = imgs_set_(240, 460, 900, 700, cla, img, 0.75)
             if imgs_ is not None and imgs_ != False:
                 print("checked_2", imgs_)
                 click_pos_reg(imgs_.x - 20, imgs_.y + 50, cla)
@@ -291,7 +291,7 @@ def event_get_click(cla, is_picture):
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\fourteen\\checked_2.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(240, 550, 870, 610, cla, img, 0.75)
+            imgs_ = imgs_set_(240, 550, 900, 610, cla, img, 0.75)
             if imgs_ is not None and imgs_ != False:
                 print("checked_2", imgs_)
                 click_pos_reg(imgs_.x - 20, imgs_.y + 50, cla)
@@ -313,7 +313,7 @@ def event_get_click(cla, is_picture):
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\point_1.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(240, 440, 880, 490, cla, img, 0.8)
+                imgs_ = imgs_set_(240, 440, 900, 490, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     print("point_1", imgs_)
                     point_ = True
@@ -333,7 +333,7 @@ def event_get_click(cla, is_picture):
                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\checked.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(480, 480, 860, 710, cla, img, 0.8)
+                        imgs_ = imgs_set_(480, 480, 900, 710, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             print("checked", imgs_)
                             click_pos_reg(imgs_.x - 20, imgs_.y, cla)
@@ -347,7 +347,7 @@ def event_get_click(cla, is_picture):
                             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\checked_top.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(730, 300, 860, 420, cla, img, 0.8)
+                            imgs_ = imgs_set_(730, 300, 900, 420, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
                                 print("checked_top", imgs_)
                                 click_pos_reg(imgs_.x - 30, imgs_.y, cla)
@@ -449,7 +449,7 @@ def event_get_click(cla, is_picture):
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\checked.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(300, 480, 860, 710, cla, img, 0.8)
+                imgs_ = imgs_set_(300, 480, 900, 710, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     print("checked", imgs_)
                     click_pos_reg(imgs_.x - 20, imgs_.y, cla)
@@ -463,7 +463,7 @@ def event_get_click(cla, is_picture):
                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\five\\checked.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(300, 480, 860, 710, cla, img, 0.8)
+                    imgs_ = imgs_set_(300, 480, 900, 710, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         print("checked 2", imgs_)
                         click_pos_reg(imgs_.x - 20, imgs_.y, cla)
@@ -480,7 +480,7 @@ def event_get_click(cla, is_picture):
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\eight\\8_click_checked_1.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(480, 480, 860, 730, cla, img, 0.8)
+                imgs_ = imgs_set_(480, 480, 900, 730, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     print("8_click_checked_1", imgs_)
                     click_pos_reg(imgs_.x - 20, imgs_.y, cla)
@@ -495,7 +495,7 @@ def event_get_click(cla, is_picture):
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\checked.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(480, 480, 860, 730, cla, img, 0.8)
+                imgs_ = imgs_set_(480, 480, 900, 730, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     print("checked", imgs_)
                     click_pos_reg(imgs_.x - 20, imgs_.y, cla)
@@ -509,7 +509,7 @@ def event_get_click(cla, is_picture):
                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\checked_top.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(730, 300, 860, 420, cla, img, 0.8)
+                    imgs_ = imgs_set_(730, 300, 900, 420, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         print("checked_top", imgs_)
                         click_pos_reg(imgs_.x - 30, imgs_.y, cla)
