@@ -1,7 +1,7 @@
 import time
 # import os
 import sys
-
+from PyQt5.QtTest import *
 
 import variable as v_
 
@@ -476,6 +476,8 @@ def event_get_click(cla, is_picture):
                 time.sleep(0.3)
         elif data == "8_click":
             print("8_click")
+            drag_pos(550, 600, 550, 700, cla)
+            QTest.qWait(500)
             for c in range(5):
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\eight\\8_click_checked_1.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
