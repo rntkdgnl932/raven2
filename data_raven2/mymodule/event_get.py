@@ -369,20 +369,20 @@ def event_get_click(cla, is_picture):
             # 510, 825 // 515, 570, 625, 680
             for c in range(3):
                 y_reg = 515 + (55 * c)
-                click_pos_2(510, y_reg, cla)
+                click_pos_2(530, y_reg, cla)
                 time.sleep(0.5)
-                click_pos_2(510, y_reg, cla)
+                click_pos_2(530, y_reg, cla)
                 time.sleep(0.5)
             # 510, 825 // 515, 570, 625, 680
             for c in range(3):
                 y_reg = 515 + (55 * c)
-                click_pos_2(825, y_reg, cla)
+                click_pos_2(840, y_reg, cla)
                 time.sleep(0.5)
-                click_pos_2(825, y_reg, cla)
+                click_pos_2(840, y_reg, cla)
                 time.sleep(0.5)
-            click_pos_2(800, 370, cla)
+            click_pos_2(820, 370, cla)
             time.sleep(0.5)
-            click_pos_2(800, 370, cla)
+            click_pos_2(820, 370, cla)
             time.sleep(0.5)
 
         elif data == "eight":
@@ -392,20 +392,20 @@ def event_get_click(cla, is_picture):
             # 510, 825 // 515, 570, 625, 680
             for c in range(4):
                 y_reg = 515 + (55 * c)
-                click_pos_2(510, y_reg, cla)
+                click_pos_2(530, y_reg, cla)
                 time.sleep(0.5)
-                click_pos_2(510, y_reg, cla)
+                click_pos_2(530, y_reg, cla)
                 time.sleep(0.5)
             # 510, 825 // 515, 570, 625, 680
             for c in range(4):
                 y_reg = 515 + (55 * c)
-                click_pos_2(825, y_reg, cla)
+                click_pos_2(840, y_reg, cla)
                 time.sleep(0.5)
-                click_pos_2(825, y_reg, cla)
+                click_pos_2(840, y_reg, cla)
                 time.sleep(0.5)
-            click_pos_2(800, 370, cla)
+            click_pos_2(820, 370, cla)
             time.sleep(0.5)
-            click_pos_2(800, 370, cla)
+            click_pos_2(820, 370, cla)
             time.sleep(0.5)
 
         elif data == "ten":
@@ -416,31 +416,31 @@ def event_get_click(cla, is_picture):
             for c in range(5):
                 y_reg = 515 + (55 * c)
                 if c == 4:
-                    click_pos_2(510, 720, cla)
+                    click_pos_2(530, 720, cla)
                     time.sleep(0.5)
-                    click_pos_2(510, 720, cla)
+                    click_pos_2(530, 720, cla)
                     time.sleep(0.5)
                 else:
-                    click_pos_2(510, y_reg, cla)
+                    click_pos_2(530, y_reg, cla)
                     time.sleep(0.5)
-                    click_pos_2(510, y_reg, cla)
+                    click_pos_2(530, y_reg, cla)
                     time.sleep(0.5)
             # 510, 825 // 515, 570, 625, 680
             for c in range(5):
                 y_reg = 515 + (55 * c)
                 if c == 4:
-                    click_pos_2(825, 720, cla)
+                    click_pos_2(840, 720, cla)
                     time.sleep(0.5)
-                    click_pos_2(825, 720, cla)
+                    click_pos_2(840, 720, cla)
                     time.sleep(0.5)
                 else:
-                    click_pos_2(825, y_reg, cla)
+                    click_pos_2(840, y_reg, cla)
                     time.sleep(0.5)
-                    click_pos_2(825, y_reg, cla)
+                    click_pos_2(840, y_reg, cla)
                     time.sleep(0.5)
-            click_pos_2(800, 370, cla)
+            click_pos_2(820, 370, cla)
             time.sleep(0.5)
-            click_pos_2(800, 370, cla)
+            click_pos_2(820, 370, cla)
             time.sleep(0.5)
 
         elif data == "five":
@@ -525,9 +525,9 @@ def event_get_click(cla, is_picture):
                         drag_pos(550, 700, 550, 600, cla)
                 time.sleep(0.3)
 
-            click_pos_2(800, 370, cla)
+            click_pos_2(820, 370, cla)
             time.sleep(0.5)
-            click_pos_2(800, 370, cla)
+            click_pos_2(820, 370, cla)
             time.sleep(0.5)
 
         elif data == "twenty_eight":
