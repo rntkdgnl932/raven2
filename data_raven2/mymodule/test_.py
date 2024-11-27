@@ -35,10 +35,11 @@ def go_test():
     from character_select_and_game_start import game_start_screen
     from guild_raven2 import guild_check
     from abyss_raven2 import abyss_sangjum
+    from auction_raven2 import auction_sell_start, auction_ready
 
     print("test")
 
-    cla = "six"
+    cla = "one"
 
     plus = 0
 
@@ -57,57 +58,14 @@ def go_test():
 
     try:
 
-        print("8_click")
-        for c in range(5):
-            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\eight\\8_click_checked_1.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(480, 480, 900, 730, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                print("8_click_checked_1", imgs_)
-                click_pos_reg(imgs_.x - 20, imgs_.y, cla)
-                result_inven = inven_check(cla)
-                if result_inven == True:
-                    click_pos_reg(imgs_.x - 20, imgs_.y, cla)
-                    time.sleep(0.2)
-                    click_pos_reg(imgs_.x - 20, imgs_.y, cla)
-                    time.sleep(0.2)
-
-            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\checked.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(480, 480, 900, 730, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                print("checked", imgs_)
-                click_pos_reg(imgs_.x - 20, imgs_.y, cla)
-                result_inven = inven_check(cla)
-                if result_inven == True:
-                    click_pos_reg(imgs_.x - 20, imgs_.y, cla)
-                    time.sleep(0.2)
-                    click_pos_reg(imgs_.x - 20, imgs_.y, cla)
-                    time.sleep(0.2)
-            else:
-                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\checked_top.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(730, 300, 900, 420, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    print("checked_top", imgs_)
-                    click_pos_reg(imgs_.x - 30, imgs_.y, cla)
-                    result_inven = inven_check(cla)
-                    if result_inven == True:
-                        click_pos_reg(imgs_.x - 30, imgs_.y, cla)
-                        time.sleep(0.2)
-                        click_pos_reg(imgs_.x - 30, imgs_.y, cla)
-                        time.sleep(0.2)
-                else:
-                    drag_pos(550, 700, 550, 600, cla)
-            time.sleep(0.3)
-
-        click_pos_2(800, 370, cla)
-        time.sleep(0.5)
-        click_pos_2(800, 370, cla)
-        time.sleep(0.5)
+        auction_ready(cla)
+        click_pos_2(900, 235, cla)
+        time.sleep(1)
+        auction_sell_start(cla)
+        auction_ready(cla)
+        click_pos_2(900, 390, cla)
+        time.sleep(1)
+        auction_sell_start(cla)
 
         # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\monster_info_close_btn.PNG"
         # img_array = np.fromfile(full_path, np.uint8)

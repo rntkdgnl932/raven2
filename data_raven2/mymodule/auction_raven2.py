@@ -11,7 +11,7 @@ def auction_start(cla):
     from clean_screen_raven2 import clean_screen
     from chango_raven2 import chango_in
     from boonhae_collection import collection_start, boonhae_start
-
+    from function_game import click_pos_2
     try:
 
         chango_in(cla)
@@ -21,6 +21,11 @@ def auction_start(cla):
         boonhae_start(cla)
 
         auction_ready(cla)
+        click_pos_2(900, 235, cla)
+        time.sleep(1)
+        auction_sell_start(cla)
+        click_pos_2(900, 390, cla)
+        time.sleep(1)
         auction_sell_start(cla)
         print("끝!")
         clean_screen(cla)
@@ -196,7 +201,7 @@ def auction_sell_start(cla):
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
         imgs_ = imgs_set_(630, 120, 870, 990, cla, img, 0.85)
         if imgs_ is not None and imgs_ != False:
-            print("last_e", imgs_)
+            print("last_e2", imgs_)
             y_item = imgs_.y + 50
         else:
             y_item = 990
@@ -211,8 +216,9 @@ def auction_sell_start(cla):
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(630, 120, 870, 990, cla, img, 0.85)
             if imgs_ is not None and imgs_ != False:
-                print("last_e", imgs_)
+                print("last_e_1", imgs_)
                 y_item = imgs_.y + 50
+                break
             else:
                 y_item = 990
 
@@ -283,7 +289,7 @@ def auction_sell_start(cla):
                             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\qun_btn.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(560, 520, 610, 570, cla, img, 0.8)
+                            imgs_ = imgs_set_(570, 530, 620, 580, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
                                 quan_ = True
                                 break
@@ -292,7 +298,7 @@ def auction_sell_start(cla):
                             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\qun_btn.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(560, 520, 610, 570, cla, img, 0.8)
+                            imgs_ = imgs_set_(570, 530, 620, 580, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
                                 time.sleep(0.1)
@@ -307,7 +313,7 @@ def auction_sell_start(cla):
                                     if imgs_ is not None and imgs_ != False:
                                         break
                                     else:
-                                        click_pos_2(680, 625, cla)
+                                        click_pos_2(700, 635, cla)
                                         time.sleep(0.2)
                                     time.sleep(0.2)
                         # 다야 갯수 정하기
@@ -315,15 +321,15 @@ def auction_sell_start(cla):
                             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\qun_btn.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(560, 600, 610, 640, cla, img, 0.8)
+                            imgs_ = imgs_set_(560, 610, 620, 660, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
                                 time.sleep(0.1)
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
                                 time.sleep(0.2)
-                                click_pos_2(570, 395, cla)
+                                click_pos_2(585, 375, cla)
                                 time.sleep(0.1)
-                                click_pos_2(570, 395, cla)
+                                click_pos_2(585, 375, cla)
                                 time.sleep(0.3)
 
                                 sell_can = True
@@ -392,7 +398,7 @@ def auction_sell_start(cla):
                                             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\auction_cancle.PNG"
                                             img_array = np.fromfile(full_path, np.uint8)
                                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                            imgs_ = imgs_set_(470, 700, 550, 750, cla, img, 0.8)
+                                            imgs_ = imgs_set_(470, 700, 600, 760, cla, img, 0.8)
                                             if imgs_ is not None and imgs_ != False:
                                                 click_pos_reg(imgs_.x, imgs_.y, cla)
                                                 QTest.qWait(500)
@@ -400,7 +406,11 @@ def auction_sell_start(cla):
                                             break
                                         time.sleep(0.5)
                                 else:
-                                    confirm_all(cla)
+                                    for c in range(5):
+                                        result_confirm = confirm_all(cla)
+                                        if result_confirm == False:
+                                            break
+                                        QTest.qWait(1000)
                                 break
                             time.sleep(0.5)
                 else:
@@ -412,7 +422,7 @@ def auction_sell_start(cla):
                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\auction_cancle.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(470, 700, 550, 750, cla, img, 0.8)
+                        imgs_ = imgs_set_(470, 700, 600, 760, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             click_pos_reg(imgs_.x, imgs_.y, cla)
                             QTest.qWait(500)
