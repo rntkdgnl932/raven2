@@ -43,21 +43,45 @@ def chango_in(cla):
                 chango_ = True
 
                 # 자동선택
-                for i in range(2):
-                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\hogamdo\\anymore_item.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(380, 105, 580, 160, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        print("anymore_item", imgs_)
-                        break
-                    else:
-                        click_pos_2(700, 1000, cla)
-                        time.sleep(0.5)
-                        click_pos_2(800, 1000, cla)
-                    time.sleep(0.5)
+                # for i in range(2):
+                #     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\hogamdo\\anymore_item.PNG"
+                #     img_array = np.fromfile(full_path, np.uint8)
+                #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                #     imgs_ = imgs_set_(380, 105, 580, 160, cla, img, 0.8)
+                #     if imgs_ is not None and imgs_ != False:
+                #         print("anymore_item", imgs_)
+                #         break
+                #     else:
+                #         click_pos_2(700, 1000, cla)
+                #         time.sleep(0.5)
+                #         click_pos_2(800, 1000, cla)
+                #     time.sleep(0.5)
 
                 # 꺼내기
+                for i in range(5):
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\chango\\chango_confirm.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(480, 680, 600, 740, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("chango_confirm", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        break
+
+                    else:
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\chango\\out_item_3.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(75, 80, 290, 940, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("out_item_1", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            time.sleep(0.5)
+                        else:
+                            break
+                    time.sleep(1)
+
+
                 for i in range(5):
                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\chango\\chango_confirm.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
