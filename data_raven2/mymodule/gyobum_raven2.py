@@ -175,7 +175,7 @@ def gyobum_start(cla):
 def gyobum_get(cla):
     import numpy as np
     import cv2
-    from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for, drag_pos
     from action_raven2 import confirm_all, organize_start, inven_check, skip_click
 
     try:
@@ -353,7 +353,7 @@ def gyobum_get(cla):
                                                         imgs_ = imgs_set_(50, 130, 210, 700, cla, img, 0.8)
                                                         if imgs_ is not None and imgs_ != False:
                                                             # 600, 715, 830
-                                                            x_reg = 640 + (c * 130)
+                                                            x_reg = 665 + (c * 120)
                                                             end_ = False
                                                             for d in range(3):
                                                                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\close_window.PNG"
@@ -396,7 +396,8 @@ def gyobum_get(cla):
                             if result_confirm == True:
                                 break
                             time.sleep(0.1)
-
+                    # else:
+                    #     dra
                 else:
                     print("몬스터 도감 끝")
 
@@ -626,17 +627,12 @@ def gyobum_get(cla):
                                 # 1005
 
                                 for c in range(10):
-                                    if c < 6:
-                                        x_reg = 275 + (c * 75)
-                                        click_pos_2(x_reg, 1005, cla)
-                                    elif c == 6:
-                                        x_reg = 715
-                                        click_pos_2(x_reg, 1005, cla)
-                                    elif c == 7:
-                                        x_reg = 780
+                                    if c < 8:
+                                        x_reg = 380 + (c * 75)
                                         click_pos_2(x_reg, 1005, cla)
                                     elif c == 8:
-                                        x_reg = 845
+                                        drag_pos(810, 1005, 400, 1005, cla)
+                                        x_reg = 840
                                         click_pos_2(x_reg, 1005, cla)
                                     elif c == 9:
                                         x_reg = 910
