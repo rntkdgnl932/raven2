@@ -410,7 +410,8 @@ def event_get_click(cla, is_picture):
         elif data == "ten":
             print("ten")
 
-
+            drag_pos(550, 600, 550, 700, cla)
+            QTest.qWait(500)
             # 510, 825 // 515, 570, 625, 680
             for c in range(5):
                 y_reg = 515 + (55 * c)
