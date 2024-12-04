@@ -47,116 +47,117 @@ def auction_ready(cla):
 
     try:
 
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\sell_status.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(590, 100, 680, 140, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("거래소 화면")
-            my_property_upload(cla)
-        else:
-            for i in range(5):
-                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\title_auction.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(30, 30, 150, 100, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    print("거래소", cla)
-                    break
-                else:
-                    menu_open(cla)
-                    for c in range(5):
-                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\title_auction.PNG"
+        # full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\sell_status.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(590, 100, 680, 140, cla, img, 0.8)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("거래소 화면")
+        #     my_property_upload(cla)
+        # else:
+        for i in range(5):
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\title_auction.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(30, 30, 150, 100, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("거래소", cla)
+                my_property_upload(cla)
+                break
+            else:
+                menu_open(cla)
+                for c in range(5):
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\title_auction.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(30, 30, 150, 100, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        break
+                    else:
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\menu_auction.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(30, 30, 150, 100, cla, img, 0.8)
+                        imgs_ = imgs_set_(640, 330, 960, 600, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
-                            break
-                        else:
-                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\menu_auction.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(640, 330, 960, 600, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                click_pos_reg(imgs_.x, imgs_.y, cla)
-                        time.sleep(0.5)
-                time.sleep(0.5)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                    time.sleep(0.5)
+            time.sleep(0.5)
 
 
-            # 왼쪽 판매 버튼 누르기
+        # 왼쪽 판매 버튼 누르기
 
-            for i in range(7):
-                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\sell_price.PNG"
+        for i in range(7):
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\sell_price.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(460, 90, 550, 130, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                break
+            else:
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\sell_btn1.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(460, 90, 550, 130, cla, img, 0.8)
+                imgs_ = imgs_set_(30, 90, 200, 970, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    break
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
                 else:
-                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\sell_btn1.PNG"
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\sell_btn2.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                     imgs_ = imgs_set_(30, 90, 200, 970, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         click_pos_reg(imgs_.x, imgs_.y, cla)
-                    else:
-                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\sell_btn2.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(30, 90, 200, 970, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
-                time.sleep(0.5)
+            time.sleep(0.5)
 
-            # 일괄회수 준비
-            for i in range(10):
-                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\retrieve_ready_btn.PNG"
+        # 일괄회수 준비
+        for i in range(10):
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\retrieve_ready_btn.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(530, 130, 630, 970, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                break
+            else:
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\retrieve_ready_btn2.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(530, 130, 630, 970, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     break
-                else:
-                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\retrieve_ready_btn2.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(530, 130, 630, 970, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        break
-                time.sleep(0.5)
+            time.sleep(0.5)
 
-            # 일괄회수
-            for i in range(10):
-                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\retrieve_ready_btn.PNG"
+        # 일괄회수
+        for i in range(10):
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\retrieve_ready_btn.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(530, 130, 630, 970, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\checked_yes.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(530, 130, 630, 970, cla, img, 0.8)
+                imgs_ = imgs_set_(210, 85, 255, 125, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-
-                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\checked_yes.PNG"
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\retrieve_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(520, 970, 630, 1030, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.5)
+                        confirm_all(cla)
+                else:
+                    # 체크하기
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\checked_no.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                     imgs_ = imgs_set_(210, 85, 255, 125, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
-                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\retrieve_btn.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(520, 970, 630, 1030, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
-                            time.sleep(0.5)
-                            confirm_all(cla)
-                    else:
-                        # 체크하기
-                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\checked_no.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(210, 85, 255, 125, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
-                else:
-                    break
-                time.sleep(0.5)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+            else:
+                break
+            time.sleep(0.5)
 
     except Exception as e:
         print(e)

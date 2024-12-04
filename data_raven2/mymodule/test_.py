@@ -58,15 +58,20 @@ def go_test():
 
     try:
 
-        auction_ready(cla)
-        click_pos_2(900, 235, cla)
-        time.sleep(1)
-        auction_sell_start(cla)
-        auction_ready(cla)
-        click_pos_2(900, 390, cla)
-        time.sleep(1)
-        auction_sell_start(cla)
-
+        # auction_ready(cla)
+        # click_pos_2(900, 235, cla)
+        # time.sleep(1)
+        # auction_sell_start(cla)
+        # auction_ready(cla)
+        # click_pos_2(900, 390, cla)
+        # time.sleep(1)
+        # auction_sell_start(cla)
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_title\\12.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(220, 320, 800, 400, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("pic_num", imgs_)
         # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\monster_info_close_btn.PNG"
         # img_array = np.fromfile(full_path, np.uint8)
         # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)

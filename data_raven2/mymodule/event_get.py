@@ -209,21 +209,20 @@ def event_get_click(cla, is_picture):
 
         # 7 : 대전쟁의서막연속미션(seven_six) o
 
-        # 8 : 특무대사냥의뢰(8_click)
+        # 8 : 특무대사냥의뢰(8_click) o
 
-        # 9 : 블랙프라이데이특별미션(six)
+        # 9 : 블랙프라이데이특별미션(six) o
 
-        # 10 : 키오네의보스토벌령(eight)
+        # 10 : 키오네의보스토벌령(eight) o
 
-        # 11 :
-        # 12 :
+        # 11 : 200일성장지원출석(seven)
+        # 12 : 200일티켓미션I, II(ten)
 
 
         # 13 :
 
-        # ?? : 특무대사냥의뢰(8_click)
-        # ?? : 블랙프라이데이특별미션(six)
-        # ?? : 키오네의보스토벌령(eight)
+        # ?? : 200일성장지원출석(seven)
+        # ?? : 200일티켓미션I, II(ten)
         # ?? :
         # ?? :
 
@@ -262,9 +261,9 @@ def event_get_click(cla, is_picture):
             data = "8_click"
         elif is_picture == "5" or is_picture == "10":
             data = "eight"
-        elif is_picture == "0":
+        elif is_picture == "12":
             data = "ten"
-        elif is_picture == "6":
+        elif is_picture == "6" or is_picture == "7" or is_picture == "11":
             data = "seven"
         elif is_picture == "3":
             data = "twenty_eight"
