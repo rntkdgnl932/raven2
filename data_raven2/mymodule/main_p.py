@@ -70,6 +70,7 @@ from gyobum_raven2 import gyobum_check
 from action_raven2 import bag_open, organize_start, game_check
 from auction_raven2 import auction_start
 from subquest_raven2 import subquest_start
+from abyss_raven2 import abyss_start
 
 
 from server import game_start
@@ -176,6 +177,8 @@ class MyApp(QDialog):
             x_reg = 960 * 2
         elif last_monitor_number == 3:
             x_reg = 960 * 4
+
+        x_reg = 0
 
         self.setGeometry(980 + x_reg, 120, 900, 820)
         self.show()
@@ -3921,6 +3924,10 @@ class game_Playing(QThread):
                                     time.sleep(5)
                                 elif "이벤트" in result_schedule_:
                                     myQuest_play_add(v_.now_cla, result_schedule_)
+                                    # dungeon_start(v_.now_cla, result_schedule_)
+                                    time.sleep(5)
+                                elif "어비스" in result_schedule_:
+                                    abyss_start(v_.now_cla, result_schedule_)
                                     # dungeon_start(v_.now_cla, result_schedule_)
                                     time.sleep(5)
                                 elif result_schedule_ == "자동사냥":

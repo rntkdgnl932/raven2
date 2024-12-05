@@ -274,51 +274,59 @@ def jadong_in(cla):
 
             else:
 
-                for i in range(4):
-                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\map\\map_open.PNG"
+                for i in range(6):
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\map\\worldmap_btn.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(800, 950, 960, 1030, cla, img, 0.8)
+                    imgs_ = imgs_set_(720, 950, 820, 1030, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
-                        print("map_open", imgs_)
-                        break
+                        print("worldmap_btn", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
                     else:
-                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\map_btn.PNG"
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\map\\map_open.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(190, 100, 280, 160, cla, img, 0.8)
+                        imgs_ = imgs_set_(800, 950, 960, 1030, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
-                            print("map_btn", imgs_)
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            print("map_open", imgs_)
+                            break
                         else:
-                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\jabhwa_btn.PNG"
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\map_btn.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(50, 100, 200, 260, cla, img, 0.8)
+                            imgs_ = imgs_set_(190, 100, 280, 160, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
-                                print("jabhwa_btn", imgs_)
-                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\change_btn_1.PNG"
+                                print("map_btn", imgs_)
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                            else:
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\jabhwa_btn.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(190, 100, 280, 160, cla, img, 0.8)
+                                imgs_ = imgs_set_(50, 100, 200, 260, cla, img, 0.8)
                                 if imgs_ is not None and imgs_ != False:
-                                    print("change_btn_1", imgs_)
-                                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                                else:
-                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\change_btn_2.PNG"
+                                    print("jabhwa_btn", imgs_)
+                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\change_btn_1.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                                     imgs_ = imgs_set_(190, 100, 280, 160, cla, img, 0.8)
                                     if imgs_ is not None and imgs_ != False:
-                                        print("change_btn_2", imgs_)
+                                        print("change_btn_1", imgs_)
                                         click_pos_reg(imgs_.x, imgs_.y, cla)
                                     else:
-                                        click_pos_2(250, 130, cla)
-                                        time.sleep(0.5)
-                                        for c in range(3):
-                                            confirm_all(cla)
-                            else:
-                                clean_screen(cla)
+                                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\change_btn_2.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(190, 100, 280, 160, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("change_btn_2", imgs_)
+                                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        else:
+                                            click_pos_2(250, 130, cla)
+                                            time.sleep(0.5)
+                                            for c in range(3):
+                                                confirm_all(cla)
+                                else:
+                                    clean_screen(cla)
                     time.sleep(0.5)
 
 

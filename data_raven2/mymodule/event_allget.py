@@ -87,8 +87,6 @@ def event_allget_start(cla):
                     time.sleep(0.5)
                     click_pos_2(800, 730, cla)
                     time.sleep(0.5)
-                else:
-                    break
             else:
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\allget\\allget_point_2.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
@@ -105,26 +103,24 @@ def event_allget_start(cla):
                         time.sleep(0.5)
                         click_pos_2(800, 730, cla)
                         time.sleep(0.5)
-                    else:
-                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\allget\\allget_point_3.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(60, 300, 260, 765, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            print("allget_point_3", imgs_)
+                else:
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\allget\\allget_point_3.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(60, 300, 260, 765, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("allget_point_3", imgs_)
+                        click_pos_reg(imgs_.x - 20, imgs_.y + 10, cla)
+                        time.sleep(0.5)
+                        click_pos_2(800, 730, cla)
+                        result_inven = inven_check(cla)
+                        if result_inven == True:
                             click_pos_reg(imgs_.x - 20, imgs_.y + 10, cla)
                             time.sleep(0.5)
                             click_pos_2(800, 730, cla)
-                            result_inven = inven_check(cla)
-                            if result_inven == True:
-                                click_pos_reg(imgs_.x - 20, imgs_.y + 10, cla)
-                                time.sleep(0.5)
-                                click_pos_2(800, 730, cla)
-                                time.sleep(0.5)
-                            else:
-                                break
-                else:
-                    break
+                            time.sleep(0.5)
+                    else:
+                        break
             time.sleep(0.5)
 
         if result_inven == False:

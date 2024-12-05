@@ -249,8 +249,10 @@ def potion_buy(cla):
             confirm_all(cla)
 
             # 창고 한번 가주기
-
-            chango_in(cla)
+            if "어비스" in result_schedule_:
+                print("어비스 진행중...")
+            else:
+                chango_in(cla)
 
             # 마을인지 확인되면 정해진 포션 사기
 

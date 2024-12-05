@@ -261,9 +261,11 @@ def event_get_click(cla, is_picture):
             data = "8_click"
         elif is_picture == "5" or is_picture == "10":
             data = "eight"
-        elif is_picture == "12":
+        elif is_picture == "0":
             data = "ten"
-        elif is_picture == "6" or is_picture == "7" or is_picture == "11":
+        elif is_picture == "12":
+            data = "twelve"
+        elif is_picture == "6" or is_picture == "11":
             data = "seven"
         elif is_picture == "3":
             data = "twenty_eight"
@@ -286,7 +288,7 @@ def event_get_click(cla, is_picture):
                     time.sleep(0.2)
 
         elif data == "seven":
-            print("fourteen")
+            print("seven")
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\fourteen\\checked_2.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -442,7 +444,55 @@ def event_get_click(cla, is_picture):
             time.sleep(0.5)
             click_pos_2(820, 370, cla)
             time.sleep(0.5)
+        elif data == "twelve":
+            print("twelve")
 
+            drag_pos(550, 550, 550, 700, cla)
+            QTest.qWait(500)
+            # 510, 825 // 515, 570, 625, 680
+            for c in range(5):
+                y_reg = 515 + (55 * c)
+                if c == 4:
+                    click_pos_2(530, 720, cla)
+                    time.sleep(0.5)
+                    click_pos_2(530, 720, cla)
+                    time.sleep(0.5)
+                else:
+                    click_pos_2(530, y_reg, cla)
+                    time.sleep(0.5)
+                    click_pos_2(530, y_reg, cla)
+                    time.sleep(0.5)
+            # 510, 825 // 515, 570, 625, 680
+            for c in range(5):
+                y_reg = 515 + (55 * c)
+                if c == 4:
+                    click_pos_2(840, 720, cla)
+                    time.sleep(0.5)
+                    click_pos_2(840, 720, cla)
+                    time.sleep(0.5)
+                else:
+                    click_pos_2(840, y_reg, cla)
+                    time.sleep(0.5)
+                    click_pos_2(840, y_reg, cla)
+                    time.sleep(0.5)
+
+            drag_pos(550, 700, 550, 550, cla)
+            QTest.qWait(500)
+
+            click_pos_2(530, 700, cla)
+            time.sleep(0.5)
+            click_pos_2(530, 700, cla)
+            time.sleep(0.5)
+
+            click_pos_2(840, 700, cla)
+            time.sleep(0.5)
+            click_pos_2(840, 700, cla)
+            time.sleep(0.5)
+
+            click_pos_2(820, 370, cla)
+            time.sleep(0.5)
+            click_pos_2(820, 370, cla)
+            time.sleep(0.5)
         elif data == "five":
             print("five")
             for c in range(10):

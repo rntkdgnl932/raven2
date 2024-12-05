@@ -34,7 +34,7 @@ def go_test():
     from subquest_raven2 import subquest_get
     from character_select_and_game_start import game_start_screen
     from guild_raven2 import guild_check
-    from abyss_raven2 import abyss_sangjum
+    from abyss_raven2 import abyss_sangjum, abyss_dun_in
     from auction_raven2 import auction_sell_start, auction_ready
 
     print("test")
@@ -57,6 +57,42 @@ def go_test():
         plus = 960 * 5
 
     try:
+        data = "어비스_1"
+        # abyss_sangjum(cla, "어비스_1")
+        # abyss_dun_in(cla, data)
+
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\abyss\\abyss_in_btn.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(750, 980, 840, 1020, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("abyss", imgs_)
+
+        # for n in range(12):
+        #
+        #     pic_num = n + 1
+        #
+        #     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_title\\" + str(
+        #         pic_num) + ".PNG"
+        #     img_array = np.fromfile(full_path, np.uint8)
+        #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #     imgs_ = imgs_set_(220, 320, 800, 400, cla, img, 0.8)
+        #     if imgs_ is not None and imgs_ != False:
+        #         print("pic_num", pic_num)
+        #
+        # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\fourteen\\checked_2.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(240, 550, 900, 610, cla, img, 0.75)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("checked_2", imgs_)
+        #
+        # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven\\checked_1.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(240, 550, 900, 610, cla, img, 0.75)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("checked_1", imgs_)
 
         # auction_ready(cla)
         # click_pos_2(900, 235, cla)
