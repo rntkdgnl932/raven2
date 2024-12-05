@@ -177,7 +177,7 @@ class MyApp(QDialog):
             x_reg = 960 * 2
         elif last_monitor_number == 3:
             x_reg = 960 * 4
-        x_reg = 0
+        # x_reg = 0
         self.setGeometry(980 + x_reg, 120, 900, 820)
         self.show()
     def my_title(self):
