@@ -35,7 +35,7 @@ def go_test():
     from character_select_and_game_start import game_start_screen
     from guild_raven2 import guild_check
     from abyss_raven2 import abyss_sangjum, abyss_dun_in
-    from auction_raven2 import auction_sell_start, auction_ready
+    from auction_raven2 import auction_sell_start, auction_ready, settled
 
     print("test")
 
@@ -60,13 +60,26 @@ def go_test():
         data = "어비스_1"
         # abyss_sangjum(cla, "어비스_1")
         # abyss_dun_in(cla, data)
+        #
+        # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\menu_auction.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(640, 330, 960, 600, cla, img, 0.8)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("menu_auction", imgs_)
 
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\abyss\\abyss_in_btn.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(750, 980, 840, 1020, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("abyss", imgs_)
+        for m in range(5):
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\maximum_quantity.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(380, 100, 580, 160, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("maximum_quantity", imgs_)
+                break
+            else:
+                click_pos_2(700, 635, cla)
+                time.sleep(0.2)
+            time.sleep(0.2)
 
         # for n in range(12):
         #

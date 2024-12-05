@@ -23,12 +23,18 @@ def auction_start(cla):
         auction_ready(cla)
         click_pos_2(900, 235, cla)
         time.sleep(1)
-        auction_sell_start(cla)
+        auction_sell_start(cla, "jangbi")
+        click_pos_2(900, 320, cla)
+        time.sleep(1)
+        auction_sell_start(cla, "jabhwa")
         click_pos_2(900, 390, cla)
         time.sleep(1)
-        auction_sell_start(cla)
+        auction_sell_start(cla, "item")
         print("끝!")
-        clean_screen(cla)
+
+        settled(cla)
+
+        # clean_screen(cla)
 
 
 
@@ -83,7 +89,7 @@ def auction_ready(cla):
                     time.sleep(0.5)
             time.sleep(0.5)
 
-
+        print("왼쪽 판매 버튼 누르기")
         # 왼쪽 판매 버튼 누르기
 
         for i in range(7):
@@ -109,6 +115,7 @@ def auction_ready(cla):
                         click_pos_reg(imgs_.x, imgs_.y, cla)
             time.sleep(0.5)
 
+        print("일괄회수 준비")
         # 일괄회수 준비
         for i in range(10):
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\retrieve_ready_btn.PNG"
@@ -126,6 +133,7 @@ def auction_ready(cla):
                     break
             time.sleep(0.5)
 
+        print("일괄회수")
         # 일괄회수
         for i in range(10):
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\retrieve_ready_btn.PNG"
@@ -163,22 +171,20 @@ def auction_ready(cla):
         print(e)
 
 
-def auction_sell_start(cla):
+def auction_sell_start(cla, data):
     import numpy as np
     import cv2
 
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from action_raven2 import confirm_all
-    from clean_screen_raven2 import clean_screen
 
-    from property_raven2 import my_property_upload
 
     # file_path = "C:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\auction_list.txt"
     # with open(file_path, "r", encoding='utf-8-sig') as file:
     #     read_data = file.read().splitlines()
     #     print("read_data", read_data)
 
-    my_item = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\list"
+    my_item = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\list\\" + str(data)
     file_list = os.listdir(my_item)
     # print("file_list", file_list)
     # for i in range(len(file_list)):
@@ -208,6 +214,7 @@ def auction_sell_start(cla):
             y_item = 990
 
         # 판매시작
+        print("판매시작..", y_item, len(file_list))
         for i in range(len(file_list)):
             result_file_list = file_list[i].split(".")
             read_data = result_file_list[0]
@@ -219,12 +226,13 @@ def auction_sell_start(cla):
             if imgs_ is not None and imgs_ != False:
                 print("last_e_1", imgs_)
                 y_item = imgs_.y + 50
-                break
+                # break
             else:
                 y_item = 990
 
             # 종류 쭈욱 시작
-            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\list\\" + str(read_data) + ".PNG"
+            print("str(read_data)", str(read_data))
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\list\\" + str(data) + "\\" + str(read_data) + ".PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(630, 120, 870, y_item, cla, img, 0.8)
@@ -253,7 +261,7 @@ def auction_sell_start(cla):
                             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\sell_title.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(370, 310, 460, 360, cla, img, 0.8)
+                            imgs_ = imgs_set_(370, 300, 480, 360, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
                                 break
                     time.sleep(0.1)
@@ -270,7 +278,7 @@ def auction_sell_start(cla):
                             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\sell_title.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(370, 310, 460, 360, cla, img, 0.8)
+                            imgs_ = imgs_set_(370, 300, 480, 360, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
                                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\auction_cancle.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
@@ -310,7 +318,7 @@ def auction_sell_start(cla):
                                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\maximum_quantity.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(380, 100, 550, 160, cla, img, 0.8)
+                                    imgs_ = imgs_set_(380, 100, 580, 160, cla, img, 0.8)
                                     if imgs_ is not None and imgs_ != False:
                                         break
                                     else:
@@ -328,9 +336,9 @@ def auction_sell_start(cla):
                                 time.sleep(0.1)
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
                                 time.sleep(0.2)
-                                click_pos_2(585, 375, cla)
+                                click_pos_2(585, 380, cla)
                                 time.sleep(0.1)
-                                click_pos_2(585, 375, cla)
+                                click_pos_2(585, 380, cla)
                                 time.sleep(0.3)
 
                                 sell_can = True
@@ -338,7 +346,7 @@ def auction_sell_start(cla):
                                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\ten.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(410, 110, 550, 150, cla, img, 0.8)
+                                    imgs_ = imgs_set_(410, 110, 570, 150, cla, img, 0.8)
                                     if imgs_ is not None and imgs_ != False:
                                         sell_can = False
                                         break
@@ -354,7 +362,7 @@ def auction_sell_start(cla):
                                             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\sell_title.PNG"
                                             img_array = np.fromfile(full_path, np.uint8)
                                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                            imgs_ = imgs_set_(370, 310, 460, 360, cla, img, 0.8)
+                                            imgs_ = imgs_set_(370, 300, 480, 360, cla, img, 0.8)
                                             if imgs_ is not None and imgs_ != False:
                                                 print("confirm : sell_title", imgs_)
                                                 confirm_all(cla)
@@ -394,7 +402,7 @@ def auction_sell_start(cla):
                                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\sell_title.PNG"
                                         img_array = np.fromfile(full_path, np.uint8)
                                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                        imgs_ = imgs_set_(370, 310, 460, 360, cla, img, 0.8)
+                                        imgs_ = imgs_set_(370, 300, 480, 360, cla, img, 0.8)
                                         if imgs_ is not None and imgs_ != False:
                                             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\auction_cancle.PNG"
                                             img_array = np.fromfile(full_path, np.uint8)
@@ -418,7 +426,7 @@ def auction_sell_start(cla):
                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\sell_title.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(370, 310, 460, 360, cla, img, 0.8)
+                    imgs_ = imgs_set_(370, 300, 480, 360, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\auction_cancle.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
@@ -429,7 +437,23 @@ def auction_sell_start(cla):
                             QTest.qWait(500)
             time.sleep(0.5)
 
+
+
+
+    except Exception as e:
+        print(e)
+
+def settled(cla):
+    import numpy as np
+    import cv2
+
+    from function_game import imgs_set_, click_pos_reg
+    from property_raven2 import my_property_upload
+    from action_raven2 import confirm_all
+
+    try:
         # 정산 후 내 재화 파악(settled)
+        print("정산 후 내 재화 파악(settled)")
         for i in range(7):
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\settled_btn_bottom.PNG"
             img_array = np.fromfile(full_path, np.uint8)
@@ -472,11 +496,8 @@ def auction_sell_start(cla):
                         confirm_all(cla)
                         time.sleep(0.1)
             time.sleep(0.5)
-
-
     except Exception as e:
         print(e)
-
 
 def mine_check(cla):
     import numpy as np
