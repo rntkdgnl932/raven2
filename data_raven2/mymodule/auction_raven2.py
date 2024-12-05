@@ -34,7 +34,7 @@ def auction_start(cla):
 
         settled(cla)
 
-        # clean_screen(cla)
+        clean_screen(cla)
 
 
 
