@@ -1048,44 +1048,52 @@ def go_maul(cla):
                                 drag_pos(400, 560, 800, 560, cla)
 
                             else:
-                                is_game = False
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\milgi_drag_2.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(390, 940, 570, 1010, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    drag_pos(400, 650, 800, 650, cla)
 
-                                for i in range(10):
-                                    full_path = "c:\\my_games\\" + str(v_.game_folder) + "\\" + str(
-                                        v_.data_folder) + "\\imgs\\check\\game_title_1.PNG"
-                                    img_array = np.fromfile(full_path, np.uint8)
-                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(0, 0, 960, 1030, cla, img, 0.8)
-                                    if imgs_ is not None and imgs_ != False:
-                                        is_game = True
-                                        break
-                                    else:
+                                else:
+                                    is_game = False
+
+                                    for i in range(10):
                                         full_path = "c:\\my_games\\" + str(v_.game_folder) + "\\" + str(
-                                            v_.data_folder) + "\\imgs\\check\\game_title_2.PNG"
+                                            v_.data_folder) + "\\imgs\\check\\game_title_1.PNG"
                                         img_array = np.fromfile(full_path, np.uint8)
                                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                                         imgs_ = imgs_set_(0, 0, 960, 1030, cla, img, 0.8)
                                         if imgs_ is not None and imgs_ != False:
                                             is_game = True
                                             break
-                                    time.sleep(1)
+                                        else:
+                                            full_path = "c:\\my_games\\" + str(v_.game_folder) + "\\" + str(
+                                                v_.data_folder) + "\\imgs\\check\\game_title_2.PNG"
+                                            img_array = np.fromfile(full_path, np.uint8)
+                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                            imgs_ = imgs_set_(0, 0, 960, 1030, cla, img, 0.8)
+                                            if imgs_ is not None and imgs_ != False:
+                                                is_game = True
+                                                break
+                                        time.sleep(1)
 
-                                if is_game == True:
-                                    click_pos_2(930, 55, cla)
-                                    time.sleep(0.2)
-                                    skip_click(cla)
+                                    if is_game == True:
+                                        click_pos_2(930, 55, cla)
+                                        time.sleep(0.2)
+                                        skip_click(cla)
 
-                                    result_gamecheck = game_check(cla)
-                                    if result_gamecheck == False:
-                                        print("마을 이동서 없다")
-                                        why = "마을이동서 안보여. 정비해라"
+                                        result_gamecheck = game_check(cla)
+                                        if result_gamecheck == False:
+                                            print("마을 이동서 없다")
+                                            why = "마을이동서 안보여. 정비해라"
+                                            line_to_me(cla, why)
+                                            is_move = False
+
+                                    else:
+                                        why = "게임 꺼졌다."
                                         line_to_me(cla, why)
                                         is_move = False
-
-                                else:
-                                    why = "게임 꺼졌다."
-                                    line_to_me(cla, why)
-                                    is_move = False
 
 
                 time.sleep(0.5)

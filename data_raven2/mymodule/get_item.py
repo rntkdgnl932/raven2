@@ -309,7 +309,14 @@ def get_gyeyak_sohwan(cla):
                                         imgs_ = imgs_set_(390, 940, 570, 1010, cla, img, 0.8)
                                         if imgs_ is not None and imgs_ != False:
                                             break
-                                        time.sleep(0.1)
+                                        else:
+                                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\milgi_drag_2.PNG"
+                                            img_array = np.fromfile(full_path, np.uint8)
+                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                            imgs_ = imgs_set_(390, 940, 570, 1010, cla, img, 0.8)
+                                            if imgs_ is not None and imgs_ != False:
+                                                break
+                                        time.sleep(0.2)
 
 
                                     drag_pos(400, 540, 800, 540, cla)
@@ -317,35 +324,63 @@ def get_gyeyak_sohwan(cla):
                                     time.sleep(2)
                                     break
                                 else:
-                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\close_window.PNG"
+                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\gyeyak_sohwan\\rare_confirm_2.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(400, 900, 600, 1040, cla, img, 0.8)
+                                    imgs_ = imgs_set_(440, 480, 520, 540, cla, img, 0.8)
                                     if imgs_ is not None and imgs_ != False:
-                                        print("close_window", imgs_)
+                                        print("rare_confirm_2", imgs_)
                                         click_pos_reg(imgs_.x, imgs_.y, cla)
-                                        time.sleep(0.5)
-                                        break
+                                        for d in range(10):
+                                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\milgi_drag.PNG"
+                                            img_array = np.fromfile(full_path, np.uint8)
+                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                            imgs_ = imgs_set_(390, 940, 570, 1010, cla, img, 0.8)
+                                            if imgs_ is not None and imgs_ != False:
+                                                break
+                                            else:
+                                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\milgi_drag_2.PNG"
+                                                img_array = np.fromfile(full_path, np.uint8)
+                                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                imgs_ = imgs_set_(390, 940, 570, 1010, cla, img, 0.8)
+                                                if imgs_ is not None and imgs_ != False:
+                                                    break
+                                            time.sleep(0.2)
 
+                                        drag_pos(400, 650, 800, 650, cla)
+                                        drag = True
+                                        time.sleep(2)
+                                        break
                                     else:
-                                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\screen_click3.PNG"
+                                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\close_window.PNG"
                                         img_array = np.fromfile(full_path, np.uint8)
                                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                        imgs_ = imgs_set_(300, 900, 600, 1040, cla, img, 0.8)
+                                        imgs_ = imgs_set_(400, 900, 600, 1040, cla, img, 0.8)
                                         if imgs_ is not None and imgs_ != False:
-                                            print("screen_click3", imgs_)
+                                            print("close_window", imgs_)
                                             click_pos_reg(imgs_.x, imgs_.y, cla)
                                             time.sleep(0.5)
                                             break
 
                                         else:
-                                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\gyeyak_sohwan\\gyeyak_ready.PNG"
+                                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\skip\\screen_click3.PNG"
                                             img_array = np.fromfile(full_path, np.uint8)
                                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                            imgs_ = imgs_set_(480, 400, 530, 450, cla, img, 0.8)
+                                            imgs_ = imgs_set_(300, 900, 600, 1040, cla, img, 0.8)
                                             if imgs_ is not None and imgs_ != False:
-                                                print("gyeyak_ready", imgs_)
-                                                confirm_all(cla)
+                                                print("screen_click3", imgs_)
+                                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                                time.sleep(0.5)
+                                                break
+
+                                            else:
+                                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\gyeyak_sohwan\\gyeyak_ready.PNG"
+                                                img_array = np.fromfile(full_path, np.uint8)
+                                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                imgs_ = imgs_set_(480, 400, 530, 450, cla, img, 0.8)
+                                                if imgs_ is not None and imgs_ != False:
+                                                    print("gyeyak_ready", imgs_)
+                                                    confirm_all(cla)
 
                                 time.sleep(0.5)
 
