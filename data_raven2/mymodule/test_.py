@@ -68,18 +68,12 @@ def go_test():
         # if imgs_ is not None and imgs_ != False:
         #     print("menu_auction", imgs_)
 
-        for m in range(5):
-            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\maximum_quantity.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(380, 100, 580, 160, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                print("maximum_quantity", imgs_)
-                break
-            else:
-                click_pos_2(700, 635, cla)
-                time.sleep(0.2)
-            time.sleep(0.2)
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\gyeyak_sohwan\\rare_confirm.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(450, 490, 510, 540, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("rare_confirm", imgs_)
 
         # for n in range(12):
         #
