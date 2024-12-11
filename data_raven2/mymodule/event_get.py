@@ -211,12 +211,12 @@ def event_get_click(cla, is_picture):
 
         # 8 : 특무대사냥의뢰(8_click) o
 
-        # 9 : 블랙프라이데이특별미션(six) o
+        # 9 : 블랙프라이데이특별미션(six) x
 
-        # 10 : 키오네의보스토벌령(eight) o
+        # 10 : 키오네의보스토벌령(eight) x
 
-        # 11 : 200일성장지원출석(seven)
-        # 12 : 200일티켓미션I, II(ten)
+        # 11 : 200일성장지원출석(seven) o
+        # 12 : 200일티켓미션I, II(twelve) o
 
 
         # 13 :
