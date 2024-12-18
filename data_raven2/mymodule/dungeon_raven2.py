@@ -82,7 +82,7 @@ def dungeon_in(cla, data):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_raven2 import go_maul, move_check, menu_open, out_check, juljun_on, attack_on, go_random, inven_check
+    from action_raven2 import go_maul, move_check, menu_open, out_check, juljun_on, attack_on, go_random, inven_check, go_random_event
     from clean_screen_raven2 import clean_screen
     from dead_raven2 import dead_recover
     from potion_raven2 import potion_buy
@@ -276,9 +276,11 @@ def dungeon_in(cla, data):
                                 result_out = out_check(cla)
                                 if result_out == True:
                                     dun_in = True
-                                    # 고대의 신전은 랜덤이동하기
+                                    # 이벤트는 약한것만...
                                     # if dun_name == "temple":
-                                    go_random(cla)
+
+
+                                    go_random_event(cla)
 
                                     # 공격
                                     attack_on(cla)

@@ -3,6 +3,8 @@ import os
 import time
 import requests
 
+from PyQt5.QtTest import *
+
 import variable as v_
 
 sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder) + '/mymodule')
@@ -17,7 +19,7 @@ def go_test():
 
     from function_game import imgs_set_, drag_pos, imgs_set_reg, imgs_set_for, text_check_get, click_pos_2, click_pos_reg, text_check_get_reg, in_number_check, int_put_, change_number
     from tuto_raven2 import way_point_click, tuto_start
-    from action_raven2 import inven_check, bag_open, skip_click, confirm_all, out_check, attack_on, juljun_on, juljun_time_check
+    from action_raven2 import inven_check, bag_open, skip_click, confirm_all, out_check, attack_on, juljun_on, juljun_time_check, go_random, go_random_event
     from clean_screen_raven2 import clean_screen
     from potion_raven2 import potion_buy, potion_check
     from chango_raven2 import chango_in
@@ -68,20 +70,8 @@ def go_test():
         # if imgs_ is not None and imgs_ != False:
         #     print("menu_auction", imgs_)
 
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\gyeyak_sohwan\\rare_confirm.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(450, 490, 510, 540, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("rare_confirm", imgs_)
 
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_title\\12.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(220, 320, 800, 400, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("pic_num", imgs_)
-
+        go_random_event(cla)
         # for n in range(12):
         #
         #     pic_num = n + 1
@@ -116,7 +106,7 @@ def go_test():
         # click_pos_2(900, 390, cla)
         # time.sleep(1)
         # auction_sell_start(cla)
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_title\\12.PNG"
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_title\\2.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
         imgs_ = imgs_set_(220, 320, 800, 400, cla, img, 0.8)

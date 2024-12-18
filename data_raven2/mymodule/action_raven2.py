@@ -1182,6 +1182,105 @@ def go_random(cla):
         return 0
 
 
+def go_random_event(cla):
+    import numpy as np
+    import cv2
+    import os
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from clean_screen_raven2 import clean_screen
+    from massenger import line_to_me
+
+    try:
+        print("go_random_event")
+
+        is_dun = True
+
+        for i in range(20):
+
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\map\\map_open.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(800, 950, 960, 1030, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("map_open", imgs_)
+
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\map_title\\event.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(350, 30, 600, 80, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\map_title\\step.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(350, 70, 600, 110, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("던전 진입 완료")
+
+
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\event\\2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(690, 75, 810, 120, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_2(860, 930, cla)
+
+                            time.sleep(1)
+
+
+
+                            redult_confirm =confirm_all(cla)
+                            if redult_confirm == True:
+                                is_dun = True
+                                break
+                        else:
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\event\\1.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(40, 140, 900, 920, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                            else:
+
+                                click_pos_2(925, 990, cla)
+                    else:
+                        print("처음부터 다시 진입")
+                        is_dun = False
+                        break
+            else:
+
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\map_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(190, 100, 280, 160, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("map_btn", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                else:
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\jabhwa_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(50, 100, 200, 260, cla, img, 0.75)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_2(250, 135, cla)
+                    else:
+                        clean_screen(cla)
+
+            QTest.qWait(500)
+
+        if is_dun == True:
+            for i in range(10):
+                result_out = out_check(cla)
+                if result_out == True:
+                    break
+                else:
+                    confirm_all(cla)
+                QTest.qWait(1000)
+        return is_dun
+    except Exception as e:
+        print(e)
+        return 0
+
 def juljun_check(cla):
     import numpy as np
     import cv2

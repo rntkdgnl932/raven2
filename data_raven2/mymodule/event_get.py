@@ -205,26 +205,25 @@ def event_get_click(cla, is_picture):
 
         # 5 : 희귀장신구제작미션(six) o
 
-        # 6 : 대전쟁의서막7일출석(seven) o
+        # 6 : 성탄절7일출석(seven)
 
-        # 7 : 대전쟁의서막연속미션(seven_six) o
+        # 7 : 혼돈의스페셜출석(fourteen)
 
         # 8 : 특무대사냥의뢰(8_click) o
 
-        # 9 : 블랙프라이데이특별미션(six) x
+        # 9 : 침묵의성탄절(twelve_plus_two)
 
-        # 10 : 키오네의보스토벌령(eight) x
+        # 10 : 혼돈정복작전I(ten)
 
         # 11 : 200일성장지원출석(seven) o
-        # 12 : 200일티켓미션I, II(twelve) o
 
 
         # 13 :
 
-        # ?? : 200일성장지원출석(seven)
-        # ?? : 200일티켓미션I, II(ten)
-        # ?? :
-        # ?? :
+        # ?? : 성탄절7일출석(seven)
+        # ?? : 혼돈의스페셜출석(fourteen)
+        # ?? : 침묵의성탄절(twelve_plus_two)
+        # ?? : 혼돈정복작전I(ten)
 
 
         # 8_click => drag 하는 것
@@ -249,22 +248,24 @@ def event_get_click(cla, is_picture):
 
 
 
-        if is_picture == "0":
+        if is_picture == "7":
             data = "fourteen"
-        elif is_picture == "1" or is_picture == "7":
+        elif is_picture == "1":
             data = "seven_six"
         # elif is_picture == "":
         #     data = "five"
-        elif is_picture == "9":
+        elif is_picture == "0":
             data = "six"
         elif is_picture == "2" or is_picture == "4" or is_picture == "8":
             data = "8_click"
-        elif is_picture == "5" or is_picture == "10":
+        elif is_picture == "5":
             data = "eight"
-        elif is_picture == "0":
+        elif is_picture == "10":
             data = "ten"
         elif is_picture == "12":
             data = "twelve"
+        elif is_picture == "9":
+            data = "twelve_plus_two"
         elif is_picture == "6" or is_picture == "11":
             data = "seven"
         elif is_picture == "3":
@@ -493,6 +494,67 @@ def event_get_click(cla, is_picture):
             time.sleep(0.5)
             click_pos_2(820, 370, cla)
             time.sleep(0.5)
+
+        elif data == "twelve_plus_two":
+            print("twelve_plus_two")
+
+            drag_pos(550, 550, 550, 700, cla)
+            QTest.qWait(500)
+            # 510, 825 // 515, 570, 625, 680
+            for c in range(5):
+                y_reg = 515 + (55 * c)
+                if c == 4:
+                    click_pos_2(530, 720, cla)
+                    time.sleep(0.5)
+                    click_pos_2(530, 720, cla)
+                    time.sleep(0.5)
+                else:
+                    click_pos_2(530, y_reg, cla)
+                    time.sleep(0.5)
+                    click_pos_2(530, y_reg, cla)
+                    time.sleep(0.5)
+            # 510, 825 // 515, 570, 625, 680
+            for c in range(5):
+                y_reg = 515 + (55 * c)
+                if c == 4:
+                    click_pos_2(840, 720, cla)
+                    time.sleep(0.5)
+                    click_pos_2(840, 720, cla)
+                    time.sleep(0.5)
+                else:
+                    click_pos_2(840, y_reg, cla)
+                    time.sleep(0.5)
+                    click_pos_2(840, y_reg, cla)
+                    time.sleep(0.5)
+
+            drag_pos(550, 700, 550, 550, cla)
+            QTest.qWait(500)
+
+            click_pos_2(530, 650, cla)
+            time.sleep(0.5)
+            click_pos_2(530, 650, cla)
+            time.sleep(0.5)
+
+            click_pos_2(840, 650, cla)
+            time.sleep(0.5)
+            click_pos_2(840, 650, cla)
+            time.sleep(0.5)
+
+            click_pos_2(530, 700, cla)
+            time.sleep(0.5)
+            click_pos_2(530, 700, cla)
+            time.sleep(0.5)
+
+            click_pos_2(840, 700, cla)
+            time.sleep(0.5)
+            click_pos_2(840, 700, cla)
+            time.sleep(0.5)
+
+            click_pos_2(820, 370, cla)
+            time.sleep(0.5)
+            click_pos_2(820, 370, cla)
+            time.sleep(0.5)
+
         elif data == "five":
             print("five")
             for c in range(10):
