@@ -363,6 +363,7 @@ def game_ready(cla):
                     imgs_ = imgs_set_(800, 900, 950, 1000, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         is_down = False
+                        is_char_scan = True
                     # 완전 바깥일 경우 일딴 들어가기
                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\gameout\\my_character_seach.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
@@ -370,12 +371,16 @@ def game_ready(cla):
                     imgs_ = imgs_set_(800, 900, 950, 1000, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         is_down = False
+                        is_char_scan = True
 
                     if is_char_scan == True:
-                        confirm_all(cla)
-                        time.sleep(0.3)
+                        # confirm_all(cla)
+                        # time.sleep(0.3)
 
                         click_pos_2(500, 600, cla)
+                        time.sleep(0.3)
+                        click_pos_2(500, 600, cla)
+                        time.sleep(0.3)
 
                         for i in range(10):
                             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\game_start_btn.PNG"
