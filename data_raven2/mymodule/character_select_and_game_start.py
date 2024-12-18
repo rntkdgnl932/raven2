@@ -261,20 +261,31 @@ def game_ready(cla):
     import numpy as np
     import cv2
 
-    from function_game import imgs_set_, click_pos_2, text_check_get
+    from function_game import imgs_set_, click_pos_2, text_check_get, click_pos_reg
     from action_raven2 import confirm_all
-
+    from massenger import line_to_me
 
     try:
 
         ready_ = False
 
+        my_character = False
+
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\my_character_scan.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(800, 900, 950, 1000, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            my_character = True
         # 완전 바깥일 경우 일딴 들어가기
         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\gameout\\my_character_seach.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
         imgs_ = imgs_set_(800, 900, 950, 1000, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
+            my_character = True
+
+        if my_character == True:
 
             confirm_all(cla)
             time.sleep(0.3)
@@ -310,16 +321,121 @@ def game_ready(cla):
                 ready_ = True
             else:
                 confirm_all(cla)
-            #     for i in range(10):
-            #         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\gameout\\my_character_seach.PNG"
-            #         img_array = np.fromfile(full_path, np.uint8)
-            #         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            #         imgs_ = imgs_set_(800, 900, 950, 1000, cla, img, 0.8)
-            #         if imgs_ is not None and imgs_ != False:
-            #             break
-            #         else:
-            #             result_confirm = confirm_all(cla)
-            #         time.sleep(0.5)
+
+                is_down = False
+
+                is_down_count = 0
+                is_count = 0
+
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\download_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(480, 590, 610, 640, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    is_down = True
+                else:
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\recourse_download.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(400, 940, 560, 970, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        is_down = True
+                    else:
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\recourse_haejae.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(400, 940, 560, 970, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            is_down = True
+                        else:
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\choijukhwa.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(400, 940, 560, 970, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                is_down = True
+
+                while is_down is True:
+                    is_char_scan = False
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\my_character_scan.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(800, 900, 950, 1000, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        is_down = False
+                    # 완전 바깥일 경우 일딴 들어가기
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\check\\gameout\\my_character_seach.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(800, 900, 950, 1000, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        is_down = False
+
+                    if is_char_scan == True:
+                        confirm_all(cla)
+                        time.sleep(0.3)
+
+                        click_pos_2(500, 600, cla)
+
+                        for i in range(10):
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\game_start_btn.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(600, 900, 920, 1020, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                break
+                            else:
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\join_ready_btn.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(400, 500, 600, 700, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    ready_ = True
+                                    break
+                            time.sleep(0.5)
+                    else:
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\recourse_download.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(400, 940, 560, 970, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("다운중...", is_down_count, "초")
+                            is_count = 0
+                        else:
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\recourse_haejae.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(400, 940, 560, 970, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("다운중...", is_down_count, "초")
+                                is_count = 0
+                            else:
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\choijukhwa.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(400, 940, 560, 970, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("다운중...", is_down_count, "초")
+                                    is_count = 0
+                                else:
+                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\download_btn.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(480, 590, 610, 640, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        is_count = 0
+                                    else:
+                                        is_count += 1
+                                        if is_count > 100:
+                                            print("문제 있음")
+                                            why = "다운 받는데 문제 있는 것으로 파악된다."
+                                            line_to_me(cla, why)
+
+                    is_down_count += 1
+
+                    time.sleep(1)
+
 
 
         # 접속대기일 경우 기다리기
