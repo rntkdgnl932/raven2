@@ -381,6 +381,8 @@ def game_ready(cla):
                         time.sleep(0.3)
                         click_pos_2(500, 600, cla)
                         time.sleep(0.3)
+                        click_pos_2(500, 600, cla)
+                        time.sleep(0.3)
 
                         for i in range(10):
                             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\game_start_btn.PNG"
@@ -399,15 +401,15 @@ def game_ready(cla):
                                     break
                             time.sleep(0.5)
                     else:
-                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\recourse_download.PNG"
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\download_btn.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(400, 940, 560, 970, cla, img, 0.8)
+                        imgs_ = imgs_set_(480, 590, 610, 640, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
-                            print("다운중...", is_down_count, "초")
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
                             is_count = 0
                         else:
-                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\recourse_haejae.PNG"
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\recourse_download.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                             imgs_ = imgs_set_(400, 940, 560, 970, cla, img, 0.8)
@@ -415,7 +417,7 @@ def game_ready(cla):
                                 print("다운중...", is_down_count, "초")
                                 is_count = 0
                             else:
-                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\choijukhwa.PNG"
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\recourse_haejae.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                                 imgs_ = imgs_set_(400, 940, 560, 970, cla, img, 0.8)
@@ -423,19 +425,27 @@ def game_ready(cla):
                                     print("다운중...", is_down_count, "초")
                                     is_count = 0
                                 else:
-                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\download_btn.PNG"
+                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\choijukhwa.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(480, 590, 610, 640, cla, img, 0.8)
+                                    imgs_ = imgs_set_(400, 940, 560, 970, cla, img, 0.8)
                                     if imgs_ is not None and imgs_ != False:
-                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        print("다운중...", is_down_count, "초")
                                         is_count = 0
                                     else:
-                                        is_count += 1
-                                        if is_count > 100:
-                                            print("문제 있음")
-                                            why = "다운 받는데 문제 있는 것으로 파악된다."
-                                            line_to_me(cla, why)
+                                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\download_btn.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(480, 590, 610, 640, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                                            is_count = 0
+                                        else:
+                                            is_count += 1
+                                            if is_count > 100:
+                                                print("문제 있음")
+                                                why = "다운 받는데 문제 있는 것으로 파악된다."
+                                                line_to_me(cla, why)
 
                     is_down_count += 1
 
