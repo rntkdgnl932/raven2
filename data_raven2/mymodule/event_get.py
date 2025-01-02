@@ -205,25 +205,25 @@ def event_get_click(cla, is_picture):
 
         # 5 : 희귀장신구제작미션(six) o
 
-        # 6 : 성탄절7일출석(seven)
+        # 6 : 웰컴202514일출석(fourteen)
 
-        # 7 : 혼돈의스페셜출석(fourteen)
+        # 7 : 혼돈의스페셜출석(fourteen) o
 
         # 8 : 특무대사냥의뢰(8_click) o
 
         # 9 : 침묵의성탄절(twelve_plus_two)
 
-        # 10 : 혼돈정복작전I(ten)
+        # 10 : 혼돈정복작전I, II, III(ten) o
 
-        # 11 : 200일성장지원출석(seven) o
+        # 11 : 웰컴202특별미션(twelve_plus_two)
 
 
         # 13 :
 
-        # ?? : 성탄절7일출석(seven)
-        # ?? : 혼돈의스페셜출석(fourteen)
-        # ?? : 침묵의성탄절(twelve_plus_two)
-        # ?? : 혼돈정복작전I(ten)
+        # ?? : 웰컴202514일출석(fourteen)
+        # ?? : 웰컴202특별미션(twelve_plus_two)
+        # ?? :
+        # ?? :
 
 
         # 8_click => drag 하는 것
@@ -248,7 +248,7 @@ def event_get_click(cla, is_picture):
 
 
 
-        if is_picture == "7":
+        if is_picture == "7" or is_picture == "6":
             data = "fourteen"
         elif is_picture == "1":
             data = "seven_six"
@@ -264,9 +264,9 @@ def event_get_click(cla, is_picture):
             data = "ten"
         elif is_picture == "12":
             data = "twelve"
-        elif is_picture == "9":
+        elif is_picture == "9" or is_picture == "11":
             data = "twelve_plus_two"
-        elif is_picture == "6" or is_picture == "11":
+        elif is_picture == "0":
             data = "seven"
         elif is_picture == "3":
             data = "twenty_eight"

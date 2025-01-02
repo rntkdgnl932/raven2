@@ -71,7 +71,7 @@ def go_test():
         #     print("menu_auction", imgs_)
 
 
-        go_random_event(cla)
+        # go_random_event(cla)
         # for n in range(12):
         #
         #     pic_num = n + 1
@@ -106,7 +106,7 @@ def go_test():
         # click_pos_2(900, 390, cla)
         # time.sleep(1)
         # auction_sell_start(cla)
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_title\\2.PNG"
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_title\\10.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
         imgs_ = imgs_set_(220, 320, 800, 400, cla, img, 0.8)
