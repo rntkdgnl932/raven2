@@ -205,23 +205,22 @@ def event_get_click(cla, is_picture):
 
         # 5 : 희귀장신구제작미션(six) o
 
-        # 6 : 웰컴202514일출석(fourteen)
+        # 6 : 웰컴202514일출석(fourteen) o
 
         # 7 : 혼돈의스페셜출석(fourteen) o
 
         # 8 : 특무대사냥의뢰(8_click) o
 
-        # 9 : 침묵의성탄절(twelve_plus_two)
+        # 9 : 알테이아탐사준비출석(seven)
 
         # 10 : 혼돈정복작전I, II, III(ten) o
 
-        # 11 : 웰컴202특별미션(twelve_plus_two)
+        # 11 : 웰컴2025특별미션(twelve_plus_two) o
 
+        # 12 : 알테이아탐사준비미션(ten)
 
-        # 13 :
-
-        # ?? : 웰컴202514일출석(fourteen)
-        # ?? : 웰컴202특별미션(twelve_plus_two)
+        # ?? : 알테이아탐사준비출석(seven)
+        # ?? : 알테이아탐사준비미션(ten)
         # ?? :
         # ?? :
 
@@ -260,13 +259,13 @@ def event_get_click(cla, is_picture):
             data = "8_click"
         elif is_picture == "5":
             data = "eight"
-        elif is_picture == "10":
+        elif is_picture == "10" or is_picture == "12":
             data = "ten"
         elif is_picture == "12":
             data = "twelve"
-        elif is_picture == "9" or is_picture == "11":
+        elif is_picture == "11":
             data = "twelve_plus_two"
-        elif is_picture == "0":
+        elif is_picture == "9":
             data = "seven"
         elif is_picture == "3":
             data = "twenty_eight"
