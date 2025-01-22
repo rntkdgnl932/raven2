@@ -14,7 +14,7 @@ def dungeon_start(cla, data):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_raven2 import go_maul, move_check, juljun_check, juljun_off, juljun_on, attack_on, go_random, confirm_all
+    from action_raven2 import go_maul, move_check, juljun_check, juljun_off, juljun_on, attack_on, go_random, confirm_all, go_random_event
     from clean_screen_raven2 import clean_screen
     from potion_raven2 import potion_check, potion_buy
     from dead_raven2 import dead_check_2, dead_recover
@@ -25,6 +25,11 @@ def dungeon_start(cla, data):
         # 특수_발바르_4
         # 특수_타파나_4
         # 일반_고대의신전, 일반_깊은늪, 일반_붉은바위협곡
+
+        dun = data.split("_")
+
+        # 특수_타파나_4
+
 
         result_dead = dead_check_2(cla)
 
@@ -48,7 +53,10 @@ def dungeon_start(cla, data):
                     # 절전 중 집 가기...
                 else:
                     print("절전 풀고 공격버튼 클릭 후 다시 절전하기")
-                    go_random(cla)
+                    if dun[0] == "이벤트":
+                        go_random_event(cla)
+                    else:
+                        go_random(cla)
                     clean_screen(cla)
                     attack_on(cla)
 
@@ -58,7 +66,10 @@ def dungeon_start(cla, data):
                     juljun_on(cla)
             elif result_dungeon_check[1] == False:
                 print("절전 풀고 공격버튼 클릭 후 다시 절전하기")
-                go_random(cla)
+                if dun[0] == "이벤트":
+                    go_random_event(cla)
+                else:
+                    go_random(cla)
                 clean_screen(cla)
                 attack_on(cla)
 
