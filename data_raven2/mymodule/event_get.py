@@ -205,24 +205,24 @@ def event_get_click(cla, is_picture):
 
         # 5 : 희귀장신구제작미션(six) o
 
-        # 6 : 설맞이특별출석(seven)
+        # 6 : 클래스변경II지원출석(seven)
 
-        # 7 : 7일간의알테이아탐사(seven)
+        # 7 : 7일간의알테이아탐사(seven) o
 
         # 8 : 특무대사냥의뢰(8_click) o
 
-        # 9 : 아침의정원정복미션I(eight)
+        # 9 : 알테이아탐사의뢰(seven_six)
 
-        # 10 : 알테이아탐사미션(seven_six)
+        # 10 : 알테이아탐사미션(seven_six) o
 
         # 11 :
 
         # 12 :
 
-        # ?? : 설맞이특별출석(seven)
-        # ?? : 7일간의알테이아탐사(seven)
-        # ?? : 아침의정원정복미션I(eight)
-        # ?? : 알테이아탐사미션(seven_six)
+        # ?? : 클래스변경II지원출석(seven) 6
+        # ?? : 알테이아탐사의뢰(seven_six) 9
+        # ?? :
+        # ?? :
 
 
         # 8_click => drag 하는 것
