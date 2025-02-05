@@ -221,6 +221,17 @@ def dungeon_in(cla, data):
 
                 # 해당 던전 클릭
                 for i in range(5):
+
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\not_event.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(425, 500, 690, 570, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        dun_in = True
+                        complete = True
+                        print("not_event", imgs_)
+                        break
+
                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\dun_not_opened.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -251,6 +262,14 @@ def dungeon_in(cla, data):
                 if imgs_ is not None and imgs_ != False:
                     dun_in = True
                     complete = True
+                else:
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\not_event.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(425, 500, 690, 570, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        dun_in = True
+                        complete = True
 
                 if complete != True:
 

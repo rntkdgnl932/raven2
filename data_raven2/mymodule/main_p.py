@@ -3921,8 +3921,8 @@ class game_Playing(QThread):
                                     dungeon_start(v_.now_cla, result_schedule_)
                                     time.sleep(5)
                                 elif "이벤트" in result_schedule_:
-                                    myQuest_play_add(v_.now_cla, result_schedule_)
-                                    # dungeon_start(v_.now_cla, result_schedule_)
+                                    # myQuest_play_add(v_.now_cla, result_schedule_)
+                                    dungeon_start(v_.now_cla, result_schedule_)
                                     time.sleep(5)
                                 elif "어비스" in result_schedule_:
                                     abyss_start(v_.now_cla, result_schedule_)
