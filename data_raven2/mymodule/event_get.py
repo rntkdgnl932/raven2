@@ -249,7 +249,7 @@ def event_get_click(cla, is_picture):
 
         if is_picture == "0" or is_picture == "0":
             data = "fourteen"
-        elif is_picture == "1" or is_picture == "10":
+        elif is_picture == "1" or is_picture == "9" or is_picture == "10":
             data = "seven_six"
         # elif is_picture == "":
         #     data = "five"
@@ -257,7 +257,7 @@ def event_get_click(cla, is_picture):
             data = "six"
         elif is_picture == "2" or is_picture == "4" or is_picture == "8":
             data = "8_click"
-        elif is_picture == "5" or is_picture == "9":
+        elif is_picture == "5":
             data = "eight"
         elif is_picture == "0" or is_picture == "0":
             data = "ten"

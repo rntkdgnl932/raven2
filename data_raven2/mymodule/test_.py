@@ -70,12 +70,19 @@ def go_test():
         # if imgs_ is not None and imgs_ != False:
         #     print("menu_auction", imgs_)
 
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\event\\1.PNG"
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\point_1.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(40, 140, 900, 920, cla, img, 0.8)
+        imgs_ = imgs_set_(240, 440, 900, 490, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
-            print("111111111111111", imgs_)
+            print("point_1", imgs_)
+            time.sleep(0.3)
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\point_2.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(240, 440, 880, 490, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("point_2", imgs_)
 
         # go_random_event(cla)
         # for n in range(12):
