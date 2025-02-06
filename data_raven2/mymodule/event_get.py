@@ -330,6 +330,7 @@ def event_get_click(cla, is_picture):
                     click_pos_reg(imgs_.x - 10, imgs_.y + 5, cla)
                     time.sleep(0.3)
                 if point_ == True:
+                    is_checked = False
                     for c in range(10):
                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\checked.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
@@ -337,6 +338,7 @@ def event_get_click(cla, is_picture):
                         imgs_ = imgs_set_(480, 480, 900, 710, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             print("checked", imgs_)
+                            is_checked = True
                             click_pos_reg(imgs_.x - 20, imgs_.y, cla)
                             result_inven = inven_check(cla)
                             if result_inven == True:
@@ -351,6 +353,7 @@ def event_get_click(cla, is_picture):
                             imgs_ = imgs_set_(730, 300, 900, 420, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
                                 print("checked_top", imgs_)
+                                is_checked = True
                                 click_pos_reg(imgs_.x - 30, imgs_.y, cla)
                                 result_inven = inven_check(cla)
                                 if result_inven == True:
@@ -359,6 +362,26 @@ def event_get_click(cla, is_picture):
                                     click_pos_reg(imgs_.x - 30, imgs_.y, cla)
                                     time.sleep(0.2)
                         time.sleep(0.3)
+
+                    if is_checked == False:
+                        for c in range(4):
+                            y_reg = 515 + (55 * c)
+                            click_pos_2(530, y_reg, cla)
+                            time.sleep(0.5)
+                            click_pos_2(530, y_reg, cla)
+                            time.sleep(0.5)
+                        # 510, 825 // 515, 570, 625, 680
+                        for c in range(4):
+                            y_reg = 515 + (55 * c)
+                            click_pos_2(840, y_reg, cla)
+                            time.sleep(0.5)
+                            click_pos_2(840, y_reg, cla)
+                            time.sleep(0.5)
+                        click_pos_2(820, 370, cla)
+                        time.sleep(0.5)
+                        click_pos_2(820, 370, cla)
+                        time.sleep(0.5)
+
                 else:
                     break
                 time.sleep(0.5)
