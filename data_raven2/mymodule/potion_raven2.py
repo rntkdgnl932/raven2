@@ -334,124 +334,130 @@ def potion_buy(cla):
                             click_pos_2(920, 400, cla)
                         time.sleep(0.5)
 
-
-                    # 첫번째
-                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\hogamdo\\sojin.PNG"
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\hogamdo\\hogamdo_max.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(640, 270, 860, 340, cla, img, 0.8)
+                    imgs_ = imgs_set_(570, 460, 900, 750, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
-                        print("sojin", imgs_)
-                        hogamdo_1 = True
+                        print("hogamdo_max", imgs_)
                     else:
-                        hogamdo_1 = False
+                        # 첫번째
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\hogamdo\\sojin.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(640, 270, 860, 340, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("sojin", imgs_)
+                            hogamdo_1 = True
+                        else:
+                            hogamdo_1 = False
 
-                    if hogamdo_1 == False:
-                        confirm = False
-                        for i in range(10):
-                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\hogamdo\\hogamdo_confirm.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(480, 560, 630, 630, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                print("hogamdo_confirm", imgs_)
-                                confirm = True
-                                break
-                            else:
-                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\hogamdo\\anymore_item.PNG"
-                                img_array = np.fromfile(full_path, np.uint8)
-                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(380, 105, 580, 160, cla, img, 0.8)
-                                if imgs_ is not None and imgs_ != False:
-                                    print("anymore_item", imgs_)
-                                    break
-                                else:
-                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\hogamdo\\most_item.PNG"
-                                    img_array = np.fromfile(full_path, np.uint8)
-                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(410, 110, 560, 160, cla, img, 0.8)
-                                    if imgs_ is not None and imgs_ != False:
-                                        print("most_item", imgs_)
-                                        click_pos_2(805, 1000, cla)
-                                        time.sleep(0.5)
-                                    else:
-                                        click_pos_2(840, 330, cla)
-                                        time.sleep(0.5)
-                            time.sleep(0.5)
-                        if confirm == True:
+                        if hogamdo_1 == False:
+                            confirm = False
                             for i in range(10):
                                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\hogamdo\\hogamdo_confirm.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                                 imgs_ = imgs_set_(480, 560, 630, 630, cla, img, 0.8)
                                 if imgs_ is not None and imgs_ != False:
-                                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                                else:
-                                    result_skip = skip_click(cla)
-                                    if result_skip == True:
-                                        break
-                                    else:
-                                        time.sleep(0.5)
-                                time.sleep(0.5)
-
-                    # 두번째
-                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\hogamdo\\sojin.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(640, 390, 860, 460, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        print("sojin", imgs_)
-                        hogamdo_2 = True
-                    else:
-                        hogamdo_2 = False
-
-                    if hogamdo_2 == False:
-                        confirm = False
-                        for i in range(10):
-                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\hogamdo\\hogamdo_confirm.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(480, 560, 630, 630, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                print("hogamdo_confirm", imgs_)
-                                confirm = True
-                                break
-                            else:
-                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\hogamdo\\anymore_item.PNG"
-                                img_array = np.fromfile(full_path, np.uint8)
-                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(380, 105, 580, 160, cla, img, 0.8)
-                                if imgs_ is not None and imgs_ != False:
-                                    print("anymore_item", imgs_)
+                                    print("hogamdo_confirm", imgs_)
+                                    confirm = True
                                     break
                                 else:
-                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\hogamdo\\most_item.PNG"
+                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\hogamdo\\anymore_item.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(410, 110, 560, 160, cla, img, 0.8)
+                                    imgs_ = imgs_set_(380, 105, 580, 160, cla, img, 0.8)
                                     if imgs_ is not None and imgs_ != False:
-                                        print("most_item", imgs_)
-                                        click_pos_2(805, 1000, cla)
-                                        time.sleep(0.5)
+                                        print("anymore_item", imgs_)
+                                        break
                                     else:
-                                        click_pos_2(840, 455, cla)
-                                        time.sleep(0.5)
-                            time.sleep(0.5)
-                        if confirm == True:
+                                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\hogamdo\\most_item.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(410, 110, 560, 160, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("most_item", imgs_)
+                                            click_pos_2(805, 1000, cla)
+                                            time.sleep(0.5)
+                                        else:
+                                            click_pos_2(840, 330, cla)
+                                            time.sleep(0.5)
+                                time.sleep(0.5)
+                            if confirm == True:
+                                for i in range(10):
+                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\hogamdo\\hogamdo_confirm.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(480, 560, 630, 630, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    else:
+                                        result_skip = skip_click(cla)
+                                        if result_skip == True:
+                                            break
+                                        else:
+                                            time.sleep(0.5)
+                                    time.sleep(0.5)
+
+                        # 두번째
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\hogamdo\\sojin.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(640, 390, 860, 460, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("sojin", imgs_)
+                            hogamdo_2 = True
+                        else:
+                            hogamdo_2 = False
+
+                        if hogamdo_2 == False:
+                            confirm = False
                             for i in range(10):
                                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\hogamdo\\hogamdo_confirm.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                                 imgs_ = imgs_set_(480, 560, 630, 630, cla, img, 0.8)
                                 if imgs_ is not None and imgs_ != False:
-                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    print("hogamdo_confirm", imgs_)
+                                    confirm = True
+                                    break
                                 else:
-                                    result_skip = skip_click(cla)
-                                    if result_skip == True:
+                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\hogamdo\\anymore_item.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(380, 105, 580, 160, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("anymore_item", imgs_)
                                         break
                                     else:
-                                        time.sleep(0.5)
+                                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\hogamdo\\most_item.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(410, 110, 560, 160, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("most_item", imgs_)
+                                            click_pos_2(805, 1000, cla)
+                                            time.sleep(0.5)
+                                        else:
+                                            click_pos_2(840, 455, cla)
+                                            time.sleep(0.5)
                                 time.sleep(0.5)
+                            if confirm == True:
+                                for i in range(10):
+                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\potion\\hogamdo\\hogamdo_confirm.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(480, 560, 630, 630, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    else:
+                                        result_skip = skip_click(cla)
+                                        if result_skip == True:
+                                            break
+                                        else:
+                                            time.sleep(0.5)
+                                    time.sleep(0.5)
                     # 마무리하고 나가기
                     clean_screen(cla)
 
