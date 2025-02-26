@@ -205,30 +205,30 @@ def event_get_click(cla, is_picture):
 
         # 5 : 희귀장신구제작미션(six) o
 
-        # 6 : 100일축제준비출석(seven) o
+        # 6 : 웰컴100!(8_click) 6
 
-        # 7 : 7일간의알테이아탐사(seven) o
+        # 7 : 각성의힘미션이벤트(eight) 7
 
         # 8 : 특무대사냥의뢰(8_click) o
 
-        # 9 : 알테이아탐사의뢰(seven_six) o
+        # 9 : 차원의틈미션이벤트(8_click) 9
 
-        # 10 : 알테이아탐사미션(seven_six) o
+        # 10 : 글로벌100일특별출석(fourteen) o
 
-        # 11 : 100개의별빛미션이벤트(8_click) o
+        # 11 : 혼돈의탑소탕의뢰(eight) o
 
-        # 12 : 알테이아재건미션이벤트(8_click) o
+        # 12 :
 
-        # 13 : 글로벌100일특별출석(fourteen) 13
+        # 13 :
 
-        # 14 : 글로벌100일카운트다운(seven) 14
+        # 14 :
 
-        # 15 : 혼돈의탑소탕의뢰(eight) 15
+        # 15 :
 
-        # ?? : 글로벌100일특별출석(fourteen) 13
-        # ?? : 글로벌100일카운트다운(seven) 14
-        # ?? : 혼돈의탑소탕의뢰(eight) 15
         # ?? :
+        # ?? :
+        # ?? :
+        # ?? : 6, 7, 9, 10, 11, 12, 14
 
 
         # 8_click => drag 하는 것
@@ -253,17 +253,19 @@ def event_get_click(cla, is_picture):
 
 
 
-        if is_picture == "13" or is_picture == "0":
+        if is_picture == "10" or is_picture == "0":
             data = "fourteen"
-        elif is_picture == "1" or is_picture == "9" or is_picture == "10":
+        elif is_picture == "1" or is_picture == "0" or is_picture == "0":
             data = "seven_six"
         # elif is_picture == "":
         #     data = "five"
         elif is_picture == "0":
             data = "six"
-        elif is_picture == "2" or is_picture == "4" or is_picture == "8" or is_picture == "11" or is_picture == "12":
+        elif is_picture == "0" or is_picture == "0" or is_picture == "0":
+            data = "seven"
+        elif is_picture == "2" or is_picture == "4" or is_picture == "8" or is_picture == "6" or is_picture == "9":
             data = "8_click"
-        elif is_picture == "5" or is_picture == "15":
+        elif is_picture == "5" or is_picture == "11" or is_picture == "7":
             data = "eight"
         elif is_picture == "0" or is_picture == "0":
             data = "ten"
@@ -271,8 +273,6 @@ def event_get_click(cla, is_picture):
             data = "twelve"
         elif is_picture == "0":
             data = "twelve_plus_two"
-        elif is_picture == "6" or is_picture == "7" or is_picture == "14":
-            data = "seven"
         elif is_picture == "3":
             data = "twenty_eight"
 
