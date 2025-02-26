@@ -70,6 +70,54 @@ def go_test():
         # if imgs_ is not None and imgs_ != False:
         #     print("menu_auction", imgs_)
 
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\exp_click.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(280, 380, 380, 680, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("exp_click", imgs_)
+            # 클릭 후 720, 735
+            x_reg = imgs_.x
+            y_reg = imgs_.y
+
+            click_pos_reg(x_reg, y_reg, cla)
+            time.sleep(1)
+            click_pos_2(720, 735, cla)
+            time.sleep(1)
+            confirm_all(cla)
+            time.sleep(1)
+
+
+
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\confirm\\skip_confirm.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(350, 500, 700, 800, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("confirm : skip_confirm", imgs_)
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\anymore_notice.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(470, 500, 550, 540, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("anymore_notice", imgs_)
+
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\confirm\\skip_confirm.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(350, 500, 700, 800, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("confirm : skip_confirm", imgs_)
+
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\exp_click.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(280, 380, 380, 680, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("exp_click", imgs_)
+
         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\point_1.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)

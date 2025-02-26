@@ -1959,6 +1959,37 @@ def juljun_time_check(cla):
 
 
 
+def macro_off(cla, why):
+    import numpy as np
+    import cv2
+    import os
+    from function_game import imgs_set_
+    from datetime import datetime
+    from massenger import line_to_me
+    try:
+        print("macro_off")
+
+        line_to_me(cla, why)
+
+        dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
+        file_path = dir_path + "\\start.txt"
+        # cla.txt
+        cla_data = str(cla) + "cla"
+        file_path2 = dir_path + "\\" + cla_data + ".txt"
+        with open(file_path, "w", encoding='utf-8-sig') as file:
+            data = 'no'
+            file.write(str(data))
+            time.sleep(0.2)
+        with open(file_path2, "w", encoding='utf-8-sig') as file:
+            data = cla
+            file.write(str(data))
+            time.sleep(0.2)
+        os.execl(sys.executable, sys.executable, *sys.argv)
+
+    except Exception as e:
+        print(e)
+        return 0
+
 
 
 

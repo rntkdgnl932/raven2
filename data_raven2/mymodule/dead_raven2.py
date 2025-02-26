@@ -115,7 +115,7 @@ def dead_recover(cla):
     import cv2
     import random
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_raven2 import confirm_all
+    from action_raven2 import confirm_all, macro_off
     from clean_screen_raven2 import clean_screen
     from massenger import line_to_me
     from potion_raven2 import potion_buy
@@ -133,7 +133,7 @@ def dead_recover(cla):
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\exp_recover_title.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(260, 260, 400, 400, cla, img, 0.8)
+            imgs_ = imgs_set_(150, 290, 300, 350, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 recover = True
                 break
@@ -165,90 +165,213 @@ def dead_recover(cla):
 
             for i in range(7):
 
-                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\exp_recover_last.PNG"
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\exp_recover_title.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(360, 440, 530, 500, cla, img, 0.8)
+                imgs_ = imgs_set_(150, 290, 300, 350, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    print("exp_recover_last", imgs_)
+                    print("exp_recover_title", imgs_)
 
-                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\free_recover.PNG"
+                    click_pos_2(320, 365, cla)
+
+                    time.sleep(1)
+
+                    # 처음 경험치 복구
+
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\anymore_notice.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(520, 520, 600, 560, cla, img, 0.8)
+                    imgs_ = imgs_set_(470, 500, 550, 540, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
-                        print("free_recover", imgs_)
-                        confirm_all(cla)
-                    else:
+                        print("anymore_notice", imgs_)
                         break
-
-                    break
-
-                else:
-
-                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\exp_recover_title.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(260, 260, 400, 400, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        print("exp_recover_title", imgs_)
+                    else:
 
 
-                        for c in range(10):
-                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\today_free_recover.PNG"
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\today_free_recover.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(150, 710, 260, 760, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("today_free_recover", imgs_)
+
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\exp_click.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(270, 700, 700, 760, cla, img, 0.8)
+                            imgs_ = imgs_set_(280, 380, 380, 680, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
-                                break
-                            else:
-                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\today_free_recover2.PNG"
+                                print("exp_click", imgs_)
+                                # 클릭 후 720, 735
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                time.sleep(1)
+                                click_pos_2(720, 735, cla)
+                                time.sleep(1)
+                                confirm_all(cla)
+
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\confirm\\skip_confirm.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(270, 700, 700, 760, cla, img, 0.8)
+                                imgs_ = imgs_set_(350, 500, 700, 800, cla, img, 0.8)
                                 if imgs_ is not None and imgs_ != False:
-                                    print("today_free_recover2", imgs_)
+                                    print("confirm : skip_confirm", imgs_)
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                            else:
+                                break
+                        else:
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\item.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(150, 710, 260, 760, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("item", imgs_)
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\exp_click.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(280, 380, 380, 680, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("exp_click", imgs_)
+                                    # 클릭 후 720, 735
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    time.sleep(1)
+                                    click_pos_2(720, 735, cla)
+                                    time.sleep(1)
+                                    confirm_all(cla)
+
+                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\confirm\\skip_confirm.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(350, 500, 700, 800, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("confirm : skip_confirm", imgs_)
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
                                 else:
-                                    click_pos_2(600, 360, cla)
-                            time.sleep(0.5)
-
-
-                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\exp_click.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(280, 380, 380, 680, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            print("exp_click", imgs_)
-                            # 클릭 후 590, 735
-                            x_reg = imgs_.x
-                            y_reg = imgs_.y
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
-
-                            not_free_recover = False
-                            for f in range(5):
-                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\not_free_recover.PNG"
+                                    break
+                            else:
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\dia.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(100, 100, 900, 680, cla, img, 0.8)
+                                imgs_ = imgs_set_(150, 710, 260, 760, cla, img, 0.8)
                                 if imgs_ is not None and imgs_ != False:
-                                    print("not_free_recover", cla)
-                                    not_free_recover = True
+                                    print("dia", imgs_)
+                                    why = "다이아 소모해야해서 알림하고 꺼버리겠다."
+                                    macro_off(cla, why)
                                     break
-                                time.sleep(0.1)
+                else:
 
-                            if not_free_recover == True:
-                                break
-                            else:
-                                click_pos_2(590, 735, cla)
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\boohwal_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(530, 30, 650, 100, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("boohwal_btn", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                time.sleep(0.5)
 
+            for i in range(7):
+
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\exp_recover_title.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(150, 290, 300, 350, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("exp_recover_title", imgs_)
+
+                    click_pos_2(640, 365, cla)
+
+                    time.sleep(1)
+
+                    # 두번째 장비 복구
+
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\anymore_notice.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(470, 500, 550, 540, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("anymore_notice", imgs_)
+                        break
                     else:
-                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\boohwal_btn.PNG"
+                        why = "장비 복구는 처음이다. 꺼버릴게"
+                        macro_off(cla, why)
+
+
+
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\today_free_recover.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(530, 30, 650, 100, cla, img, 0.8)
+                        imgs_ = imgs_set_(150, 710, 260, 760, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
-                            print("boohwal_btn", imgs_)
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            print("today_free_recover", imgs_)
+
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\exp_click.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(280, 380, 380, 680, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("exp_click", imgs_)
+                                # 클릭 후 720, 735
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                time.sleep(1)
+                                click_pos_2(720, 735, cla)
+                                time.sleep(1)
+                                confirm_all(cla)
+
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\confirm\\skip_confirm.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(350, 500, 700, 800, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("confirm : skip_confirm", imgs_)
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                            else:
+                                break
+                        else:
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\item.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(150, 710, 260, 760, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("item", imgs_)
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\exp_click.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(280, 380, 380, 680, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("exp_click", imgs_)
+                                    # 클릭 후 720, 735
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    time.sleep(1)
+                                    click_pos_2(720, 735, cla)
+                                    time.sleep(1)
+                                    confirm_all(cla)
+
+                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\confirm\\skip_confirm.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(350, 500, 700, 800, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("confirm : skip_confirm", imgs_)
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                else:
+                                    break
+                            else:
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\dia.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(150, 710, 260, 760, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("dia", imgs_)
+                                    why = "다이아 소모해야해서 알림하고 꺼버리겠다."
+                                    macro_off(cla, why)
+                                    break
+                else:
+
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\boohwal_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(530, 30, 650, 100, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("boohwal_btn", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
                 time.sleep(0.5)
 
         clean_screen(cla)
