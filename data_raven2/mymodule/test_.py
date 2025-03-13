@@ -60,8 +60,8 @@ def go_test():
 
     try:
         data = "어비스_1"
-        # abyss_sangjum(cla, "어비스_1")
-        # abyss_dun_in(cla, data)
+        abyss_sangjum(cla, "어비스_1")
+        abyss_dun_in(cla, data)
         #
         # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\menu_auction.PNG"
         # img_array = np.fromfile(full_path, np.uint8)
@@ -74,63 +74,63 @@ def go_test():
         ###################################################################################################
         ################################# 이벤트 받기 테스트 #################################
         ###################################################################################################
-        # 폴더 내 파일 개수
-        folder_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_title"
-        file_list = os.listdir(folder_path)
-        file_count = len(file_list)
-        # print(file_count)
-
-        for n in range(file_count):
-
-            pic_num = n + 1
-
-            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_title\\" + str(
-                pic_num) + ".PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(220, 320, 800, 400, cla, img, 0.9)
-            if imgs_ is not None and imgs_ != False:
-                print("pic_num", pic_num)
-                break
+        # # 폴더 내 파일 개수
+        # folder_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_title"
+        # file_list = os.listdir(folder_path)
+        # file_count = len(file_list)
+        # # print(file_count)
+        #
+        # for n in range(file_count):
+        #
+        #     pic_num = n + 1
+        #
+        #     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_title\\" + str(
+        #         pic_num) + ".PNG"
+        #     img_array = np.fromfile(full_path, np.uint8)
+        #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #     imgs_ = imgs_set_(220, 320, 800, 400, cla, img, 0.9)
+        #     if imgs_ is not None and imgs_ != False:
+        #         print("pic_num", pic_num)
+        #         break
 
         ###################################################################################################
         ##################################################################################################
         ###################################################################################################
 
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\anymore_notice.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(470, 500, 550, 540, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("anymore_notice", imgs_)
-
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\confirm\\skip_confirm.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(350, 500, 700, 800, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("confirm : skip_confirm", imgs_)
-
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dead\\exp_click.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(280, 380, 380, 680, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("exp_click", imgs_)
-
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\point_1.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(240, 440, 900, 490, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("point_1", imgs_)
-            time.sleep(0.3)
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\point_2.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(240, 440, 880, 490, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("point_2", imgs_)
+        # for i in range(10):
+        #     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\retrieve_ready_btn.PNG"
+        #     img_array = np.fromfile(full_path, np.uint8)
+        #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #     imgs_ = imgs_set_(530, 130, 630, 970, cla, img, 0.7)
+        #     if imgs_ is not None and imgs_ != False:
+        #         print("retrieve_ready_btn", imgs_)
+        #
+        #         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\checked_yes.PNG"
+        #         img_array = np.fromfile(full_path, np.uint8)
+        #         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #         imgs_ = imgs_set_(210, 85, 255, 125, cla, img, 0.8)
+        #         if imgs_ is not None and imgs_ != False:
+        #             print("checked_yes", imgs_)
+        #             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\retrieve_btn.PNG"
+        #             img_array = np.fromfile(full_path, np.uint8)
+        #             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #             imgs_ = imgs_set_(520, 970, 630, 1030, cla, img, 0.8)
+        #             if imgs_ is not None and imgs_ != False:
+        #                 print("retrieve_btn", imgs_)
+        #                 # click_pos_reg(imgs_.x, imgs_.y, cla)
+        #                 # time.sleep(0.5)
+        #                 # confirm_all(cla)
+        #         else:
+        #             # 체크하기
+        #             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\checked_no.PNG"
+        #             img_array = np.fromfile(full_path, np.uint8)
+        #             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #             imgs_ = imgs_set_(210, 85, 255, 125, cla, img, 0.8)
+        #             if imgs_ is not None and imgs_ != False:
+        #                 click_pos_reg(imgs_.x, imgs_.y, cla)
+        #     else:
+        #         break
+        #     time.sleep(0.5)
 
         # go_random_event(cla)
         # for n in range(12):

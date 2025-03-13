@@ -44,6 +44,19 @@ def event_get_start(cla):
     from action_raven2 import inven_check
     from clean_screen_raven2 import clean_screen
 
+    if cla == "one":
+        plus = 0
+    elif cla == "two":
+        plus = 960
+    elif cla == "three":
+        plus = 960 * 2
+    elif cla == "four":
+        plus = 960 * 3
+    elif cla == "five":
+        plus = 960 * 4
+    elif cla == "six":
+        plus = 960 * 5
+
     try:
         print("event_get_start")
 
@@ -85,6 +98,9 @@ def event_get_start(cla):
             if imgs_ is not None and imgs_ != False:
                 print("e_in_point_1", imgs_)
                 click_pos_reg(imgs_.x - 15, imgs_.y, cla)
+
+                y_point = imgs_.y
+
                 result_inven = inven_check(cla)
                 if result_inven == True:
 
@@ -101,7 +117,7 @@ def event_get_start(cla):
                         if imgs_ is not None and imgs_ != False:
                             print("pic_num", pic_num)
                             is_picture = str(pic_num)
-                            event_get_click(cla, is_picture)
+                            event_get_click(cla, is_picture, y_point, "e_in_point_1")
                             break
                 else:
                     break
@@ -113,6 +129,9 @@ def event_get_start(cla):
                 if imgs_ is not None and imgs_ != False:
                     print("allget_point_3", imgs_)
                     click_pos_reg(imgs_.x - 15, imgs_.y, cla)
+
+                    y_point = imgs_.y
+
                     result_inven = inven_check(cla)
                     if result_inven == True:
 
@@ -131,7 +150,7 @@ def event_get_start(cla):
                                 # is_pic = True
 
                                 is_picture = str(pic_num)
-                                event_get_click(cla, is_picture)
+                                event_get_click(cla, is_picture, y_point, "allget_point_3")
                                 break
                         # if is_pic == True:
                         #     break
@@ -177,14 +196,57 @@ def event_get_start(cla):
         return 0
 
 
-def event_get_click(cla, is_picture):
+def event_get_reg(cla, y_reg, data):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, drag_pos, click_pos_2
     from action_raven2 import inven_check
 
     try:
-        print("event_get_click")
+        print("event_get_reg", y_reg, data)
+        # data => e_in_point_1, allget_point_3
+
+        is_point = False
+
+        if data == "e_in_point_1":
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\e_in_point_1.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(80, y_reg - 20, 260, y_reg + 20, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("e_in_point_1", imgs_)
+                is_point = True
+
+        elif data == "allget_point_3":
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\allget\\allget_point_3.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(80, y_reg - 20, 260, y_reg + 20, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("allget_point_3", imgs_)
+                is_point = True
+
+        return is_point
+    except Exception as e:
+        print(e)
+        return 0
+
+def event_get_click(cla, is_picture, y_point, point):
+    import numpy as np
+    import cv2
+    from function_game import imgs_set_, click_pos_reg, drag_pos, click_pos_2
+    from action_raven2 import inven_check
+
+
+
+    try:
+        print("event_get_click", y_point, point)
+
+        # data => e_in_point_1, allget_point_3
+
+
+
+
 
         # 1 : 방명록
         # 2 : 바트람
@@ -259,9 +321,9 @@ def event_get_click(cla, is_picture):
             data = "seven_six"
         # elif is_picture == "":
         #     data = "five"
-        elif is_picture == "11":
+        elif is_picture == "11" or is_picture == "13":
             data = "six"
-        elif is_picture == "12" or is_picture == "7" or is_picture == "0":
+        elif is_picture == "12" or is_picture == "7":
             data = "seven"
         elif is_picture == "2" or is_picture == "4" or is_picture == "8" or is_picture == "6" or is_picture == "9":
             data = "8_click"
@@ -269,7 +331,7 @@ def event_get_click(cla, is_picture):
             data = "eight"
         elif is_picture == "0" or is_picture == "0":
             data = "ten"
-        elif is_picture == "0":
+        elif is_picture == "14":
             data = "twelve"
         elif is_picture == "0":
             data = "twelve_plus_two"
@@ -338,55 +400,70 @@ def event_get_click(cla, is_picture):
                 if point_ == True:
                     is_checked = False
                     for c in range(10):
-                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\checked.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(480, 480, 900, 710, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            print("checked", imgs_)
-                            is_checked = True
-                            click_pos_reg(imgs_.x - 20, imgs_.y, cla)
-                            result_inven = inven_check(cla)
-                            if result_inven == True:
-                                click_pos_reg(imgs_.x - 20, imgs_.y, cla)
-                                time.sleep(0.2)
-                                click_pos_reg(imgs_.x - 20, imgs_.y, cla)
-                                time.sleep(0.2)
-                        else:
-                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\checked_top.PNG"
+
+                        result_point = event_get_reg(cla, y_point, point)
+                        if result_point == True:
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\checked.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(730, 300, 900, 420, cla, img, 0.8)
+                            imgs_ = imgs_set_(480, 480, 900, 710, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
-                                print("checked_top", imgs_)
+                                print("checked", imgs_)
                                 is_checked = True
-                                click_pos_reg(imgs_.x - 30, imgs_.y, cla)
+                                click_pos_reg(imgs_.x - 20, imgs_.y, cla)
                                 result_inven = inven_check(cla)
                                 if result_inven == True:
-                                    click_pos_reg(imgs_.x - 30, imgs_.y, cla)
+                                    click_pos_reg(imgs_.x - 20, imgs_.y, cla)
                                     time.sleep(0.2)
-                                    click_pos_reg(imgs_.x - 30, imgs_.y, cla)
+                                    click_pos_reg(imgs_.x - 20, imgs_.y, cla)
                                     time.sleep(0.2)
+                            else:
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\seven_six\\checked_top.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(730, 300, 900, 420, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("checked_top", imgs_)
+                                    is_checked = True
+                                    click_pos_reg(imgs_.x - 30, imgs_.y, cla)
+                                    result_inven = inven_check(cla)
+                                    if result_inven == True:
+                                        click_pos_reg(imgs_.x - 30, imgs_.y, cla)
+                                        time.sleep(0.2)
+                                        click_pos_reg(imgs_.x - 30, imgs_.y, cla)
+                                        time.sleep(0.2)
+                        else:
+                            break
                         time.sleep(0.3)
 
                     if is_checked == False:
                         for c in range(4):
-                            y_reg = 515 + (55 * c)
-                            click_pos_2(530, y_reg, cla)
-                            time.sleep(0.5)
-                            click_pos_2(530, y_reg, cla)
-                            time.sleep(0.5)
+                            result_point = event_get_reg(cla, y_point, point)
+                            if result_point == True:
+                                y_reg = 515 + (55 * c)
+                                click_pos_2(530, y_reg, cla)
+                                time.sleep(0.5)
+                                click_pos_2(530, y_reg, cla)
+                                time.sleep(0.5)
+                            else:
+                                break
                         # 510, 825 // 515, 570, 625, 680
                         for c in range(4):
-                            y_reg = 515 + (55 * c)
-                            click_pos_2(840, y_reg, cla)
+                            result_point = event_get_reg(cla, y_point, point)
+                            if result_point == True:
+                                y_reg = 515 + (55 * c)
+                                click_pos_2(840, y_reg, cla)
+                                time.sleep(0.5)
+                                click_pos_2(840, y_reg, cla)
+                                time.sleep(0.5)
+                            else:
+                                break
+                        result_point = event_get_reg(cla, y_point, point)
+                        if result_point == True:
+                            click_pos_2(820, 370, cla)
                             time.sleep(0.5)
-                            click_pos_2(840, y_reg, cla)
+                            click_pos_2(820, 370, cla)
                             time.sleep(0.5)
-                        click_pos_2(820, 370, cla)
-                        time.sleep(0.5)
-                        click_pos_2(820, 370, cla)
-                        time.sleep(0.5)
 
                 else:
                     break
@@ -398,22 +475,33 @@ def event_get_click(cla, is_picture):
 
             # 510, 825 // 515, 570, 625, 680
             for c in range(3):
-                y_reg = 515 + (55 * c)
-                click_pos_2(530, y_reg, cla)
-                time.sleep(0.5)
-                click_pos_2(530, y_reg, cla)
-                time.sleep(0.5)
+                result_point = event_get_reg(cla, y_point, point)
+                if result_point == True:
+                    y_reg = 515 + (55 * c)
+                    click_pos_2(530, y_reg, cla)
+                    time.sleep(0.5)
+                    click_pos_2(530, y_reg, cla)
+                    time.sleep(0.5)
+                else:
+                    break
             # 510, 825 // 515, 570, 625, 680
             for c in range(3):
-                y_reg = 515 + (55 * c)
-                click_pos_2(840, y_reg, cla)
+                result_point = event_get_reg(cla, y_point, point)
+                if result_point == True:
+                    y_reg = 515 + (55 * c)
+                    click_pos_2(840, y_reg, cla)
+                    time.sleep(0.5)
+                    click_pos_2(840, y_reg, cla)
+                    time.sleep(0.5)
+                else:
+                    break
+
+            result_point = event_get_reg(cla, y_point, point)
+            if result_point == True:
+                click_pos_2(820, 370, cla)
                 time.sleep(0.5)
-                click_pos_2(840, y_reg, cla)
+                click_pos_2(820, 370, cla)
                 time.sleep(0.5)
-            click_pos_2(820, 370, cla)
-            time.sleep(0.5)
-            click_pos_2(820, 370, cla)
-            time.sleep(0.5)
 
         elif data == "eight":
             print("eight")
@@ -421,22 +509,33 @@ def event_get_click(cla, is_picture):
 
             # 510, 825 // 515, 570, 625, 680
             for c in range(4):
-                y_reg = 515 + (55 * c)
-                click_pos_2(530, y_reg, cla)
-                time.sleep(0.5)
-                click_pos_2(530, y_reg, cla)
-                time.sleep(0.5)
+                result_point = event_get_reg(cla, y_point, point)
+                if result_point == True:
+                    y_reg = 515 + (55 * c)
+                    click_pos_2(530, y_reg, cla)
+                    time.sleep(0.5)
+                    click_pos_2(530, y_reg, cla)
+                    time.sleep(0.5)
+                else:
+                    break
             # 510, 825 // 515, 570, 625, 680
             for c in range(4):
-                y_reg = 515 + (55 * c)
-                click_pos_2(840, y_reg, cla)
+                result_point = event_get_reg(cla, y_point, point)
+                if result_point == True:
+                    y_reg = 515 + (55 * c)
+                    click_pos_2(840, y_reg, cla)
+                    time.sleep(0.5)
+                    click_pos_2(840, y_reg, cla)
+                    time.sleep(0.5)
+                else:
+                    break
+
+            result_point = event_get_reg(cla, y_point, point)
+            if result_point == True:
+                click_pos_2(820, 370, cla)
                 time.sleep(0.5)
-                click_pos_2(840, y_reg, cla)
+                click_pos_2(820, 370, cla)
                 time.sleep(0.5)
-            click_pos_2(820, 370, cla)
-            time.sleep(0.5)
-            click_pos_2(820, 370, cla)
-            time.sleep(0.5)
 
         elif data == "ten":
             print("ten")
@@ -445,34 +544,45 @@ def event_get_click(cla, is_picture):
             QTest.qWait(500)
             # 510, 825 // 515, 570, 625, 680
             for c in range(5):
-                y_reg = 515 + (55 * c)
-                if c == 4:
-                    click_pos_2(530, 720, cla)
-                    time.sleep(0.5)
-                    click_pos_2(530, 720, cla)
-                    time.sleep(0.5)
+                result_point = event_get_reg(cla, y_point, point)
+                if result_point == True:
+                    y_reg = 515 + (55 * c)
+                    if c == 4:
+                        click_pos_2(530, 720, cla)
+                        time.sleep(0.5)
+                        click_pos_2(530, 720, cla)
+                        time.sleep(0.5)
+                    else:
+                        click_pos_2(530, y_reg, cla)
+                        time.sleep(0.5)
+                        click_pos_2(530, y_reg, cla)
+                        time.sleep(0.5)
                 else:
-                    click_pos_2(530, y_reg, cla)
-                    time.sleep(0.5)
-                    click_pos_2(530, y_reg, cla)
-                    time.sleep(0.5)
+                    break
             # 510, 825 // 515, 570, 625, 680
             for c in range(5):
-                y_reg = 515 + (55 * c)
-                if c == 4:
-                    click_pos_2(840, 720, cla)
-                    time.sleep(0.5)
-                    click_pos_2(840, 720, cla)
-                    time.sleep(0.5)
+                result_point = event_get_reg(cla, y_point, point)
+                if result_point == True:
+                    y_reg = 515 + (55 * c)
+                    if c == 4:
+                        click_pos_2(840, 720, cla)
+                        time.sleep(0.5)
+                        click_pos_2(840, 720, cla)
+                        time.sleep(0.5)
+                    else:
+                        click_pos_2(840, y_reg, cla)
+                        time.sleep(0.5)
+                        click_pos_2(840, y_reg, cla)
+                        time.sleep(0.5)
                 else:
-                    click_pos_2(840, y_reg, cla)
-                    time.sleep(0.5)
-                    click_pos_2(840, y_reg, cla)
-                    time.sleep(0.5)
-            click_pos_2(820, 370, cla)
-            time.sleep(0.5)
-            click_pos_2(820, 370, cla)
-            time.sleep(0.5)
+                    break
+
+            result_point = event_get_reg(cla, y_point, point)
+            if result_point == True:
+                click_pos_2(820, 370, cla)
+                time.sleep(0.5)
+                click_pos_2(820, 370, cla)
+                time.sleep(0.5)
         elif data == "twelve":
             print("twelve")
 
@@ -480,48 +590,58 @@ def event_get_click(cla, is_picture):
             QTest.qWait(500)
             # 510, 825 // 515, 570, 625, 680
             for c in range(5):
-                y_reg = 515 + (55 * c)
-                if c == 4:
-                    click_pos_2(530, 720, cla)
-                    time.sleep(0.5)
-                    click_pos_2(530, 720, cla)
-                    time.sleep(0.5)
+                result_point = event_get_reg(cla, y_point, point)
+                if result_point == True:
+                    y_reg = 515 + (55 * c)
+                    if c == 4:
+                        click_pos_2(530, 720, cla)
+                        time.sleep(0.5)
+                        click_pos_2(530, 720, cla)
+                        time.sleep(0.5)
+                    else:
+                        click_pos_2(530, y_reg, cla)
+                        time.sleep(0.5)
+                        click_pos_2(530, y_reg, cla)
+                        time.sleep(0.5)
                 else:
-                    click_pos_2(530, y_reg, cla)
-                    time.sleep(0.5)
-                    click_pos_2(530, y_reg, cla)
-                    time.sleep(0.5)
+                    break
             # 510, 825 // 515, 570, 625, 680
             for c in range(5):
-                y_reg = 515 + (55 * c)
-                if c == 4:
-                    click_pos_2(840, 720, cla)
-                    time.sleep(0.5)
-                    click_pos_2(840, 720, cla)
-                    time.sleep(0.5)
+                result_point = event_get_reg(cla, y_point, point)
+                if result_point == True:
+                    y_reg = 515 + (55 * c)
+                    if c == 4:
+                        click_pos_2(840, 720, cla)
+                        time.sleep(0.5)
+                        click_pos_2(840, 720, cla)
+                        time.sleep(0.5)
+                    else:
+                        click_pos_2(840, y_reg, cla)
+                        time.sleep(0.5)
+                        click_pos_2(840, y_reg, cla)
+                        time.sleep(0.5)
                 else:
-                    click_pos_2(840, y_reg, cla)
-                    time.sleep(0.5)
-                    click_pos_2(840, y_reg, cla)
-                    time.sleep(0.5)
+                    break
 
-            drag_pos(550, 700, 550, 550, cla)
-            QTest.qWait(500)
+            result_point = event_get_reg(cla, y_point, point)
+            if result_point == True:
+                drag_pos(550, 700, 550, 550, cla)
+                QTest.qWait(500)
 
-            click_pos_2(530, 700, cla)
-            time.sleep(0.5)
-            click_pos_2(530, 700, cla)
-            time.sleep(0.5)
+                click_pos_2(530, 700, cla)
+                time.sleep(0.5)
+                click_pos_2(530, 700, cla)
+                time.sleep(0.5)
 
-            click_pos_2(840, 700, cla)
-            time.sleep(0.5)
-            click_pos_2(840, 700, cla)
-            time.sleep(0.5)
+                click_pos_2(840, 700, cla)
+                time.sleep(0.5)
+                click_pos_2(840, 700, cla)
+                time.sleep(0.5)
 
-            click_pos_2(820, 370, cla)
-            time.sleep(0.5)
-            click_pos_2(820, 370, cla)
-            time.sleep(0.5)
+                click_pos_2(820, 370, cla)
+                time.sleep(0.5)
+                click_pos_2(820, 370, cla)
+                time.sleep(0.5)
 
         elif data == "twelve_plus_two":
             print("twelve_plus_two")
@@ -530,58 +650,68 @@ def event_get_click(cla, is_picture):
             QTest.qWait(500)
             # 510, 825 // 515, 570, 625, 680
             for c in range(5):
-                y_reg = 515 + (55 * c)
-                if c == 4:
-                    click_pos_2(530, 720, cla)
-                    time.sleep(0.5)
-                    click_pos_2(530, 720, cla)
-                    time.sleep(0.5)
+                result_point = event_get_reg(cla, y_point, point)
+                if result_point == True:
+                    y_reg = 515 + (55 * c)
+                    if c == 4:
+                        click_pos_2(530, 720, cla)
+                        time.sleep(0.5)
+                        click_pos_2(530, 720, cla)
+                        time.sleep(0.5)
+                    else:
+                        click_pos_2(530, y_reg, cla)
+                        time.sleep(0.5)
+                        click_pos_2(530, y_reg, cla)
+                        time.sleep(0.5)
                 else:
-                    click_pos_2(530, y_reg, cla)
-                    time.sleep(0.5)
-                    click_pos_2(530, y_reg, cla)
-                    time.sleep(0.5)
+                    break
             # 510, 825 // 515, 570, 625, 680
             for c in range(5):
-                y_reg = 515 + (55 * c)
-                if c == 4:
-                    click_pos_2(840, 720, cla)
-                    time.sleep(0.5)
-                    click_pos_2(840, 720, cla)
-                    time.sleep(0.5)
+                result_point = event_get_reg(cla, y_point, point)
+                if result_point == True:
+                    y_reg = 515 + (55 * c)
+                    if c == 4:
+                        click_pos_2(840, 720, cla)
+                        time.sleep(0.5)
+                        click_pos_2(840, 720, cla)
+                        time.sleep(0.5)
+                    else:
+                        click_pos_2(840, y_reg, cla)
+                        time.sleep(0.5)
+                        click_pos_2(840, y_reg, cla)
+                        time.sleep(0.5)
                 else:
-                    click_pos_2(840, y_reg, cla)
-                    time.sleep(0.5)
-                    click_pos_2(840, y_reg, cla)
-                    time.sleep(0.5)
+                    break
 
-            drag_pos(550, 700, 550, 550, cla)
-            QTest.qWait(500)
+            result_point = event_get_reg(cla, y_point, point)
+            if result_point == True:
+                drag_pos(550, 700, 550, 550, cla)
+                QTest.qWait(500)
 
-            click_pos_2(530, 650, cla)
-            time.sleep(0.5)
-            click_pos_2(530, 650, cla)
-            time.sleep(0.5)
+                click_pos_2(530, 650, cla)
+                time.sleep(0.5)
+                click_pos_2(530, 650, cla)
+                time.sleep(0.5)
 
-            click_pos_2(840, 650, cla)
-            time.sleep(0.5)
-            click_pos_2(840, 650, cla)
-            time.sleep(0.5)
+                click_pos_2(840, 650, cla)
+                time.sleep(0.5)
+                click_pos_2(840, 650, cla)
+                time.sleep(0.5)
 
-            click_pos_2(530, 700, cla)
-            time.sleep(0.5)
-            click_pos_2(530, 700, cla)
-            time.sleep(0.5)
+                click_pos_2(530, 700, cla)
+                time.sleep(0.5)
+                click_pos_2(530, 700, cla)
+                time.sleep(0.5)
 
-            click_pos_2(840, 700, cla)
-            time.sleep(0.5)
-            click_pos_2(840, 700, cla)
-            time.sleep(0.5)
+                click_pos_2(840, 700, cla)
+                time.sleep(0.5)
+                click_pos_2(840, 700, cla)
+                time.sleep(0.5)
 
-            click_pos_2(820, 370, cla)
-            time.sleep(0.5)
-            click_pos_2(820, 370, cla)
-            time.sleep(0.5)
+                click_pos_2(820, 370, cla)
+                time.sleep(0.5)
+                click_pos_2(820, 370, cla)
+                time.sleep(0.5)
 
         elif data == "five":
             print("five")
@@ -614,6 +744,7 @@ def event_get_click(cla, is_picture):
                             click_pos_reg(imgs_.x - 20, imgs_.y, cla)
                             time.sleep(0.2)
                 time.sleep(0.3)
+
         elif data == "8_click":
             print("8_click")
             drag_pos(550, 600, 550, 700, cla)

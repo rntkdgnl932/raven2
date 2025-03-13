@@ -166,7 +166,7 @@ def attack_on(cla):
     try:
         print("attack_check")
 
-        click_pos_2(920, 860, cla)
+        click_pos_2(925, 875, cla)
 
         attack_ = True
 
