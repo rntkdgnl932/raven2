@@ -84,8 +84,15 @@ def abyss_sangjum(cla, data):
     try:
         print("abyss_sangjum")
 
-        # 마을에서만 입장 가능
-        go_maul(cla)
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\abyss\\abyss_maul.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(55, 105, 120, 170, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("abyss_maul..", imgs_)
+        else:
+            # 마을에서만 입장 가능
+            go_maul(cla)
 
         result_data = data.split("_")
         # 어비스_1

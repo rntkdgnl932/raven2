@@ -895,20 +895,31 @@ def go_maul(cla):
                 if maul_in_count > 7:
                     maul_in = True
 
-                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\abyss\\abyss_maul.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(55, 105, 120, 170, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    print("abyss_maul..", imgs_)
+
 
                 full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\jabhwa_btn.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(50, 100, 200, 260, cla, img, 0.75)
                 if imgs_ is not None and imgs_ != False:
-                    is_move = True
-                    maul_in = True
+
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\abyss\\abyss_maul.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(55, 105, 120, 170, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("abyss_maul..", imgs_)
+
+                        for i in range(5):
+                            result_confirm = confirm_all(cla)
+                            if result_confirm == False:
+                                click_pos_2(250, 135, cla)
+                            QTest.qWait(1000)
+
+                    else:
+
+                        is_move = True
+                        maul_in = True
                 else:
 
                     result_out = out_check(cla)
@@ -975,8 +986,6 @@ def go_maul(cla):
                 imgs_ = imgs_set_(50, 100, 200, 260, cla, img, 0.75)
                 if imgs_ is not None and imgs_ != False:
                     print("jabhwa_btn", imgs_)
-                    is_move = True
-                    maul_in = True
                     break
                 else:
                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\map_btn.PNG"
@@ -1014,8 +1023,20 @@ def go_maul(cla):
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(50, 100, 200, 260, cla, img, 0.75)
                 if imgs_ is not None and imgs_ != False:
-                    is_move = True
-                    maul_in = True
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\abyss\\abyss_maul.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(55, 105, 120, 170, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("abyss_maul..", imgs_)
+                        for i in range(5):
+                            result_confirm = confirm_all(cla)
+                            if result_confirm == False:
+                                click_pos_2(250, 135, cla)
+                            QTest.qWait(1000)
+                    else:
+                        is_move = True
+                        maul_in = True
                 else:
                     result_dead = dead_check(cla)
                     if result_dead == True:
@@ -1116,6 +1137,8 @@ def go_maul(cla):
     except Exception as e:
         print(e)
         return 0
+
+
 
 def go_random(cla):
     import numpy as np
