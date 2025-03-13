@@ -706,7 +706,7 @@ def menu_open_pure(cla):
     try:
         print("menu_open_pure")
 
-        for i in range(10):
+        for i in range(4):
 
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\menu_character_select.PNG"
             img_array = np.fromfile(full_path, np.uint8)
@@ -719,8 +719,7 @@ def menu_open_pure(cla):
                 clean_screen(cla)
                 time.sleep(0.5)
                 click_pos_2(925, 60, cla)
-            time.sleep(0.5)
-
+            QTest.qWait(1000)
 
 
     except Exception as e:
