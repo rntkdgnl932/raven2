@@ -15,6 +15,7 @@ def dead_check(cla):
     from function_game import imgs_set_, click_pos_reg
     from action_raven2 import confirm_all
     from schedule import myQuest_play_check, myQuest_play_add
+    from massenger import line_to_me
 
     try:
 
@@ -77,6 +78,8 @@ def dead_check(cla):
             elif "어비스" in result_schedule_:
                 v_.abyss_count += 1
                 if v_.abyss_count > 2:
+                    why = "어비스 3번 죽음"
+                    line_to_me(cla, why)
                     myQuest_play_add(cla, result_schedule_)
 
         # if "일반" in result_schedule_ or "특수" in result_schedule_ or result_schedule_ == "자동사냥":
