@@ -74,6 +74,10 @@ def dead_check(cla):
             if result_schedule_ == "튜토육성" or "서브퀘스트" in result_schedule_:
 
                 myQuest_play_add(cla, result_schedule_)
+            elif "어비스" in result_schedule_:
+                v_.abyss_count += 1
+                if v_.abyss_count > 2:
+                    myQuest_play_add(cla, result_schedule_)
 
         # if "일반" in result_schedule_ or "특수" in result_schedule_ or result_schedule_ == "자동사냥":
         #

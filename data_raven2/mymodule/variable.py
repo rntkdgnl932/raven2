@@ -8,6 +8,7 @@ now_arduino = "none"
 
 potion_count = 0
 time_count = 0
+abyss_count = 0
 
 
 # 게임 및 폴더 관련
