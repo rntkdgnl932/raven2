@@ -537,9 +537,10 @@ def abyss_dun_in(cla, data):
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from action_raven2 import menu_open, go_maul, move_check, move_wait, attack_on, juljun_on
-
+    from schedule import myQuest_play_add
 
     try:
+        # 여기에 완료 되는거 추가해야함
         print("abyss_dun_in")
 
         # 마을에서만 입장 가능
@@ -670,7 +671,14 @@ def abyss_dun_in(cla, data):
                                         print("title_abyss_gyohwan", imgs_)
                                         click_pos_2(925, 60, cla)
                                     else:
-                                        break
+                                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\abyss\\title_abyss.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(30, 30, 120, 170, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("title_abyss", imgs_)
+                                        else:
+                                            break
                                     QTest.qWait(500)
                                 break
 
