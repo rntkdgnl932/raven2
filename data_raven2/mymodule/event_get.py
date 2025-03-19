@@ -256,7 +256,7 @@ def event_get_click(cla, is_picture, y_point, point):
 
         ######
 
-        # - : 7
+        # - : 11
 
         # 1 : 바트람의훈련교범(seven_six) o
         # 2 : 정예특무대합류작전(8_click) o
@@ -269,7 +269,7 @@ def event_get_click(cla, is_picture, y_point, point):
 
         # 6 : 웰컴100!(8_click) o
 
-        # 7 : 100일축제의피날레(seven) 7
+        # 7 : 100일축제의피날레(seven) o
 
         # 8 : 특무대사냥의뢰(8_click) o
 
@@ -277,19 +277,21 @@ def event_get_click(cla, is_picture, y_point, point):
 
         # 10 : 글로벌100일특별출석, II(fourteen) o
 
-        # 11 : 성유물강화특별지원(six) o
+        # 11 : 시련의성터출전준비(seven) 11
 
         # 12 : 성유물성장지원출석(seven) o
 
-        # 13 : 차원의틈성장지원I(six) 13
+        # 13 : 차원의틈성장지원I(six) o
 
-        # 14 : 차원의틈성장지원II(twelve) 14
+        # 14 : 차원의틈성장지원II(twelve) o
 
-        # 15 :
+        # 15 : 300일카운트다운출석(seven) 15
 
-        # ?? : 100일축제의피날레(seven) 7
-        # ?? : 차원의틈성장지원I(six) 13
-        # ?? : 차원의틈성장지원II(twelve) 14
+        # 16 : 300일특별미션I(seven_six) 16
+
+        # ?? : 300일카운트다운출석(seven) 15
+        # ?? : 시련의성터출전준비(seven) 11
+        # ?? : 300일특별미션I(seven_six) 16
         # ?? :
 
 
