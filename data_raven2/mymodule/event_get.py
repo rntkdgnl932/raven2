@@ -319,13 +319,13 @@ def event_get_click(cla, is_picture, y_point, point):
 
         if is_picture == "10" or is_picture == "0":
             data = "fourteen"
-        elif is_picture == "1" or is_picture == "0" or is_picture == "0":
+        elif is_picture == "1" or is_picture == "16" or is_picture == "0":
             data = "seven_six"
         # elif is_picture == "":
         #     data = "five"
-        elif is_picture == "11" or is_picture == "13":
+        elif is_picture == "13":
             data = "six"
-        elif is_picture == "12" or is_picture == "7":
+        elif is_picture == "12" or is_picture == "7" or is_picture == "11" or is_picture == "15":
             data = "seven"
         elif is_picture == "2" or is_picture == "4" or is_picture == "8" or is_picture == "6" or is_picture == "9":
             data = "8_click"
