@@ -62,7 +62,7 @@ def go_test():
         data = "어비스_1"
         # abyss_sangjum(cla, "어비스_1")
         # abyss_dun_in(cla, data)
-        dungeon_start(cla, data)
+        # dungeon_start(cla, data)
         #
         # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\menu_auction.PNG"
         # img_array = np.fromfile(full_path, np.uint8)
@@ -81,9 +81,10 @@ def go_test():
         file_count = len(file_list)
         # print(file_count)
 
-        for n in range(file_count):
+        for n in range(len(file_list)):
 
-            pic_num = n + 1
+            pic_num_ready = file_list[n]
+            pic_num = pic_num_ready.split(".")[0]
 
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_title\\" + str(
                 pic_num) + ".PNG"
@@ -168,12 +169,6 @@ def go_test():
         # click_pos_2(900, 390, cla)
         # time.sleep(1)
         # auction_sell_start(cla)
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_title\\10.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(220, 320, 800, 400, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("pic_num", imgs_)
         # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\gyobum\\monster_info_close_btn.PNG"
         # img_array = np.fromfile(full_path, np.uint8)
         # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
