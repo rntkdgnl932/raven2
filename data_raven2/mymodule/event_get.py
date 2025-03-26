@@ -105,9 +105,10 @@ def event_get_start(cla):
                 if result_inven == True:
 
                     # is_pic = False
-                    for n in range(file_count):
+                    for n in range(len(file_list)):
 
-                        pic_num = n + 1
+                        pic_num_ready = file_list[n]
+                        pic_num = pic_num_ready.split(".")[0]
 
                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_title\\" + str(
                             pic_num) + ".PNG"
@@ -136,9 +137,10 @@ def event_get_start(cla):
                     if result_inven == True:
 
                         # is_pic = False
-                        for n in range(file_count):
+                        for n in range(len(file_list)):
 
-                            pic_num = n + 1
+                            pic_num_ready = file_list[n]
+                            pic_num = pic_num_ready.split(".")[0]
 
                             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_title\\" + str(
                                 pic_num) + ".PNG"
