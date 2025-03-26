@@ -62,6 +62,7 @@ def go_test():
         data = "어비스_1"
         # abyss_sangjum(cla, "어비스_1")
         # abyss_dun_in(cla, data)
+        dungeon_start(cla, data)
         #
         # full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\menu_auction.PNG"
         # img_array = np.fromfile(full_path, np.uint8)

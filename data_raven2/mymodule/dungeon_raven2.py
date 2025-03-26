@@ -54,7 +54,8 @@ def dungeon_start(cla, data):
                 else:
                     print("절전 풀고 공격버튼 클릭 후 다시 절전하기")
                     if dun[0] == "이벤트":
-                        go_random_event(cla)
+                        # go_random_event(cla)
+                        go_random(cla)
                     else:
                         go_random(cla)
                     clean_screen(cla)
@@ -67,7 +68,8 @@ def dungeon_start(cla, data):
             elif result_dungeon_check[1] == False:
                 print("절전 풀고 공격버튼 클릭 후 다시 절전하기")
                 if dun[0] == "이벤트":
-                    go_random_event(cla)
+                    # go_random_event(cla)
+                    go_random(cla)
                 else:
                     go_random(cla)
                 clean_screen(cla)
@@ -310,7 +312,8 @@ def dungeon_in(cla, data):
                                     # if dun_name == "temple":
 
 
-                                    go_random_event(cla)
+                                    # go_random_event(cla)
+                                    go_random(cla)
 
                                     # 공격
                                     attack_on(cla)
