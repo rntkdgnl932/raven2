@@ -321,7 +321,7 @@ def event_get_click(cla, is_picture, y_point, point):
 
         if is_picture == "10" or is_picture == "0":
             data = "fourteen"
-        elif is_picture == "1" or is_picture == "0" or is_picture == "0":
+        elif is_picture == "1" or is_picture == "16" or is_picture == "0":
             data = "seven_six"
         # elif is_picture == "":
         #     data = "five"
