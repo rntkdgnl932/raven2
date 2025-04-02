@@ -258,7 +258,7 @@ def event_get_click(cla, is_picture, y_point, point):
 
         ######
 
-        # - : 6, 7, 9 ~ 15
+        # - :
 
         # 1 : 바트람의훈련교범(seven_six) o
         # 2 : 정예특무대합류작전(8_click) o
@@ -269,19 +269,19 @@ def event_get_click(cla, is_picture, y_point, point):
 
         # 5 : 희귀장신구제작미션(six) o
 
-        # 6 : 시련의성터정복출석(seven) 6
+        # 6 : 시련의성터정복출석(seven) o
 
-        # 7 : 300일보급상자미션(eight) 7
+        # 7 : 300일보급상자미션(eight)o
 
         # 8 : 특무대사냥의뢰(8_click) o
 
-        # 9 : 300일특별미션II(ten) 9
+        # 9 : 300일특별미션II(ten) o
 
-        # 10 :
+        # 10 : 심연으로의초대(seven) 10
 
-        # 11 :
+        # 11 : 심연탐사미션(twelve) 11
 
-        # 12 :
+        # 12 : 클래스변경지원출석(seven) 12
 
         # 13 :
 
@@ -291,10 +291,10 @@ def event_get_click(cla, is_picture, y_point, point):
 
         # 16 : 300일특별미션I(seven_six) o
 
+        # ?? : 심연으로의초대(seven) 10
+        # ?? : 심연탐사미션(twelve) 11
+        # ?? : 클래스변경지원출석(seven) 12
         # ?? :
-        # ?? : 시련의성터정복출석(seven) 6
-        # ?? : 300일보급상자미션(eight) 7
-        # ?? : 300일특별미션II(ten) 9
 
 
         # 8_click => drag 하는 것
@@ -319,7 +319,7 @@ def event_get_click(cla, is_picture, y_point, point):
 
 
 
-        if is_picture == "10" or is_picture == "0":
+        if is_picture == "0" or is_picture == "0":
             data = "fourteen"
         elif is_picture == "1" or is_picture == "16" or is_picture == "0":
             data = "seven_six"
@@ -327,7 +327,7 @@ def event_get_click(cla, is_picture, y_point, point):
         #     data = "five"
         elif is_picture == "0":
             data = "six"
-        elif is_picture == "6":
+        elif is_picture == "6" or is_picture == "10" or is_picture == "12":
             data = "seven"
         elif is_picture == "2" or is_picture == "4" or is_picture == "8" or is_picture == "6":
             data = "8_click"
@@ -335,7 +335,7 @@ def event_get_click(cla, is_picture, y_point, point):
             data = "eight"
         elif is_picture == "9" or is_picture == "0":
             data = "ten"
-        elif is_picture == "0":
+        elif is_picture == "11":
             data = "twelve"
         elif is_picture == "0":
             data = "twelve_plus_two"
