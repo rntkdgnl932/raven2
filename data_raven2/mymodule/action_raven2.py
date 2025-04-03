@@ -481,6 +481,14 @@ def skip_click(cla):
                     break
                 time.sleep(0.5)
 
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\menu_character_select.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(800, 930, 920, 1030, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            click_pos_2(930, 55, cla)
+
+
         return clicked
     except Exception as e:
         print(e)
@@ -951,13 +959,20 @@ def go_maul(cla):
                             result_gamecheck = game_check(cla)
                             if result_gamecheck == False:
 
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\juljun\\juljun_mode_check.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(350, 50, 600, 120, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
 
-
-                                print("마을 이동서 없다")
-                                why = "절전 마을이동서 없다. 정비해라"
-                                line_to_me(cla, why)
-                                is_move = False
+                                    print("절전 마을 이동서 없다")
+                                    why = "절전 마을이동서 없다. 정비해라"
+                                    line_to_me(cla, why)
+                                    is_move = False
                     else:
+
+                        # 바깥 상태임
+
                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\action\\maul\\maul_move.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -979,20 +994,13 @@ def go_maul(cla):
                             if result_gamecheck == False:
                                 print("마을 이동서 없다")
 
-                                is_out = False
-                                for i in range(5):
-                                    result_out = out_check(cla)
-                                    if result_out == True:
-                                        is_out = True
-                                        break
-                                    else:
-                                        clean_screen(cla)
-                                    QTest.qWait(1000)
 
-                                if is_out == False:
-                                    why = "마을이동서 없다. 정비해라"
-                                    line_to_me(cla, why)
-                                    is_move = False
+                                # 튜토중일때는 스킵만
+
+
+                                why = "마을이동서 없다. 정비해라"
+                                line_to_me(cla, why)
+                                is_move = False
                 time.sleep(0.5)
 
 
@@ -1119,16 +1127,20 @@ def go_maul(cla):
                                         time.sleep(1)
 
                                     if is_game == True:
+
                                         click_pos_2(930, 55, cla)
                                         time.sleep(0.2)
                                         skip_click(cla)
 
-                                        result_gamecheck = game_check(cla)
-                                        if result_gamecheck == False:
-                                            print("마을 이동서 없다")
-                                            why = "마을이동서 안보여. 정비해라"
-                                            line_to_me(cla, why)
-                                            is_move = False
+                                        game_check(cla)
+
+                                        #
+                                        # result_gamecheck = game_check(cla)
+                                        # if result_gamecheck == False:
+                                        #     print("마을 이동서 없다 game_check(cla)")
+                                        #     why = "마을이동서 안보여... 정비해라"
+                                        #     line_to_me(cla, why)
+                                        #     is_move = False
 
                                     else:
                                         why = "게임 꺼졌다."
