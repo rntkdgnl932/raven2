@@ -733,6 +733,7 @@ def game_check(cla):
     from massenger import line_to_me
     from character_select_and_game_start import game_start_screen
     from schedule import myQuest_play_check
+    from dead_raven2 import dead_check, dead_recover
 
     import os
 
@@ -862,6 +863,10 @@ def game_check(cla):
                     file.write(str(data))
                     time.sleep(0.2)
                 os.execl(sys.executable, sys.executable, *sys.argv)
+        else:
+            result_dead = dead_check(cla)
+            if result_dead == True:
+                dead_recover(cla)
         return out_
 
     except Exception as e:
