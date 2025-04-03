@@ -945,6 +945,9 @@ def go_maul(cla):
                         else:
                             result_gamecheck = game_check(cla)
                             if result_gamecheck == False:
+
+
+
                                 print("마을 이동서 없다")
                                 why = "절전 마을이동서 없다. 정비해라"
                                 line_to_me(cla, why)
@@ -970,9 +973,21 @@ def go_maul(cla):
                             result_gamecheck = game_check(cla)
                             if result_gamecheck == False:
                                 print("마을 이동서 없다")
-                                why = "마을이동서 없다. 정비해라"
-                                line_to_me(cla, why)
-                                is_move = False
+
+                                is_out = False
+                                for i in range(5):
+                                    result_out = out_check(cla)
+                                    if result_out == True:
+                                        is_out = True
+                                        break
+                                    else:
+                                        clean_screen(cla)
+                                    QTest.qWait(1000)
+
+                                if is_out == False:
+                                    why = "마을이동서 없다. 정비해라"
+                                    line_to_me(cla, why)
+                                    is_move = False
                 time.sleep(0.5)
 
 
