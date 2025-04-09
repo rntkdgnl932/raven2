@@ -114,7 +114,7 @@ def event_get_start(cla):
                             pic_num) + ".PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(220, 320, 800, 400, cla, img, 0.8)
+                        imgs_ = imgs_set_(220, 260, 800, 510, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             print("pic_num", pic_num)
                             is_picture = str(pic_num)
@@ -146,7 +146,7 @@ def event_get_start(cla):
                                 pic_num) + ".PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(220, 320, 800, 400, cla, img, 0.8)
+                            imgs_ = imgs_set_(220, 260, 800, 510, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
                                 print("pic_num", pic_num)
                                 # is_pic = True
@@ -258,7 +258,7 @@ def event_get_click(cla, is_picture, y_point, point):
 
         ######
 
-        # - :
+        # - : 6, 7, 9, 16
 
         # 1 : 바트람의훈련교범(seven_six) o
         # 2 : 정예특무대합류작전(8_click) o
@@ -269,19 +269,19 @@ def event_get_click(cla, is_picture, y_point, point):
 
         # 5 : 희귀장신구제작미션(six) o
 
-        # 6 : 시련의성터정복출석(seven) o
+        # 6 : 챔피언의길출석(twenty_eight) 6
 
-        # 7 : 300일보급상자미션(eight)o
+        # 7 : 챔피언의길I(eight) 7
 
         # 8 : 특무대사냥의뢰(8_click) o
 
-        # 9 : 300일특별미션II(ten) o
+        # 9 :
 
-        # 10 : 심연으로의초대(seven) 10
+        # 10 : 심연으로의초대(seven) o
 
-        # 11 : 심연탐사미션(twelve) 11
+        # 11 : 심연탐사미션(twelve) o
 
-        # 12 : 클래스변경지원출석(seven) 12
+        # 12 : 클래스변경지원출석(seven) o
 
         # 13 :
 
@@ -289,11 +289,11 @@ def event_get_click(cla, is_picture, y_point, point):
 
         # 15 :
 
-        # 16 : 300일특별미션I(seven_six) o
+        # 16 :
 
-        # ?? : 심연으로의초대(seven) 10
-        # ?? : 심연탐사미션(twelve) 11
-        # ?? : 클래스변경지원출석(seven) 12
+        # ?? : 챔피언의길출석(twenty_eight) 6
+        # ?? : 챔피언의길I(eight) 7
+        # ?? :
         # ?? :
 
 
@@ -306,13 +306,13 @@ def event_get_click(cla, is_picture, y_point, point):
         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_title\\1.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(220, 320, 800, 400, cla, img, 0.8)
+        imgs_ = imgs_set_(220, 260, 800, 510, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
             print("pic_num", imgs_)
             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_des\\1_1.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(490, 260, 700, 600, cla, img, 0.8)
+            imgs_ = imgs_set_(220, 260, 800, 510, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 print("1_1", imgs_)
                 is_picture = "five"
@@ -321,25 +321,25 @@ def event_get_click(cla, is_picture, y_point, point):
 
         if is_picture == "0" or is_picture == "0":
             data = "fourteen"
-        elif is_picture == "1" or is_picture == "16" or is_picture == "0":
+        elif is_picture == "1" or is_picture == "0":
             data = "seven_six"
         # elif is_picture == "":
         #     data = "five"
         elif is_picture == "0":
             data = "six"
-        elif is_picture == "6" or is_picture == "10" or is_picture == "12":
+        elif is_picture == "10" or is_picture == "12":
             data = "seven"
-        elif is_picture == "2" or is_picture == "4" or is_picture == "8" or is_picture == "6":
+        elif is_picture == "2" or is_picture == "4" or is_picture == "8":
             data = "8_click"
         elif is_picture == "5" or is_picture == "7":
             data = "eight"
-        elif is_picture == "9" or is_picture == "0":
+        elif is_picture == "0" or is_picture == "0":
             data = "ten"
         elif is_picture == "11":
             data = "twelve"
         elif is_picture == "0":
             data = "twelve_plus_two"
-        elif is_picture == "3":
+        elif is_picture == "3" or is_picture == "6":
             data = "twenty_eight"
 
 
