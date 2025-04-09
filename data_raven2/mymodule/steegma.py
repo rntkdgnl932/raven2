@@ -45,7 +45,7 @@ def steegma_start(cla):
                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\steegma\\big_point.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(200, 300, 400, 650, cla, img, 0.8)
+                        imgs_ = imgs_set_(200, 300, 400, 750, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             print("big_point", imgs_)
                             click_pos_reg(imgs_.x - 35, imgs_.y + 30, cla)
@@ -66,16 +66,16 @@ def steegma_start(cla):
                         is_point = True
                         click_pos_reg(imgs_.x - 10, imgs_.y + 5, cla)
                         time.sleep(0.5)
-
-                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\steegma\\small_point2.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(80, 80, 140, 400, cla, img, 0.75)
-                    if imgs_ is not None and imgs_ != False:
-                        print("small_point2", imgs_)
-                        is_point = True
-                        click_pos_reg(imgs_.x - 10, imgs_.y + 5, cla)
-                        time.sleep(0.5)
+                    else:
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\steegma\\small_point2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(80, 80, 140, 400, cla, img, 0.75)
+                        if imgs_ is not None and imgs_ != False:
+                            print("small_point2", imgs_)
+                            is_point = True
+                            click_pos_reg(imgs_.x - 10, imgs_.y + 5, cla)
+                            time.sleep(0.5)
 
                     if is_point == True:
                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\steegma\\gagin_btn.PNG"

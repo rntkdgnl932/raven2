@@ -287,7 +287,7 @@ def collection_start(cla):
                         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\collection\\menu_collection.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(620, 120, 960, 450, cla, img, 0.8)
+                        imgs_ = imgs_set_(860, 120, 960, 450, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             print("menu_collection", imgs_)
                             x_reg = imgs_.x
@@ -326,41 +326,140 @@ def boonhae_start(cla):
                 y_reg = imgs_.y
                 # click_pos_reg(x_reg, y_reg, cla)
 
-                for i in range(4):
-                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\boonhae\\jungsoo.PNG"
+                for i in range(15):
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\boonhae\\clicked_common.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(320, 120, 590, 225, cla, img, 0.8)
+                    imgs_ = imgs_set_(315, 835, 520, 980, cla, img, 0.9)
                     if imgs_ is not None and imgs_ != False:
-                        print("jungsoo", imgs_)
-                        click_pos_reg(x_reg, y_reg, cla)
-                        time.sleep(0.5)
-                        result_confirm = confirm_all(cla)
-                        if result_confirm == True:
-                            break
-                    else:
-                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\boonhae\\common_btn.PNG"
+                        print("clicked_common", imgs_)
+
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\boonhae\\clicked_last.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(330, 840, 420, 880, cla, img, 0.8)
+                        imgs_ = imgs_set_(315, 835, 520, 980, cla, img, 0.9)
                         if imgs_ is not None and imgs_ != False:
-                            print("common_btn", imgs_)
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
-                            time.sleep(0.5)
+                            print("clicked_last", imgs_)
 
                             if v_.onCollection == True:
-                                click_pos_2(460, 865, cla)
-                                time.sleep(0.5)
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\boonhae\\clicked_high.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(315, 835, 520, 980, cla, img, 0.9)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("clicked_high", imgs_)
 
-                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\boonhae\\include_collection.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(330, 930, 460, 970, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                print("include_collection", imgs_)
-                                click_pos_reg(imgs_.x, imgs_.y, cla)
-                                time.sleep(0.5)
+                                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\boonhae\\jungsoo.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(320, 120, 590, 225, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("jungsoo", imgs_)
+                                        click_pos_reg(x_reg, y_reg, cla)
+                                        time.sleep(0.5)
+                                        result_confirm = confirm_all(cla)
+                                        if result_confirm == True:
+                                            break
+                                    else:
+                                        break
+
+                                else:
+                                    click_pos_2(460, 865, cla)
+
+                            else:
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\boonhae\\jungsoo.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(320, 120, 590, 225, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("jungsoo", imgs_)
+
+
+                                    click_pos_reg(x_reg, y_reg, cla)
+                                    time.sleep(0.5)
+                                    result_confirm = confirm_all(cla)
+                                    if result_confirm == True:
+                                        break
+                                else:
+                                    break
+
+                        else:
+                            click_pos_2(400, 950, cla)
+
+                    else:
+                        click_pos_2(370, 865, cla)
+
+
+
+
                     time.sleep(0.5)
+
+
+                # for i in range(4):
+                #     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\boonhae\\jungsoo.PNG"
+                #     img_array = np.fromfile(full_path, np.uint8)
+                #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                #     imgs_ = imgs_set_(320, 120, 590, 225, cla, img, 0.8)
+                #     if imgs_ is not None and imgs_ != False:
+                #         print("jungsoo", imgs_)
+                #         click_pos_reg(x_reg, y_reg, cla)
+                #         time.sleep(0.5)
+                #         result_confirm = confirm_all(cla)
+                #         if result_confirm == True:
+                #             break
+                #     else:
+                #         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\boonhae\\clicked_common.PNG"
+                #         img_array = np.fromfile(full_path, np.uint8)
+                #         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                #         imgs_ = imgs_set_(315, 835, 520, 980, cla, img, 0.9)
+                #         if imgs_ is not None and imgs_ != False:
+                #             print("clicked_common", imgs_)
+                #         else:
+                #             click_pos_2(370, 865, cla)
+                #
+                #         if v_.onCollection == True:
+                #             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\boonhae\\clicked_high.PNG"
+                #             img_array = np.fromfile(full_path, np.uint8)
+                #             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                #             imgs_ = imgs_set_(315, 835, 520, 980, cla, img, 0.9)
+                #             if imgs_ is not None and imgs_ != False:
+                #                 print("clicked_high", imgs_)
+                #             else:
+                #                 click_pos_2(460, 865, cla)
+                #
+                #         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\boonhae\\clicked_last.PNG"
+                #         img_array = np.fromfile(full_path, np.uint8)
+                #         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                #         imgs_ = imgs_set_(315, 835, 520, 980, cla, img, 0.9)
+                #         if imgs_ is not None and imgs_ != False:
+                #             print("clicked_last", imgs_)
+                #         else:
+                #             click_pos_2(400, 950, cla)
+                #
+                #
+                #
+                #         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\boonhae\\common_btn.PNG"
+                #         img_array = np.fromfile(full_path, np.uint8)
+                #         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                #         imgs_ = imgs_set_(330, 840, 420, 880, cla, img, 0.8)
+                #         if imgs_ is not None and imgs_ != False:
+                #             print("common_btn", imgs_)
+                #             click_pos_reg(imgs_.x, imgs_.y, cla)
+                #             time.sleep(0.5)
+                #
+                #             if v_.onCollection == True:
+                #                 click_pos_2(460, 865, cla)
+                #                 time.sleep(0.5)
+                #
+                #             full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\boonhae\\include_collection.PNG"
+                #             img_array = np.fromfile(full_path, np.uint8)
+                #             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                #             imgs_ = imgs_set_(330, 930, 460, 970, cla, img, 0.8)
+                #             if imgs_ is not None and imgs_ != False:
+                #                 print("include_collection", imgs_)
+                #                 click_pos_reg(imgs_.x, imgs_.y, cla)
+                #                 time.sleep(0.5)
+                #     time.sleep(0.5)
 
                 clean_screen(cla)
                 boonhae_ = True

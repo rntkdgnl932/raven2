@@ -71,19 +71,28 @@ def go_test():
         # if imgs_ is not None and imgs_ != False:
         #     print("menu_auction", imgs_)
 
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\twenty_eight\\28_checked.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(250, 360, 750, 730, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("28_checked", imgs_)
+        steegma_start(cla)
 
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\twenty_eight\\28_checked_2.PNG"
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\boonhae\\clicked_common.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(250, 360, 750, 730, cla, img, 0.8)
+        imgs_ = imgs_set_(315, 835, 520, 980, cla, img, 0.9)
         if imgs_ is not None and imgs_ != False:
-            print("28_checked_2", imgs_)
+            print("clicked_common", imgs_)
+
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\boonhae\\clicked_high.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(315, 835, 520, 980, cla, img, 0.9)
+        if imgs_ is not None and imgs_ != False:
+            print("clicked_high", imgs_)
+
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\boonhae\\clicked_last.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(315, 835, 520, 980, cla, img, 0.9)
+        if imgs_ is not None and imgs_ != False:
+            print("clicked_last", imgs_)
 
 
         ###################################################################################################

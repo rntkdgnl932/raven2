@@ -210,6 +210,7 @@ def potion_buy(cla):
     from chango_raven2 import chango_in
     from massenger import line_to_me
     from schedule import myQuest_play_check
+    from boonhae_collection import boonhae_start, collection_start
 
     try:
         print("potion_buy")
@@ -254,7 +255,10 @@ def potion_buy(cla):
             else:
                 chango_in(cla)
 
-            # 마을인지 확인되면 정해진 포션 사기
+            # 마을인지 확인되면 정해진 포션 사기전에 분해 콜렉
+
+            collection_start(cla)
+            boonhae_start(cla)
 
             buy_ = False
             buy_count = 0
