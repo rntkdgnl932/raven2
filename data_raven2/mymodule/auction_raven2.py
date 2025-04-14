@@ -155,6 +155,15 @@ def auction_ready(cla):
                         click_pos_reg(imgs_.x, imgs_.y, cla)
                         time.sleep(0.5)
                         confirm_all(cla)
+                    else:
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\retrieve_btn_2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(520, 970, 630, 1030, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            time.sleep(0.5)
+                            confirm_all(cla)
                 else:
                     # 체크하기
                     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\checked_no.PNG"
