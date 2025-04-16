@@ -114,7 +114,7 @@ def event_get_start(cla):
                             pic_num) + ".PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(220, 260, 800, 510, cla, img, 0.8)
+                        imgs_ = imgs_set_(220, 260, 910, 580, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             print("pic_num", pic_num)
                             is_picture = str(pic_num)
@@ -146,7 +146,7 @@ def event_get_start(cla):
                                 pic_num) + ".PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(220, 260, 800, 510, cla, img, 0.8)
+                            imgs_ = imgs_set_(220, 260, 910, 580, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
                                 print("pic_num", pic_num)
                                 # is_pic = True
@@ -258,7 +258,7 @@ def event_get_click(cla, is_picture, y_point, point):
 
         ######
 
-        # - : 6, 7, 9, 16
+        # - : 10 , 11, 12
 
         # 1 : 바트람의훈련교범(seven_six) o
         # 2 : 정예특무대합류작전(8_click) o
@@ -269,19 +269,19 @@ def event_get_click(cla, is_picture, y_point, point):
 
         # 5 : 희귀장신구제작미션(six) o
 
-        # 6 : 챔피언의길출석(twenty_eight) 6
+        # 6 : 챔피언의길출석(twenty_eight) o
 
-        # 7 : 챔피언의길I(eight) 7
+        # 7 : 챔피언의길I(eight) o
 
         # 8 : 특무대사냥의뢰(8_click) o
 
-        # 9 :
+        # 9 : 집결하는용사들(seven) 9
 
-        # 10 : 심연으로의초대(seven) o
+        # 10 : 챔피언의길II(six) 10
 
-        # 11 : 심연탐사미션(twelve) o
+        # 11 :
 
-        # 12 : 클래스변경지원출석(seven) o
+        # 12 :
 
         # 13 :
 
@@ -291,8 +291,8 @@ def event_get_click(cla, is_picture, y_point, point):
 
         # 16 :
 
-        # ?? : 챔피언의길출석(twenty_eight) 6
-        # ?? : 챔피언의길I(eight) 7
+        # ?? : 집결하는용사들(seven) 9
+        # ?? : 챔피언의길II(six) 10
         # ?? :
         # ?? :
 
@@ -321,21 +321,21 @@ def event_get_click(cla, is_picture, y_point, point):
 
         if is_picture == "0" or is_picture == "0":
             data = "fourteen"
-        elif is_picture == "1" or is_picture == "0":
+        elif is_picture == "1":
             data = "seven_six"
         # elif is_picture == "":
         #     data = "five"
-        elif is_picture == "0":
+        elif is_picture == "10":
             data = "six"
-        elif is_picture == "10" or is_picture == "12":
+        elif is_picture == "9":
             data = "seven"
         elif is_picture == "2" or is_picture == "4" or is_picture == "8":
             data = "8_click"
         elif is_picture == "5" or is_picture == "7":
             data = "eight"
-        elif is_picture == "0" or is_picture == "0":
+        elif is_picture == "0":
             data = "ten"
-        elif is_picture == "11":
+        elif is_picture == "0":
             data = "twelve"
         elif is_picture == "0":
             data = "twelve_plus_two"
