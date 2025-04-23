@@ -71,7 +71,47 @@ def go_test():
         # if imgs_ is not None and imgs_ != False:
         #     print("menu_auction", imgs_)
 
-        auction_ready(cla)
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\collection\\menu_collection.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(860, 120, 960, 450, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("menu_collection", imgs_)
+
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\upjuk\\menu_upjuk.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(620, 440, 960, 700, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("menu_upjuk", imgs_)
+
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\post\\menu_post.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(620, 940, 800, 1030, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("menu_post", imgs_)
+
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\sangjum\\menu_sanjum.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(600, 30, 960, 120, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("menu_sanjum", imgs_)
+
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\guild\\menu_guild_btn.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(640, 390, 800, 510, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("menu_guild_btn", imgs_)
+
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\menu_auction.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(640, 330, 960, 600, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("menu_auction", imgs_)
 
         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\checked_yes.PNG"
         img_array = np.fromfile(full_path, np.uint8)

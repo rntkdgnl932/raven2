@@ -114,7 +114,7 @@ def event_get_start(cla):
                             pic_num) + ".PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(220, 260, 910, 580, cla, img, 0.8)
+                        imgs_ = imgs_set_(220, 260, 910, 770, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             print("pic_num", pic_num)
                             is_picture = str(pic_num)
@@ -146,7 +146,7 @@ def event_get_start(cla):
                                 pic_num) + ".PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(220, 260, 910, 580, cla, img, 0.8)
+                            imgs_ = imgs_set_(220, 260, 910, 770, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
                                 print("pic_num", pic_num)
                                 # is_pic = True
@@ -258,7 +258,7 @@ def event_get_click(cla, is_picture, y_point, point):
 
         ######
 
-        # - : 10 , 11, 12
+        # - :
 
         # 1 : 바트람의훈련교범(seven_six) o
         # 2 : 정예특무대합류작전(8_click) o
@@ -275,9 +275,9 @@ def event_get_click(cla, is_picture, y_point, point):
 
         # 8 : 특무대사냥의뢰(8_click) o
 
-        # 9 : 집결하는용사들(seven) 9
+        # 9 : 집결하는용사들(seven) o
 
-        # 10 : 챔피언의길II(six) 10
+        # 10 : 챔피언의길II(six) o
 
         # 11 :
 
@@ -291,10 +291,11 @@ def event_get_click(cla, is_picture, y_point, point):
 
         # 16 :
 
-        # ?? : 집결하는용사들(seven) 9
-        # ?? : 챔피언의길II(six) 10
-        # ?? :
-        # ?? :
+        # ?? : 챔피언의길출석II(seven) 11
+        # ?? : 챔피언의길III(six) 12
+        # ?? : 각성의힘미션(six) 13
+        # ?? : 성의소환계약(six) 14
+        # ?? : 사역마소환계약(six) 15
 
 
         # 8_click => drag 하는 것
@@ -325,9 +326,9 @@ def event_get_click(cla, is_picture, y_point, point):
             data = "seven_six"
         # elif is_picture == "":
         #     data = "five"
-        elif is_picture == "10":
+        elif is_picture == "10" or is_picture == "12" or is_picture == "13" or is_picture == "14" or is_picture == "15":
             data = "six"
-        elif is_picture == "9":
+        elif is_picture == "9" or is_picture == "11":
             data = "seven"
         elif is_picture == "2" or is_picture == "4" or is_picture == "8":
             data = "8_click"
