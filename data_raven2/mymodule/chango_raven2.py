@@ -159,7 +159,7 @@ def chango_in(cla):
                         print("anymore_item", imgs_)
                         break
                     else:
-                        click_pos_2(180, 1000, cla)
+                        click_pos_2(230, 1000, cla)
                         time.sleep(0.5)
                     time.sleep(0.5)
 
