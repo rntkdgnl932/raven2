@@ -19,9 +19,7 @@ def dead_check(cla):
 
     try:
 
-        result_schedule = myQuest_play_check(cla, "check")
-        character_id = result_schedule[0][1]
-        result_schedule_ = result_schedule[0][2]
+
 
         print("dead_check")
 
@@ -72,6 +70,11 @@ def dead_check(cla):
         #     dead_ = True
 
         if dead_ == True:
+
+            result_schedule = myQuest_play_check(cla, "check")
+            character_id = result_schedule[0][1]
+            result_schedule_ = result_schedule[0][2]
+
             if result_schedule_ == "튜토육성" or "서브퀘스트" in result_schedule_:
 
                 myQuest_play_add(cla, result_schedule_)
