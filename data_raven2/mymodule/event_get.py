@@ -279,23 +279,25 @@ def event_get_click(cla, is_picture, y_point, point):
 
         # 10 : 챔피언의길II(six) o
 
-        # 11 :
+        # 11 : 챔피언의길출석II(seven) o
 
-        # 12 :
+        # 12 : 챔피언의길III(six) o
 
-        # 13 :
+        # 13 : 각성의힘미션(six) o
 
-        # 14 :
+        # 14 : 성의소환계약(six) o
 
-        # 15 :
+        # 15 : 사역마소환계약(six) o
 
-        # 16 :
+        # 16 : 챔피언의길출석III(seven) 16
 
-        # ?? : 챔피언의길출석II(seven) 11
-        # ?? : 챔피언의길III(six) 12
-        # ?? : 각성의힘미션(six) 13
-        # ?? : 성의소환계약(six) 14
-        # ?? : 사역마소환계약(six) 15
+        # 17 : 챔피언의길IV(six) 17
+
+        # ?? : 챔피언의길출석III(seven) 16
+        # ?? : 챔피언의길IV(six) 17
+        # ?? :
+        # ?? :
+        # ?? :
 
 
         # 8_click => drag 하는 것
@@ -326,9 +328,9 @@ def event_get_click(cla, is_picture, y_point, point):
             data = "seven_six"
         # elif is_picture == "":
         #     data = "five"
-        elif is_picture == "10" or is_picture == "12" or is_picture == "13" or is_picture == "14" or is_picture == "15":
+        elif is_picture == "10" or is_picture == "12" or is_picture == "13" or is_picture == "14" or is_picture == "15" or is_picture == "17":
             data = "six"
-        elif is_picture == "9" or is_picture == "11":
+        elif is_picture == "9" or is_picture == "11" or is_picture == "16":
             data = "seven"
         elif is_picture == "2" or is_picture == "4" or is_picture == "8":
             data = "8_click"
