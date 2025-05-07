@@ -258,7 +258,7 @@ def event_get_click(cla, is_picture, y_point, point):
 
         ######
 
-        # - :
+        # - : 6, 7, 9, 10, 11, 12, 13, 14, 15, 16 ,17
 
         # 1 : 바트람의훈련교범(seven_six) o
         # 2 : 정예특무대합류작전(8_click) o
@@ -269,32 +269,32 @@ def event_get_click(cla, is_picture, y_point, point):
 
         # 5 : 희귀장신구제작미션(six) o
 
-        # 6 : 챔피언의길출석(twenty_eight) o
+        # 6 : 암시장으로의초대출석(seven) 6
 
-        # 7 : 챔피언의길I(eight) o
+        # 7 : 암시장으로의초대미션(8_click) 7
 
         # 8 : 특무대사냥의뢰(8_click) o
 
-        # 9 : 집결하는용사들(seven) o
+        # 9 :
 
-        # 10 : 챔피언의길II(six) o
+        # 10 :
 
-        # 11 : 챔피언의길출석II(seven) o
+        # 11 :
 
-        # 12 : 챔피언의길III(six) o
+        # 12 :
 
-        # 13 : 각성의힘미션(six) o
+        # 13 :
 
-        # 14 : 성의소환계약(six) o
+        # 14 :
 
-        # 15 : 사역마소환계약(six) o
+        # 15 :
 
-        # 16 : 챔피언의길출석III(seven) 16
+        # 16 :
 
-        # 17 : 챔피언의길IV(six) 17
+        # 17 :
 
-        # ?? : 챔피언의길출석III(seven) 16
-        # ?? : 챔피언의길IV(six) 17
+        # ?? : 암시장으로의초대출석(seven) 6
+        # ?? : 암시장으로의초대미션(8_click) 7
         # ?? :
         # ?? :
         # ?? :
@@ -328,13 +328,13 @@ def event_get_click(cla, is_picture, y_point, point):
             data = "seven_six"
         # elif is_picture == "":
         #     data = "five"
-        elif is_picture == "10" or is_picture == "12" or is_picture == "13" or is_picture == "14" or is_picture == "15" or is_picture == "17":
+        elif is_picture == "0":
             data = "six"
-        elif is_picture == "9" or is_picture == "11" or is_picture == "16":
+        elif is_picture == "6":
             data = "seven"
-        elif is_picture == "2" or is_picture == "4" or is_picture == "8":
+        elif is_picture == "2" or is_picture == "4" or is_picture == "7" or is_picture == "8":
             data = "8_click"
-        elif is_picture == "5" or is_picture == "7":
+        elif is_picture == "5":
             data = "eight"
         elif is_picture == "0":
             data = "ten"
@@ -342,7 +342,7 @@ def event_get_click(cla, is_picture, y_point, point):
             data = "twelve"
         elif is_picture == "0":
             data = "twelve_plus_two"
-        elif is_picture == "3" or is_picture == "6":
+        elif is_picture == "3":
             data = "twenty_eight"
 
 
