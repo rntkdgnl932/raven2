@@ -258,7 +258,7 @@ def event_get_click(cla, is_picture, y_point, point):
 
         ######
 
-        # - : 9, 10, 11
+        # - :
 
         # 1 : 바트람의훈련교범(seven_six) o
         # 2 : 정예특무대합류작전(8_click) o
@@ -269,19 +269,19 @@ def event_get_click(cla, is_picture, y_point, point):
 
         # 5 : 희귀장신구제작미션(six) o
 
-        # 6 : 엘의대축제얼티밋축제(seven) 6
+        # 6 : 엘의대축제얼티밋축제(seven) o
 
-        # 7 : 엘의대축제축제즐기기(seven_six) 7
+        # 7 : 엘의대축제축제즐기기(seven_six) o
 
         # 8 : 특무대사냥의뢰(8_click) o
 
-        # 9 : 엘의대축제특별미션(six) 9
+        # 9 : 엘의대축제특별미션I(six) o
 
-        # 10 : 데스브링어성장지원(point_click) 10
+        # 10 : 데스브링어성장지원(point_click) o
 
-        # 11 : 헛개수특별출석(seven) 11
+        # 11 : 헛개수특별출석(seven) o
 
-        # 12 :
+        # 12 : 엘의대축제특별미션II(six) 12
 
         # 13 :
 
@@ -293,11 +293,11 @@ def event_get_click(cla, is_picture, y_point, point):
 
         # 17 :
 
-        # ?? : 엘의대축제얼티밋축제(seven) 6
-        # ?? : 엘의대축제축제즐기기(seven_six) 7
-        # ?? : 엘의대축제특별미션(six) 9
-        # ?? : 데스브링어성장지원(point_click) 10
-        # ?? : 헛개수특별출석(seven) 11
+        # ?? :
+        # ?? :
+        # ?? : 엘의대축제특별미션II(six) 12
+        # ?? :
+        # ?? :
 
 
         # 8_click => drag 하는 것
@@ -328,7 +328,7 @@ def event_get_click(cla, is_picture, y_point, point):
             data = "seven_six"
         # elif is_picture == "":
         #     data = "five"
-        elif is_picture == "9":
+        elif is_picture == "9" or is_picture == "12":
             data = "six"
         elif is_picture == "6" or is_picture == "11":
             data = "seven"
