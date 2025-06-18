@@ -269,7 +269,7 @@ def event_get_click(cla, is_picture, y_point, point):
 
         # 5 : 희귀장신구제작미션(six) o
 
-        # 6 : 엘의대축제얼티밋출석석(sven) o
+        # 6 : 엘의대축제얼티밋출석(sven) o
 
         # 7 : 엘의대축제축제즐기기(seven_six) o
 
@@ -283,21 +283,21 @@ def event_get_click(cla, is_picture, y_point, point):
 
         # 12 : 엘의대축제특별미션II(six) o
 
-        # 13 :
+        # 13 : 엘의대축제특별미션III(six) o
 
-        # 14 :
+        # 14 : 대축제강화지원출석(seven) o
 
-        # 15 :
+        # 15 : 대축제상자지원미션(ten) o
 
-        # 16 :
+        # 16 : 엘의대축제특별미션IV(six) 16
 
-        # 17 :
+        # 17 : 대전쟁의서막카운트다운출석(seven) 17
 
         # ?? :
         # ?? :
-        # ?? : 엘의대축제특별미션III(six) 13
-        # ?? : 대축제강화지원출석(seven) 14
-        # ?? : 대축제상자지원미션(ten) 15
+        # ?? :
+        # ?? :
+        # ?? :
 
 
         # 8_click => drag 하는 것
@@ -328,9 +328,9 @@ def event_get_click(cla, is_picture, y_point, point):
             data = "seven_six"
         # elif is_picture == "":
         #     data = "five"
-        elif is_picture == "9" or is_picture == "12" or is_picture == "13":
+        elif is_picture == "9" or is_picture == "12" or is_picture == "13" or is_picture == "16":
             data = "six"
-        elif is_picture == "6" or is_picture == "11" or is_picture == "14":
+        elif is_picture == "6" or is_picture == "11" or is_picture == "14" or is_picture == "17":
             data = "seven"
         elif is_picture == "2" or is_picture == "4" or is_picture == "8":
             data = "8_click"
