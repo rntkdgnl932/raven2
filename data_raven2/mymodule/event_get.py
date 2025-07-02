@@ -258,7 +258,7 @@ def event_get_click(cla, is_picture, y_point, point):
 
         ######
 
-        # - : 6, 7, 10, 14, 15, 17
+        # - : 9, 12, 13, 16
 
         # 1 : 바트람의훈련교범(seven_six) o
         # 2 : 정예특무대합류작전(8_click) o
@@ -269,34 +269,34 @@ def event_get_click(cla, is_picture, y_point, point):
 
         # 5 : 희귀장신구제작미션(six) o
 
-        # 6 : 코맥의전투지원출석(fourteen) 6
+        # 6 : 코맥의전투지원출석(fourteen) o
 
-        # 7 : 코맥의스텔라성장특별지원(ten) 7
+        # 7 : 코맥의스텔라성장특별지원(ten) o
 
         # 8 : 특무대사냥의뢰(8_click) o
 
-        # 9 : 엘의대축제특별미션I(six) o
+        # 9 :
 
-        # 10 : 코맥의성유물강화특별지원(eight) 10
+        # 10 : 코맥의성유물강화특별지원(eight) o
 
         # 11 : 헛개수특별출석(seven) o
 
-        # 12 : 엘의대축제특별미션II(six) o
+        # 12 : 코맥의보물상자지원출석(seven) 12
 
-        # 13 : 엘의대축제특별미션III(six) o
+        # 13 : 코맥의보물상자지원미션(eight) 13
 
-        # 14 : 코맥의물자보급미션(8_click) 14
+        # 14 : 코맥의물자보급미션(8_click) o
 
         # 15 :
 
-        # 16 : 엘의대축제특별미션IV(six) o
+        # 16 :
 
         # 17 :
 
-        # ?? : 코맥의전투지원출석(fourteen) 6
-        # ?? : 코맥의스텔라성장특별지원(ten) 7
-        # ?? : 코맥의성유물강화특별지원(eight) 10
-        # ?? : 코맥의물자보급미션(8_click) 14
+        # ?? : 코맥의보물상자지원출석(seven) 12
+        # ?? : 코맥의보물상자지원미션(eight) 13
+        # ?? :
+        # ?? :
         # ?? :
 
 
@@ -328,13 +328,13 @@ def event_get_click(cla, is_picture, y_point, point):
             data = "seven_six"
         elif is_picture == "0":
             data = "five"
-        elif is_picture == "9" or is_picture == "12" or is_picture == "13" or is_picture == "16":
+        elif is_picture == "0":
             data = "six"
-        elif is_picture == "11":
+        elif is_picture == "11" or is_picture == "12":
             data = "seven"
         elif is_picture == "2" or is_picture == "4" or is_picture == "8" or is_picture == "14":
             data = "8_click"
-        elif is_picture == "5" or is_picture == "10":
+        elif is_picture == "5" or is_picture == "10" or is_picture == "13":
             data = "eight"
         elif is_picture == "7":
             data = "ten"
