@@ -312,7 +312,7 @@ def dungeon_in(cla, data):
                                     # if dun_name == "temple":
 
 
-                                    # go_random_event(cla)
+                                    go_random_event(cla)
                                     go_random(cla)
 
                                     # 공격
@@ -466,6 +466,12 @@ def dungeon_check(cla, data):
                     if i == 0 or i == 1:
                         print("랜덤 이동 해야함")
                         random = True
+
+                else:
+                    if i == 2 or i == 3:
+                        print("랜덤 이동 해야함")
+                        random = True
+
                 is_dun = True
                 break
 

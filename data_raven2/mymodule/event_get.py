@@ -258,7 +258,7 @@ def event_get_click(cla, is_picture, y_point, point):
 
         ######
 
-        # - : 9, 12, 13, 16
+        # - :
 
         # 1 : 바트람의훈련교범(seven_six) o
         # 2 : 정예특무대합류작전(8_click) o
@@ -269,23 +269,23 @@ def event_get_click(cla, is_picture, y_point, point):
 
         # 5 : 희귀장신구제작미션(six) o
 
-        # 6 : 코맥의전투지원출석(fourteen) o
+        # 6 : 특무대사냥의뢰(8_click) o
 
-        # 7 : 코맥의스텔라성장특별지원(ten) o
+        # 7 : 헛개수특별출석(seven) o
 
-        # 8 : 특무대사냥의뢰(8_click) o
+        # 8 :
 
         # 9 :
 
-        # 10 : 코맥의성유물강화특별지원(eight) o
+        # 10 :
 
-        # 11 : 헛개수특별출석(seven) o
+        # 11 :
 
-        # 12 : 코맥의보물상자지원출석(seven) 12
+        # 12 :
 
-        # 13 : 코맥의보물상자지원미션(eight) 13
+        # 13 :
 
-        # 14 : 코맥의물자보급미션(8_click) o
+        # 14 :
 
         # 15 :
 
@@ -293,10 +293,10 @@ def event_get_click(cla, is_picture, y_point, point):
 
         # 17 :
 
-        # ?? : 코맥의보물상자지원출석(seven) 12
-        # ?? : 코맥의보물상자지원미션(eight) 13
-        # ?? :
-        # ?? :
+        # ?? : 탐욕의여름혹서기지원(point_click) 8
+        # ?? : 탐욕의여름21일특별출석(twenty_eight) 9
+        # ?? : 탐욕의섬탐사미션(seven_six) 10
+        # ?? : 탐욕의섬정복미션(ten) 11
         # ?? :
 
 
@@ -322,29 +322,29 @@ def event_get_click(cla, is_picture, y_point, point):
 
 
 
-        if is_picture == "6" or is_picture == "0":
+        if is_picture == "0" or is_picture == "0":
             data = "fourteen"
-        elif is_picture == "1":
+        elif is_picture == "1" or is_picture == "10":
             data = "seven_six"
         elif is_picture == "0":
             data = "five"
         elif is_picture == "0":
             data = "six"
-        elif is_picture == "11" or is_picture == "12":
-            data = "seven"
-        elif is_picture == "2" or is_picture == "4" or is_picture == "8" or is_picture == "14":
-            data = "8_click"
-        elif is_picture == "5" or is_picture == "10" or is_picture == "13":
-            data = "eight"
         elif is_picture == "7":
+            data = "seven"
+        elif is_picture == "2" or is_picture == "4" or is_picture == "6":
+            data = "8_click"
+        elif is_picture == "5":
+            data = "eight"
+        elif is_picture == "11":
             data = "ten"
         elif is_picture == "0":
             data = "twelve"
         elif is_picture == "0":
             data = "twelve_plus_two"
-        elif is_picture == "3":
+        elif is_picture == "3" or is_picture == "9":
             data = "twenty_eight"
-        elif is_picture == "0":
+        elif is_picture == "8":
             data = "point_click"
 
 

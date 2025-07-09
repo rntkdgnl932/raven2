@@ -71,6 +71,29 @@ def go_test():
         # if imgs_ is not None and imgs_ != False:
         #     print("menu_auction", imgs_)
 
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\e_out_point_1.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(690, 30, 750, 65, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("e_out_point_1", imgs_)
+
+        event_get_start(cla)
+
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\twenty_eight\\28_checked.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(250, 360, 750, 730, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("28_checked", imgs_)
+        else:
+            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\twenty_eight\\28_checked_2.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(250, 360, 750, 730, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("28_checked_2", imgs_)
+
         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\collection\\menu_collection.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -151,25 +174,25 @@ def go_test():
         ###################################################################################################
         ################################# 이벤트 받기 테스트 #################################
         ###################################################################################################
-        # 폴더 내 파일 개수
-        folder_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_title"
-        file_list = os.listdir(folder_path)
-        file_count = len(file_list)
-        # print(file_count)
-
-        for n in range(len(file_list)):
-
-            pic_num_ready = file_list[n]
-            pic_num = pic_num_ready.split(".")[0]
-
-            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_title\\" + str(
-                pic_num) + ".PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(220, 320, 800, 400, cla, img, 0.9)
-            if imgs_ is not None and imgs_ != False:
-                print("pic_num", pic_num)
-                break
+        # # 폴더 내 파일 개수
+        # folder_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_title"
+        # file_list = os.listdir(folder_path)
+        # file_count = len(file_list)
+        # # print(file_count)
+        #
+        # for n in range(len(file_list)):
+        #
+        #     pic_num_ready = file_list[n]
+        #     pic_num = pic_num_ready.split(".")[0]
+        #
+        #     full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\get_title\\" + str(
+        #         pic_num) + ".PNG"
+        #     img_array = np.fromfile(full_path, np.uint8)
+        #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #     imgs_ = imgs_set_(220, 320, 800, 400, cla, img, 0.9)
+        #     if imgs_ is not None and imgs_ != False:
+        #         print("pic_num", pic_num)
+        #         break
 
         ###################################################################################################
         ##################################################################################################
