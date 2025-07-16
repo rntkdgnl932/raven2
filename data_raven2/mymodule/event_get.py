@@ -273,13 +273,13 @@ def event_get_click(cla, is_picture, y_point, point):
 
         # 7 : 헛개수특별출석(seven) o
 
-        # 8 :
+        # 8 : 탐욕의여름혹서기지원(point_click) o
 
-        # 9 :
+        # 9 : 탐욕의여름21일특별출석(twenty_eight) o
 
-        # 10 :
+        # 10 : 탐욕의섬탐사미션(seven_six) o
 
-        # 11 :
+        # 11 : 탐욕의섬정복미션(ten) o
 
         # 12 :
 
@@ -293,10 +293,10 @@ def event_get_click(cla, is_picture, y_point, point):
 
         # 17 :
 
-        # ?? : 탐욕의여름혹서기지원(point_click) 8
-        # ?? : 탐욕의여름21일특별출석(twenty_eight) 9
-        # ?? : 탐욕의섬탐사미션(seven_six) 10
-        # ?? : 탐욕의섬정복미션(ten) 11
+        # ?? : 50일기념특별출석(seven) 12
+        # ?? : 50일기념소환지원미션(ten) 13
+        # ?? :
+        # ?? :
         # ?? :
 
 
@@ -330,13 +330,13 @@ def event_get_click(cla, is_picture, y_point, point):
             data = "five"
         elif is_picture == "0":
             data = "six"
-        elif is_picture == "7":
+        elif is_picture == "7" or is_picture == "12":
             data = "seven"
         elif is_picture == "2" or is_picture == "4" or is_picture == "6":
             data = "8_click"
         elif is_picture == "5":
             data = "eight"
-        elif is_picture == "11":
+        elif is_picture == "11" or is_picture == "13":
             data = "ten"
         elif is_picture == "0":
             data = "twelve"
