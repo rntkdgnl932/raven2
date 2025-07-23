@@ -14,7 +14,7 @@ def dungeon_start(cla, data):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_raven2 import go_maul, move_check, juljun_check, juljun_off, juljun_on, attack_on, go_random, confirm_all, go_random_event
+    from action_raven2 import go_maul, move_check, juljun_check, juljun_off, juljun_on, attack_on, go_random, confirm_all
     from clean_screen_raven2 import clean_screen
     from potion_raven2 import potion_check, potion_buy
     from dead_raven2 import dead_check_2, dead_recover

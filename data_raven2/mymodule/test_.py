@@ -71,14 +71,7 @@ def go_test():
         # if imgs_ is not None and imgs_ != False:
         #     print("menu_auction", imgs_)
 
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\e_out_point_1.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(690, 30, 750, 65, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("e_out_point_1", imgs_)
-
-        event_get_start(cla)
+        go_random_event(cla)
 
         full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\twenty_eight\\28_checked.PNG"
         img_array = np.fromfile(full_path, np.uint8)

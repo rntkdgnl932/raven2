@@ -1272,7 +1272,7 @@ def go_random_event(cla):
                         print("던전 진입 완료")
 
 
-                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\event\\2.PNG"
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\event\\0.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                         imgs_ = imgs_set_(690, 75, 810, 120, cla, img, 0.8)
@@ -1288,12 +1288,24 @@ def go_random_event(cla):
                                 is_dun = True
                                 break
                         else:
-                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\event\\1.PNG"
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\random_point_click.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(40, 140, 900, 920, cla, img, 0.8)
+                            imgs_ = imgs_set_(0, 30, 900, 1040, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                                QTest.qWait(1000)
+
+                                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\event\\0.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(690, 75, 810, 120, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("ok")
+                                else:
+                                    click_pos_2(925, 990, cla)
+
                             else:
 
                                 click_pos_2(925, 990, cla)
