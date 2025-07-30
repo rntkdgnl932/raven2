@@ -271,13 +271,13 @@ def event_get_click(cla, is_picture, y_point, point):
 
         # 6 : 특무대사냥의뢰(8_click) o
 
-        # 7 :
+        # 7 : 100회소환특별출석(seven) 7
 
-        # 8 :
+        # 8 : 단결의성장지원미션I(six) 8
 
-        # 9 :
+        # 9 : 장비스페셜성장지원(six) 9
 
-        # 10 :
+        # 10 : 어비스탐사미션(six) 10
 
         # 11 :
 
@@ -328,9 +328,9 @@ def event_get_click(cla, is_picture, y_point, point):
             data = "seven_six"
         elif is_picture == "0":
             data = "five"
-        elif is_picture == "0":
+        elif is_picture == "8" or is_picture == "9" or is_picture == "10":
             data = "six"
-        elif is_picture == "0" or is_picture == "0":
+        elif is_picture == "7" or is_picture == "0":
             data = "seven"
         elif is_picture == "2" or is_picture == "4" or is_picture == "6":
             data = "8_click"
