@@ -236,10 +236,10 @@ def character_change(cla, character_id):
 
                     # 메뉴 열기
                     menu_open(cla)
-                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\character_select_and_game_start\\menu_character_select.PNG"
+                    full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\menu\\menu_character_select.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(800, 930, 920, 1030, cla, img, 0.8)
+                    imgs_ = imgs_set_(620, 30, 960, 1040, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         print("menu_character_select", imgs_)
                         click_pos_reg(imgs_.x, imgs_.y, cla)

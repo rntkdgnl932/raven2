@@ -110,10 +110,10 @@ def guild_check(cla):
                     if imgs_ is not None and imgs_ != False:
                         break
                     else:
-                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\guild\\menu_guild_btn.PNG"
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\menu\\menu_guild_btn.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(640, 390, 800, 510, cla, img, 0.8)
+                        imgs_ = imgs_set_(620, 30, 960, 1040, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             print("menu_guild_btn", imgs_)
                             click_pos_reg(imgs_.x, imgs_.y, cla)

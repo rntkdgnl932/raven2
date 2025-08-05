@@ -114,10 +114,10 @@ def steegma_start(cla):
                     if imgs_ is not None and imgs_ != False:
                         break
                     else:
-                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\steegma\\menu_steegma.PNG"
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\menu\\menu_steegma.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(620, 210, 960, 450, cla, img, 0.8)
+                        imgs_ = imgs_set_(620, 30, 960, 1040, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             print("menu_steegma", imgs_)
                             x_reg = imgs_.x

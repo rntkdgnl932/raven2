@@ -146,10 +146,10 @@ def get_post(cla):
                     if imgs_ is not None and imgs_ != False:
                         break
                     else:
-                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\post\\menu_post.PNG"
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\menu\\menu_post.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(620, 940, 800, 1030, cla, img, 0.8)
+                        imgs_ = imgs_set_(620, 30, 960, 1040, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             print("menu_post", imgs_)
 
@@ -471,10 +471,10 @@ def get_gyeyak_sohwan(cla):
                     if imgs_ is not None and imgs_ != False:
                         break
                     else:
-                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\gyeyak_sohwan\\menu_gyeyak_sohwan.PNG"
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\menu\\menu_gyeyak_sohwan.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(760, 140, 850, 220, cla, img, 0.8)
+                        imgs_ = imgs_set_(620, 30, 960, 1040, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             print("menu_gyeyak_sohwan", imgs_)
 
@@ -583,10 +583,10 @@ def get_upjuk(cla):
                     if imgs_ is not None and imgs_ != False:
                         break
                     else:
-                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\upjuk\\menu_upjuk.PNG"
+                        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\menu\\menu_upjuk.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(620, 440, 960, 700, cla, img, 0.8)
+                        imgs_ = imgs_set_(620, 30, 960, 1040, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             print("menu_upjuk", imgs_)
 
@@ -718,10 +718,10 @@ def get_sangjum(cla):
                         if imgs_ is not None and imgs_ != False:
                             break
                         else:
-                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\sangjum\\menu_sanjum.PNG"
+                            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\menu\\menu_sanjum.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(600, 30, 960, 120, cla, img, 0.8)
+                            imgs_ = imgs_set_(620, 30, 960, 1040, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
                                 print("menu_sanjum", imgs_)
 

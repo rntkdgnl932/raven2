@@ -71,97 +71,12 @@ def go_test():
         # if imgs_ is not None and imgs_ != False:
         #     print("menu_auction", imgs_)
 
-        go_random_event(cla)
-
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\twenty_eight\\28_checked.PNG"
+        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\menu_dungeon.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(250, 360, 750, 730, cla, img, 0.8)
+        imgs_ = imgs_set_(650, 310, 960, 610, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
-            print("28_checked", imgs_)
-        else:
-            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\event\\get\\data\\twenty_eight\\28_checked_2.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(250, 360, 750, 730, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                print("28_checked_2", imgs_)
-
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\collection\\menu_collection.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(860, 120, 960, 450, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("menu_collection", imgs_)
-
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\upjuk\\menu_upjuk.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(620, 440, 960, 700, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("menu_upjuk", imgs_)
-
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\post\\menu_post.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(620, 940, 800, 1030, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("menu_post", imgs_)
-
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\get_item\\sangjum\\menu_sanjum.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(600, 30, 960, 120, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("menu_sanjum", imgs_)
-
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\guild\\menu_guild_btn.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(640, 390, 800, 510, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("menu_guild_btn", imgs_)
-
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\menu_auction.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(640, 330, 960, 600, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("menu_auction", imgs_)
-
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\checked_yes.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(210, 85, 255, 125, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("checked_yes", imgs_)
-            full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\auction\\retrieve_btn.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(520, 970, 630, 1030, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                print("retrieve_btn", imgs_)
-
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\boonhae\\clicked_common.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(315, 835, 520, 980, cla, img, 0.9)
-        if imgs_ is not None and imgs_ != False:
-            print("clicked_common", imgs_)
-
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\boonhae\\clicked_high.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(315, 835, 520, 980, cla, img, 0.9)
-        if imgs_ is not None and imgs_ != False:
-            print("clicked_high", imgs_)
-
-        full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\boonhae\\clicked_last.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(315, 835, 520, 980, cla, img, 0.9)
-        if imgs_ is not None and imgs_ != False:
-            print("clicked_last", imgs_)
+            print("menu_dungeon", imgs_)
 
 
         ###################################################################################################

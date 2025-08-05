@@ -379,10 +379,10 @@ def dungeon_in(cla, data):
 
             else:
                 menu_open(cla)
-                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\dungeon\\menu_dungeon.PNG"
+                full_path = "c:\\my_games\\raven2\\data_raven2\\imgs\\menu\\menu_dungeon.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(650, 310, 960, 610, cla, img, 0.8)
+                imgs_ = imgs_set_(620, 30, 960, 1040, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     print("menu_dungeon", imgs_)
                     click_pos_reg(imgs_.x, imgs_.y, cla)
