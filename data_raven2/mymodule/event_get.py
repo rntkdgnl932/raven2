@@ -258,7 +258,7 @@ def event_get_click(cla, is_picture, y_point, point):
 
         ######
 
-        # - : 7 ~ 15
+        # - :
 
         # 1 : 바트람의훈련교범(seven_six) o
         # 2 : 정예특무대합류작전(8_click) o
@@ -271,13 +271,13 @@ def event_get_click(cla, is_picture, y_point, point):
 
         # 6 : 특무대사냥의뢰(8_click) o
 
-        # 7 : 100회소환특별출석(seven) 7
+        # 7 : 100회소환특별출석(seven)  o
 
-        # 8 : 단결의성장지원미션I(six) 8
+        # 8 : 단결의성장지원미션I(six) o
 
-        # 9 : 장비스페셜성장지원(six) 9
+        # 9 : 장비스페셜성장지원(six) o
 
-        # 10 : 어비스탐사미션(six) 10
+        # 10 : 어비스탐사미션(seven_six)
 
         # 11 :
 
@@ -293,10 +293,10 @@ def event_get_click(cla, is_picture, y_point, point):
 
         # 17 :
 
-        # ?? : 100회소환특별출석(seven) 7
-        # ?? : 단결의성장지원미션I(six) 8
-        # ?? : 장비스페셜성장지원(six) 9
-        # ?? : 어비스탐사미션(seven_six) 10
+        # ?? :
+        # ?? :
+        # ?? :
+        # ?? :
         # ?? :
 
 
