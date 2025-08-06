@@ -279,7 +279,7 @@ def event_get_click(cla, is_picture, y_point, point):
 
         # 10 : 어비스탐사미션(seven_six)
 
-        # 11 :
+        # 11 : 정예특무대성장출석(seven) 11
 
         # 12 :
 
@@ -293,7 +293,7 @@ def event_get_click(cla, is_picture, y_point, point):
 
         # 17 :
 
-        # ?? :
+        # ?? : 정예특무대성장출석(seven) 11
         # ?? :
         # ?? :
         # ?? :
@@ -330,7 +330,7 @@ def event_get_click(cla, is_picture, y_point, point):
             data = "five"
         elif is_picture == "8" or is_picture == "9" or is_picture == "10":
             data = "six"
-        elif is_picture == "7" or is_picture == "0":
+        elif is_picture == "7" or is_picture == "11":
             data = "seven"
         elif is_picture == "2" or is_picture == "4" or is_picture == "6":
             data = "8_click"
