@@ -258,7 +258,7 @@ def event_get_click(cla, is_picture, y_point, point):
 
         ######
 
-        # - :
+        # - : 8, 10, 11
 
         # 1 : 바트람의훈련교범(seven_six) o
         # 2 : 정예특무대합류작전(8_click) o
@@ -271,15 +271,15 @@ def event_get_click(cla, is_picture, y_point, point):
 
         # 6 : 특무대사냥의뢰(8_click) o
 
-        # 7 : 100회소환특별출석(seven)  o
+        # 7 : 100회소환특별출석(seven) o
 
-        # 8 : 단결의성장지원미션I(six) o
+        # 8 :
 
         # 9 : 장비스페셜성장지원(six) o
 
-        # 10 : 어비스탐사미션(seven_six)
+        # 10 :
 
-        # 11 : 정예특무대성장출석(seven) 11
+        # 11 :
 
         # 12 :
 
@@ -293,11 +293,11 @@ def event_get_click(cla, is_picture, y_point, point):
 
         # 17 :
 
-        # ?? : 정예특무대성장출석(seven) 11
-        # ?? :
-        # ?? :
-        # ?? :
-        # ?? :
+        # ?? : 업데이트기념특별출석!(point_click) 8
+        # ?? : 단결의열쇠출석(fourteen) 10
+        # ?? : 단결의트레이닝코스(eight) 11
+        # ?? : 단결의성장지원미션II(six) 12
+        # ?? : 정예특무대성장미션(six) 13
 
 
         # 8_click => drag 하는 것
@@ -322,19 +322,19 @@ def event_get_click(cla, is_picture, y_point, point):
 
 
 
-        if is_picture == "0" or is_picture == "0":
+        if is_picture == "10" or is_picture == "0":
             data = "fourteen"
         elif is_picture == "1" or is_picture == "10":
             data = "seven_six"
         elif is_picture == "0":
             data = "five"
-        elif is_picture == "8" or is_picture == "9" or is_picture == "10":
+        elif is_picture == "9" or is_picture == "12" or is_picture == "13":
             data = "six"
-        elif is_picture == "7" or is_picture == "11":
+        elif is_picture == "7" or is_picture == "0":
             data = "seven"
         elif is_picture == "2" or is_picture == "4" or is_picture == "6":
             data = "8_click"
-        elif is_picture == "5" or is_picture == "0":
+        elif is_picture == "5" or is_picture == "11":
             data = "eight"
         elif is_picture == "0" or is_picture == "0":
             data = "ten"
@@ -344,7 +344,7 @@ def event_get_click(cla, is_picture, y_point, point):
             data = "twelve_plus_two"
         elif is_picture == "3" or is_picture == "0":
             data = "twenty_eight"
-        elif is_picture == "0":
+        elif is_picture == "8":
             data = "point_click"
 
 
