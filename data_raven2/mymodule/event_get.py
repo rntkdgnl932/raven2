@@ -260,44 +260,44 @@ def event_get_click(cla, is_picture, y_point, point):
 
         # - : 8, 10, 11
 
-        # 1 : 바트람의훈련교범(seven_six) o
-        # 2 : 정예특무대합류작전(8_click) o
+        # 1 : 바트람의훈련교범(seven_six)
+        # 2 : 정예특무대합류작전(8_click)
 
         # 3 : 특무대원특별지원출석(twenty_eight) o
 
-        # 4 : 신입특무대지원작전(8_click) o
+        # 4 : 신입특무대지원작전(8_click)
 
-        # 5 : 희귀장신구제작미션(six) o
+        # 5 : 희귀장신구제작미션(six)
 
-        # 6 : 특무대사냥의뢰(8_click) o
+        # 6 : 특무대사냥의뢰(8_click)
 
         # 7 : 100회소환특별출석(seven) o
 
-        # 8 :
+        # 8 : 업데이트기념특별출석!(point_click) o
 
         # 9 : 장비스페셜성장지원(six) o
 
-        # 10 :
+        # 10 : 단결의열쇠출석(fourteen) o
 
-        # 11 :
+        # 11 : 단결의트레이닝코스(eight) o
 
-        # 12 :
+        # 12 : 단결의성장지원미션II(six) o
 
-        # 13 :
+        # 13 : 정예특무대성장미션(six) o
 
-        # 14 :
+        # 14 : 업데이트기념특별출석II(point_click) 14
 
-        # 15 :
+        # 15 : 단결의스킬성장출석(seven) 15
 
         # 16 :
 
         # 17 :
 
-        # ?? : 업데이트기념특별출석!(point_click) 8
-        # ?? : 단결의열쇠출석(fourteen) 10
-        # ?? : 단결의트레이닝코스(eight) 11
-        # ?? : 단결의성장지원미션II(six) 12
-        # ?? : 정예특무대성장미션(six) 13
+        # ?? : 업데이트기념특별출석II(point_click) 14
+        # ?? : 단결의스킬성장출석(seven) 15
+        # ?? :
+        # ?? :
+        # ?? :
 
 
         # 8_click => drag 하는 것
@@ -330,7 +330,7 @@ def event_get_click(cla, is_picture, y_point, point):
             data = "five"
         elif is_picture == "9" or is_picture == "12" or is_picture == "13":
             data = "six"
-        elif is_picture == "7" or is_picture == "0":
+        elif is_picture == "7" or is_picture == "15":
             data = "seven"
         elif is_picture == "2" or is_picture == "4" or is_picture == "6":
             data = "8_click"
@@ -344,7 +344,7 @@ def event_get_click(cla, is_picture, y_point, point):
             data = "twelve_plus_two"
         elif is_picture == "3" or is_picture == "0":
             data = "twenty_eight"
-        elif is_picture == "8":
+        elif is_picture == "8" or is_picture == "14":
             data = "point_click"
 
 
